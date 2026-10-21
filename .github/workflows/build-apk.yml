@@ -41,10 +41,41 @@ jobs:
             cp "$F" www/index.html
           fi
 
+      - name: Inject status bar style script
+        run: |
+          cat > sb.js <<'JS'
+          (function(){try{
+            var C=window.Capacitor; if(!C||!C.Plugins)return;
+            var mq=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+            function isDark(){
+              var t=document.documentElement.getAttribute('data-theme');
+              if(t==='dark')return true; if(t==='light')return false;
+              return !!(mq&&mq.matches);
+            }
+            function apply(){
+              var style=isDark()?'DARK':'LIGHT';
+              [C.Plugins.SystemBars,C.Plugins.StatusBar].forEach(function(p){
+                try{var r=p&&p.setStyle&&p.setStyle({style:style}); if(r&&r.catch)r.catch(function(){});}catch(e){}
+              });
+            }
+            apply();
+            new MutationObserver(apply).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+            if(mq&&mq.addEventListener)mq.addEventListener('change',apply);
+          }catch(e){}})();
+          JS
+          python3 - <<'PY'
+          p='www/index.html'
+          s=open(p,encoding='utf-8').read()
+          tag='<script>'+open('sb.js',encoding='utf-8').read()+'</script>'
+          i=s.rfind('</body>')
+          s=s[:i]+tag+s[i:] if i!=-1 else s+tag
+          open(p,'w',encoding='utf-8').write(s)
+          PY
+
       - name: Install dependencies
         run: |
           [ -f package.json ] || npm init -y
-          npm install @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor/assets@3
+          npm install @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor/status-bar@7 @capacitor/assets@3
 
       - name: Init Capacitor
         run: |
@@ -54,6 +85,31 @@ jobs:
 
       - name: Add Android project
         run: '[ -d android ] || npx cap add android'
+
+      - name: Dark status bar icons on light background
+        run: |
+          RES=android/app/src/main/res
+          mkdir -p $RES/values $RES/values-night
+          printf '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <bool name="satam_light_status">true</bool>\n</resources>\n' > $RES/values/satam_bools.xml
+          printf '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <bool name="satam_light_status">false</bool>\n</resources>\n' > $RES/values-night/satam_bools.xml
+          S=$RES/values/styles.xml
+          if ! grep -q satam_light_status "$S"; then
+            sed -i '/<style name="AppTheme"/a\        <item name="android:windowLightStatusBar">@bool/satam_light_status</item>' "$S"
+            sed -i '/<style name="AppTheme.NoActionBar"/a\        <item name="android:windowLightStatusBar">@bool/satam_light_status</item>' "$S"
+          fi
+          grep -n satam_light_status "$S" || echo "WARN: styles.xml pattern not matched"
+
+      - name: Prepare icons
+        run: |
+          mkdir -p assets
+          if [ -f icon-only.png ]; then
+            rm -f assets/icon*
+            for f in icon-only icon-foreground icon-background; do
+              if [ -f "$f.png" ]; then cp "$f.png" "assets/$f.png"; fi
+            done
+          fi
+          echo "Icons used:"
+          md5sum assets/* || true
 
       - name: Generate app icons
         continue-on-error: true
@@ -82,5 +138,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: satamjeongbok-apk
+          name: satamjeongbok-apk-${{ github.run_number }}
           path: android/app/build/outputs/apk/debug/app-debug.apk
