@@ -660,20 +660,26 @@ function pdfGet(id){return pdbDo("readonly",function(o){return o.get(id)})}
 function pdfDelB(id){return pdbDo("readwrite",function(o){return o.delete(id)})}
 async function pdfKeep(file,exam,n){
   try{var ex=st.pdfs.filter(function(f){return f.name===file.name&&f.size===file.size&&f.sub===S.sub})[0];
-    if(ex){if(exam)ex.exam=exam;if(n)ex.n=n;ex.t=today();save();return}
+    if(ex){if(exam)ex.exam=exam;if(n)ex.n=n;ex.t=today();save();return ex.id}
     var id="f"+Date.now().toString(36);await pdfPut(id,file);
-    st.pdfs.unshift({id:id,name:file.name,size:file.size,t:today(),sub:S.sub,exam:exam||"",n:n||0});save();if(S.tab==="wrong"&&S.nt==="pdf")render()}
-  catch(e){toast("PDF를 노트에 보관하지 못했어요")}}
+    st.pdfs.unshift({id:id,name:file.name,size:file.size,t:today(),sub:S.sub,exam:exam||"",n:n||0,qids:[]});save();if(S.tab==="wrong"&&S.nt==="pdf")render();return id}
+  catch(e){toast("PDF를 노트에 보관하지 못했어요")}return null}
 function fsz(n){return n>=1048576?(n/1048576).toFixed(1)+"MB":Math.max(1,Math.round(n/1024))+"KB"}
 function vNotePdf(D){
   if(S.pv)return pdfViewer();
   var l=st.pdfs.filter(function(f){return f.sub===S.sub});
   var h='<p class="sub">'+D.name+' · 문제 가져오기에서 불러온 문제지 PDF가 자동으로 보관돼요.</p><div style="height:12px"></div>';
   if(!l.length)return h+'<div class="empty"><b>보관된 PDF가 없어요</b>퀴즈 &gt; AI 튜터 &gt; PDF 가져오기에서 문제지를 읽어오면 여기에 저장돼요.<button class="btn pri" onclick="S.am=\'pdf\';S.qmode=\'ai\';go(\'quiz\')">PDF 가져오러 가기</button></div>';
-  return h+'<div class="wlist two">'+l.map(function(f){var c=S.pdc===f.id;
-    return '<div class="wn"><span class="tag">PDF</span><p class="q" style="margin-bottom:4px"><b>'+esc(f.exam||f.name)+'</b></p><p class="sub">'+esc(f.name)+' · '+fsz(f.size)+' · '+esc(f.t)+(f.n?' · '+f.n+'문제 가져옴':'')+'</p>'
+  return h+'<div class="wlist two">'+l.map(function(f){var c=S.pdc===f.id,qs=pdfQids(f),qn=qs.length,wn=qs.filter(wrongAct).length;
+    return '<div class="wn"><span class="tag">PDF</span><p class="q" style="margin-bottom:4px"><b>'+esc(f.exam||f.name)+'</b></p><p class="sub">'+esc(f.name)+' · '+fsz(f.size)+' · '+esc(f.t)+(qn?' · 저장된 문제 '+qn+'개':(f.n?' · '+f.n+'문제 읽음(미저장)':''))+'</p>'
      +(c?'<div class="panel" style="margin-top:10px"><p><b>이 PDF를 삭제할까요?</b></p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="pdfDel(\''+f.id+'\')">삭제</button><button class="btn sm" onclick="S.pdc=null;render()">취소</button></div></div>'
-       :'<div class="acts"><button class="btn sm pri" onclick="pdfView(\''+f.id+'\')">보기</button><button class="btn sm" onclick="pdfReuse(\''+f.id+'\')">문제 다시 가져오기</button><button class="btn sm" onclick="pdfDl(\''+f.id+'\')">내려받기</button><button class="btn sm danger" onclick="S.pdc=\''+f.id+'\';render()">삭제</button></div>')+'</div>'}).join("")+'</div>'}
+       :'<div class="acts">'+(qn?'<button class="btn sm pri" onclick="pdfSolve(\''+f.id+'\')">문제 풀기 ('+qn+')</button>':'')+(wn?'<button class="btn sm" onclick="pdfSolve(\''+f.id+'\',1)">틀린 문제만 ('+wn+')</button>':'')+'<button class="btn sm'+(qn?'':' pri')+'" onclick="pdfView(\''+f.id+'\')">보기</button><button class="btn sm" onclick="pdfReuse(\''+f.id+'\')">문제 다시 가져오기</button><button class="btn sm" onclick="pdfDl(\''+f.id+'\')">내려받기</button><button class="btn sm danger" onclick="S.pdc=\''+f.id+'\';render()">삭제</button></div>')+'</div>'}).join("")+'</div>'}
+function pdfQids(f){var o=(f.qids||[]).filter(function(id){return byId(id)});
+  if(!o.length&&f.exam)o=st.gen.filter(function(q){return String(q.src||"").indexOf(f.exam+" · ")===0&&byId(q.id)}).map(function(q){return q.id});return o}
+function pdfSolve(id,wrongOnly){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;var ids=pdfQids(f);if(wrongOnly)ids=ids.filter(wrongAct);
+  if(!ids.length){toast(wrongOnly?"복습할 틀린 문제가 없어요":"풀 문제가 없어요. 문제 다시 가져오기를 눌러 주세요");return}
+  var ord=ids.slice().sort(function(a,b){return (parseInt(String(byId(a).src).split(" · ").pop())||0)-(parseInt(String(byId(b).src).split(" · ").pop())||0)});
+  startRun("mc",ord,(f.exam||f.name)+(wrongOnly?" 틀린 문제":" 문제"));if(S.run){S.run.ids=ord.slice();S.run.i=0;S.run.pick=null;render()}}
 async function pdfDel(id){try{await pdfDelB(id)}catch(e){}st.pdfs=st.pdfs.filter(function(f){return f.id!==id});S.pdc=null;save();toast("PDF를 삭제했어요");render()}
 async function pdfView(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;S.pv={id:id,name:f.exam||f.name,imgs:null,err:""};render();
   try{var b=await pdfGet(id);if(!b)throw new Error("보관된 파일을 찾을 수 없어요");await piLib();var d=await pdfjsLib.getDocument({data:await b.arrayBuffer()}).promise,out=[];
@@ -684,10 +690,8 @@ function pdfViewer(){var v=S.pv;
   return '<div class="after" style="margin-bottom:12px;align-items:center"><button class="btn sm" onclick="S.pv=null;render()">'+ic("back",16)+' 목록</button><b>'+esc(v.name)+'</b></div>'
    +(v.err?'<p class="sub" style="color:var(--no)">PDF를 열지 못했어요: '+esc(v.err)+'</p>':v.imgs?v.imgs.map(function(u,i){return '<img src="'+u+'" alt="'+(i+1)+'쪽" style="width:100%;max-width:820px;display:block;margin:0 auto 12px;border-radius:10px;border:1px solid var(--line)">'}).join(""):'<p class="sub">PDF를 불러오는 중이에요…</p>')}
 async function pdfDl(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;
-  try{var b=await pdfGet(id);if(!b)throw 0;var nm=f.name,CP=window.Capacitor&&window.Capacitor.Plugins;
-    if(CP&&CP.Filesystem&&CP.Share){var r=await CP.Filesystem.writeFile({path:nm,data:await blobB64(b),directory:"CACHE"});await CP.Share.share({title:nm,url:r.uri});return}
-    var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1500)}
-  catch(e){if(!/cancel/i.test(String(e&&e.message||e)))toast("PDF를 내려받지 못했어요")}}
+  try{var b=await pdfGet(id);if(!b)throw new Error("보관된 파일을 찾을 수 없어요");await saveFile(new Blob([b],{type:"application/pdf"}),f.name)}
+  catch(e){if(!/cancel/i.test(String(e&&e.message||e)))popup("PDF를 내려받지 못했어요. ("+String(e&&e.message||e).slice(0,60)+")")}}
 async function pdfReuse(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;
   try{var b=await pdfGet(id);if(!b)throw 0;var P=PI();P.q=new File([b],f.name,{type:"application/pdf"});P.exam=f.exam||"";P.items=null;P.err="";S.am="pdf";S.qmode="ai";go("quiz")}catch(e){toast("보관된 파일을 찾을 수 없어요")}}
 
@@ -833,8 +837,9 @@ async function gemCall(p,o,key,model){
         for(var k=0;k<ls.length;k++){var l=ls[k].trim();if(l.indexOf("data:")!==0)continue;var sx=l.slice(5).trim();if(!sx)continue;try{txt+=gemText(JSON.parse(sx));o.onText({text:cleanTxt(txt)})}catch(x){}}}}
   }catch(e){clearTimeout(tm);throw gemErr(e&&e.name==="AbortError"?-2:0)}
   clearTimeout(tm);txt=o.raw?txt:cleanTxt(txt);if(!txt.trim())throw gemErr(-1);return {text:txt}}
-function gkSwitch(e){var c=e&&e.code;return c==="gem429"||c==="gem401"||c==="gem403"||(c==="gem400"&&/api key/i.test(e.raw||""))}
-function gkCool(e){return e.code==="gem429"?(/day|daily|PerDay/i.test(e.raw||"")?6*36e5:9e4):864e5}
+function gkSwitch(e){return !!(e&&/^gem/.test(e.code||""))}
+function gkCool(e){var c=e.code;return c==="gem429"?(/day|daily|PerDay/i.test(e.raw||"")?6*36e5:9e4):(c==="gem401"||c==="gem403"||(c==="gem400"&&/api key/i.test(e.raw||"")))?864e5:15e3}
+function rotKey(){var n=gkeys().length;if(n>1){st.gact=(st.gact+1)%n;save();toast("다음 API 키로 바꿨어요 ("+(st.gact+1)+"번)")}}
 async function gemMulti(p,o,model){
   var ks=gkeys(),n=ks.length,now=Date.now(),last=null,order=[],i,j;
   for(i=0;i<n;i++)order.push((st.gact+i)%n);
@@ -843,7 +848,7 @@ async function gemMulti(p,o,model){
     try{var r=await gemCall(p,o,ks[i].k,model);ks[i].until=0;
       if(st.gact!==i){st.gact=i;toast("API 키 "+(i+1)+"번으로 전환했어요")}save();return r}
     catch(e){last=e;if(!gkSwitch(e))throw e;ks[i].until=Date.now()+gkCool(e);save()}}
-  if(n>1&&last&&last.code==="gem429"){var m="등록된 API 키 "+n+"개의 한도가 모두 끝났어요. 잠시 후 다시 시도하거나 새 키를 추가해 주세요.";last.userMsg=m;last.message=m}
+  if(n>1&&last){var m=last.code==="gem429"?"등록된 API 키 "+n+"개의 한도가 모두 끝났어요. 잠시 후 다시 시도하거나 새 키를 추가해 주세요.":last.userMsg+" (등록된 키 "+n+"개를 모두 시도했어요)";last.userMsg=m;last.message=m;st.gact=(st.gact+1)%n;save()}
   throw last}
 async function callAI(p,o){
   if(useGem())return gemMulti(p,o,st.gmodel||"gemini-3.8-flash");
@@ -868,13 +873,14 @@ async function testGem(i){
   try{var r=await gemCall("한국어로 '연결 성공'이라고만 답해줘.",{},k,st.gmodel||"gemini-3.8-flash");S.gtok=true;S.gt="연결 성공 · 모델 응답: "+r.text.trim().slice(0,30);if(i!=null)st.gkeys[i].until=0;save()}
   catch(e){S.gtok=false;S.gt="";aiFail(e,"연결에 실패했어요.")}
   S.gb=false;render()}
+async function saveFile(blob,nm){
+  var CP=window.Capacitor&&window.Capacitor.Plugins;
+  if(CP&&CP.Filesystem&&CP.Share){var r=await CP.Filesystem.writeFile({path:nm,data:await blobB64(blob),directory:"CACHE",recursive:true});await CP.Share.share({title:nm,url:r.uri,dialogTitle:nm});return}
+  try{var f=new File([blob],nm,{type:blob.type||"application/octet-stream"});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:nm});return}}catch(e){if(e&&e.name==="AbortError")return}
+  var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1500)}
 function exportData(){
   var d=JSON.parse(JSON.stringify(st));delete d.gkey;delete d.gkeys;delete d.gen;delete d.pdfs;
-  var nm="사탐정복-학습기록-"+today()+".json",CP=window.Capacitor&&window.Capacitor.Plugins;
-  if(CP&&CP.Filesystem&&CP.Share){CP.Filesystem.writeFile({path:nm,data:JSON.stringify(d),directory:"CACHE",encoding:"utf8"}).then(function(r){return CP.Share.share({title:nm,url:r.uri})}).then(function(){toast("백업 파일을 만들었어요")}).catch(function(e){if(!/cancel/i.test(String(e&&e.message||e)))popup("백업 파일을 저장하지 못했어요.")});return}
-  var b=new Blob([JSON.stringify(d)],{type:"application/json"}),a=document.createElement("a");
-  a.href=URL.createObjectURL(b);a.download="사탐정복-학습기록-"+today()+".json";document.body.appendChild(a);a.click();a.remove();
-  setTimeout(function(){URL.revokeObjectURL(a.href)},1500);toast("백업 파일을 만들었어요")}
+  saveFile(new Blob([JSON.stringify(d)],{type:"application/json"}),"사탐정복-학습기록-"+today()+".json").then(function(){toast("백업 파일을 만들었어요")}).catch(function(e){if(!/cancel/i.test(String(e&&e.message||e)))popup("백업 파일을 저장하지 못했어요. ("+String(e&&e.message||e).slice(0,60)+")")})}
 function importData(inp){
   var f=inp.files&&inp.files[0];if(!f)return;var r=new FileReader();
   r.onload=function(){try{var d=JSON.parse(r.result);if(!d||!Array.isArray(d.days))throw 0;
@@ -1042,7 +1048,7 @@ async function piRun(){
       return {no:z.no,sub:sb,t:U.indexOf(z.t)>=0?z.t:U[0],q:String(z.q).replace(/\\n/g,"\n"),o:z.o.map(String),a:a,e:String(z.e||""),src:z.src==="key"?(P.ph?"read":"key"):"ai",conf:z.conf||"",on:!z.fig||m!=="n",fig:!!z.fig,g:ig,f:iF,gr:z.g,fr:z.f,m:m}});
     if(!P.items.length)throw new Error("empty");
     if(failed.length)P.warn=failed.join(", ")+"번은 읽지 못했어요."+(lastErr&&lastErr.userMsg?" ("+lastErr.userMsg+")":"")+" 해당 번호만 따로 지정해 다시 가져와 보세요.";
-    P.busy=false;P.prog="";P.key="";pdfKeep(P.q,(P.exam||"").trim(),P.items.length);render()
+    P.busy=false;P.prog="";P.key="";pdfKeep(P.q,(P.exam||"").trim(),P.items.length).then(function(id){P.fid=id});render()
   }catch(e){P.busy=false;P.prog="";aiFail(e,"문제를 읽지 못했어요. 파일을 확인하고 다시 시도해 주세요.");render()}}
 function piOn(i){var z=PI().items[i];z.on=!z.on;render()}
 function piAns(i,a){var z=PI().items[i];z.a=a;z.src="man";render()}
@@ -1065,7 +1071,8 @@ function piSave(){
   P.items.forEach(function(z,i){if(!z.on)return;var q={id:b+i,sub:z.sub||S.sub,t:z.t,lv:2,q:z.q.replace(/[ \t]+\n/g,"\n").replace(/\n{2,}/g,"\n").trim(),o:z.o,a:z.a,e:z.e,ai:1,src:(ex?ex+" · ":"")+z.no+"번",im:z.m==="f"?z.f:z.m==="g"?z.g:"",imf:z.m==="f"?1:0};
     if(z.src==="ai")q.u=1;DB[q.sub].qs.push(q);st.gen.push(q);ids.push(q.id)});
   while(st.gen.length>200||JSON.stringify(st.gen).length>3e6){var k=st.gen.findIndex(function(z){return st.wrong.indexOf(z.id)<0});if(k<0)break;var o=st.gen.splice(k,1)[0],dq=DB[o.sub].qs;dq.splice(dq.indexOf(o),1)}
-  save();P.items=null;P.q=null;P.a=[];startRun("mc",ids,(ex||"PDF")+" 문제")}
+  var pf=st.pdfs.filter(function(f){return f.id===P.fid})[0];if(pf){pf.qids=(pf.qids||[]).filter(function(x){return ids.indexOf(x)<0}).concat(ids);if(ex)pf.exam=ex}
+  save();P.items=null;P.q=null;P.a=[];P.fid=null;startRun("mc",ids,(ex||"PDF")+" 문제");if(S.run){S.run.ids=ids.slice();render()}}
 function qfmt(t){
   t=String(t||"").replace(/<\s*보\s*기\s*>/g,"〈보기〉").replace(/\s*〈보기〉\s*(?=[ㄱ-ㅁ][.．])/g,"\n〈보기〉\n").replace(/\s+(?=[ㄱ-ㅁ][.．]\s)/g,"\n");
   var L=t.split("\n").map(function(x){return x.trim()}).filter(Boolean),h="",box=0;
@@ -1084,7 +1091,7 @@ function restoreDr(){var o=DR[dk()];if(!o)return;delete DR[dk()];var c={};try{do
 function popup(m){var o=$("pop");if(!o){o=document.createElement("div");o.id="pop";o.onclick=function(e){if(e.target===o)popClose()};document.body.appendChild(o);document.addEventListener("keydown",function(e){if(e.key==="Escape")popClose()})}
   o.className="pop on";o.innerHTML='<div class="pop-b" role="alertdialog" aria-modal="true" aria-label="알림"><p>'+esc(m)+'</p><button class="btn pri" onclick="popClose()">확인</button></div>';var b=o.querySelector("button");if(b)b.focus()}
 function popClose(){var o=$("pop");if(o)o.className="pop"}
-function aiFail(e,d){popup((e&&e.code==="not_granted")?"분석 권한이 필요해요. 허용 후 다시 눌러 주세요.":((e&&e.userMsg)||d||"AI 응답을 받지 못했어요. 잠시 후 다시 시도해 주세요."))}
+function aiFail(e,d){if(useGem()&&!(e&&/^gem/.test(e.code||"")))rotKey();popup((e&&e.code==="not_granted")?"분석 권한이 필요해요. 허용 후 다시 눌러 주세요.":((e&&e.userMsg)||d||"AI 응답을 받지 못했어요. 잠시 후 다시 시도해 주세요."))}
 function pickOf(r){var id=r.ids[r.i],e=r.log.filter(function(x){return x.id===id})[0];return e?e.p:null}
 function goRun(d){var r=S.run;if(!r)return;var n=r.i+d;if(n<0||n>=r.ids.length)return;r.i=n;r.pick=pickOf(r);S.qa=null;S.rs=1;render()}
 function reviewRun(){var r=S.run;if(!r)return;r.done=false;r.i=0;r.pick=pickOf(r);S.qa=null;S.rs=1;render()}
