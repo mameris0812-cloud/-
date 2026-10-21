@@ -23,11 +23,24 @@ jobs:
           distribution: temurin
           java-version: 21
 
+      - name: Prepare web files
+        run: |
+          mkdir -p www
+          cp index.html www/index.html
+
       - name: Install dependencies
-        run: npm install
+        run: |
+          [ -f package.json ] || npm init -y
+          npm install @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor/assets@3
+
+      - name: Init Capacitor
+        run: |
+          if ! ls capacitor.config.* >/dev/null 2>&1; then
+            npx cap init "사탐정복" com.satamjeongbok.app --web-dir www
+          fi
 
       - name: Add Android project
-        run: npx cap add android
+        run: '[ -d android ] || npx cap add android'
 
       - name: Generate app icons
         continue-on-error: true
@@ -40,8 +53,10 @@ jobs:
 
       - name: Use fixed signing key (so updates install over the old app)
         run: |
-          mkdir -p ~/.android
-          cp keystore/debug.keystore ~/.android/debug.keystore
+          if [ -f keystore/debug.keystore ]; then
+            mkdir -p ~/.android
+            cp keystore/debug.keystore ~/.android/debug.keystore
+          fi
 
       - name: Sync web files
         run: npx cap sync android
