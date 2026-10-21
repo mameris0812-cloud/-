@@ -26,7 +26,20 @@ jobs:
       - name: Prepare web files
         run: |
           mkdir -p www
-          cp index.html www/index.html
+          if [ -f index.html ]; then
+            cp index.html www/index.html
+          elif [ -f www/index.html ]; then
+            echo "www/index.html already exists"
+          else
+            F=$(find . -name '*.html' -not -path './node_modules/*' -not -path './android/*' -not -path './www/*' | head -n 1)
+            if [ -z "$F" ]; then
+              echo "HTML file not found in repo. Files:"
+              ls -R | head -50
+              exit 1
+            fi
+            echo "Using $F"
+            cp "$F" www/index.html
+          fi
 
       - name: Install dependencies
         run: |
