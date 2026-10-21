@@ -18,12 +18,16 @@ jobs:
       - name: Prepare
         run: |
           mkdir -p www
-          cp "$(find . -name '*.html' -not -path './node_modules/*' | head -n1)" www/index.html
+          cp "$(ls *.html | head -n1)" www/index.html
           npm init -y
-          npm install @capacitor/core@6 @capacitor/android@6 @capacitor/cli@6
-          echo '{"appId":"com.sataam.jeongbok","appName":"사탐정복","webDir":"www"}' > capacitor.config.json
+          npm install @capacitor/core@6 @capacitor/android@6 @capacitor/cli@6 @capacitor/status-bar@6
+          echo '{"appId":"com.sataam.jeongbok","appName":"사탐정복","webDir":"www","plugins":{"StatusBar":{"style":"LIGHT","backgroundColor":"#F0F2F8","overlaysWebContent":false}}}' > capacitor.config.json
           npx cap add android
           npx cap sync android
+      - name: Status bar color
+        run: |
+          sed -i 's|<item name="windowNoTitle">true</item>|<item name="windowNoTitle">true</item><item name="android:statusBarColor">#F0F2F8</item><item name="android:windowLightStatusBar">true</item>|' android/app/src/main/res/values/styles.xml
+          grep statusBarColor android/app/src/main/res/values/styles.xml
       - name: Build
         run: |
           cd android
