@@ -1,0 +1,9 @@
+{
+  "appId": "com.satamjeongbok.app",
+  "appName": "사탐정복",
+  "webDir": "www",
+  "backgroundColor": "#F0F2F8",
+  "android": {
+    "adjustMarginsForEdgeToEdge": "auto"
+  }
+}
