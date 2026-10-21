@@ -75,7 +75,7 @@ jobs:
       - name: Install dependencies
         run: |
           [ -f package.json ] || npm init -y
-          npm install @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor/status-bar@7 @capacitor/assets@3
+          npm install @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor/status-bar@7 @capacitor/filesystem@7 @capacitor/share@7 @capacitor/assets@3
 
       - name: Init Capacitor
         run: |
