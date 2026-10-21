@@ -1012,16 +1012,28 @@ function piPrompt(nums,hasA){
 async function piRun(){
   var P=PI(),D=DB[S.sub];if(P.busy||!P.q)return;P.busy=true;P.err="";P.ie="";P.warn="";P.prog="";S.t0=Date.now();render();
   var hasA=P.a.length>0;P.ph=P.a.some(function(f){return /^image/.test(f.type)});
-  var nums=piNums(P.range),BS=5,groups=[],i;for(i=0;i<nums.length;i+=BS)groups.push(nums.slice(i,i+BS));
-  var arr=[],failed=[],lastErr=null;
+  var nums=piNums(P.range),BS=8,groups=[],i;for(i=0;i<nums.length;i+=BS)groups.push(nums.slice(i,i+BS));
+  var arr=[],failed=[],lastErr=null,stop=false;
+  function sleep(ms){return new Promise(function(ok){setTimeout(ok,ms)})}
+  async function batch(ns,label){
+    for(var t=0;t<4;t++){
+      P.prog=label+(t?" · 재시도 "+t:"");render();
+      try{var r=await callAI(piPrompt(ns,hasA),{cache:false,json:true,raw:true,temp:.1,files:[P.q].concat(P.a)});
+        var got=piParse(r.text).filter(function(z){return z&&z.q&&Array.isArray(z.o)&&ns.indexOf(+z.no)>=0});
+        if(!got.length)throw new Error("empty");return got}
+      catch(e){lastErr=e;
+        if(e&&(e.code==="gem401"||e.code==="gem403"||e.code==="gem404"))throw e;
+        if(t<3){if(e&&e.code==="gem429"){P.prog="한도 대기 중 ("+(i+1)+" / "+groups.length+")";render();await sleep(25000)}else await sleep(2500)}}}
+    return null}
+  for(i=0;i<groups.length&&!stop;i++){
+    try{var got=await batch(groups[i],(i+1)+" / "+groups.length);
+      if(got)arr=arr.concat(got);else groups[i].forEach(function(n){failed.push(n)})}
+    catch(e){stop=true;groups.slice(i).forEach(function(g){g.forEach(function(n){failed.push(n)})})}}
+  var have={};arr.forEach(function(z){have[+z.no]=1});
+  var miss=nums.filter(function(n){return !have[n]});
+  if(miss.length&&arr.length&&!stop){var g2=await batch(miss.slice(0,10),"누락 보충").catch(function(){return null});if(g2)arr=arr.concat(g2)}
+  have={};arr.forEach(function(z){have[+z.no]=1});failed=nums.filter(function(n){return !have[n]});
   try{
-    for(i=0;i<groups.length;i++){
-      P.prog=(i+1)+" / "+groups.length;render();
-      try{var r=await callAI(piPrompt(groups[i],hasA),{cache:false,json:true,raw:true,temp:.1,files:[P.q].concat(P.a)});
-        var got=piParse(r.text).filter(function(z){return z&&z.q&&Array.isArray(z.o)});
-        if(!got.length)throw new Error("empty");arr=arr.concat(got);
-        var have=got.map(function(z){return +z.no});groups[i].forEach(function(n){if(have.indexOf(n)<0)failed.push(n)})}
-      catch(e){lastErr=e;groups[i].forEach(function(n){failed.push(n)});if(e&&(e.code==="gem429"||e.code==="gem401"||e.code==="gem403"))break}}
     if(!arr.length)throw lastErr||new Error("empty");
     var seen={};arr=arr.filter(function(z){var k=String(z.no);if(seen[k])return false;seen[k]=1;return true}).sort(function(a,b){return (+a.no||0)-(+b.no||0)});
     var pgs=[];try{if(arr.some(function(z){return z&&z.fig}))pgs=await piPages(P.q)}catch(x){P.ie=String(x&&x.message||x)}
@@ -1029,7 +1041,7 @@ async function piRun(){
     P.items=arr.slice(0,20).map(function(z){var sb=(z.s==="s"||z.s==="e")?z.s:S.sub,U=DB[sb].units,a=z.a%1===0&&z.a>=0&&z.a<z.o.length?z.a:0,ig=piCrop(pgs,z.g),iF=piCrop(pgs,z.f),m=z.fig?(ig?"g":(iF?"f":"n")):"n";
       return {no:z.no,sub:sb,t:U.indexOf(z.t)>=0?z.t:U[0],q:String(z.q).replace(/\\n/g,"\n"),o:z.o.map(String),a:a,e:String(z.e||""),src:z.src==="key"?(P.ph?"read":"key"):"ai",conf:z.conf||"",on:!z.fig||m!=="n",fig:!!z.fig,g:ig,f:iF,gr:z.g,fr:z.f,m:m}});
     if(!P.items.length)throw new Error("empty");
-    if(failed.length)P.warn=failed.sort(function(a,b){return a-b}).join(", ")+"번은 읽지 못했어요. 번호를 따로 지정해 다시 가져와 보세요.";
+    if(failed.length)P.warn=failed.join(", ")+"번은 읽지 못했어요."+(lastErr&&lastErr.userMsg?" ("+lastErr.userMsg+")":"")+" 해당 번호만 따로 지정해 다시 가져와 보세요.";
     P.busy=false;P.prog="";P.key="";pdfKeep(P.q,(P.exam||"").trim(),P.items.length);render()
   }catch(e){P.busy=false;P.prog="";aiFail(e,"문제를 읽지 못했어요. 파일을 확인하고 다시 시도해 주세요.");render()}}
 function piOn(i){var z=PI().items[i];z.on=!z.on;render()}
