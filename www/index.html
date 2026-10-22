@@ -81,7 +81,7 @@ h1,h2,h3{text-wrap:balance}
 .inkc{position:relative}
 .inkcv{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:3}
 .ink-on .inkc{cursor:crosshair;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-.ink-on .inkc,.ink-on.ink-finger .inkc{touch-action:none}
+.ink-on .inkc,.ink-on.ink-finger .inkc{touch-action:none}.ink-on:not(.ink-finger) .inkc{touch-action:pinch-zoom}
 .ink-on .inkc{-webkit-user-drag:none}
 #inktb .ink-t,#inktb .ink-sw,#inktb .ink-sz{pointer-events:auto;position:relative;z-index:1}
 .ink-on .inkc .opt{pointer-events:none}
@@ -706,7 +706,7 @@ body.has-ink .toast.on{transform:translate(-50%,0)}
 </style>
 <div class="app" id="app"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
-(function(){["gesturestart","gesturechange","gestureend"].forEach(function(n){document.addEventListener(n,function(e){e.preventDefault()},{passive:false})});document.addEventListener("touchstart",function(e){if(e.touches.length>1)e.preventDefault()},{passive:false})})();
+(function(){["gesturestart","gesturechange","gestureend"].forEach(function(n){document.addEventListener(n,function(e){if(!window.PZ)e.preventDefault()},{passive:false})});document.addEventListener("touchstart",function(e){if(!window.PZ&&e.touches.length>1)e.preventDefault()},{passive:false})})();
 (function(){try{var h=document.head;
 var m=document.createElement("meta");m.name="theme-color";m.content="#3F4FD1";h.appendChild(m);
 var m2=document.createElement("meta");m2.name="apple-mobile-web-app-title";m2.content="사탐정복";h.appendChild(m2);
@@ -1138,8 +1138,8 @@ function inkMount(){
     el.addEventListener("pointerdown",function(e){inkDown(L,e)});
     el.addEventListener("pointermove",function(e){inkMove(L,e)});
     el.addEventListener("pointerup",function(e){inkUp(L,e)});el.addEventListener("pointercancel",function(e){inkUp(L,e)});el.addEventListener("lostpointercapture",function(e){if(L.act&&L.act.id===e.pointerId)inkUp(L,e)});
-    el.addEventListener("touchstart",function(e){if(INK.on&&inkBlock(e))e.preventDefault()},{passive:false});
-    el.addEventListener("touchmove",function(e){if(INK.on&&(INK.drawing||inkBlock(e)))e.preventDefault()},{passive:false});
+    el.addEventListener("touchstart",function(e){if(INK.on&&e.touches.length<2&&inkBlock(e))e.preventDefault()},{passive:false});
+    el.addEventListener("touchmove",function(e){if(INK.on&&e.touches.length<2&&(INK.drawing||inkBlock(e)))e.preventDefault()},{passive:false});
     el.addEventListener("contextmenu",function(e){if(INK.on)e.preventDefault()});
     if(window.ResizeObserver){L.ro=new ResizeObserver(function(){inkSize(L)});L.ro.observe(el)}
     inkSize(L)});
@@ -1154,7 +1154,7 @@ function inkDown(L,e){
   if(L.act){if(pt==="pen"||Date.now()-(L.act.t||0)>1500){try{L.el.releasePointerCapture(L.act.id)}catch(x){}L.act=null;INK.drawing=false;INK.penDown=false}else return}
   inkHint(L,e);
   if(pt==="pen"){INK.lastPen=Date.now();INK.penDown=true;if(!k.sp&&k.pm==null){k.sp=1;save();toast("펜을 감지했어요. 이제 손가락은 스크롤·터치에 써요 (툴바에서 바꿀 수 있어요)");inkTb()}}
-  else if(pt==="touch"){if(penOnly()){if(!INK.penDown&&Date.now()-INK.lastPen>900&&!INK.pan)INK.pan={id:e.pointerId,x:e.clientX,y:e.clientY,sx:window.scrollX,sy:window.scrollY};try{L.el.setPointerCapture(e.pointerId)}catch(x){}return}if(Date.now()-INK.lastPen<900)return}
+  else if(pt==="touch"){if(penOnly()){if(!INK.penDown&&Date.now()-INK.lastPen>900&&!INK.pan)INK.pan={id:e.pointerId,x:e.clientX,y:e.clientY,sx:window.scrollX,sy:window.scrollY,el:L.el.closest(".zsc"),ex:(L.el.closest(".zsc")||{}).scrollLeft||0};try{L.el.setPointerCapture(e.pointerId)}catch(x){}return}if(Date.now()-INK.lastPen<900)return}
   else if(e.button!==0&&!(e.buttons&32))return;
   e.preventDefault();
   var P=inkPt(L,e),er=k.tool==="er"||(e.buttons&32)>0||e.button===5||(pt==="pen"&&(e.buttons&2)>0);
@@ -1164,7 +1164,7 @@ function inkDown(L,e){
   if(er){inkErase(L,P)}
   else{var hl=k.tool==="hl";L.act.s={t:hl?"h":"p",c:hl?HLC[k.hi]:INKC[k.ci],w:SZ[k.sz]*(hl?4.5:1),p:[[P.x,P.y,P.p]]}}
   inkPaint(L)}
-function inkMove(L,e){var pn=INK.pan;if(pn&&pn.id===e.pointerId){window.scrollTo(pn.sx-(e.clientX-pn.x),pn.sy-(e.clientY-pn.y));return}var a=L.act;if(!a||a.id!==e.pointerId)return;
+function inkMove(L,e){var pn=INK.pan;if(pn&&pn.id===e.pointerId){if(pn.el)pn.el.scrollLeft=pn.ex-(e.clientX-pn.x);window.scrollTo(pn.el?pn.sx:pn.sx-(e.clientX-pn.x),pn.sy-(e.clientY-pn.y));return}var a=L.act;if(!a||a.id!==e.pointerId)return;
   var evs=(e.getCoalescedEvents&&e.getCoalescedEvents())||[];if(!evs.length)evs=[e];
   evs.forEach(function(ev){var P=inkPt(L,ev);a.pos={x:P.px,y:P.py};
     if(a.er)inkErase(L,P);
@@ -2031,8 +2031,9 @@ function TIX(N){for(var i=0;i<N.length;i++)if(N[i][0]===S.tab)return i;return 0}
 function tbAnim(){var n=document.querySelector(".tabbar");if(!n)return;var b=n.querySelectorAll("button"),ix=0,i;for(i=0;i<b.length;i++)if(b[i].classList.contains("on"))ix=i;
   if(window.TBI==null){window.TBI=ix;return}
   if(window.TBI!==ix){window.TBI=ix;b[ix].classList.add("pop");var nv=document.querySelectorAll(".nav button");if(nv[ix])nv[ix].classList.add("pop");requestAnimationFrame(function(){requestAnimationFrame(function(){n.style.setProperty("--i",ix)})})}}
-(function(){var r=render;render=function(){r.apply(this,arguments);tbAnim()}})();
-tbAnim();
+function pinchSync(){var on=!!((S.tab==="quiz"&&S.run&&!S.pfocus)||S.tab==="wrong");if(on===!!window.PZ)return;window.PZ=on;var m=document.querySelector("meta[name=viewport]");if(m)m.setAttribute("content",on?"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=yes,viewport-fit=cover":"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover")}
+(function(){var r=render;render=function(){r.apply(this,arguments);tbAnim();pinchSync()}})();
+tbAnim();pinchSync();
 </script>
 
 </body></html>
