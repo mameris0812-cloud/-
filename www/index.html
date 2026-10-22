@@ -874,7 +874,7 @@ var st=load();
 function injGen(){st.gen.forEach(function(q){var D=DB[q.sub];if(D&&!D.qs.some(function(z){return z.id===q.id}))D.qs.push(q)})}
 injGen();
 var INK={on:false,m:{},g:{u:[],r:[]},cur:null,layers:[],cc:false,drawing:false,lastPen:0,tm:{}};
-var INKC=["auto","#E5383B","#2F6BFF","#12A150","#F59E0B","#8E44EC"],HLC=["#FFD60A","#FF7AB8","#5EE6A8","#6FC3FF"],SZ=[.0026,.0052,.0105];
+var INKC=["auto","#E5383B","#2F6BFF","#12A150","#F59E0B","#8E44EC","#000000"],HLC=["#FFD60A","#FF7AB8","#5EE6A8","#6FC3FF"],SZ=[.0026,.0052,.0105];
 if(!Array.isArray(st.notes))st.notes=[];
 if(!Array.isArray(st.gkeys))st.gkeys=[];if(st.gkey&&!st.gkeys.length)st.gkeys=[{k:st.gkey,until:0}];delete st.gkey;st.gact=(st.gact|0);if(st.gact>=st.gkeys.length)st.gact=0;
 if(["gemini-3.5-flash","gemini-3.8-flash"].indexOf(st.gmodel)<0)st.gmodel="gemini-3.8-flash";
@@ -1215,7 +1215,7 @@ function inkTb(){
   h+=tools.map(function(t){return '<button class="ink-t'+(k.tool===t[0]?' on':'')+'" onclick="inkTool(\''+t[0]+'\')" aria-pressed="'+(k.tool===t[0])+'">'+ic(t[1],19)+'<span>'+t[2]+'</span></button>'}).join("");
   h+='<i class="ink-sep"></i>';
   if(k.tool!=="er"){var pal=k.tool==="hl"?HLC:INKC,cur=k.tool==="hl"?k.hi:k.ci;
-    h+=pal.map(function(c,i){return '<button class="ink-sw'+(cur===i?' on':'')+'" style="background:'+(c==="auto"?'var(--ink)':c)+'" onclick="inkCi('+i+')" aria-label="색 '+(i+1)+'"></button>'}).join("")+'<i class="ink-sep"></i>'}
+    h+=pal.map(function(c,i){return '<button class="ink-sw'+(cur===i?' on':'')+'" style="background:'+(c==="auto"?'linear-gradient(135deg,#fff 50%,#000 50%)':c)+'" onclick="inkCi('+i+')" aria-label="색 '+(i+1)+'"></button>'}).join("")+'<i class="ink-sep"></i>'}
   h+=SZ.map(function(z,i){var d=[5,9,14][i];return '<button class="ink-sz'+(k.sz===i?' on':'')+'" onclick="inkSz('+i+')" aria-label="굵기 '+(i+1)+'"><i style="width:'+d+'px;height:'+d+'px"></i></button>'}).join("")+'<i class="ink-sep"></i>';
   h+='<button class="ink-t" onclick="inkUndo()"'+(INK.g.u.length?'':' disabled')+' aria-label="되돌리기">'+ic("undo",19)+'</button><button class="ink-t" onclick="inkRedo()"'+(INK.g.r.length?'':' disabled')+' aria-label="다시 실행">'+ic("redo",19)+'</button>'
    +'<button class="ink-t'+(INK.cc?' warn':'')+'" onclick="inkClear()" aria-label="이 영역 지우기">'+ic("trash",19)+(INK.cc?'<span>한 번 더 누르면 지워요</span>':'')+'</button><i class="ink-sep"></i>'
