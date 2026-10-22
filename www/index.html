@@ -327,7 +327,19 @@ td:first-child{font-weight:700;white-space:nowrap}
   #clist .ug{grid-column:1/-1}
   .detail h2{font-size:30px}
 }
-.qf-s{margin:0 0 10px}.qf-d{margin:0 0 8px;padding:10px 12px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;font-size:.92em}.qf-box{margin:10px 0 14px;padding:12px 14px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;font-size:.92em;font-weight:400}.qf-h{display:block;text-align:center;margin-bottom:8px;color:var(--acc)}.qf-r{margin:0 0 6px;padding-left:1.7em;position:relative}.qf-r b{position:absolute;left:0;color:var(--acc)}.qf p{margin:0}.qf-tw{overflow-x:auto;margin:10px 0 14px;border:1px solid var(--line);border-radius:12px}.qf-flow{margin:12px auto 16px;padding:16px 10px;background:var(--soft);border:1px solid var(--line);border-radius:14px;overflow-x:auto}.qf-flow .flow-start,.qf-flow .flow-end{width:max-content;max-width:90%;margin:0 auto;padding:10px 18px;border:1.5px solid var(--acc);border-radius:7px;background:var(--card);text-align:center;font-weight:650}.qf-flow .flow-arrow{text-align:center;color:var(--muted);font-size:20px;line-height:1.2}.qf-flow .flow-branches{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:250px}.qf-flow .flow-branch{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}.qf-flow .flow-tag{font-size:.78em;font-weight:700;color:var(--acc)}.qf-flow .flow-decision{width:100%;min-height:58px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 12px;background:var(--card);border:1.5px solid var(--acc);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);font-weight:650}.qf-flow .flow-node{width:100%;padding:10px 8px;background:var(--card);border:1px solid var(--line);border-radius:8px;text-align:center;font-size:.9em}.qf-flow .flow-note{font-size:.82em;color:var(--muted);text-align:center;margin-top:8px}.qf-t{min-width:0;font-size:.9em}.qf-t th,.qf-t td{text-align:center;white-space:normal;padding:8px 10px;border-right:1px solid var(--line)}.qf-t th:last-child,.qf-t td:last-child{border-right:0}.qf-t td:first-child{font-weight:500;white-space:normal}.qf-img{display:block;max-width:100%;margin:10px auto;border-radius:10px}
+.qf-s{margin:0 0 10px}
+.qf{word-break:keep-all;overflow-wrap:break-word}
+.qf .qf-grp{margin:0 0 6px;font-size:.82em;font-weight:500;color:var(--muted)}
+.qf .qf-stem{margin:0 0 12px;font-weight:650;line-height:1.6}
+.qf .qf-pass{margin:0 0 14px;padding:14px 16px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;font-size:.94em;font-weight:400;line-height:1.85}
+.qf .qf-pass .qf-s{margin:0 0 10px}
+.qf .qf-pass>:last-child{margin-bottom:0}
+.qf .qf-sp{display:flex;gap:12px;margin:0 0 12px}
+.qf .qf-sp b{flex:none;min-width:2.4em;font-weight:700;color:var(--acc)}
+.qf .qf-sp span{flex:1;min-width:0}
+.qf .qf-d{margin:0 0 8px}
+.qf .qf-r{margin:0 0 6px}
+.qf-d{margin:0 0 8px;padding:10px 12px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;font-size:.92em}.qf-box{margin:10px 0 14px;padding:12px 14px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;font-size:.92em;font-weight:400}.qf-h{display:block;text-align:center;margin-bottom:8px;color:var(--acc)}.qf-r{margin:0 0 6px;padding-left:1.7em;position:relative}.qf-r b{position:absolute;left:0;color:var(--acc)}:where(.qf) p{margin:0}.qf-tw{overflow-x:auto;margin:10px 0 14px;border:1px solid var(--line);border-radius:12px}.qf-flow{margin:12px auto 16px;padding:16px 10px;background:var(--soft);border:1px solid var(--line);border-radius:14px;overflow-x:auto}.qf-flow .flow-start,.qf-flow .flow-end{width:max-content;max-width:90%;margin:0 auto;padding:10px 18px;border:1.5px solid var(--acc);border-radius:7px;background:var(--card);text-align:center;font-weight:650}.qf-flow .flow-arrow{text-align:center;color:var(--muted);font-size:20px;line-height:1.2}.qf-flow .flow-branches{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-width:250px}.qf-flow .flow-branch{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}.qf-flow .flow-tag{font-size:.78em;font-weight:700;color:var(--acc)}.qf-flow .flow-decision{width:100%;min-height:58px;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 12px;background:var(--card);border:1.5px solid var(--acc);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);font-weight:650}.qf-flow .flow-node{width:100%;padding:10px 8px;background:var(--card);border:1px solid var(--line);border-radius:8px;text-align:center;font-size:.9em}.qf-flow .flow-note{font-size:.82em;color:var(--muted);text-align:center;margin-top:8px}.qf-t{min-width:0;font-size:.9em}.qf-t th,.qf-t td{text-align:center;white-space:normal;padding:8px 10px;border-right:1px solid var(--line)}.qf-t th:last-child,.qf-t td:last-child{border-right:0}.qf-t td:first-child{font-weight:500;white-space:normal}.qf-img{display:block;max-width:100%;margin:10px auto;border-radius:10px}
 .pop{display:none;position:fixed;inset:0;z-index:50;background:rgba(10,14,30,.5);align-items:center;justify-content:center;padding:24px}.pop.on{display:flex}.pop-b{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px 18px;max-width:340px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.28)}.pop-b p{margin:0 0 16px;line-height:1.6;font-weight:500}.pop-b .btn{width:100%}
 html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}input,textarea,select{font-size:16px}
 </style>
@@ -2022,8 +2034,15 @@ function qTable(rows){
 var QMARK=/^\[(그림|표|이미지|자료)\]$/;
 function qfmt(t,im){
   t=String(t||"").replace(/<\s*보\s*기\s*>/g,"〈보기〉").replace(/\s*〈보기〉\s*(?=[ㄱ-ㅁ][.．])/g,"\n〈보기〉\n").replace(/\s+(?=[ㄱ-ㅁ][.．]\s)/g,"\n");
-  var L=t.split("\n").map(function(x){return x.trim()}).filter(Boolean),h="",box=0,tb=[],used=false,flow=[];
-  if(im&&!L.some(function(l){return QMARK.test(l)}))L.splice(Math.min(1,L.length),0,"[그림]");
+  var L=t.split("\n").map(function(x){return x.trim()}).filter(Boolean),h="",box=0,tb=[],used=false,flow=[],ps=[],grp="",stem="",gi,si;
+  gi=L.findIndex(function(l){return /^\[\s*\d+\s*[~～∼-]\s*\d+\s*\]/.test(l)});if(gi>=0)grp=L.splice(gi,1)[0];
+  si=L.findIndex(function(l){return /^\d{1,2}\s*[.．]\s+\S/.test(l)});
+  if(si>=0)stem=L.splice(si,1)[0].replace(/^\d{1,2}\s*[.．]\s+/,"");
+  else if(L.length&&!/^(\(|[ㄱ-ㅁ][.．]|\||〈|\[(그림|표|이미지|자료|흐름도)\])/.test(L[0])&&(L.length===1||L[0].length<=120))stem=L.shift();
+  if(!stem&&L.length>1&&/[?？]\s*(\[\s*\d+\s*점\s*\])?$/.test(L[L.length-1])&&!/^(\||〈|[ㄱ-ㅁ][.．])/.test(L[L.length-1]))stem=L.pop();
+  if(im&&!L.some(function(l){return QMARK.test(l)}))L.splice(stem?0:Math.min(1,L.length),0,"[그림]");
+  h=(grp?'<p class="qf-grp">'+esc(grp)+'</p>':'')+(stem?'<p class="qf-stem">'+esc(stem)+'</p>':'');
+  function fp(){if(!ps.length)return;h+='<div class="qf-pass">'+ps.map(function(l){var m=/^([가-힣A-Za-z]{1,4})\s*[:：]\s*(\S[\s\S]*)$/.exec(l);return m?'<p class="qf-sp"><b>'+esc(m[1])+'</b><span>'+esc(m[2])+'</span></p>':'<p class="qf-s">'+esc(l)+'</p>'}).join("")+'</div>';ps=[]}
   function flush(){if(tb.length){h+=qTable(tb);tb=[]}}
   function flowHTML(rows){
     var start="",branches=[];
@@ -2041,6 +2060,7 @@ function qfmt(t,im){
     return '<div class="qf-flow"><div class="flow-start">'+esc(start||"출발 조건")+'</div><div class="flow-arrow">↓</div><div class="flow-decision">'+esc(a.q||"판단 A")+'</div><div class="flow-branches"><div class="flow-branch"><span class="flow-tag">예</span><div class="flow-arrow">↓</div><div class="flow-decision">'+esc(a.b||"판단 B")+'</div><span class="flow-tag">예</span><div class="flow-arrow">↓</div><div class="flow-end">'+esc(a.bout||"갑의 입장")+'</div></div><div class="flow-branch"><span class="flow-tag">아니요</span><div class="flow-arrow">↓</div><div class="flow-decision">'+esc(c.c||"판단 C")+'</div><span class="flow-tag">예</span><div class="flow-arrow">↓</div><div class="flow-end">'+esc(c.cout||"을의 입장")+'</div></div></div><div class="flow-note">각 판단의 조건을 확인하고 화살표 방향으로 이동하세요.</div></div>';
   }
   L.forEach(function(l){
+    if(l==="〈흐름도〉"||l==="[흐름도]"||flow.length||/^\|.*\|$/.test(l)||QMARK.test(l)||l==="〈보기〉"||/^[ㄱ-ㅁ][.．]/.test(l)||/^\([가-라]\)/.test(l))fp();
     if(l==="〈흐름도〉"||l==="[흐름도]"){flush();if(box){h+="</div>";box=0}flow=[];flow.push(l);return}
     if(flow.length){if(/^(출발|시작|판단 ?[ABC]|예 ?[ABC]|아니요 ?A)\s*\|/i.test(l)){flow.push(l);return}h+=flowHTML(flow.slice(1));flow=[];}
     if(/^\|.*\|$/.test(l)){if(box){h+="</div>";box=0}tb.push(l);return}
@@ -2049,8 +2069,8 @@ function qfmt(t,im){
     if(l==="〈보기〉"){if(box)h+="</div>";h+='<div class="qf-box"><b class="qf-h">〈보기〉</b>';box=1;return}
     if(/^[ㄱ-ㅁ][.．]/.test(l)){if(!box){h+='<div class="qf-box">';box=1}h+='<p class="qf-r"><b>'+esc(l.charAt(0))+'.</b>'+esc(l.slice(2).trim())+'</p>';return}
     if(box){h+="</div>";box=0}
-    h+=/^\([가-라]\)/.test(l)?'<p class="qf-d">'+esc(l)+'</p>':'<p class="qf-s">'+esc(l)+'</p>'});
-  flush();
+    if(/^\([가-라]\)/.test(l))h+='<p class="qf-d">'+esc(l)+'</p>';else ps.push(l)});
+  fp();flush();
   return '<div class="qf">'+h+(box?"</div>":"")+'</div>'}
 function piMark(i){var z=PI().items[i];if(!/^\[(그림|표|이미지|자료)\]$/m.test(z.q)){var L=String(z.q).split("\n");L.splice(Math.min(1,L.length),0,"[그림]");z.q=L.join("\n")}toast("본문의 [그림] 줄이 그림 위치예요. 줄을 옮겨 위치를 바꿀 수 있어요");render()}
 function guessUnit(b,z){var D=DB[b],tx=[z.q,(z.o||[]).join(" "),z.e,z.keyExp].join(" "),best=D.units[0],bs=0;
