@@ -1641,6 +1641,15 @@ function addKey(){
   st.gkeys.push({k:k,until:0});S.gk="";S.gtok=true;
   S.gt="키를 추가했어요. 한도가 끝나면 다음 키로 자동 전환돼요."+(/^AIza/.test(k)?"":" (키는 보통 AIza로 시작해요. 맞는지 확인해 주세요.)");
   save();render()}
+/* API 키 결과 필터: 정상 / 실패 / 미확인 */
+function kfStat(x,now){var r=(S.kres||{})[x.k];if(r){if(r.ok)return"ok";if(r.msg==="테스트 중…")return"none";return"fail"}return x.until>now?"fail":"none"}
+function kfPass(x,now){var f=S.kf||"all";return f==="all"||kfStat(x,now)===f}
+function kfSet(v){S.kf=v;render()}
+function kfChips(ks,now){
+  if(!ks.length)return "";
+  var c={all:ks.length,ok:0,fail:0,none:0};ks.forEach(function(x){c[kfStat(x,now)]++});
+  var f=S.kf||"all",L=[["all","전체"],["ok","정상"],["fail","실패"],["none","미확인"]];
+  return '<div class="chips" style="margin:2px 0 4px" role="group" aria-label="키 상태 필터">'+L.map(function(t){return '<button class="chip'+(f===t[0]?' on':'')+'" onclick="kfSet(\''+t[0]+'\')" aria-pressed="'+(f===t[0])+'">'+t[1]+' '+c[t[0]]+'</button>'}).join("")+'</div>'+(c[f]?'':'<p class="sub" style="margin-top:6px">해당하는 키가 없어요. 키를 테스트하면 정상·실패로 나뉘어요.</p>')}
 function delKey(i){if(S.kres&&st.gkeys[i])delete S.kres[st.gkeys[i].k];st.gkeys.splice(i,1);if(st.gact>=st.gkeys.length)st.gact=0;S.gtok=true;S.gt="키를 삭제했어요.";save();render()}
 function useKey(i){st.gact=i;st.gkeys[i].until=0;save();render()}
 function maskKey(k){return k.length<=10?"••••••":k.slice(0,4)+"••••"+k.slice(-4)}
@@ -1708,7 +1717,7 @@ function vSettings(D){
   h+='<div class="card setup"><div><h2 class="h2">Gemini API 연결</h2><p class="sub" style="margin-top:4px">키를 여러 개 등록하면 한 키의 한도가 끝났을 때 다음 키로 자동 전환돼요. 키는 <a class="lnk" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>에서 무료로 만들 수 있어요.</p></div>'
    +'<div class="note">현재 AI: <b>'+cur+'</b></div>'
    +'<div class="fld"><label>모델</label><div class="chips">'+GEM_MODELS.map(function(m){return '<button class="chip'+(st.gmodel===m[0]?' on':'')+'" onclick="setModel(\''+m[0]+'\')" aria-pressed="'+(st.gmodel===m[0])+'">'+m[1]+'</button>'}).join("")+'</div></div>'
-   +'<div class="fld"><label>등록된 API 키 ('+ks.length+')</label>'+(ks.length?ks.map(function(x,i){var cool=x.until>now,act=i===st.gact;
+   +'<div class="fld"><label>등록된 API 키 ('+ks.length+')</label>'+kfChips(ks,now)+(ks.length?ks.map(function(x,i){var cool=x.until>now,act=i===st.gact;if(!kfPass(x,now))return "";
       return '<div class="panel" style="margin-top:8px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b>'+(i+1)+'번</b><code>'+esc(S.gshow?x.k:maskKey(x.k))+'</code>'+(act?'<span class="tag ok" style="margin:0">사용 중</span>':'')+(cool?'<span class="tag no" style="margin:0">한도 초과·대기</span>':'')+'</div>'+keyRes(x.k)+'<div class="row" style="margin-top:8px">'+(act?'':'<button class="btn sm" onclick="useKey('+i+')">이 키 사용</button>')+'<button class="btn sm" onclick="testGem('+i+')"'+(S.gb?' disabled':'')+'>테스트</button><button class="btn sm danger" onclick="delKey('+i+')">삭제</button></div></div>'}).join(""):'<p class="sub" style="margin-top:6px">아직 등록된 키가 없어요.</p>')+'</div>'
    +'<div class="fld"><label for="gk">새 API 키 추가</label><div class="qrow"><input class="inp" id="gk" type="'+(S.gshow?'text':'password')+'" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="AIza..." value="'+esc(S.gk||"")+'" oninput="S.gk=this.value"><button class="btn" onclick="S.gshow=!S.gshow;render()">'+(S.gshow?'숨기기':'보기')+'</button></div></div>'
    +((CL&&ks.length)?'<div class="fld"><label>둘 다 연결되어 있을 때 사용할 AI</label><div class="chips">'+[["auto","Gemini 우선"],["claude","Claude 우선"]].map(function(x){return '<button class="chip'+((st.prov==="claude")===(x[0]==="claude")?' on':'')+'" onclick="setCfg(\'prov\',\''+x[0]+'\')">'+x[1]+'</button>'}).join("")+'</div></div>':'')
