@@ -1912,7 +1912,7 @@ function piReview(D){
   if(P.ie)h+='<p class="sub" style="color:var(--no);margin-bottom:10px">그림을 이미지로 만들지 못했어요: '+esc(P.ie)+'</p>';
   if(un)h+='<div class="card" style="margin-bottom:12px"><h3 class="h3">정답표 붙여넣기</h3><textarea class="ta" rows="2" placeholder="예: 3 1 4 2 5 ... (아래 순서대로 적용돼요)" oninput="PI().key=this.value" aria-label="정답표">'+esc(P.key)+'</textarea><div class="after" style="margin-top:8px"><button class="btn" onclick="piKey()">적용</button></div></div>';
   var ord=P.items.map(function(z,i){return i}).sort(function(a,b){var x=P.items[a],y=P.items[b];return (y.src==="ai"&&y.conf==="low"?1:0)-(x.src==="ai"&&x.conf==="low"?1:0)});
-  h+=ord.map(function(i){var z=P.items[i];return '<div class="card" style="margin-bottom:12px"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox"'+(z.on?' checked':'')+' onchange="piOn('+i+')"><b>'+esc(z.no)+'번</b><span class="tag">'+L[z.src]+(z.src==="ai"&&z.conf?' · 확신 '+({high:"높음",mid:"보통",low:"낮음"}[z.conf]||""):'')+'</span>'+(z.fig?'<span class="tag">그림 포함</span>':'')+'</label><div class="chips" style="margin-top:8px">'+["e","s"].map(function(b){return '<button class="chip'+((z.sub||S.sub)===b?' on':'')+'" onclick="piSub('+i+',\''+b+'\')">'+DB[b].name+'</button>'}).join("")+'<span class="tag">'+esc(z.t)+'</span></div>'
+  h+=ord.map(function(i){var z=P.items[i];return '<div class="card" style="margin-bottom:12px"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox"'+(z.on?' checked':'')+' onchange="piOn('+i+')"><b>'+esc(z.no)+'번</b><span class="tag">'+L[z.src]+(z.src==="ai"&&z.conf?' · 확신 '+({high:"높음",mid:"보통",low:"낮음"}[z.conf]||""):'')+'</span>'+(z.fig?'<span class="tag">그림 포함</span>':'')+'</label><div class="chips" style="margin-top:8px">'+["e","s"].map(function(b){return '<button class="chip'+((z.sub||S.sub)===b?' on':'')+'" onclick="piSub('+i+',\''+b+'\')">'+DB[b].name+'</button>'}).join("")+'</div><div class="chips scroll" style="margin-top:8px">'+DB[z.sub||S.sub].units.map(function(u){return '<button class="chip'+(z.t===u?' on':'')+'" onclick="piUnit('+i+',\''+u+'\')">'+esc(u)+'</button>'}).join("")+'</div>'
     +piImg(i,z)+'<textarea class="ta" rows="'+Math.min(18,Math.max(4,piCleanQuestion(z).split("\n").length+2))+'" oninput="PI().items['+i+'].q=this.value" aria-label="문제 본문" style="margin:8px 0">'+esc(piCleanQuestion(z))+'</textarea>'
     +z.o.map(function(o,k){return '<button class="opt'+(k===z.a?' ok':'')+'" onclick="piAns('+i+','+k+')"><span class="n">'+(k+1)+'</span><span>'+esc(o)+'</span></button>'}).join("")+'</div>'}).join("");
   var n=P.items.filter(function(z){return z.on}).length;
@@ -1963,7 +1963,11 @@ function qfmt(t,im){
   flush();
   return '<div class="qf">'+h+(box?"</div>":"")+'</div>'}
 function piMark(i){var z=PI().items[i];if(!/^\[(그림|표|이미지|자료)\]$/m.test(z.q)){var L=String(z.q).split("\n");L.splice(Math.min(1,L.length),0,"[그림]");z.q=L.join("\n")}toast("본문의 [그림] 줄이 그림 위치예요. 줄을 옮겨 위치를 바꿀 수 있어요");render()}
-function piSub(i,b){var z=PI().items[i];z.sub=b;if(DB[b].units.indexOf(z.t)<0)z.t=DB[b].units[0];render()}
+function guessUnit(b,z){var D=DB[b],tx=[z.q,(z.o||[]).join(" "),z.e,z.keyExp].join(" "),best=D.units[0],bs=0;
+  D.units.forEach(function(u){var s=0;D.cards.forEach(function(c){if(c.top!==u)return;if(tx.indexOf(c.t)>=0)s+=3;c.kw.forEach(function(k){if(k.length>=2&&tx.indexOf(k)>=0)s+=2});if(c.tag&&c.tag.length>=3&&tx.indexOf(c.tag)>=0)s+=1});if(tx.indexOf(u)>=0)s+=3;if(s>bs){bs=s;best=u}});
+  return best}
+function piSub(i,b){var z=PI().items[i];z.sub=b;if(DB[b].units.indexOf(z.t)<0)z.t=guessUnit(b,z);render()}
+function piUnit(i,u){var z=PI().items[i];z.t=u;render()}
 function detSub(t){var m=String(t||"").match(/^과목\s*[:：]\s*(.+)$/m);return m?(/사회|문화|사문/.test(m[1])?"s":/윤리|생윤/.test(m[1])?"e":null):null}
 function dk(){return S.tab+"|"+S.sub}
 function fkey(el,c){var k=el.id||el.getAttribute("aria-label")||el.placeholder||el.name||el.tagName;c[k]=(c[k]||0)+1;return k+"#"+c[k]}
