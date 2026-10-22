@@ -81,7 +81,7 @@ h1,h2,h3{text-wrap:balance}
 .inkc{position:relative}
 .inkcv{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:3}
 .ink-on .inkc{cursor:crosshair;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-.ink-on .inkc,.ink-on.ink-finger .inkc{touch-action:none}.ink-on:not(.ink-finger) .inkc{touch-action:pinch-zoom}
+.ink-on .inkc,.ink-on.ink-finger .inkc{touch-action:none}
 .ink-on .inkc{-webkit-user-drag:none}
 #inktb .ink-t,#inktb .ink-sw,#inktb .ink-sz{pointer-events:auto;position:relative;z-index:1}
 .ink-on .inkc .opt{pointer-events:none}
@@ -706,7 +706,7 @@ body.has-ink .toast.on{transform:translate(-50%,0)}
 </style>
 <div class="app" id="app"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
-(function(){["gesturestart","gesturechange","gestureend"].forEach(function(n){document.addEventListener(n,function(e){if(!window.PZ)e.preventDefault()},{passive:false})});document.addEventListener("touchstart",function(e){if(!window.PZ&&e.touches.length>1)e.preventDefault()},{passive:false})})();
+(function(){["gesturestart","gesturechange","gestureend"].forEach(function(n){document.addEventListener(n,function(e){e.preventDefault()},{passive:false})});document.addEventListener("touchstart",function(e){if(e.touches.length>1)e.preventDefault()},{passive:false})})();
 (function(){try{var h=document.head;
 var m=document.createElement("meta");m.name="theme-color";m.content="#3F4FD1";h.appendChild(m);
 var m2=document.createElement("meta");m2.name="apple-mobile-web-app-title";m2.content="사탐정복";h.appendChild(m2);
@@ -1118,7 +1118,7 @@ function inkDraw(c,s,W){var P=s.p,n=P.length,i;if(!n)return;var col=inkCol(s.c),
   for(i=1;i<n;i++){var cx=P[i][0]*W,cy=P[i][1]*W,nx=i<n-1?(cx+P[i+1][0]*W)/2:cx,ny=i<n-1?(cy+P[i+1][1]*W)/2:cy;
     c.lineWidth=Math.max(.6,bw*wf((P[i-1][2]+P[i][2])/2));c.beginPath();c.moveTo(px,py);c.quadraticCurveTo(cx,cy,nx,ny);c.stroke();px=nx;py=ny}
   c.restore()}
-function inkSize(L){var W=L.el.clientWidth,H=L.el.clientHeight;if(!W||!H)return;var d=Math.min(window.devicePixelRatio||1,2.5);
+function inkSize(L){var W=L.el.clientWidth,H=L.el.clientHeight;if(!W||!H)return;var d=Math.min((window.devicePixelRatio||1)*Math.max(1,S.pz||1),4);
   while(W*H*d*d>14e6&&d>1)d-=.25;
   if(L.W===W&&L.H===H&&L.d===d)return;L.W=W;L.H=H;L.d=d;
   [L.cv,L.base].forEach(function(c){c.width=Math.round(W*d);c.height=Math.round(H*d)});inkBase(L)}
@@ -1129,7 +1129,7 @@ function inkPaint(L){var c=L.cv.getContext("2d");c.setTransform(1,0,0,1,0,0);c.c
   if(a&&a.s)inkDraw(c,a.s,L.W);
   if(a&&a.er&&a.pos){c.save();c.strokeStyle="#888";c.lineWidth=1.2;c.beginPath();c.arc(a.pos.x,a.pos.y,a.r,0,6.2832);c.stroke();c.restore()}}
 function inkRefresh(key,base){INK.layers.forEach(function(L){if(L.key===key){if(base)inkBase(L);else inkPaint(L)}})}
-function inkPt(L,e){var r=L.el.getBoundingClientRect(),w=r.width||1;return {x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/w,px:e.clientX-r.left,py:e.clientY-r.top,p:e.pointerType==="pen"&&e.pressure>0?e.pressure:.5}}
+function inkPt(L,e){var r=L.el.getBoundingClientRect(),w=r.width||1;var k=(L.el.clientWidth||w)/w;return {x:(e.clientX-r.left)/w,y:(e.clientY-r.top)/w,px:(e.clientX-r.left)*k,py:(e.clientY-r.top)*k,p:e.pointerType==="pen"&&e.pressure>0?e.pressure:.5}}
 function inkMount(){
   INK.layers.forEach(function(L){if(L.ro)L.ro.disconnect()});INK.layers=[];
   var els=document.querySelectorAll("#app [data-ink]");
@@ -2031,7 +2031,45 @@ function TIX(N){for(var i=0;i<N.length;i++)if(N[i][0]===S.tab)return i;return 0}
 function tbAnim(){var n=document.querySelector(".tabbar");if(!n)return;var b=n.querySelectorAll("button"),ix=0,i;for(i=0;i<b.length;i++)if(b[i].classList.contains("on"))ix=i;
   if(window.TBI==null){window.TBI=ix;return}
   if(window.TBI!==ix){window.TBI=ix;b[ix].classList.add("pop");var nv=document.querySelectorAll(".nav button");if(nv[ix])nv[ix].classList.add("pop");requestAnimationFrame(function(){requestAnimationFrame(function(){n.style.setProperty("--i",ix)})})}}
-function pinchSync(){var on=!!((S.tab==="quiz"&&S.run&&!S.pfocus)||S.tab==="wrong");if(on===!!window.PZ)return;window.PZ=on;var m=document.querySelector("meta[name=viewport]");if(m)m.setAttribute("content",on?"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5,user-scalable=yes,viewport-fit=cover":"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover")}
+function barFix(){var b=document.querySelector(".bar");if(b)b.style.transform=window.scrollX>0?"translateX("+window.scrollX+"px)":""}
+window.addEventListener("scroll",barFix,{passive:true});
+var pzT=null;function pzSettle(){clearTimeout(pzT);pzT=setTimeout(function(){INK.layers.forEach(inkSize)},140)}
+function pzApply(){barFix();var v=document.querySelector(".view");if(!v)return;if((S.pz||1)>1.005){v.style.transformOrigin="0 0";v.style.transform="scale("+S.pz+")"}else{v.style.transform="";v.style.transformOrigin=""}}
+function pinchSync(){var on=!!((S.tab==="quiz"&&S.run&&!S.pfocus)||S.tab==="wrong");window.PZ=on;if(!on)S.pz=1;pzApply()}
+/* 앱(WebView)에서도 되도록 직접 구현한 핀치 줌: 퀴즈 풀이·노트 화면에서만 동작 */
+(function(){var G=null,AN=0;
+ function pzAnim(z0,z1,cx,cy,ox,oy,u,w){cancelAnimationFrame(AN);var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches,t0=performance.now(),D=rm?1:260;
+  function f(now){var k=Math.min(1,(now-t0)/D),e=1-Math.pow(1-k,3),z=z0+(z1-z0)*e;S.pz=z;pzApply();window.scrollTo(ox+u*z-cx,oy+w*z-cy);barFix();if(k<1)AN=requestAnimationFrame(f);else{if(z1<1.03){S.pz=1;pzApply()}pzSettle()}}
+  AN=requestAnimationFrame(f)}
+ function dist(t){return Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY)}
+ document.addEventListener("touchstart",function(e){
+  if(!window.PZ||e.touches.length!==2)return;var v=document.querySelector(".view");if(!v)return;
+  INK.layers.forEach(function(L){if(L.act){try{L.el.releasePointerCapture(L.act.id)}catch(x){}L.act=null;inkPaint(L)}});INK.drawing=false;INK.penDown=false;INK.pan=null;
+  cancelAnimationFrame(AN);var r=v.getBoundingClientRect(),z0=S.pz||1,cx=(e.touches[0].clientX+e.touches[1].clientX)/2,cy=(e.touches[0].clientY+e.touches[1].clientY)/2,ox=r.left+window.scrollX,oy=r.top+window.scrollY;
+  G={d:dist(e.touches),z:z0,ox:ox,oy:oy,u:(cx+window.scrollX-ox)/z0,v:(cy+window.scrollY-oy)/z0}},{passive:false});
+ document.addEventListener("touchmove",function(e){
+  if(!G||e.touches.length!==2)return;e.preventDefault();
+  var z=Math.max(1,Math.min(4,G.z*dist(e.touches)/G.d)),cx=(e.touches[0].clientX+e.touches[1].clientX)/2,cy=(e.touches[0].clientY+e.touches[1].clientY)/2;
+  S.pz=z;pzApply();window.scrollTo(G.ox+G.u*z-cx,G.oy+G.v*z-cy);barFix()},{passive:false});
+ function end(e){if(G&&e.touches.length<2){G=null;if((S.pz||1)<1.03){S.pz=1;pzApply()}pzSettle()}}
+ document.addEventListener("touchend",end);document.addEventListener("touchcancel",end);
+ /* 두 번 탭: 확대(2.2배) / 원래 크기 토글 */
+ var T=null,LT=null;
+ document.addEventListener("touchstart",function(e){
+  if(e.touches.length!==1){T=null;LT=null;return}
+  var t=e.touches[0];T={x:t.clientX,y:t.clientY,t:Date.now(),mv:false,tg:e.target}},{passive:true});
+ document.addEventListener("touchmove",function(e){if(T&&e.touches[0]&&Math.hypot(e.touches[0].clientX-T.x,e.touches[0].clientY-T.y)>10)T.mv=true},{passive:true});
+ document.addEventListener("touchend",function(e){
+  var d=T;T=null;if(!window.PZ||!d||d.mv||G||e.touches.length||Date.now()-d.t>300)return;
+  if(d.tg&&d.tg.closest&&d.tg.closest("button,a,input,textarea,label,summary,select,#inktb"))return;
+  if(INK.on&&!penOnly())return;
+  var now=Date.now();
+  if(LT&&now-LT.t<320&&Math.hypot(LT.x-d.x,LT.y-d.y)<40){LT=null;
+   var v=document.querySelector(".view");if(!v)return;
+   var r=v.getBoundingClientRect(),z0=S.pz||1,z1=z0>1.05?1:2.2,ox=r.left+window.scrollX,oy=r.top+window.scrollY,u=(d.x+window.scrollX-ox)/z0,w=(d.y+window.scrollY-oy)/z0;
+   pzAnim(z0,z1,d.x,d.y,ox,oy,u,w)}
+  else LT={x:d.x,y:d.y,t:now}},{passive:true});
+})();
 (function(){var r=render;render=function(){r.apply(this,arguments);tbAnim();pinchSync()}})();
 tbAnim();pinchSync();
 </script>
