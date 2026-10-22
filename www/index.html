@@ -1989,7 +1989,7 @@ function piThumb(c){var k=Math.min(1,1000/c.width),o=document.createElement("can
 async function piPages(file){await piLib();var d=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise,out=[];
   for(var i=1;i<=Math.min(d.numPages,30);i++){var pg=await d.getPage(i),v=pg.getViewport({scale:1400/pg.getViewport({scale:1}).width}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;out.push(c)}
   return out}
-function piCrop(pgs,r){if(!r||!pgs[r.p-1])return "";var c=pgs[r.p-1],x0=Math.max(0,+r.x-.01),y0=Math.max(0,+r.y-.01),w=Math.min(1-x0,+r.w+.02)*c.width,h=Math.min(1-y0,+r.h+.02)*c.height;
+function piCrop(pgs,r,exact){if(!r||!pgs[r.p-1])return "";var c=pgs[r.p-1],pd=exact?0:.01,x0=Math.max(0,+r.x-pd),y0=Math.max(0,+r.y-pd),w=Math.min(1-x0,+r.w+(exact?0:.02))*c.width,h=Math.min(1-y0,+r.h+(exact?0:.02))*c.height;
   if(!(w>=20&&h>=20))return "";var k=Math.min(1,900/w),o=document.createElement("canvas");o.width=Math.round(w*k);o.height=Math.round(h*k);o.getContext("2d").drawImage(c,x0*c.width,y0*c.height,w,h,0,0,o.width,o.height);return o.toDataURL("image/jpeg",.6)}
 function piImg(i,z){var im=z.m==="f"?z.f:z.m==="g"?z.g:"",ch=z.fig?[["g","그림만"],["f","문제 전체"],["n","이미지 없이"]].map(function(x){return '<button class="chip'+(z.m===x[0]?' on':'')+'" onclick="piMode('+i+',\''+x[0]+'\')">'+x[1]+'</button>'}).join(""):"";
   return '<div class="chips" style="margin-top:8px">'+ch+'<button class="chip" onclick="piEdit('+i+')">'+(z.fig||im?'영역 조정':'이미지 추가')+'</button>'+(im&&z.m==="g"?'<button class="chip" onclick="piMark('+i+')">그림 위치 넣기</button>':'')+'</div>'+(im&&z.m==="g"?'<p class="sub" style="margin-top:6px">본문 속 <b>[그림]</b> 줄이 그림이 들어갈 위치예요.</p>':'')+(im?'<img src="'+im+'" alt="" style="max-width:100%;border-radius:10px;margin-top:8px">':'')}
@@ -2014,7 +2014,7 @@ function edUp(){EDS=null}
 function piPg(d){var e=S.ed;e.r.p=Math.min(PI().pgs.length,Math.max(1,e.r.p+d));render()}
 function piEdK(k){var e=S.ed,P=PI(),r=P.items[e.i][k+"r"];e.k=k;if(r&&P.pgs[r.p-1])e.r={p:+r.p,x:+r.x,y:+r.y,w:+r.w,h:+r.h};render()}
 function piEdX(){S.ed=null;S.rs=4;render()}
-function piEdOk(){var e=S.ed,P=PI(),z=P.items[e.i],u=piCrop(P.pgs,e.r);if(!u){toast("영역이 너무 작아요");return}z[e.k]=u;z[e.k+"r"]={p:e.r.p,x:e.r.x,y:e.r.y,w:e.r.w,h:e.r.h};z.m=e.k;z.fig=true;z.on=true;S.ed=null;S.rs=4;render()}
+function piEdOk(){var e=S.ed,P=PI(),z=P.items[e.i],u=piCrop(P.pgs,e.r,true);if(!u){toast("영역이 너무 작아요");return}z[e.k]=u;z[e.k+"r"]={p:e.r.p,x:e.r.x,y:e.r.y,w:e.r.w,h:e.r.h};z.m=e.k;z.fig=true;z.on=true;S.ed=null;S.rs=4;render()}
 
 function TIX(N){for(var i=0;i<N.length;i++)if(N[i][0]===S.tab)return i;return 0}
 function tbAnim(){var n=document.querySelector(".tabbar");if(!n)return;var b=n.querySelectorAll("button"),ix=0,i;for(i=0;i<b.length;i++)if(b[i].classList.contains("on"))ix=i;
