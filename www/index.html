@@ -1660,11 +1660,7 @@ async function testAllGem(){
   for(var i=0;i<ks.length;i++){
     var row={name:(i+1)+"번 API 키",ok:false,msg:"테스트 중…"};
     S.gall.rows.push(row);S.kres[ks[i].k]=row;render();
-    try{
-      var r=await gemCall("한국어로 '연결 성공'이라고만 답해줘.",{},ks[i].k,st.gmodel||"gemini-3.8-flash");
-      row.ok=!!(r&&r.text&&r.text.trim());row.msg=row.ok?"정상 · 모델 응답 확인":"실패 · 응답이 비어 있음";
-      if(row.ok&&st.gkeys[i])st.gkeys[i].until=0;
-    }catch(e){row.ok=false;row.msg=(e&&e.code==="gem429")?"사용 한도 초과":((e&&e.userMsg)||"연결 실패");row.msg=String(row.msg).slice(0,120)}
+    var pr=await gemProbe(ks[i].k);row.ok=pr.ok;row.msg=pr.msg;if(pr.ok&&st.gkeys[i])st.gkeys[i].until=0;
     render();
   }
   S.gall.done=true;S.gb=false;save();render();
@@ -1686,28 +1682,39 @@ async function testGem(i){
   S.kres=S.kres||{};
   if(i!=null)S.kres[k]={ok:false,msg:"테스트 중…"};
   S.gb=true;S.t0=Date.now();S.gt="";render();
-  try{
-    var r=await gemCall("한국어로 '연결 성공'이라고만 답해줘.",{},k,st.gmodel||"gemini-3.8-flash"),t=String(r.text||"").trim();
-    if(i!=null){S.kres[k]={ok:true,msg:"정상 · 모델 응답: "+t.slice(0,30)};S.gtok=true;S.gt="";if(st.gkeys[i])st.gkeys[i].until=0}
-    else{S.gtok=true;S.gt="연결 성공 · 모델 응답: "+t.slice(0,30)}
-    save()}
-  catch(e){
-    S.gtok=false;S.gt="";
-    if(i!=null)S.kres[k]={ok:false,msg:(e&&e.code==="gem429")?"사용 한도 초과":String((e&&e.userMsg)||"연결에 실패했어요.").slice(0,120)};
-    else aiFail(e,"연결에 실패했어요.")}
-  S.gb=false;render()}
+  var pr=await gemProbe(k);
+  if(i!=null){S.kres[k]={ok:pr.ok,msg:pr.msg};S.gtok=pr.ok;S.gt="";if(pr.ok&&st.gkeys[i])st.gkeys[i].until=0}
+  else{S.gtok=pr.ok;S.gt=pr.ok?"연결 성공 · "+pr.msg:pr.msg}
+  save();S.gb=false;render()}
+/* 키 테스트: 응답 내용이 아니라 요청 성공 여부로 판정하고, 일시 오류는 재시도해서 결과가 흔들리지 않게 함 */
+async function gemProbe(k){
+  var model=st.gmodel||"gemini-3.8-flash",last=null,n=3,t;
+  for(t=0;t<n;t++){
+    try{await gemCall("OK",{temp:0,fast:true,timeout:25000},k,model);return {ok:true,msg:"정상 · 모델 응답 확인"}}
+    catch(e){last=e;var c=e&&e.code;
+      if(c==="gem-1")return {ok:true,msg:"정상 · 키와 연결은 확인했어요 (응답 내용은 비어 있었어요)"};
+      if(c==="gem-3")return {ok:false,msg:"테스트를 중단했어요"};
+      var bad=(c==="gem401"||c==="gem403"||c==="gem404"||(c==="gem400"&&/api key/i.test(e.raw||"")));
+      if(bad)break;
+      if(c==="gem429"&&/day|daily|PerDay/i.test(e.raw||""))break;
+      if(t<n-1)await new Promise(function(ok){setTimeout(ok,c==="gem429"?3000:1500)})}}
+  var c2=last&&last.code,m=(c2==="gem429")?"사용 한도 초과 (잠시 뒤 다시 시도해 보세요)":(c2==="gem0"||c2==="gem-2"||/^gem5/.test(c2||""))?"일시적으로 연결하지 못했어요 ("+n+"번 시도). 키 문제는 아닐 수 있어요":String((last&&last.userMsg)||"연결에 실패했어요.");
+  return {ok:false,msg:m.slice(0,120)}}
 async function saveFile(blob,nm){
   var CP=window.Capacitor&&window.Capacitor.Plugins;
   if(CP&&CP.Filesystem&&CP.Share){var r=await CP.Filesystem.writeFile({path:nm,data:await blobB64(blob),directory:"CACHE",recursive:true});await CP.Share.share({title:nm,url:r.uri,dialogTitle:nm});return}
   try{var f=new File([blob],nm,{type:blob.type||"application/octet-stream"});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:nm});return}}catch(e){if(e&&e.name==="AbortError")return}
   var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1500)}
 function exportData(){
-  var d=JSON.parse(JSON.stringify(st));delete d.gkey;delete d.gkeys;delete d.gen;delete d.pdfs;delete d.notes;
+  var d=JSON.parse(JSON.stringify(st));delete d.gkey;delete d.gen;delete d.pdfs;delete d.notes;
+  if(S.expKey&&gkeys().length)d.gkeys=gkeys().map(function(x){return {k:x.k,until:0}});else{delete d.gkeys;delete d.gact}
   saveFile(new Blob([JSON.stringify(d)],{type:"application/json"}),"사탐정복-학습기록-"+today()+".json").then(function(){toast("백업 파일을 만들었어요")}).catch(function(e){if(!/cancel/i.test(String(e&&e.message||e)))popup("백업 파일을 저장하지 못했어요. ("+String(e&&e.message||e).slice(0,60)+")")})}
 function importData(inp){
   var f=inp.files&&inp.files[0];if(!f)return;var r=new FileReader();
   r.onload=function(){try{var d=JSON.parse(r.result);if(!d||!Array.isArray(d.days))throw 0;
-    var keep={gkeys:st.gkeys,gact:st.gact,gmodel:st.gmodel,prov:st.prov,pdfs:st.pdfs,notes:st.notes,ik:st.ik};localStorage.setItem(K,JSON.stringify(d));st=load();for(var k in keep)st[k]=keep[k];save();toast("기록을 불러왔어요")}
+    var imp=Array.isArray(d.gkeys)?d.gkeys:[],keep={gkeys:st.gkeys,gact:st.gact,gmodel:st.gmodel,prov:st.prov,pdfs:st.pdfs,notes:st.notes,ik:st.ik};localStorage.setItem(K,JSON.stringify(d));st=load();for(var k in keep)st[k]=keep[k];
+    var addK=0;imp.forEach(function(x){if(x&&x.k&&!st.gkeys.some(function(y){return y.k===x.k})){st.gkeys.push({k:x.k,until:0});addK++}});
+    save();toast("기록을 불러왔어요"+(addK?" (API 키 "+addK+"개 추가)":""))}
     catch(e){toast("올바른 백업 파일이 아니에요")}inp.value="";S.rs=1;render()};
   r.readAsText(f)}
 function vSettings(D){
@@ -1724,12 +1731,12 @@ function vSettings(D){
    +(S.gb?loadHTML("test"):'')+(S.gt?'<p class="msg '+(S.gtok?'ok':'no')+'" role="status">'+esc(S.gt)+'</p>':'')
    +'<div class="row"><button class="btn pri" onclick="addKey()">키 추가</button><button class="btn" onclick="testGem()"'+(S.gb?' disabled':'')+'>'+(S.gb?'확인 중…':'입력한 키 테스트')+'</button><button class="btn" onclick="testAllGem()"'+(S.gb?' disabled':'')+'>'+(S.gb?'테스트 중…':'등록된 키 전체 테스트')+'</button></div>'
    +testAllGemHTML()
-   +'<p class="sub">키는 이 기기의 브라우저에만 저장되고, AI를 쓸 때 Google 서버로 직접 전송돼요. 공용 기기에서는 입력하지 마세요. 백업 파일에는 키가 들어가지 않아요.</p></div>';
+   +'<p class="sub">키는 이 기기의 브라우저에만 저장되고, AI를 쓸 때 Google 서버로 직접 전송돼요. 공용 기기에서는 입력하지 마세요. 백업 파일에는 기본적으로 키가 들어가지 않아요. 설정의 백업 항목에서 켜면 포함할 수 있어요.</p></div>';
   h+='<div class="grid">'
    +'<div class="card setup"><h2 class="h2">학습 설정</h2><div class="field"><h3 class="h3">하루 목표 문제 수</h3><div class="chips">'+[5,10,15,20].map(function(n){return '<button class="chip'+(goal()===n?' on':'')+'" onclick="setCfg(\'goal\','+n+')">'+n+'문제</button>'}).join("")+'</div></div>'
    +'<div class="field"><h3 class="h3">화면 모드</h3><div class="chips">'+[["auto","기기 설정"],["light","라이트"],["dark","다크"]].map(function(x){return '<button class="chip'+((st.theme||"auto")===x[0]?' on':'')+'" onclick="setCfg(\'theme\',\''+x[0]+'\')">'+x[1]+'</button>'}).join("")+'</div></div>'
    +'<p class="sub">퀴즈 중에는 키보드로도 풀 수 있어요. 숫자 1~4는 보기 선택, O·X는 선지 선택, Enter는 다음 문제예요.</p></div>'
-   +'<div class="card setup"><h2 class="h2">학습 기록 백업</h2><p class="sub">기기를 바꾸거나 브라우저 데이터를 지우기 전에 백업해 두세요.</p><div class="row"><button class="btn pri" onclick="exportData()">백업 내려받기</button><label class="btn" for="imp" style="cursor:pointer">백업 불러오기</label></div><input class="sr" type="file" id="imp" accept="application/json,.json" onchange="importData(this)">'
+   +'<div class="card setup"><h2 class="h2">학습 기록 백업</h2><p class="sub">기기를 바꾸거나 브라우저 데이터를 지우기 전에 백업해 두세요.</p><label class="ptog"><span><b>API 키도 함께 내보내기</b><small>켜면 백업 파일에 키가 그대로 들어가요. 파일을 남에게 공유하지 마세요</small></span><input type="checkbox" role="switch"'+(S.expKey?' checked':'')+' onchange="S.expKey=this.checked;render()"></label><div class="row"><button class="btn pri" onclick="exportData()">백업 내려받기</button><label class="btn" for="imp" style="cursor:pointer">백업 불러오기</label></div><input class="sr" type="file" id="imp" accept="application/json,.json" onchange="importData(this)">'
    +(S.rc?'<div class="panel"><p><b>학습 기록을 모두 지울까요?</b></p><p class="sub">푼 기록, 오답노트, 사진 분석, 내 선지, 저장한 API 키가 모두 삭제돼요.</p><div class="row" style="margin-top:10px"><button class="btn danger" onclick="doReset()">모두 지우기</button><button class="btn" onclick="S.rc=false;render()">취소</button></div></div>':'<div><button class="btn ghost sm" onclick="S.rc=true;render()">학습 기록 초기화</button></div>')
    +'</div></div></div>';
   return h}
