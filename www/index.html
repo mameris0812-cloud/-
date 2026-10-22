@@ -1315,14 +1315,23 @@ function pdfSolve(id,wrongOnly){var f=st.pdfs.filter(function(x){return x.id===i
   var ord=ids.slice().sort(function(a,b){return (parseInt(String(byId(a).src).split(" · ").pop())||0)-(parseInt(String(byId(b).src).split(" · ").pop())||0)});
   startRun("mc",ord,(f.exam||f.name)+(wrongOnly?" 틀린 문제":" 문제"));if(S.run){S.run.ids=ord.slice();S.run.i=0;S.run.pick=null;render()}}
 async function pdfDel(id){try{await pdfDelB(id)}catch(e){}st.pdfs=st.pdfs.filter(function(f){return f.id!==id});S.pdc=null;save();toast("PDF를 삭제했어요");render()}
-async function pdfView(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;S.pv={id:id,name:f.exam||f.name,imgs:null,err:""};render();
-  try{var b=await pdfGet(id);if(!b)throw new Error("보관된 파일을 찾을 수 없어요");await piLib();var d=await pdfjsLib.getDocument({data:await b.arrayBuffer()}).promise,out=[];
-    for(var i=1;i<=Math.min(d.numPages,60);i++){var pg=await d.getPage(i),b1=pg.getViewport({scale:1}),v=pg.getViewport({scale:Math.min(2400/b1.width,Math.sqrt(14e6/(b1.width*b1.height)))}),c=document.createElement("canvas");c.width=Math.floor(v.width);c.height=Math.floor(v.height);await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;out.push(URL.createObjectURL(await new Promise(function(r){c.toBlob(r,"image/jpeg",.92)})));c.width=c.height=0;if(pg.cleanup)pg.cleanup();if(!S.pv||S.pv.id!==id)return}
-    if(S.pv&&S.pv.id===id){S.pv.imgs=out;S.rs=1;render()}}
+async function pdfView(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;S.pv={id:id,name:f.exam||f.name,imgs:null,ar:null,err:""};render();
+  try{var bl=await pdfGet(id);if(!bl)throw new Error("보관된 파일을 찾을 수 없어요");await piLib();var d=await pdfjsLib.getDocument({data:await bl.arrayBuffer()}).promise,n=Math.min(d.numPages,60),pgs=[],ar=[],i;
+    for(i=1;i<=n;i++){var pg=await d.getPage(i),v1=pg.getViewport({scale:1});pgs.push(pg);ar.push(v1.width+"/"+v1.height)}
+    if(!S.pv||S.pv.id!==id)return;
+    S.pv.ar=ar;S.pv.imgs=new Array(n);S.rs=1;render();
+    var nx=0;
+    async function work(){while(nx<n){var k=nx++;if(!S.pv||S.pv.id!==id)return;
+      var pg=pgs[k],b1=pg.getViewport({scale:1}),v=pg.getViewport({scale:Math.min(1800/b1.width,Math.sqrt(10e6/(b1.width*b1.height)))}),c=document.createElement("canvas");c.width=Math.floor(v.width);c.height=Math.floor(v.height);
+      await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;
+      var u=URL.createObjectURL(await new Promise(function(r){c.toBlob(r,"image/jpeg",.88)}));c.width=c.height=0;if(pg.cleanup)pg.cleanup();
+      if(!S.pv||S.pv.id!==id){URL.revokeObjectURL(u);return}
+      S.pv.imgs[k]=u;var el=document.querySelector('[data-ink="p:'+id+':'+k+'"] img');if(el){el.src=u;el.style.visibility="visible"}}}
+    await Promise.all([work(),work()])}
   catch(e){if(S.pv&&S.pv.id===id){S.pv.err=String(e&&e.message||e).slice(0,80);render()}}}
 function pdfViewer(){var v=S.pv;
   return '<div class="after" style="margin-bottom:12px;align-items:center"><button class="btn sm" onclick="S.pv=null;render()">'+ic("back",16)+' 목록</button><b>'+esc(v.name)+'</b><button class="btn sm" style="margin-left:auto" onclick="pdfDl(\''+v.id+'\')">내보내기</button></div>'
-   +(v.err?'<p class="sub" style="color:var(--no)">PDF를 열지 못했어요: '+esc(v.err)+'</p>':v.imgs?v.imgs.map(function(u,i){return '<div data-ink="p:'+v.id+':'+i+'" style="width:100%;max-width:820px;margin:0 auto 12px;line-height:0;border-radius:10px;border:1px solid var(--line);overflow:hidden"><img src="'+u+'" alt="'+(i+1)+'쪽" style="width:100%;display:block"></div>'}).join(""):'<p class="sub">PDF를 불러오는 중이에요…</p>')}
+   +(v.err?'<p class="sub" style="color:var(--no)">PDF를 열지 못했어요: '+esc(v.err)+'</p>':v.imgs?v.imgs.map(function(u,i){return '<div data-ink="p:'+v.id+':'+i+'" style="width:100%;max-width:820px;margin:0 auto 12px;line-height:0;border-radius:10px;border:1px solid var(--line);overflow:hidden;background:var(--surface2);aspect-ratio:'+(v.ar&&v.ar[i]||"1/1.414")+'"><img '+(u?'src="'+u+'"':'style="visibility:hidden"')+' alt="'+(i+1)+'쪽" style="width:100%;display:block"></div>'}).join(""):'<p class="sub">PDF를 불러오는 중이에요…</p>')}
 function pdfLibLoad(){return new Promise(function(ok,no){if(window.PDFLib)return ok();var e=document.createElement("script");e.src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js";e.onload=function(){window.PDFLib?ok():no(new Error("PDF 도구를 불러오지 못했어요"))};e.onerror=function(){no(new Error("PDF 도구를 불러오지 못했어요. 인터넷 연결을 확인해 주세요"))};document.head.appendChild(e)})}
 async function pdfInkMap(id){inkFlush();var lo="p:"+id+":",rg=IDBKeyRange.bound(lo,lo+"\uffff"),ks=await pdbDo("readonly",function(o){return o.getAllKeys(rg)},"ink"),vs=await pdbDo("readonly",function(o){return o.getAll(rg)},"ink"),m={};(ks||[]).forEach(function(k,j){var v=vs&&vs[j];if(v&&v.s&&v.s.length)m[parseInt(String(k).slice(lo.length),10)]=v.s});return m}
 function pdfInkDraw(pg,S,PL){
