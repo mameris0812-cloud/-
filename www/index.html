@@ -1317,7 +1317,7 @@ function pdfSolve(id,wrongOnly){var f=st.pdfs.filter(function(x){return x.id===i
 async function pdfDel(id){try{await pdfDelB(id)}catch(e){}st.pdfs=st.pdfs.filter(function(f){return f.id!==id});S.pdc=null;save();toast("PDF를 삭제했어요");render()}
 async function pdfView(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;S.pv={id:id,name:f.exam||f.name,imgs:null,err:""};render();
   try{var b=await pdfGet(id);if(!b)throw new Error("보관된 파일을 찾을 수 없어요");await piLib();var d=await pdfjsLib.getDocument({data:await b.arrayBuffer()}).promise,out=[];
-    for(var i=1;i<=Math.min(d.numPages,60);i++){var pg=await d.getPage(i),v=pg.getViewport({scale:1100/pg.getViewport({scale:1}).width}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;out.push(c.toDataURL("image/jpeg",.8));if(!S.pv||S.pv.id!==id)return}
+    for(var i=1;i<=Math.min(d.numPages,60);i++){var pg=await d.getPage(i),b1=pg.getViewport({scale:1}),v=pg.getViewport({scale:Math.min(2400/b1.width,Math.sqrt(14e6/(b1.width*b1.height)))}),c=document.createElement("canvas");c.width=Math.floor(v.width);c.height=Math.floor(v.height);await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;out.push(URL.createObjectURL(await new Promise(function(r){c.toBlob(r,"image/jpeg",.92)})));c.width=c.height=0;if(pg.cleanup)pg.cleanup();if(!S.pv||S.pv.id!==id)return}
     if(S.pv&&S.pv.id===id){S.pv.imgs=out;S.rs=1;render()}}
   catch(e){if(S.pv&&S.pv.id===id){S.pv.err=String(e&&e.message||e).slice(0,80);render()}}}
 function pdfViewer(){var v=S.pv;
