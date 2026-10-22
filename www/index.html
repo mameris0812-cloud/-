@@ -1302,15 +1302,84 @@ function pdfAnPanel(f){
   return h+'</div>'}
 function vNotePdf(D){
   if(S.pv)return pdfViewer();
+  if(S.pq)return pqEditor();
   var P=PI();
   if(S.pan&&P.items){if(S.ed&&S.ed.sub===S.sub)return piEd();return piReview(D)}
   var l=st.pdfs.filter(function(f){return f.sub===S.sub});
   var h='<p class="sub">'+D.name+' · PDF를 미리 올려 두고, 원하는 PDF에서 분석을 눌러 문제를 읽어와요. 퀴즈에서 가져온 PDF도 자동으로 보관돼요.</p><div style="height:12px"></div>'+pdfUpBox();
   if(!l.length)return h+'<div class="empty"><b>보관된 PDF가 없어요</b>위에서 문제지 PDF를 올려 보세요.</div>';
   return h+'<div class="wlist two">'+l.map(function(f){var c=S.pdc===f.id,qs=pdfQids(f),qn=qs.length,wn=qs.filter(wrongAct).length,op=S.pan===f.id;
-    return '<div class="wn"><span class="tag">PDF</span><p class="q" style="margin-bottom:4px"><b>'+esc(f.exam||f.name)+'</b></p><p class="sub">'+esc(f.name)+' · '+fsz(f.size)+' · '+esc(f.t)+(qn?' · 저장된 문제 '+qn+'개':(f.n?' · '+f.n+'문제 읽음(미저장)':' · 아직 분석 전'))+'</p>'
-     +(c?'<div class="panel" style="margin-top:10px"><p><b>이 PDF를 삭제할까요?</b></p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="pdfDel(\''+f.id+'\')">삭제</button><button class="btn sm" onclick="S.pdc=null;render()">취소</button></div></div>'
-       :'<div class="acts">'+(qn?'<button class="btn sm pri" onclick="pdfSolve(\''+f.id+'\')">문제 풀기 ('+qn+')</button>':'')+(wn?'<button class="btn sm" onclick="pdfSolve(\''+f.id+'\',1)">틀린 문제만 ('+wn+')</button>':'')+'<button class="btn sm'+(qn?'':' pri')+'" onclick="pdfAn(\''+f.id+'\')">'+(op?'분석 닫기':(qn?'다시 분석':'분석'))+'</button>'+(qn?'<button class="btn sm" onclick="sgOpen(\''+f.id+'\')">'+(S.sg&&S.sg.pid===f.id?'유사 문제 닫기':'유사 문제')+'</button>':'')+'<button class="btn sm" onclick="pdfView(\''+f.id+'\')">보기</button><button class="btn sm" onclick="pdfDl(\''+f.id+'\')">내보내기</button><button class="btn sm danger" onclick="S.pdc=\''+f.id+'\';render()">삭제</button></div>'+(op?pdfAnPanel(f):'')+(S.sg&&S.sg.pid===f.id?sgPanel(f):''))+'</div>'}).join("")+'</div>'}
+    var id=f.id,mo=S.pm===id;
+    var head='<span class="tag">PDF</span><p class="q" style="margin:6px 0 2px;overflow-wrap:anywhere"><b>'+esc(f.exam||f.name)+'</b></p><p class="sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12.5px">'+esc(f.name)+' · '+fsz(f.size)+' · '+esc(f.t)+'</p><p class="sub" style="margin-top:2px">'+(qn?'저장된 문제 '+qn+'개'+(wn?' · <b style="color:var(--no)">틀린 문제 '+wn+'개</b>':''):(f.n?f.n+'문제 읽음 (미저장)':'아직 분석 전'))+'</p>';
+    var body;
+    if(S.pdr===id)body='<div class="panel" style="margin-top:10px"><p><b>PDF 이름 바꾸기</b></p><input type="text" class="ta" maxlength="60" value="'+esc(S.pdn||"")+'" oninput="S.pdn=this.value" onkeydown="if(event.key===\'Enter\'){pdfRnSave()}" aria-label="PDF 이름" style="margin-top:8px;width:100%;box-sizing:border-box"><div class="row" style="margin-top:8px"><button class="btn pri sm" onclick="pdfRnSave()">저장</button><button class="btn sm" onclick="S.pdr=null;render()">취소</button></div></div>';
+    else if(c)body='<div class="panel" style="margin-top:10px"><p><b>이 PDF를 삭제할까요?</b></p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="pdfDel(\''+id+'\')">삭제</button><button class="btn sm" onclick="S.pdc=null;render()">취소</button></div></div>';
+    else{
+      var B=function(t,fn,cls){return '<button class="btn sm'+(cls?' '+cls:'')+'" onclick="'+fn+'">'+t+'</button>'};
+      var row=(qn?B('문제 풀기 '+qn,"pdfSolve('"+id+"')",'pri')+(wn?B('틀린 문제 '+wn,"pdfSolve('"+id+"',1)"):''):B(op?'분석 닫기':'분석',"pdfAn('"+id+"')",'pri'))+B('보기',"pdfView('"+id+"')")+'<button class="btn sm ghost" onclick="S.pm=S.pm===\''+id+'\'?null:\''+id+'\';render()" aria-label="더보기" aria-expanded="'+mo+'">'+(mo?'접기':'더보기')+'</button>';
+      var menu=mo?'<div class="acts" style="margin-top:6px;padding-top:8px;border-top:1px solid var(--line)">'+(qn?B('문제 편집',"pqOpen('"+id+"')")+B(S.sg&&S.sg.pid===id?'유사 문제 닫기':'유사 문제',"sgOpen('"+id+"')")+B(op?'분석 닫기':'다시 분석',"pdfAn('"+id+"')"):'')+B('이름 바꾸기',"pdfRn('"+id+"')")+B('내보내기',"pdfDl('"+id+"')")+B('삭제',"S.pdc='"+id+"';S.pm=null;render()",'danger')+'</div>':'';
+      body='<div class="acts" style="margin-top:10px">'+row+'</div>'+menu}
+    return '<div class="wn">'+head+body+(op?pdfAnPanel(f):'')+(S.sg&&S.sg.pid===id?sgPanel(f):'')+'</div>'}).join("")+'</div>'}
+
+/* ---------- 노트 > PDF: 저장된 문제 편집 ---------- */
+function pqNo(q){return parseInt(String(q.src||"").split(" · ").pop())||0}
+function pqOpen(fid){var f=st.pdfs.filter(function(x){return x.id===fid})[0];if(!f)return;var d={},ids=pdfQids(f).slice().sort(function(a,b){return pqNo(byId(a))-pqNo(byId(b))});
+  ids.forEach(function(id){var q=byId(id);d[id]={q:String(q.q||""),o:q.o.map(String),a:q.a,e:String(q.e||""),imf:q.imf?1:0}});
+  S.pq={fid:fid,ids:ids,d:d};S.rs=1;render()}
+function pqAns(id,k){S.pq.d[id].a=k;render()}
+function pqOptDel(id,k){var z=S.pq.d[id];if(z.o.length<=2)return;z.o.splice(k,1);if(z.a===k)z.a=0;else if(z.a>k)z.a--;render()}
+function pqOptAdd(id){var z=S.pq.d[id];if(z.o.length>=6)return;z.o.push("");render()}
+function pqTxt(id){S.pq.d[id].imf=0;render()}
+function pqClose(){S.pq=null;S.rs=1;render()}
+function pqSave(){var P=S.pq;if(!P)return;var n=0;
+  P.ids.forEach(function(id){var q=byId(id),z=P.d[id];if(!q||!z)return;
+    var o=z.o.map(function(x){return String(x).trim()}).filter(function(x,i){return x||i===z.a});
+    var a=z.a;if(o.length<2){return}
+    var chg=z.q.trim()!==String(q.q||"").trim()||z.e.trim()!==String(q.e||"").trim()||a!==q.a||o.join("\u0001")!==q.o.join("\u0001")||(z.imf?1:0)!==(q.imf?1:0);
+    if(!chg)return;
+    if(a>=o.length)a=0;
+    var optsChanged=o.join("\u0001")!==q.o.join("\u0001"),ansChanged=a!==q.a;
+    q.q=z.q.trim();q.o=o;q.a=a;q.e=z.e.trim();q.imf=z.imf?1:0;
+    if(ansChanged&&q.u)delete q.u;
+    if(optsChanged&&st.qoe)delete st.qoe[id];
+    n++});
+  save();S.pq=null;S.rs=1;toast(n?n+"문제를 수정했어요":"바뀐 내용이 없어요");render()}
+function pqEditor(){
+  var P=S.pq,f=st.pdfs.filter(function(x){return x.id===P.fid})[0];if(!f){S.pq=null;return ""}
+  var h='<p class="sub" style="margin-bottom:10px"><b>'+esc(f.exam||f.name)+'</b> · 저장된 문제 '+P.ids.length+'개. 고친 뒤 맨 아래 "저장"을 눌러야 반영돼요.</p>';
+  h+=P.ids.map(function(id){var q=byId(id),z=P.d[id];if(!q)return "";
+    var no=pqNo(q);
+    return '<div class="card" style="margin-bottom:12px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b>'+(no?no+'번':'문제')+'</b><span class="tag">'+esc(q.t||"")+'</span>'+(q.u?'<span class="tag">AI 추정 정답</span>':'')+'</div>'
+     +(z.imf?'<div class="note" style="margin:8px 0">이 문제는 지금 사진으로 보여요. 글자 내용을 고쳐도 풀 때는 사진이 나와요. <button class="btn sm" style="margin-top:6px" onclick="pqTxt(\''+id+'\')">글자로 보기</button></div>':'')
+     +'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">문제 본문 (배점은 [3점]처럼 적어요)</p><textarea class="ta" rows="'+Math.min(18,Math.max(4,z.q.split("\n").length+2))+'" oninput="S.pq.d[\''+id+'\'].q=this.value" aria-label="문제 본문" style="margin:0 0 8px">'+esc(z.q)+'</textarea>'
+     +'<p class="sub" style="margin:4px 0 6px;font-size:12.5px">번호를 누르면 정답으로 정해져요.</p>'
+     +z.o.map(function(o,k){return '<div style="display:flex;gap:6px;align-items:stretch;margin-bottom:6px"><button class="opt'+(k===z.a?' ok':'')+'" style="flex:none;width:44px;min-width:0;justify-content:center;margin:0" onclick="pqAns(\''+id+'\','+k+')" aria-label="'+(k+1)+'번을 정답으로"><span class="n">'+(k+1)+'</span></button><textarea class="ta" rows="'+Math.min(5,Math.max(1,Math.ceil(String(o).length/22)))+'" style="flex:1;min-width:0;margin:0" oninput="S.pq.d[\''+id+'\'].o['+k+']=this.value" aria-label="'+(k+1)+'번 선지">'+esc(o)+'</textarea>'+(z.o.length>2?'<button class="btn sm" style="flex:none" onclick="pqOptDel(\''+id+'\','+k+')" aria-label="'+(k+1)+'번 선지 삭제">✕</button>':'')+'</div>'}).join("")
+     +(z.o.length<6?'<div class="after" style="margin:2px 0 8px"><button class="btn sm" onclick="pqOptAdd(\''+id+'\')">선지 추가</button></div>':'')
+     +'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">해설</p><textarea class="ta" rows="'+Math.min(10,Math.max(2,Math.ceil(z.e.length/30)+1))+'" oninput="S.pq.d[\''+id+'\'].e=this.value" aria-label="해설" placeholder="해설이 비어 있어요">'+esc(z.e)+'</textarea></div>'}).join("");
+  return h+'<div class="after" style="position:sticky;bottom:0;padding:10px 0;background:var(--bg,transparent)"><button class="btn" onclick="pqClose()">취소</button><button class="btn pri" onclick="pqSave()">저장</button></div>'}
+function pdfRn(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;S.pdr=id;S.pdc=null;S.pdn=f.exam||f.name;render()}
+function pdfRnSave(){var id=S.pdr,f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;var n=String(S.pdn||"").replace(/\s+/g," ").trim().slice(0,60);if(!n){toast("이름을 입력해 주세요");return}
+  var ids=pdfQids(f);
+  ids.forEach(function(qid){var q=byId(qid);if(!q)return;var src=String(q.src||""),i=src.lastIndexOf(" · ");q.src=i>=0?n+src.slice(i):n+" · "+src});
+  f.exam=n;f.qids=ids;save();S.pdr=null;toast("이름을 바꿨어요");render()}
+function pdfActs(f,qn,wn,op){
+  var I="'"+f.id+"'",open=S.pm===f.id,
+      st1='style="width:100%;min-height:44px;justify-content:center;margin:0"',
+      grid=function(n,mt){return '<div style="display:grid;grid-template-columns:repeat('+n+',minmax(0,1fr));gap:8px;margin-top:'+mt+'px">'},
+      mi='class="btn" style="width:100%;min-height:44px;justify-content:flex-start;text-align:left;margin:0"';
+  var h=grid(wn?2:1,12);
+  h+=qn?'<button class="btn pri" '+st1+' onclick="pdfSolve('+I+')">문제 풀기 ('+qn+')</button>'
+        :'<button class="btn pri" '+st1+' onclick="pdfAn('+I+')">'+(op?'분석 닫기':'PDF 분석하기')+'</button>';
+  if(wn)h+='<button class="btn" '+st1+' onclick="pdfSolve('+I+',1)">틀린 문제만 ('+wn+')</button>';
+  h+='</div>'+grid(qn?3:2,8)+'<button class="btn" '+st1+' onclick="pdfView('+I+')">PDF 보기</button>'
+   +(qn?'<button class="btn" '+st1+' onclick="sgOpen('+I+')">'+(S.sg&&S.sg.pid===f.id?'유사 문제 닫기':'유사 문제')+'</button>':'')
+   +'<button class="btn ghost" '+st1+' aria-expanded="'+open+'" onclick="S.pm=S.pm===\''+f.id+'\'?null:\''+f.id+'\';render()">'+(open?'접기 ▴':'더보기 ⋯')+'</button></div>';
+  if(open)h+='<div style="margin-top:8px;padding:6px;border-radius:12px;background:var(--surface2);display:grid;gap:4px">'
+    +(qn?'<button '+mi+' onclick="pqOpen('+I+')">문제 편집</button><button '+mi+' onclick="pdfAn('+I+')">'+(op?'분석 닫기':'다시 분석')+'</button>':'')
+    +'<button '+mi+' onclick="pdfRn('+I+')">이름 바꾸기</button><button '+mi+' onclick="pdfDl('+I+')">내보내기</button>'
+    +'<div style="height:1px;background:var(--line);margin:2px 6px"></div>'
+    +'<button class="btn danger" style="width:100%;min-height:44px;justify-content:flex-start;text-align:left;margin:0" onclick="S.pdc='+I+';S.pm=null;render()">PDF 삭제</button></div>';
+  return h}
 function pdfQids(f){var o=(f.qids||[]).filter(function(id){return byId(id)});
   if(!o.length&&f.exam)o=st.gen.filter(function(q){return String(q.src||"").indexOf(f.exam+" · ")===0&&byId(q.id)}).map(function(q){return q.id});return o}
 function pdfSolve(id,wrongOnly){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;var ids=pdfQids(f);if(wrongOnly)ids=ids.filter(wrongAct);
@@ -1471,7 +1540,7 @@ function wvEmpty(what){return '<div class="empty"><b>'+(S.wv===2?'이해함으�
 function toggleAn(i){var a=st.an[i];if(!a)return;a.done=!a.done;save();toast(a.done?"이해함으로 표시했어요":"다시 복습 중으로 바꿨어요");render()}
 function delAn(i){S.qa=null;st.an.splice(i,1);save();render()}
 function togOpen(k){S.op[k]=!S.op[k];render()}
-function setNt(k){S.nt=k;S.pv=null;if(!PI().busy)S.pan=null;S.pdc=null;S.nbd=null;S.sd=null;S.qa=null;render()}
+function setNt(k){S.nt=k;S.pv=null;S.pq=null;S.pdr=null;S.pm=null;if(!PI().busy)S.pan=null;S.pdc=null;S.nbd=null;S.sd=null;S.qa=null;render()}
 function vWrong(D){
   var top='<div class="seg" style="margin:12px 0 16px;max-width:560px">'+[["w","오답노트"],["pdf","PDF"],["sim","유사 문제"],["ink","필기"]].map(function(t){return '<button class="'+(S.nt===t[0]?'on':'')+'" onclick="setNt(\''+t[0]+'\')">'+t[1]+'</button>'}).join("")+'</div>';
   return '<div class="notes"><h1 class="h1">노트</h1>'+top+(S.nt==="pdf"?vNotePdf(D):S.nt==="sim"?vNoteSim(D):S.nt==="ink"?vNoteInk(D):vWrongW(D))+'</div>'}
@@ -1913,6 +1982,8 @@ async function piRun(){
     P.busy=false;P.prog="";P.key="";pdfKeep(P.q,(P.exam||"").trim(),P.items.length).then(function(id){P.fid=id});render()
   }catch(e){P.busy=false;P.prog="";aiFail(e,"문제를 읽지 못했어요. 파일을 확인하고 다시 시도해 주세요.");render()}}
 function piOn(i){var z=PI().items[i];z.on=!z.on;render()}
+function piOptDel(i,k){var z=PI().items[i];if(z.o.length<=2)return;z.o.splice(k,1);if(z.a===k){z.a=0;z.src="man"}else if(z.a>k)z.a--;render()}
+function piOptAdd(i){var z=PI().items[i];if(z.o.length>=6)return;z.o.push("");render()}
 function piAns(i,a){var z=PI().items[i];z.a=a;z.src="man";render()}
 function piKey(){var d=(PI().key.match(/[1-9]/g)||[]);PI().items.forEach(function(z,i){if(d[i]&&+d[i]<=z.o.length){z.a=+d[i]-1;z.src="man"}});render()}
 function piBack(){PI().items=null;S.pan=null;render()}
@@ -1933,7 +2004,7 @@ function piReview(D){
   var ord=P.items.map(function(z,i){return i}).sort(function(a,b){var x=P.items[a],y=P.items[b];return (y.src==="ai"&&y.conf==="low"?1:0)-(x.src==="ai"&&x.conf==="low"?1:0)});
   h+=ord.map(function(i){var z=P.items[i];return '<div class="card" style="margin-bottom:12px"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox"'+(z.on?' checked':'')+' onchange="piOn('+i+')"><b>'+esc(z.no)+'번</b><span class="tag">'+L[z.src]+(z.src==="ai"&&z.conf?' · 확신 '+({high:"높음",mid:"보통",low:"낮음"}[z.conf]||""):'')+'</span>'+(z.fig?'<span class="tag">그림 포함</span>':'')+'</label><div class="chips" style="margin-top:8px">'+["e","s"].map(function(b){return '<button class="chip'+((z.sub||S.sub)===b?' on':'')+'" onclick="piSub('+i+',\''+b+'\')">'+DB[b].name+'</button>'}).join("")+'</div><div class="chips scroll" style="margin-top:8px">'+DB[z.sub||S.sub].units.map(function(u){return '<button class="chip'+(z.t===u?' on':'')+'" onclick="piUnit('+i+',\''+u+'\')">'+esc(u)+'</button>'}).join("")+'</div>'
     +piImg(i,z)+'<textarea class="ta" rows="'+Math.min(18,Math.max(4,piCleanQuestion(z).split("\n").length+2))+'" oninput="PI().items['+i+'].q=this.value" aria-label="문제 본문" style="margin:8px 0">'+esc(piCleanQuestion(z))+'</textarea>'
-    +z.o.map(function(o,k){return '<button class="opt'+(k===z.a?' ok':'')+'" onclick="piAns('+i+','+k+')"><span class="n">'+(k+1)+'</span><span>'+esc(o)+'</span></button>'}).join("")+'</div>'}).join("");
+    +'<p class="sub" style="margin:4px 0 6px;font-size:12.5px">번호를 누르면 정답으로 정해지고, 글자를 눌러 선지를 고칠 수 있어요.</p>'+z.o.map(function(o,k){return '<div style="display:flex;gap:6px;align-items:stretch;margin-bottom:6px"><button class="opt'+(k===z.a?' ok':'')+'" style="flex:none;width:44px;min-width:0;justify-content:center;margin:0" onclick="piAns('+i+','+k+')" aria-label="'+(k+1)+'번을 정답으로"><span class="n">'+(k+1)+'</span></button><textarea class="ta" rows="'+Math.min(5,Math.max(1,Math.ceil(String(o).length/22)))+'" style="flex:1;min-width:0;margin:0" oninput="PI().items['+i+'].o['+k+']=this.value" aria-label="'+(k+1)+'번 선지">'+esc(o)+'</textarea>'+(z.o.length>2?'<button class="btn sm" style="flex:none" onclick="piOptDel('+i+','+k+')" aria-label="'+(k+1)+'번 선지 삭제">✕</button>':'')+'</div>'}).join("")+(z.o.length<6?'<div class="after" style="margin:2px 0 8px"><button class="btn sm" onclick="piOptAdd('+i+')">선지 추가</button></div>':'')+'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">해설</p><textarea class="ta" rows="'+Math.min(10,Math.max(2,Math.ceil(String(z.e||"").length/30)+1))+'" oninput="PI().items['+i+'].e=this.value" aria-label="해설" placeholder="해설이 비어 있어요. 직접 적을 수 있어요">'+esc(z.e||"")+'</textarea></div>'}).join("");
   var n=P.items.filter(function(z){return z.on}).length;
   return h+'<div class="after"><button class="btn" onclick="piBack()">다시 올리기</button><button class="btn" onclick="piSave(true)"'+(n?'':' disabled')+'>저장만 ('+n+')</button><button class="btn pri" onclick="piSave(false)"'+(n?'':' disabled')+'>저장하고 풀기 ('+n+')</button></div>'}
 function piSave(only){
