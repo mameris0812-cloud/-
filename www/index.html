@@ -894,6 +894,52 @@ body.ink-on.inkx button,body.ink-on.inkx a,body.ink-on.inkx textarea,body.ink-on
 .seg[data-sub] button.on{background:none!important;color:var(--acc-ink)}
 @media (prefers-reduced-motion:reduce){.seg[data-sub] .sgi{transition:none}}
 </style>
+<style id="subctr">
+.seg[data-sub]{display:grid!important;grid-template-columns:1fr 1fr;gap:2px;flex-direction:row}
+.seg[data-sub] button{min-width:0;width:auto;white-space:nowrap}
+.seg[data-sub] button,.side .seg[data-sub] button{display:flex!important;align-items:center;justify-content:center;text-align:center!important;line-height:1.25;min-height:36px;padding:8px 10px!important;box-sizing:border-box}
+</style>
+<style id="slide1">
+@keyframes vtsoft{from{opacity:0}to{opacity:1}}
+.view.vt-soft{animation:vtsoft .2s ease-out backwards}
+.view.vt-soft[class*="vt-"]>*{animation:none}
+.view .slx{position:relative}
+.view .slx>.slid{position:absolute;pointer-events:none;z-index:0;transition:left .32s cubic-bezier(.3,.8,.25,1),width .32s cubic-bezier(.3,.8,.25,1)}
+.view .slx>button{position:relative;z-index:1;transition:color .28s ease}
+.view .slx>button.on{background:none!important;box-shadow:none!important}
+.view .slx.slu>button.on::after{display:none!important}
+.view .slx.slu>.slid{bottom:-1px;height:3px!important;top:auto!important;border-radius:3px 3px 0 0;background:var(--acc)}
+.view .slx.slp>.slid{background:var(--surface);border-radius:11px;box-shadow:0 1px 4px rgba(20,27,52,.14)}
+.view .slx.slp.myseg>.slid{background:var(--acc);box-shadow:none;border-radius:9px}
+.view .chip{transition:background-color .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .1s}
+@media (prefers-reduced-motion:reduce){.view .chip{transition:none}}
+@media (prefers-reduced-motion:reduce){.view .slx>.slid,.view .slx>button{transition:none}}
+</style>
+<style id="pillfx">
+/* 알약(chip) 버튼: 탄성 있는 눌림 · 선택 시 팝 + 번짐 · 호버 리프트 */
+.view .chip{position:relative;overflow:hidden;isolation:isolate;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
+  transition:background-color .24s ease,color .24s ease,border-color .24s ease,box-shadow .28s ease,transform .38s cubic-bezier(.34,1.56,.64,1)}
+.view .chip:not(:disabled):active{transform:scale(.93);transition-duration:.24s,.24s,.24s,.28s,.09s;transition-timing-function:ease,ease,ease,ease,ease-out}
+.view .chip::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;
+  background:radial-gradient(circle at 50% 50%,color-mix(in srgb,currentColor 32%,transparent) 0,color-mix(in srgb,currentColor 12%,transparent) 45%,transparent 72%)}
+.view .chip.chip-pop{animation:chipPop .42s cubic-bezier(.34,1.56,.64,1)}
+.view .chip.chip-pop::after{animation:chipGlow .55s ease-out}
+@keyframes chipPop{0%{transform:scale(.9)}55%{transform:scale(1.07)}100%{transform:scale(1)}}
+@keyframes chipGlow{0%{opacity:1;transform:scale(.15)}100%{opacity:0;transform:scale(1.6)}}
+@media (hover:hover){.view .chip:not(:disabled):not(.on):hover{transform:translateY(-1px);box-shadow:0 3px 10px color-mix(in srgb,var(--acc) 16%,transparent)}
+  .view .chip:not(:disabled):not(.on):hover:active{transform:scale(.93)}}
+.view .chip:focus-visible{outline:2px solid color-mix(in srgb,var(--acc) 55%,transparent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.view .chip{transition:none}.view .chip.chip-pop,.view .chip.chip-pop::after{animation:none}.view .chip:not(:disabled):active,.view .chip:hover{transform:none}}
+</style>
+<style id="zcdark">
+/* 폴더·파일 펼침 전환: 다크모드에서 패널이 배경과 잘 구분되도록 대비 강화 */
+@media (prefers-color-scheme:dark){
+:root:not([data-theme="light"]){--zcg:#232E5A;--zcr:color-mix(in srgb,var(--acc) 42%,var(--line));--zcs:0 8px 32px color-mix(in srgb,var(--acc) 26%,transparent)}
+:root:not([data-theme="light"])::view-transition-old(zc){filter:brightness(1.45) saturate(1.1);box-sizing:border-box;border:1px solid var(--zcr)}
+}
+:root[data-theme="dark"]{--zcg:#232E5A;--zcr:color-mix(in srgb,var(--acc) 42%,var(--line));--zcs:0 8px 32px color-mix(in srgb,var(--acc) 26%,transparent)}
+:root[data-theme="dark"]::view-transition-old(zc){filter:brightness(1.45) saturate(1.1);box-sizing:border-box;border:1px solid var(--zcr)}
+</style>
 <div class="app" id="app"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
 (function(){["gesturestart","gesturechange","gestureend"].forEach(function(n){document.addEventListener(n,function(e){e.preventDefault()},{passive:false})});document.addEventListener("touchstart",function(e){if(e.touches.length>1)e.preventDefault()},{passive:false})})();
@@ -1102,8 +1148,8 @@ function setSub(s){if(s===S.sub)return;snap();if(s!==S.sub){S.runs=S.runs||{};S.
 function toggleSide(){var c=document.documentElement.classList;if(c.contains("solving")){c.toggle("sbpeek");inkRz();return}c.remove("sbpeek");var on=c.toggle("nosb");try{localStorage.setItem("satam-nosb",on?"1":"0")}catch(e){}inkRz()}
 function inkRz(){setTimeout(function(){try{INK.layers.forEach(inkSize)}catch(e){}},340)}
 try{if(localStorage.getItem("satam-nosb")==="1")document.documentElement.classList.add("nosb")}catch(e){}
-function go(t){if(t==="photo"){S.qmode="ai";S.am="photo";S.pfocus=1;t="quiz"}else if(t!=="quiz")S.pfocus=0;var same=S.tab===t;snap();S.tab=t;S.rs=same?1:2;render()}
-document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".view .seg button,.view .qmodes button");if(!b)return;var seg=b.parentElement,segs=[].slice.call(document.querySelectorAll(".view .seg,.view .qmodes")),bs=[].slice.call(seg.children),cur=-1;bs.forEach(function(x,i){if(x.classList.contains("on"))cur=i});var ni=bs.indexOf(b);window.TA={s:segs.indexOf(seg),d:ni>cur?1:-1,same:ni===cur};setTimeout(function(){window.TA=null},0)},true);
+function go(t){if(t!=="photo"&&S.tab===t)return;if(t==="photo"){S.qmode="ai";S.am="photo";S.pfocus=1;t="quiz"}else if(t!=="quiz")S.pfocus=0;var same=S.tab===t;snap();S.tab=t;S.rs=same?1:2;render()}
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".view .seg button,.view .qmodes button");if(!b)return;var seg=b.parentElement;if(seg.classList.contains("myseg"))return;var segs=[].slice.call(document.querySelectorAll(".view .seg,.view .qmodes")),bs=[].slice.call(seg.children),cur=-1;bs.forEach(function(x,i){if(x.classList.contains("on"))cur=i});var ni=bs.indexOf(b);window.TA={s:segs.indexOf(seg),d:ni>cur?1:-1,same:ni===cur};setTimeout(function(){window.TA=null},0)},true);
 function render(){
   var y=window.scrollY||0,_l=[].map.call(document.querySelectorAll(".split .list"),function(e){return e.scrollTop});
   document.documentElement.setAttribute("data-sub",S.sub);
@@ -1123,8 +1169,8 @@ function render(){
   window.SBI=SI;if(SBP!==SI)requestAnimationFrame(function(){requestAnimationFrame(function(){[].forEach.call(document.querySelectorAll(".seg[data-sub] .sgi"),function(e){e.style.setProperty("--i",SI)})})});
   (function(v){var c=document.documentElement.classList;if(c.contains("solving")!==v){void document.body.offsetWidth;c.toggle("solving",v);c.remove("sbpeek");inkRz()}})(!!(S.tab==="quiz"&&S.run&&!S.pfocus));
   (function(t){window.TA=null;var v=document.querySelector(".view");if(!t||t.same||!v||v.className.indexOf("vt-")>=0)return;var seg=v.querySelectorAll(".seg,.qmodes")[t.s];if(!seg)return;var c=t.d>0?"vt-tin-r":"vt-tin-l",n=seg;while(n&&n!==v){var x=n.nextElementSibling;while(x){x.classList.add(c);x=x.nextElementSibling}n=n.parentElement}})(window.TA);
-  (function(r){if(!r||r>4)return;var v=document.querySelector(".view");if(!v)return;v.classList.add(r===1?"vt-fwd":r===2?"vt-fade":"vt-back")})(S.rs);
-  window.scrollTo(0,S.rs===2?(SCR[dk()]||0):S.rs===3?(S.lsy||0):S.rs===4?(S.edY||0):S.rs?0:y);S.rs=0;if(_l.length)[].forEach.call(document.querySelectorAll(".split .list"),function(e,i){if(_l[i])e.scrollTop=_l[i]});restoreDr();tick();inkMount();anHydrate();
+  (function(r){if(!r||r>6)return;var v=document.querySelector(".view");if(!v)return;v.classList.add(r===1?"vt-fwd":r===2?"vt-fade":(r===5||r===6)?"vt-soft":"vt-back")})(S.rs);
+  window.scrollTo(0,S.rs===2?(SCR[dk()]||0):S.rs===3?(S.lsy||0):S.rs===4?(S.edY||0):S.rs===6?(S.lsy||0):S.rs?0:y);S.rs=0;if(_l.length)[].forEach.call(document.querySelectorAll(".split .list"),function(e,i){if(_l[i])e.scrollTop=_l[i]});restoreDr();tick();inkMount();anHydrate();
 }
 
 /* ---------- 홈 ---------- */
@@ -1176,9 +1222,9 @@ function inkDrop(){try{Object.keys(INK.tm).forEach(function(k){clearTimeout(INK.
 async function doReset(){inkDrop();try{var db=await pdbOpen();await new Promise(function(ok,no){var tx=db.transaction(["f","ink","img"],"readwrite");["f","ink","img"].forEach(function(s){tx.objectStore(s).clear()});tx.oncomplete=ok;tx.onerror=tx.onabort=function(){no(tx.error)}})}catch(x){}try{localStorage.removeItem(K)}catch(x){}toast("기록을 초기화했어요");setTimeout(function(){location.reload()},500)}
 
 /* ---------- 개념 ---------- */
-function openCard(i){S.tab="learn";S.cid=i;S.ct=0;S.cs="";S.qa=null;S.rs=1;render()}
-function pickCard(i){S.cid=i;S.qa=null;if(isWide())S.rs=0;else{S.lsy=window.scrollY||0;S.rs=1}render()}
-function setUnit(i){S.ct=i;S.cid=null;render()}
+function openCard(i){S.tab="learn";S.cid=i;S.ct=0;S.cs="";S.qa=null;S.rs=5;render()}
+function pickCard(i){S.cid=i;S.qa=null;if(isWide())S.rs=0;else{S.lsy=window.scrollY||0;S.rs=5}render()}
+function setUnit(i){if(S.ct===i)return;S.ct=i;S.cid=null;render()}
 function toggleRead(i){var k=S.sub+":"+DB[S.sub].cards[i].t;if(st.read[k])delete st.read[k];else{st.read[k]=1;var d=today();if(st.days.indexOf(d)<0)st.days.push(d);toast("개념을 완료로 표시했어요")}save();render()}
 function listHTML(D){
   var q=(S.cs||"").trim().toLowerCase(),o="",last="",n=0,nx=-1;
@@ -1209,7 +1255,7 @@ function vLearn(D){
   var rd=D.cards.filter(function(c){return st.read[S.sub+":"+c.t]}).length;
   var lp=pct(rd,D.cards.length),side='<div><div class="lhead"><h1 class="h1">개념 정리</h1><span class="lcount"><b>'+rd+'</b> / '+D.cards.length+' 완료</span></div><span class="meter lmeter" role="progressbar" aria-label="개념 완료율" aria-valuenow="'+lp+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+lp+'%"></i></span><input class="search" type="search" id="csearch" placeholder="개념·키워드 검색" value="'+esc(S.cs)+'" oninput="filterList(this.value)" aria-label="개념 검색"><div style="margin:12px 0 4px">'+chips(["전체"].concat(D.units),S.ct,"setUnit",true)+'</div></div>';
   if(wide)return '<div class="split"><div class="list">'+side+'<div id="clist" class="list">'+listHTML(D)+'</div></div><div>'+(ci!=null?cardHTML(D,ci):'')+'</div></div>';
-  if(ci!=null)return '<button class="back" onclick="S.cid=null;S.qa=null;S.rs=3;render()">'+ic("back",18)+'개념 목록</button>'+cardHTML(D,ci);
+  if(ci!=null)return '<button class="back" onclick="S.cid=null;S.qa=null;S.rs=6;render()">'+ic("back",18)+'개념 목록</button>'+cardHTML(D,ci);
   return side+'<div id="clist" class="list" style="margin-top:8px">'+listHTML(D)+'</div>'}
 
 /* ---------- 퀴즈 ---------- */
@@ -1218,7 +1264,7 @@ function startDaily(){var D=DB[S.sub],sc=D.qs.map(function(q){var h=st.qh[q.id],
 function startUnit(i){var D=DB[S.sub],u=i?D.units[i-1]:"";S.qu=i;startRun("mc",D.qs.filter(function(q){return !u||q.t===u}).map(function(q){return q.id}).slice(0,0).concat(freshOrder(D.qs.filter(function(q){return !u||q.t===u}).map(function(q){return q.id})).slice(0,10)),u?u+" 퀴즈":"전체 퀴즈");bgMix(D,u,0,3)}
 function startWrongQ(ui){var U=ui?DB[S.sub].units[ui-1]:"";var ids=st.wrong.filter(function(id){var z=byId(id);return z&&!st.und[id]&&DB[S.sub].qs.indexOf(z)>=0&&(!U||z.t===U)});startRun("mc",ids,"틀린 문제 다시 풀기")}
 function startWrongX(){var ids=st.ox.filter(function(id){var z=oxById(id);return z&&!st.und[id]&&oxList(S.sub).indexOf(z)>=0});startRun("ox",ids,"틀린 선지 다시 풀기")}
-function setQ(k,v){S[k]=v;if(k==="qmode")S.pfocus=0;render()}
+function setQ(k,v){if(S[k]===v)return;S[k]=v;if(k==="qmode")S.pfocus=0;render()}
 function freshOrder(ids){return ids.map(function(id){var h=st.qh[id],sc=h?(1+Math.min(h[0],6)*.5+(h[2]?0:-.8)):0;return{id:id,s:sc+Math.random()*1.2}}).sort(function(a,b){return a.s-b.s}).map(function(x){return x.id})}
 async function bgMix(D,u,lv,n){
   if(st.gmix===0||!aiOn()||S.mixb||!S.run||S.run.kind!=="mc")return;
@@ -1268,7 +1314,7 @@ function vQuiz(D){
   var left='<div class="card setup qsetup"><div class="field"><h3 class="h3">단원</h3>'+chips(["전체"].concat(D.units),S.qu,"setQu",!isWide())+'</div><div class="field"><h3 class="h3">난이도</h3>'+chips(["전체","쉬움","보통","어려움"],S.ql,"setQl")+'</div><div class="field"><h3 class="h3">문항 수</h3>'+chips(["5문항","10문항","20문항","모두"],[5,10,20,0].indexOf(S.qn),"setQn")+'</div><div class="field"><h3 class="h3">출제 방식</h3><div class="chips"><button class="chip'+(S.qw?'':' on')+'" onclick="setQ(\'qw\',0)">골고루 섞기</button><button class="chip'+(S.qw?' on':'')+'" onclick="setQ(\'qw\',1)">틀렸거나 안 푼 문제 위주</button></div></div><div class="qsum"><span>'+esc([u||"전체 단원",["전체 난이도","쉬움","보통","어려움"][S.ql],S.qw?"오답 위주":"골고루"].join(" · "))+'</span><span>출제 가능 <b>'+pool.length+'</b>문제</span></div><button class="btn pri" onclick="startSetup()"'+(n?'':' disabled')+'>'+(n?'시작하기 ('+n+'문제)':'조건에 맞는 문제가 없어요')+'</button></div>';
   var right='<div class="panel qunits"><h3 class="h3">단원별 정복 현황</h3><p class="sub" style="margin:2px 0 4px">단원을 누르면 출제 범위로 선택돼요.</p>'+D.units.map(function(x,i){var m=mast(D,x),p=pct(m.ok,m.total),on=S.qu===i+1;return '<button class="unit'+(on?' on':'')+'" onclick="setQu('+(on?0:i+1)+')" aria-pressed="'+on+'"><b>'+esc(x)+'</b><span class="pc">'+p+'%</span><span class="meter"><i style="width:'+p+'%"></i></span><small>'+m.ok+' / '+m.total+'문항 정복</small></button>'}).join("")+'</div>';
   return '<h1 class="h1" style="margin-bottom:12px">퀴즈</h1>'+seg+'<div class="grid g2" style="align-items:start">'+left+right+'</div>'}
-function setQu(i){S.qu=i;render()}function setQl(i){S.ql=i;render()}function setQn(i){S.qn=[5,10,20,0][i];render()}
+function setQu(i){S.qu=i;render()}function setQl(i){if(S.ql===i)return;S.ql=i;render()}function setQn(i){S.qn=[5,10,20,0][i];render()}
 function oxSetup(D){
   var l=oxList(S.sub),w=st.ox.filter(function(id){var z=oxById(id);return z&&l.indexOf(z)>=0}).length;
   return '<div class="grid g2" style="align-items:start"><div class="card setup"><div><h2 class="h2">'+D.name+' 선지 OX</h2><p class="sub" style="margin-top:4px">설명이 맞으면 O, 틀리면 X를 골라요. 틀린 선지는 선지 오답노트에 저장돼요.</p></div><div class="note">준비된 선지 '+l.length+'개 · 오답노트 '+w+'개</div><div class="row"><button class="btn pri" onclick="startRun(\'ox\',oxList(S.sub).map(function(q){return q.id}),\'OX 선지\')">전체 풀기</button><button class="btn" onclick="startWrongX()"'+(w?'':' disabled')+'>틀린 선지만</button></div></div>'+myForm()+'</div>'+myList()}
@@ -1313,7 +1359,7 @@ function myForm(){
   return '<div class="card setup"><div><h2 class="h2">내 선지 적기</h2><p class="sub" style="margin-top:4px">시험이나 문제집에서 틀린 선지를 그대로 적으세요. 적으면 선지 오답노트에 바로 저장되고 OX 퀴즈에도 들어가요.</p></div>'
   +'<textarea class="ta" id="mn" rows="3" placeholder="선지 내용" oninput="S.mn=this.value" aria-label="선지 내용">'+esc(S.mn)+'</textarea>'
   +(S.sub==="e"?'<input class="ta" id="mk" type="text" placeholder="사상가 (예: 칸트)" value="'+esc(S.mk)+'" oninput="S.mk=this.value" aria-label="사상가"><div class="chips">'+THINK.map(function(n,i){return '<button class="chip'+(S.mk===n?' on':'')+'" onclick="S.mk=THINK['+i+'];render()">'+n+'</button>'}).join("")+'</div>':'')
-  +'<div class="seg">'+[true,false].map(function(v){return '<button class="'+(S.ma===v?'on':'')+'" onclick="S.ma='+v+';render()">'+(v?'O 맞는 설명':'X 틀린 설명')+'</button>'}).join("")+'</div>'
+  +'<div class="seg myseg">'+[true,false].map(function(v){return '<button class="'+(S.ma===v?'on':'')+'" onclick="S.ma='+v+';render()">'+(v?'O 맞는 설명':'X 틀린 설명')+'</button>'}).join("")+'</div>'
   +'<div class="fld"><label for="me">해설 (왜 맞고 틀린지)</label><textarea class="ta" id="me" rows="2" placeholder="비워 두고 AI 해설 받기를 눌러도 돼요" oninput="S.me=this.value" aria-label="해설">'+esc(S.me)+'</textarea></div><div class="fld"><label for="mc">내가 헷갈린 이유</label><textarea class="ta" id="mc" rows="2" placeholder="예: 벤담과 밀을 바꿔 외웠어요" oninput="S.mc=this.value" aria-label="헷갈린 이유">'+esc(S.mc)+'</textarea></div>'
   +(S.bz==="f"?loadHTML("exp"):'')+(S.note?'<p style="color:var(--no)">'+esc(S.note)+'</p>':'')
   +'<div class="row">'+(aiOn()?'<button class="btn" onclick="explainForm()"'+(S.bz?' disabled':'')+'>'+(S.bz==="f"?'해설 쓰는 중…':'AI 해설 받기')+'</button>':'')+'<button class="btn pri" onclick="addMy()">선지 오답노트에 저장</button></div></div>'}
@@ -1878,7 +1924,7 @@ async function explainSimOpts(mode,id){
   if(mode==="preview"){if(S.sg)S.sg.optBusy=null}else S.soBusy=null;
   render()
 }
-function setSf(i){S.sf=i;S.sd=null;S.sv=null;render()}
+function setSf(i){if(S.sf===i)return;S.sf=i;S.sd=null;S.sv=null;render()}
 function sgAns(id,k){var s=st.sim.filter(function(x){return x.id===id})[0];if(!s||S.sp[id]!=null)return;S.sp[id]=k;s.lr=k===s.a?1:0;save();render()}
 function sgRe(id){delete S.sp[id];render()}
 function sgDelAsk(id){S.sd=S.sd===id?null:id;render()}
@@ -2031,16 +2077,16 @@ function vNoteSim(D){
   return h+'</div>'}
 
 /* ---------- 오답노트 ---------- */
-function setW(k){S.wt=k;S.qa=null;S.av=null;render()}
+function setW(k){if(S.wt===k)return;S.wt=k;S.qa=null;S.av=null;render()}
 function toggleUnd(id){if(st.und[id])delete st.und[id];else{st.und[id]=1;toast("이해함으로 표시했어요")}save();render()}
-function setWv(i){S.wv=i;S.qa=null;render()}
+function setWv(i){if(S.wv===i)return;S.wv=i;S.qa=null;render()}
 function wvChips(n,a,b){return '<div style="margin-bottom:12px">'+chips(["전체 "+n,"복습 중 "+a,"이해함 "+b],S.wv,"setWv")+'</div>'}
 function wvPass(un){return S.wv===1?!un:S.wv===2?un:true}
 function wvEmpty(what){return '<div class="empty"><b>'+(S.wv===2?'이해함으로 표시한 '+what+'이 아직 없어요':'복습할 '+what+'을 모두 이해했어요')+'</b>'+(S.wv?'<button class="btn" onclick="setWv(0)">전체 보기</button>':'')+'</div>'}
 function toggleAn(i){var a=st.an[i];if(!a)return;a.done=!a.done;save();toast(a.done?"이해함으로 표시했어요":"다시 복습 중으로 바꿨어요");render()}
 function delAn(i){S.dc=null;S.qa=null;S.av=null;var a=st.an[i];if(a&&a.id){anImgDel(a.id).catch(function(){});if(AN_URL[a.id]){try{URL.revokeObjectURL(AN_URL[a.id])}catch(e){}delete AN_URL[a.id]}}st.an.splice(i,1);save();render()}
 function togOpen(k){S.op[k]=!S.op[k];render()}
-function setNt(k){S.nt=k;S.av=null;S.sv=null;S.pv=null;S.pq=null;S.pdr=null;S.pm=null;if(!PI().busy)S.pan=null;S.pdc=null;S.nbd=null;S.sd=null;S.qa=null;render()}
+function setNt(k){if(S.nt===k&&!(S.pv||S.pq||S.sv||S.av))return;S.nt=k;S.av=null;S.sv=null;S.pv=null;S.pq=null;S.pdr=null;S.pm=null;if(!PI().busy)S.pan=null;S.pdc=null;S.nbd=null;S.sd=null;S.qa=null;render()}
 /* ---------- 사진 분석 오답노트: 한 문제씩 보기 ---------- */
 var AVL=[];
 function anOpen(key){S.av=key;S.qa=null;S.lsy=window.scrollY||0;S.rs=1;render()}
@@ -2103,7 +2149,7 @@ function vWrongW(D){
   items.forEach(function(p){var a=p[0],i=p[1],k="a"+i,open=false;
     h+='<div class="wn'+(a.done?' und':'')+'" data-ink="a:'+(a.id||("i"+i))+'"><div class="prow">'+(a.img&&!(open&&a.o)?'<img class="thumb" src="'+a.img+'" alt="저장한 문제 사진"'+(a.o?' onclick="anOpen(\''+(a.id||("i"+i))+'\')" style="cursor:zoom-in"':'')+'>':'')+'<div><p><b>'+esc(a.t)+' 저장</b> '+(a.done?'<span class="tag ok" style="margin:0 0 0 4px">이해함</span>':'<span class="tag no" style="margin:0 0 0 4px">복습 중</span>')+'</p>'+(a.m?'<p class="mine">내 메모: '+esc(a.m)+'</p>':'')+'</div></div>'+(open&&a.o?'<img class="abig" data-aid="'+a.id+'" src="'+(AN_URL[a.id]||a.img||'')+'" alt="저장한 문제 사진 원본" onclick="togOpen(\''+k+'\')">':'')+fdHead("an:"+(a.id||"i"+i))+'<div class="an pres'+(open?'':' clip')+'" style="margin-top:8px">'+fmtAnCards(a.text)+'</div><div class="acts"><button class="btn sm" onclick="anOpen(\''+(a.id||("i"+i))+'\')">전체 보기</button>'+qaBtn(k)+fdBtns("an:"+(a.id||"i"+i))+'<button class="btn sm'+(a.done?'':' pri')+'" onclick="toggleAn('+i+')">'+(a.done?'다시 복습':'이해했어요')+'</button><button class="btn sm danger" onclick="dcAsk(\'an'+i+'\')">'+ic("trash",16)+'삭제</button></div>'+dcPanel("an"+i,"이 분석 노트",'delAn('+i+')')+fdPanel("an:"+(a.id||"i"+i),"wp")+qaBox(k)+'</div>'});
   return h+'</div>'}
-function setWf(i){S.wf=i;render()}
+function setWf(i){if(S.wf===i)return;S.wf=i;render()}
 
 /* ---------- Claude 연동 (sample) ---------- */
 try{if(window.claude&&claude.use){claude.use("sample").then(function(s){CL=s;S.sl=false;render()}).catch(function(){S.sl=false;render()})}else{S.sl=false}}catch(x){S.sl=false}
@@ -2285,7 +2331,7 @@ function addKey(){
 /* API 키 결과 필터: 정상 / 실패 / 미확인 */
 function kfStat(x,now){var r=(S.kres||{})[x.k];if(r){if(r.ok)return"ok";if(r.msg==="테스트 중…")return"none";return"fail"}return x.until>now?"fail":"none"}
 function kfPass(x,now){var f=S.kf||"all";return f==="all"||kfStat(x,now)===f}
-function kfSet(v){S.kf=v;render()}
+function kfSet(v){if((S.kf||"all")===v)return;S.kf=v;render()}
 function kfChips(ks,now){
   if(!ks.length)return "";
   var c={all:ks.length,ok:0,fail:0,none:0};ks.forEach(function(x){c[kfStat(x,now)]++});
@@ -2406,13 +2452,13 @@ function importData(inp){
 function vSettings(D){
   var ks=gkeys(),now=Date.now();
   var cur=useGem()?"Gemini ("+esc(st.gmodel)+") · 키 "+ks.length+"개 중 "+(st.gact+1)+"번 사용 중":(CL?"Claude (claude.ai 내장)":"연결 안 됨");
-  var h='<h1 class="h1">설정</h1><p class="sub">AI 연결, 학습 목표, 데이터 백업을 관리해요.</p><div class="grid g2" style="margin-top:16px;align-items:start">';
-  h+='<div class="card setup"><div><h2 class="h2">Gemini API 연결</h2><p class="sub" style="margin-top:4px">키를 여러 개 등록하면 한 키의 한도가 끝났을 때 다음 키로 자동 전환돼요. 키는 <a class="lnk" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>에서 무료로 만들 수 있어요.</p></div>'
+  var h='<h1 class="h1">설정</h1><p class="sub">AI 연결·학습 목표·백업</p><div class="grid g2" style="margin-top:16px;align-items:start">';
+  h+='<div class="card setup"><div><h2 class="h2">Gemini API 연결</h2><p class="sub" style="margin-top:4px">키는 여러 개 등록할 수 있고, 한도가 차면 다음 키로 넘어가요. <a class="lnk" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>에서 무료로 발급해요.</p></div>'
    +'<div class="note">현재 AI: <b>'+cur+'</b></div>'
    +'<div class="fld"><label>모델</label><div class="chips">'+GEM_MODELS.map(function(m){return '<button class="chip'+(st.gmodel===m[0]?' on':'')+'" onclick="setModel(\''+m[0]+'\')" aria-pressed="'+(st.gmodel===m[0])+'">'+m[1]+'</button>'}).join("")+'</div></div>'
-   +'<div class="fld"><label>AI 튜터 간단한 질문</label><div class="chips"><button class="chip'+(st.gquick!==0?' on':'')+'" onclick="setQuick(1)" aria-pressed="'+(st.gquick!==0)+'">빠른 모델로 답하기</button><button class="chip'+(st.gquick===0?' on':'')+'" onclick="setQuick(0)" aria-pressed="'+(st.gquick===0)+'">선택한 모델로 답하기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gquick===0?'모든 튜터 질문에 위에서 고른 모델을 써요.':'짧은 뜻·사실 확인 질문(예: “공리주의가 뭐야?”)은 3.5 Flash-Lite로 더 빨리 답해요. 설명이 필요한 질문은 고른 모델을 써요.')+'</p></div>'
-   +'<div class="fld"><label>객관식 퀴즈에 AI 새 문제 섞기</label><div class="chips"><button class="chip'+(st.gmix!==0?' on':'')+'" onclick="setMix(1)" aria-pressed="'+(st.gmix!==0)+'">켜기</button><button class="chip'+(st.gmix===0?' on':'')+'" onclick="setMix(0)" aria-pressed="'+(st.gmix===0)+'">끄기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gmix===0?'기존 문제만 출제해요.':'퀴즈를 시작할 때 AI가 새 문제 3개를 만들어 풀이 중간에 섞어 넣어요. API 요청이 조금 늘어요.')+'</p></div>'
-   +(st.gmodel===G38?'<div class="fld"><label>3.8 Flash가 느릴 때</label><div class="chips"><button class="chip'+(st.gauto!==false?' on':'')+'" onclick="setSlowAuto(1)" aria-pressed="'+(st.gauto!==false)+'">3.5로 자동 전환</button><button class="chip'+(st.gauto===false?' on':'')+'" onclick="setSlowAuto(0)" aria-pressed="'+(st.gauto===false)+'">그대로 기다리기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gauto===false?'3.8 Flash로 끝까지 기다려요.':'응답이 늦으면 3.5 Flash로 바꿔서 다시 시도하고, 10분 뒤 3.8로 돌아와요.')+(st.gslow&&st.gslow>Date.now()&&st.gauto!==false?' (지금은 3.5로 쓰는 중)':'')+'</p></div>':'')
+   +'<div class="fld"><label>AI 튜터 간단한 질문</label><div class="chips"><button class="chip'+(st.gquick!==0?' on':'')+'" onclick="setQuick(1)" aria-pressed="'+(st.gquick!==0)+'">빠른 모델로 답하기</button><button class="chip'+(st.gquick===0?' on':'')+'" onclick="setQuick(0)" aria-pressed="'+(st.gquick===0)+'">선택한 모델로 답하기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gquick===0?'모든 질문에 선택한 모델을 써요.':'짧은 질문은 3.5 Flash-Lite로 빠르게 답해요.')+'</p></div>'
+   +'<div class="fld"><label>객관식 퀴즈에 AI 새 문제 섞기</label><div class="chips"><button class="chip'+(st.gmix!==0?' on':'')+'" onclick="setMix(1)" aria-pressed="'+(st.gmix!==0)+'">켜기</button><button class="chip'+(st.gmix===0?' on':'')+'" onclick="setMix(0)" aria-pressed="'+(st.gmix===0)+'">끄기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gmix===0?'기존 문제만 나와요.':'시작할 때 AI가 새 문제 3개를 만들어 섞어요.')+'</p></div>'
+   +(st.gmodel===G38?'<div class="fld"><label>3.8 Flash가 느릴 때</label><div class="chips"><button class="chip'+(st.gauto!==false?' on':'')+'" onclick="setSlowAuto(1)" aria-pressed="'+(st.gauto!==false)+'">3.5로 자동 전환</button><button class="chip'+(st.gauto===false?' on':'')+'" onclick="setSlowAuto(0)" aria-pressed="'+(st.gauto===false)+'">그대로 기다리기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gauto===false?'3.8 Flash로 끝까지 기다려요.':'늦으면 3.5로 다시 시도하고 10분 뒤 3.8로 돌아와요.')+(st.gslow&&st.gslow>Date.now()&&st.gauto!==false?' (지금은 3.5로 쓰는 중)':'')+'</p></div>':'')
    +'<div class="fld"><label>등록된 API 키 ('+ks.length+')</label>'+kfChips(ks,now)+(ks.length?ks.map(function(x,i){var cool=x.until>now,act=i===st.gact;if(!kfPass(x,now))return "";
       return '<div class="panel" style="margin-top:8px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b>'+(i+1)+'번</b><code>'+esc(S.gshow?x.k:maskKey(x.k))+'</code>'+(act?'<span class="tag ok" style="margin:0">사용 중</span>':'')+(cool?'<span class="tag no" style="margin:0">한도 초과·대기</span>':'')+'</div>'+keyRes(x.k)+'<div class="row" style="margin-top:8px">'+(act?'':'<button class="btn sm" onclick="useKey('+i+')">이 키 사용</button>')+'<button class="btn sm" onclick="testGem('+i+')"'+(S.gb?' disabled':'')+'>테스트</button><button class="btn sm danger" onclick="delKey('+i+')">삭제</button></div></div>'}).join(""):'<p class="sub" style="margin-top:6px">아직 등록된 키가 없어요.</p>')+'</div>'
    +'<div class="fld"><label for="gk">새 API 키 추가</label><div class="qrow"><input class="inp" id="gk" type="'+(S.gshow?'text':'password')+'" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="AIza..." value="'+esc(S.gk||"")+'" oninput="S.gk=this.value"><button class="btn" onclick="S.gshow=!S.gshow;render()">'+(S.gshow?'숨기기':'보기')+'</button></div></div>'
@@ -2420,13 +2466,13 @@ function vSettings(D){
    +(S.gb?loadHTML("test"):'')+(S.gt?'<p class="msg '+(S.gtok?'ok':'no')+'" role="status">'+esc(S.gt)+'</p>':'')
    +'<div class="row"><button class="btn pri" onclick="addKey()">키 추가</button><button class="btn" onclick="testGem()"'+(S.gb?' disabled':'')+'>'+(S.gb?'확인 중…':'입력한 키 테스트')+'</button><button class="btn" onclick="testAllGem()"'+(S.gb?' disabled':'')+'>'+(S.gb?'테스트 중…':'등록된 키 전체 테스트')+'</button></div>'
    +testAllGemHTML()
-   +'<p class="sub">키는 이 기기의 브라우저에만 저장되고, AI를 쓸 때 Google 서버로 직접 전송돼요. 공용 기기에서는 입력하지 마세요. 백업 파일에는 기본적으로 키가 들어가지 않아요. 설정의 백업 항목에서 켜면 포함할 수 있어요.</p></div>';
+   +'<p class="sub">키는 이 브라우저에만 저장돼요. 공용 기기에서는 입력하지 마세요.</p></div>';
   h+='<div class="grid">'
    +'<div class="card setup"><h2 class="h2">학습 설정</h2><div class="field"><h3 class="h3">하루 목표 문제 수</h3><div class="chips">'+[5,10,15,20].map(function(n){return '<button class="chip'+(goal()===n?' on':'')+'" onclick="setCfg(\'goal\','+n+')">'+n+'문제</button>'}).join("")+'</div></div>'
    +'<div class="field"><h3 class="h3">화면 모드</h3><div class="chips">'+[["auto","기기 설정"],["light","라이트"],["dark","다크"]].map(function(x){return '<button class="chip'+((st.theme||"auto")===x[0]?' on':'')+'" onclick="setCfg(\'theme\',\''+x[0]+'\')">'+x[1]+'</button>'}).join("")+'</div></div>'
-   +'<p class="sub">퀴즈 중에는 키보드로도 풀 수 있어요. 숫자 1~4는 보기 선택, O·X는 선지 선택, Enter는 다음 문제예요.</p></div>'
-   +'<div class="card setup"><h2 class="h2">학습 기록 백업</h2><p class="sub">학습 기록, 오답노트, 폴더, PDF 파일, 필기, 사진 분석 원본까지 모두 한 파일에 담겨요. 기기를 바꾸거나 앱·브라우저 데이터를 지우기 전에 백업해 두세요. 불러오면 현재 내용이 백업 내용으로 대체돼요.</p><label class="ptog"><span><b>API 키도 함께 내보내기</b><small>켜면 백업 파일에 키가 그대로 들어가요. 파일을 남에게 공유하지 마세요</small></span><input type="checkbox" role="switch"'+(S.expKey?' checked':'')+' onchange="S.expKey=this.checked;render()"></label><div class="row"><button class="btn pri" onclick="exportData()">백업 내려받기</button><label class="btn" for="imp" style="cursor:pointer">백업 불러오기</label></div><input class="sr" type="file" id="imp" accept="application/json,.json" onchange="importData(this)">'
-   +(S.rc?'<div class="panel"><p><b>학습 기록을 모두 지울까요?</b></p><p class="sub">푼 기록, 오답노트, 사진 분석, 내 선지, 저장한 API 키가 모두 삭제돼요.</p><div class="row" style="margin-top:10px"><button class="btn danger" onclick="doReset()">모두 지우기</button><button class="btn" onclick="S.rc=false;render()">취소</button></div></div>':'<div><button class="btn ghost sm" onclick="S.rc=true;render()">학습 기록 초기화</button></div>')
+   +'<p class="sub">키보드: 1~4 보기 선택, O·X 선지 선택, Enter 다음 문제</p></div>'
+   +'<div class="card setup"><h2 class="h2">학습 기록 백업</h2><p class="sub">모든 학습 데이터를 한 파일로 저장해요. 불러오면 현재 내용이 대체돼요.</p><label class="ptog"><span><b>API 키도 함께 내보내기</b><small>켜면 파일에 키가 들어가니 공유하지 마세요</small></span><input type="checkbox" role="switch"'+(S.expKey?' checked':'')+' onchange="S.expKey=this.checked;render()"></label><div class="row"><button class="btn pri" onclick="exportData()">백업 내려받기</button><label class="btn" for="imp" style="cursor:pointer">백업 불러오기</label></div><input class="sr" type="file" id="imp" accept="application/json,.json" onchange="importData(this)">'
+   +(S.rc?'<div class="panel"><p><b>학습 기록을 모두 지울까요?</b></p><p class="sub">기록·오답노트·사진 분석·내 선지·API 키가 모두 삭제돼요.</p><div class="row" style="margin-top:10px"><button class="btn danger" onclick="doReset()">모두 지우기</button><button class="btn" onclick="S.rc=false;render()">취소</button></div></div>':'<div><button class="btn ghost sm" onclick="S.rc=true;render()">학습 기록 초기화</button></div>')
    +'</div></div></div>';
   return h}
 document.addEventListener("keydown",function(e){
@@ -2454,7 +2500,7 @@ render();
 
 /* ---------- AI 튜터: 문제 출제 + 개념 질문 ---------- */
 S.am="gen";S.ag={u:0,k:0,lv:0,n:5,t:""};S.agb=false;S.age="";S.atx={};function AT(){return S.atx[S.sub]||(S.atx[S.sub]={msgs:[],q:"",busy:false})}
-function agS(k,v){S.ag[k]=v;render()}
+function agS(k,v){if(S.ag[k]===v)return;S.ag[k]=v;render()}
 function agT(i){S.ag.t=S.ag.t===AGT[i]?"":AGT[i];render()}function agU(i){agS("u",i)}function agK(i){agS("k",i)}function agL(i){agS("lv",i)}function agN(i){agS("n",[3,5,10][i])}
 function vAI(D){
   if(S.ag.sub!==S.sub)S.ag={u:0,k:S.ag.k,lv:S.ag.lv,n:S.ag.n,t:"",sub:S.sub};
@@ -3153,7 +3199,7 @@ var nbRz=null;["resize","orientationchange"].forEach(function(n){window.addEvent
 /* 폴더·파일을 열 때: 누른 카드 위치에서 화면 전체로 펼쳐지는 애니메이션 */
 var ZM=null,ZBK="",ZB=null,VTP=null,VTN=false;
 document.addEventListener("click",function(e){var el=e.target&&e.target.closest&&e.target.closest("[onclick]"),a=el&&el.getAttribute("onclick")||"";
-  if(!el||el.classList.contains("ib")||!/^(fdPick|anOpen|sgOpenQ|nbOpen|nbNew|pdfView|pqOpen|pdfSolve|openCard|pickCard)\(/.test(a)){return}
+  if(!el||el.classList.contains("ib")||!/^(fdPick|anOpen|sgOpenQ|nbOpen|nbNew|pdfView|pqOpen|pdfSolve)\(/.test(a)){return}
   var c=el.closest(".fdt,.wn,.li,.act,.unit")||el,r=c.getBoundingClientRect();ZM={l:r.left,t0:r.top,w:r.width,h:r.height,t:Date.now()};ZBK=a;VTP={k:'o',el:c,t:Date.now()}},true);
 function zoomOpen(){var z=ZM;ZM=null;if(!z||Date.now()-z.t>1500)return;
   if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)return;
@@ -3162,7 +3208,7 @@ function zoomOpen(){var z=ZM;ZM=null;if(!z||Date.now()-z.t>1500)return;
   v.classList.remove("vt-fwd","vt-back","vt-fade");
   var vr=v.getBoundingClientRect(),tp=Math.max(0,vr.top),tl=Math.max(0,vr.left),tw=Math.max(60,Math.min(window.innerWidth-tl,vr.width)),th=Math.max(60,window.innerHeight-tp);
   var g=document.createElement("div");g.setAttribute("aria-hidden","true");
-  g.style.cssText="position:fixed;z-index:35;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;transform-origin:0 0;will-change:transform,opacity;left:"+tl+"px;top:"+tp+"px;width:"+tw+"px;height:"+th+"px";
+  g.style.cssText="position:fixed;z-index:35;pointer-events:none;background:var(--zcg,var(--surface));border:1px solid var(--zcr,var(--line));box-shadow:var(--zcs,none);border-radius:18px;transform-origin:0 0;will-change:transform,opacity;left:"+tl+"px;top:"+tp+"px;width:"+tw+"px;height:"+th+"px";
   document.body.appendChild(g);
   var sx=Math.max(.02,z.w/tw),sy=Math.max(.02,z.h/th),E="cubic-bezier(.32,.72,0,1)";
   var an=g.animate([{transform:"translate("+(z.l-tl)+"px,"+(z.t0-tp)+"px) scale("+sx+","+sy+")",opacity:1},{offset:.72,transform:"translate(0,0) scale(1,1)",opacity:1},{transform:"translate(0,0) scale(1,1)",opacity:0}],{duration:420,easing:E,fill:"forwards"});
@@ -3172,7 +3218,7 @@ function zoomOpen(){var z=ZM;ZM=null;if(!z||Date.now()-z.t>1500)return;
 document.addEventListener("click",function(e){var el=e.target&&e.target.closest&&e.target.closest("[onclick]"),a=el&&el.getAttribute("onclick")||"",m,tg="";
   if(!el)return;
   if(el.classList.contains("ib")&&(m=/^fdPick\('(\w+)'/.exec(a))){var cur=S.fsel&&S.fsel[m[1]];if(cur)tg="fdPick('"+m[1]+"','"+cur+"')"}
-  else if(/^(anClose|sgClose|nbClose|pqClose)\(/.test(a)||/^S\.(pv|cid|pq)=null/.test(a))tg=ZBK;
+  else if(/^(anClose|sgClose|nbClose|pqClose)\(/.test(a)||/^S\.(pv|pq)=null/.test(a))tg=ZBK;
   if(tg){ZB={a:tg,t:Date.now()};VTP={k:'b',a:tg,t:Date.now()}}},true);
 function zoomBack(){var b=ZB;ZB=null;if(!b||Date.now()-b.t>1500)return;
   if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)return;
@@ -3182,12 +3228,42 @@ function zoomBack(){var b=ZB;ZB=null;if(!b||Date.now()-b.t>1500)return;
   v.classList.remove("vt-fwd","vt-back","vt-fade");
   var vr=v.getBoundingClientRect(),tp=Math.max(0,vr.top),tl=Math.max(0,vr.left),tw=Math.max(60,Math.min(window.innerWidth-tl,vr.width)),th=Math.max(60,window.innerHeight-tp);
   var g=document.createElement("div");g.setAttribute("aria-hidden","true");
-  g.style.cssText="position:fixed;z-index:35;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;transform-origin:0 0;will-change:transform,opacity;left:"+tl+"px;top:"+tp+"px;width:"+tw+"px;height:"+th+"px";
+  g.style.cssText="position:fixed;z-index:35;pointer-events:none;background:var(--zcg,var(--surface));border:1px solid var(--zcr,var(--line));box-shadow:var(--zcs,none);border-radius:18px;transform-origin:0 0;will-change:transform,opacity;left:"+tl+"px;top:"+tp+"px;width:"+tw+"px;height:"+th+"px";
   document.body.appendChild(g);
   var sx=Math.max(.02,r.width/tw),sy=Math.max(.02,r.height/th);
   var an=g.animate([{transform:"translate(0,0) scale(1,1)",opacity:1},{offset:.35,opacity:.95},{transform:"translate("+(r.left-tl)+"px,"+(r.top-tp)+"px) scale("+sx+","+sy+")",opacity:0}],{duration:380,easing:"cubic-bezier(.32,.72,0,1)",fill:"forwards"});
   var fin=function(){if(g.parentNode)g.parentNode.removeChild(g)};an.onfinish=fin;an.oncancel=fin;setTimeout(fin,900)}
 (function(){var r=render;render=function(){r.apply(this,arguments);zoomOpen();zoomBack();tbAnim();pinchSync();var sn=S.nbfit;S.nbfit=0;nbFit(!!sn)}})();
+
+var SLP={};
+function slideTabs(){
+  var np={},cnt={};
+  [].forEach.call(document.querySelectorAll(".view .qmodes,.view .amodes,.view .notes>.seg,.view .myseg"),function(c){
+    var kind=c.classList.contains("qmodes")?"q":c.classList.contains("amodes")?"a":c.classList.contains("myseg")?"m":"n",key=S.tab+":"+kind+(cnt[kind]=(cnt[kind]||0)+1),
+      bs=[].slice.call(c.children).filter(function(x){return x.tagName==="BUTTON"}),cur=-1;
+    bs.forEach(function(b,i){if(b.classList.contains("on"))cur=i});
+    if(cur<0||!bs.length)return;
+    np[key]={i:cur,n:bs.length};
+    var u=kind==="q"||(kind==="n"&&c.matches(".notes>.seg:first-of-type")),ind=document.createElement("i");
+    c.classList.add("slx",u?"slu":"slp");ind.className="slid";ind.setAttribute("aria-hidden","true");c.insertBefore(ind,c.firstChild);
+    function place(b){if(u){ind.style.left=(b.offsetLeft+b.offsetWidth*.14)+"px";ind.style.width=(b.offsetWidth*.72)+"px"}else{ind.style.left=b.offsetLeft+"px";ind.style.width=b.offsetWidth+"px";ind.style.top=b.offsetTop+"px";ind.style.height=b.offsetHeight+"px"}}
+    var p=SLP[key];
+    if(p&&p.n===bs.length&&p.i!==cur&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)){
+      place(bs[p.i]);bs[cur].classList.remove("on");bs[p.i].classList.add("on");void c.offsetWidth;
+      requestAnimationFrame(function(){requestAnimationFrame(function(){place(bs[cur]);bs[p.i].classList.remove("on");bs[cur].classList.add("on")})})
+    }else place(bs[cur])});
+  SLP=np}
+document.addEventListener("animationend",function(e){if(e.target.classList&&e.target.classList.contains("chip-pop")&&e.animationName==="chipPop")e.target.classList.remove("chip-pop")},true);
+(function(){var r=render;render=function(){
+  var sx=[].map.call(document.querySelectorAll(".view .chips.scroll,.view .notes>.chips"),function(e){return e.scrollLeft});
+  var big=S.rs,cs=[].map.call(document.querySelectorAll(".view .chip"),function(e){return [e.textContent,e.classList.contains("on")]});
+  r.apply(this,arguments);
+  if(!big&&cs.length&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)){var fl=[];
+    [].forEach.call(document.querySelectorAll(".view .chip"),function(n,i){var o=cs[i];if(o&&o[0]===n.textContent&&!o[1]&&n.classList.contains("on")){n.style.transition="none";n.classList.toggle("on",o[1]);fl.push(n)}});
+    if(fl.length){void document.body.offsetWidth;fl.forEach(function(n){n.style.transition=""});void document.body.offsetWidth;requestAnimationFrame(function(){requestAnimationFrame(function(){fl.forEach(function(n){n.classList.toggle("on");if(n.classList.contains("on")){n.classList.remove("chip-pop");void n.offsetWidth;n.classList.add("chip-pop")}})})})}}
+  if(sx.length)[].forEach.call(document.querySelectorAll(".view .chips.scroll,.view .notes>.chips"),function(e,i){if(sx[i])e.scrollLeft=sx[i]});
+  slideTabs()}})();
+slideTabs();
 tbAnim();pinchSync();
 /* 공유 요소 전환(View Transition): 누른 카드가 실제 내용과 함께 화면으로 펼쳐지고, 뒤로 가면 다시 그 카드로 접혀요 */
 function zcTarget(){var v=document.querySelector(".view");if(!v)return null;var q=[".fdh",".runwrap > .card","article.detail",".inkpg","[data-ink^='p:']",".card"],i,e;for(i=0;i<q.length;i++){e=v.querySelector(q[i]);if(e)return e}return v.firstElementChild}
