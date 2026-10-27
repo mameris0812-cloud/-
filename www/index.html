@@ -1,7 +1,38 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sgp{display:grid;gap:8px;margin:10px 0}
+<!doctype html><html><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' https://cdnjs.cloudflare.com blob:; worker-src blob: https://cdnjs.cloudflare.com; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src data: blob:; connect-src https://generativelanguage.googleapis.com https://cdnjs.cloudflare.com data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'"><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sgp{display:grid;gap:8px;margin:10px 0}
 .sgq{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;line-height:1.5;font-size:14.5px}
 .sgq b{flex:none;min-width:34px}.sgq.on{border-color:var(--acc);background:var(--accsoft)}
-</style></head><body>
+</style><style id="fdcss">
+.fdg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:0 0 16px}
+.fdt{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);background:var(--surface);border-radius:14px;color:var(--ink);font:inherit;text-align:left;cursor:pointer;min-width:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.fdt:active{background:var(--surface2)}
+.fdt svg{flex:none;color:var(--acc)}
+.fdt>span{min-width:0;display:block}
+.fdt b{display:block;font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fdt small{display:block;color:var(--sub);font-size:12.5px;margin-top:1px}
+.fdt.add{border-style:dashed;background:none;color:var(--sub)}
+.fdt.add svg{color:var(--sub)}
+.fdh{display:flex;align-items:center;gap:10px;margin:0 0 16px}
+.fdh .t{flex:1;min-width:0}
+.fdh .t small{display:block;color:var(--sub);font-size:12px}
+.fdh .t b{display:block;font-size:19px;line-height:1.3;overflow-wrap:anywhere}
+.fdh .cnt{color:var(--sub);font-size:13px;white-space:nowrap}
+.fdh .ib{flex:none;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;font-size:20px;line-height:1;cursor:pointer;touch-action:manipulation}
+#fdsheet{position:fixed;inset:0;z-index:300;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.42);touch-action:manipulation}
+.fds{width:100%;max-width:520px;max-height:82vh;overflow:auto;background:var(--surface);color:var(--ink);border-radius:22px 22px 0 0;padding:8px 14px calc(18px + env(safe-area-inset-bottom,0px));box-shadow:0 -8px 32px rgba(0,0,0,.2);animation:fdup .18s ease-out}
+@keyframes fdup{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+.fds .grab{width:38px;height:4px;border-radius:2px;background:var(--line);margin:4px auto 12px}
+.fds h3{margin:0 0 6px;padding:0 6px;font-size:17px;overflow-wrap:anywhere}
+.fds .sub{padding:0 6px}
+.fdr{display:flex;align-items:center;gap:14px;width:100%;padding:13px 8px;border:0;background:none;border-radius:12px;color:var(--ink);font:inherit;font-size:16px;text-align:left;cursor:pointer}
+.fdr:hover,.fdr:active{background:var(--surface2)}
+.fdr svg{flex:none;color:var(--sub)}
+.fdr .tx{flex:1;min-width:0;overflow-wrap:anywhere}
+.fdr small{display:block;color:var(--sub);font-size:13px;margin-top:1px}
+.fdr .ck{color:var(--acc);display:inline-flex}
+.fdr.danger,.fdr.danger svg{color:var(--no)}
+@media (min-width:768px){#fdsheet{align-items:center}.fds{border-radius:22px;padding-bottom:18px}}
+</style>
+</head><body>
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>사탐정복</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -294,6 +325,15 @@ td:first-child{font-weight:700;white-space:nowrap}
 .an.clip{max-height:150px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
 .thumb{width:84px;height:84px;object-fit:cover;border-radius:10px;border:1px solid var(--line);flex:none}
 .prow{display:flex;gap:12px;align-items:flex-start}
+.anbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.anbar .btn{width:100%;white-space:nowrap}
+.an-title{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.an-tools{display:flex;gap:2px;flex:none}
+.btn.ico{width:40px;min-height:40px;padding:0;border-color:transparent;color:var(--sub)}
+.annav{display:flex;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.annav .btn{flex:1 1 0;min-height:50px}
+.annav .btn.pri{flex:2 1 0}
+.abig{display:block;width:100%;height:auto;max-width:100%;margin-top:10px;border-radius:12px;border:1px solid var(--line);background:var(--bg,#fff);cursor:zoom-out}
 .prow>div{min-width:0;flex:1}
 .empty{text-align:center;color:var(--sub);padding:40px 12px;display:grid;gap:6px;justify-items:center}
 .empty b{display:block;color:var(--ink);font-size:18px}
@@ -306,6 +346,38 @@ td:first-child{font-weight:700;white-space:nowrap}
 @media (min-width:768px){.toast{bottom:32px}}
 .formgrid{display:grid;gap:10px}
 .hr{height:1px;background:var(--line);margin:4px 0}
+/* API 설정 */
+.klist-h{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.krow{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:8px;background:var(--surface)}
+.krow.act{border-color:var(--acc);background:var(--accsoft)}
+.krow-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.kn{width:24px;height:24px;border-radius:50%;background:var(--accsoft);color:var(--acc);display:grid;place-items:center;font-weight:700;font-size:12px;flex:none}
+.krow.act .kn{background:var(--acc);color:#fff}
+.krow-a{display:flex;gap:8px;margin-top:10px;align-items:center}
+.krow-a .sp{flex:1}
+.kadd{display:flex;gap:8px}
+.kadd .inp{flex:1;min-width:0}
+.kadd .btn.ico{width:auto;padding:0 14px;border-color:var(--line)}
+.sgroup{border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+/* 탭 안의 탭 전환 */
+@keyframes vttr{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+@keyframes vttl{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
+.vt-tin-r{animation:vttr .4s cubic-bezier(.16,1,.3,1) backwards}
+.vt-tin-l{animation:vttl .4s cubic-bezier(.16,1,.3,1) backwards}
+.view{overflow-x:clip}
+/* 화면 전환 애니메이션 */
+@keyframes vtfwd{from{opacity:0;transform:translateX(56px) scale(.975)}to{opacity:1;transform:none}}
+@keyframes vtback{from{opacity:0;transform:translateX(-56px) scale(.975)}to{opacity:1;transform:none}}
+@keyframes vtfade{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes vtrise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.view.vt-fwd{animation:vtfwd .42s cubic-bezier(.16,1,.3,1) backwards}
+.view.vt-back{animation:vtback .42s cubic-bezier(.16,1,.3,1) backwards}
+.view.vt-fade{animation:vtfade .38s cubic-bezier(.16,1,.3,1) backwards}
+.view[class*="vt-"]>*{animation:vtrise .5s cubic-bezier(.16,1,.3,1) backwards}
+.view[class*="vt-"]>*:nth-child(2){animation-delay:.05s}
+.view[class*="vt-"]>*:nth-child(3){animation-delay:.1s}
+.view[class*="vt-"]>*:nth-child(4){animation-delay:.15s}
+.view[class*="vt-"]>*:nth-child(n+5){animation-delay:.2s}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 /* ---- 태블릿·완성도 보강 ---- */
@@ -607,6 +679,24 @@ button.st:active{background:var(--surface2)}
 .optlb.no{background:var(--no)}
 .exp.ok{background:var(--oksoft)}
 .exp.no{background:var(--nosoft)}
+/* 유사 문제 하단 버튼 정리 */
+.after .btn.skip{color:var(--sub);background:var(--surface2);border-color:transparent}
+.after .btn.skip:active{background:var(--line)}
+.simtools{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+.simtools-l{display:flex;gap:8px;align-items:center}
+.simtools .btn.sm{min-height:40px}
+.btn.quiet{border-color:transparent;color:var(--sub)}
+.btn.quiet:hover,.btn.quiet:active{color:var(--no);background:var(--nosoft)}
+/* 노트 카드 공통: 삭제는 조용하게, 오른쪽 끝 */
+.acts>.btn.danger{border-color:transparent;background:none;color:var(--sub);margin-left:auto}
+.acts>.btn.danger:hover,.acts>.btn.danger:active{color:var(--no);background:var(--nosoft)}
+.wn .acts,.card>.acts{align-items:center;padding-top:10px;border-top:1px solid var(--line)}
+/* 한 화면에 주 버튼은 하나(다음)만: 이해했어요는 은은하게, 편집·삭제는 테두리 없이 */
+.anbar .btn.pri{background:color-mix(in srgb,var(--acc) 12%,var(--surface));color:var(--acc);border-color:color-mix(in srgb,var(--acc) 35%,var(--line))}
+.anbar+.annav{border-top:0;padding-top:0;margin-top:10px}
+.simtools .btn.ghost{border-color:transparent;color:var(--sub)}
+.simtools .btn.ghost:active{background:var(--surface2)}
+.simtools .btn.quiet:hover,.simtools .btn.quiet:active{color:var(--no);background:var(--nosoft)}
 .after .btn.pri{order:9}
 @media (max-width:599px){.after .btn.pri{flex:1 1 100%}}
 .res-act{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
@@ -743,7 +833,8 @@ body.has-ink .toast.on{transform:translate(-50%,0)}
 </style>
 <style id="richtext">
 u{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px}
-small{font-size:.8em;color:var(--sub);font-weight:400}
+.ulx{border:1px solid var(--line);border-radius:10px;padding:12px 10px;margin:0 0 8px;font-size:17px;line-height:2.5;word-break:keep-all;user-select:none;-webkit-user-select:none;touch-action:pan-y;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;max-height:52vh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}.ulx .c{padding:6px 0;border-radius:3px}.ulx .c.on{color:inherit}.ulseg{margin:8px 0 6px}.btn.ulon{background:var(--accsoft);border-color:var(--acc);color:var(--acc)}.ulx .c.on{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;background:rgba(15,118,110,.14)}.ulx .c.sel{background:rgba(250,204,21,.5)}.ulx .c.run{background:rgba(37,99,235,.22)}.ulx .c.rs{box-shadow:inset 3px 0 0 #2563eb}.ulx .c.re{box-shadow:inset -3px 0 0 #2563eb}.ulx .c.rs.re{box-shadow:inset 3px 0 0 #2563eb,inset -3px 0 0 #2563eb}.ulmd button{min-height:38px}
+small{font-size:.8em;color:var(--sub);font-weight:400}.ulspin{display:inline-block;width:12px;height:12px;margin-right:6px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:ulsp .8s linear infinite;vertical-align:-2px;box-sizing:border-box}@keyframes ulsp{to{transform:rotate(360deg)}}.ulbar{height:4px;border-radius:2px;background:var(--line);overflow:hidden;margin:6px 0 0}.ulbar i{display:block;height:100%;width:40%;background:var(--acc);border-radius:2px;animation:ulbar 1.1s ease-in-out infinite}@keyframes ulbar{0%{margin-left:-40%}100%{margin-left:100%}}
 </style>
 <style id="inkx">
 /* 문제 풀이: 카드 밖 회색 영역에서도 필기 */
@@ -768,6 +859,40 @@ body.ink-on.inkx button,body.ink-on.inkx a,body.ink-on.inkx textarea,body.ink-on
   html:is(.nosb,.solving):not(.sbpeek) .sbshow{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .25s ease .12s,transform .3s cubic-bezier(.2,.8,.3,1) .12s,visibility 0s}
 }
 @media (prefers-reduced-motion:reduce){.app,.side,.view,.sbshow,html:is(.nosb,.solving):not(.sbpeek) .side,html:is(.nosb,.solving):not(.sbpeek) .sbshow{transition:none!important}}
+</style>
+<style id="grp1">
+.fdgrp{display:flex;align-items:center;gap:12px;width:100%;margin:6px 0 10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:16px;background:var(--surface2);color:var(--ink);font:inherit;text-align:left;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:border-color .15s,background-color .15s}
+.fdgrp.on{border-color:var(--acc);background:var(--accsoft)}
+.fdgrp .gi{flex:none;width:38px;height:38px;border-radius:12px;background:var(--surface);color:var(--acc);display:grid;place-items:center}
+.fdgrp .tx{flex:1;min-width:0}
+.fdgrp .tx b{display:block;font-size:15px;line-height:1.35;font-weight:700}
+.fdgrp .tx small{display:block;margin-top:2px;color:var(--sub);font-size:12.5px;line-height:1.4}
+.fdgrp .sw{flex:none;position:relative;width:46px;height:28px;border-radius:99px;background:var(--line);transition:background-color .2s}
+.fdgrp .sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s}
+.fdgrp.on .sw{background:var(--acc)}
+.fdgrp.on .sw::after{transform:translateX(18px)}
+.fdgrp:active{transform:scale(.99)}
+</style>
+
+<style id="vt1">
+::view-transition-group(root){animation-duration:.01s}
+::view-transition-old(root){animation:zcOut .22s ease both}
+::view-transition-new(root){animation:zcIn .34s ease .06s both}
+@keyframes zcOut{to{opacity:0}}
+@keyframes zcIn{from{opacity:0}}
+::view-transition-group(zc){animation-duration:.5s;animation-timing-function:cubic-bezier(.32,.72,0,1);overflow:clip;border-radius:18px;z-index:5}
+::view-transition-image-pair(zc){isolation:auto}
+::view-transition-old(zc),::view-transition-new(zc){width:100%;height:100%;object-fit:cover;object-position:top left;mix-blend-mode:normal}
+::view-transition-old(zc){animation:zcOut .28s ease both}
+::view-transition-new(zc){animation:zcIn .34s ease .08s both}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+</style>
+<style id="subseg">
+.seg[data-sub]{position:relative;isolation:isolate}
+.seg[data-sub] .sgi{position:absolute;top:3px;bottom:3px;left:3px;width:calc((100% - 8px) / 2);border-radius:9px;background:var(--acc);z-index:0;pointer-events:none;transform:translateX(calc(var(--i,0) * (100% + 2px)));transition:transform .3s cubic-bezier(.3,.8,.25,1),background-color .3s}
+.seg[data-sub] button{position:relative;z-index:1;transition:color .25s}
+.seg[data-sub] button.on{background:none!important;color:var(--acc-ink)}
+@media (prefers-reduced-motion:reduce){.seg[data-sub] .sgi{transition:none}}
 </style>
 <div class="app" id="app"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script>
@@ -932,7 +1057,7 @@ s:[
 {id:"xs15",s:"역할 갈등은 하나의 지위 안에서 서로 다른 역할이 충돌하는 현상이다.",a:false,e:"하나의 지위 안의 충돌은 역할 긴장이에요. 서로 다른 지위의 역할이 충돌하면 역할 갈등이에요."},
 {id:"xs16",s:"관료제는 위계와 규칙에 따라 운영되는 조직 형태이다.",a:true,e:"분업, 위계, 규칙, 문서주의, 비인격성이 특징이에요."}]};
 /* ---------- 기본 도구 ---------- */
-var K="ethsoc-v1",THUMB="",IMG=null,IMGURL="",CL=null,TU=[];
+var K="ethsoc-v1",THUMB="",IMG=null,IMGURL="",ORIG=null,AN_URL={},AN_PEND={},CL=null,TU=[];
 var THINK=["공자","맹자","순자","석가모니","노자","장자","소크라테스","아리스토텔레스","칸트","벤담","밀","롤스","노직","싱어","하버마스"];
 var S={qOptBusy:null,sub:"e",tab:"home",nt:"w",pv:null,pdc:null,cid:null,ct:0,cs:"",qmode:"mc",qu:0,ql:0,qn:10,qw:0,run:null,wt:"q",wf:0,tf:"",pf:0,qa:null,rc:false,sl:true,memo:"",res:"",sid:null,busy:false,mn:"",mk:"",ma:null,me:"",note:"",bz:null,rs:0,op:{},gk:null,gm:null,mc:"",wv:0,gshow:false,gt:"",gtok:false,gb:false};
 var st=load();
@@ -950,7 +1075,7 @@ function esc(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"
 function escR(t){t=String(t==null?"":t);var ok=["u","small"].every(function(g){var o=(t.match(new RegExp("<"+g+">","gi"))||[]).length,c=(t.match(new RegExp("</"+g+">","gi"))||[]).length;return o===c});
   var h=esc(t);return ok?h.replace(/&lt;(\/?)(u|small)&gt;/gi,"<$1$2>"):h.replace(/&lt;\/?(u|small)&gt;/gi,"")}
 function load(){var d={days:[],n:0,ok:0,wrong:[],ox:[],pk:{},an:[],my:[],qh:{},read:{},dc:{},und:{},auto:true,gen:[],qoe:{},gkeys:[],gact:0,pdfs:[],notes:[],gkey:"",gmodel:"gemini-3.8-flash",prov:"auto",theme:"auto",goal:10};try{var v=JSON.parse(localStorage.getItem(K));if(v)for(var k in v)d[k]=v[k]}catch(x){}return d}
-function save(){try{localStorage.setItem(K,JSON.stringify(st))}catch(x){}}
+var _svW=0;function save(){try{localStorage.setItem(K,JSON.stringify(st))}catch(x){var _n=Date.now();if(_n-_svW>6000){_svW=_n;try{toast("저장 공간이 가득 차서 기록을 저장하지 못했어요. 전체 백업 후 오래된 사진 분석을 지워 주세요.")}catch(e){}}}}
 function today(){var d=new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
 function dkey(d){return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
 function streak(){var c=0,d=new Date();if(st.days.indexOf(dkey(d))<0){d.setDate(d.getDate()-1);if(st.days.indexOf(dkey(d))<0)return 0}while(st.days.indexOf(dkey(d))>=0){c++;d.setDate(d.getDate()-1)}return c}
@@ -963,7 +1088,7 @@ function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(M
 function isWide(){return !!(window.matchMedia&&matchMedia("(min-width:1100px)").matches)}
 function pct(a,b){return b?Math.round(a/b*100):0}
 var IC={home:"M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z",book:"M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20M9 8h6",quiz:"M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17h.01",note:"M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5",camera:"M4 8h3l2-3h6l2 3h3v11H4zM12 17a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z",check:"M5 12.5l4.5 4.5L19 7.5",back:"M15 5l-7 7 7 7",chev:"M9 5l7 7-7 7",chat:"M4 5h16v11H9l-5 4z",close:"M6 6l12 12M18 6L6 18",retry:"M4 12a8 8 0 1 0 2.5-5.8M4 4v5h5",bolt:"M13 3L5 14h6l-1 7 8-11h-6z",gear:"M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h0a1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"};
-IC.pen=IC.pen||"M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19zM14 7l3 3";IC.hl=IC.hl||"M4 20h9M9 16l8-8 3 3-8 8H9zM15 10l3 3";IC.er=IC.er||"M8 20h11M5.5 15.5l9-9a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L12 20H8.5l-3-3a2 2 0 0 1 0-1.5z";IC.undo=IC.undo||"M9 14L4 9l5-5M4 9h9a6 6 0 0 1 0 12h-3";IC.redo=IC.redo||"M15 14l5-5-5-5M20 9h-9a6 6 0 0 0 0 12h3";IC.trash=IC.trash||"M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13";
+IC.fwd=IC.fwd||"M9 5l7 7-7 7";IC.pen=IC.pen||"M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19zM14 7l3 3";IC.hl=IC.hl||"M4 20h9M9 16l8-8 3 3-8 8H9zM15 10l3 3";IC.er=IC.er||"M8 20h11M5.5 15.5l9-9a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8L12 20H8.5l-3-3a2 2 0 0 1 0-1.5z";IC.undo=IC.undo||"M9 14L4 9l5-5M4 9h9a6 6 0 0 1 0 12h-3";IC.redo=IC.redo||"M15 14l5-5-5-5M20 9h-9a6 6 0 0 0 0 12h3";IC.trash=IC.trash||"M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13";
 function ic(n,s){s=s||22;return '<svg class="ic" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="'+IC[n]+'"/></svg>'}
 var toastT=null;
 function toast(m){var t=$("toast");t.textContent=m;t.className="toast on";clearTimeout(toastT);toastT=setTimeout(function(){t.className="toast"},2600)}
@@ -973,28 +1098,33 @@ function mast(D,u){var l=D.qs.filter(function(q){return q.t===u}),k=0,n=0;l.forE
 function wrongCount(sub){var q=st.wrong.filter(function(id){var z=byId(id);return z&&!st.und[id]&&(!sub||DB[sub].qs.indexOf(z)>=0)}).length;var x=st.ox.filter(function(id){var z=oxById(id);return z&&!st.und[id]&&(!sub||oxList(sub).indexOf(z)>=0)}).length;var p=st.an.filter(function(a){return !a.done&&(!sub||a.sub===sub)}).length;return{q:q,x:x,p:p,all:q+x+p}}
 
 /* ---------- 내비게이션 ---------- */
-function setSub(s){snap();if(s!==S.sub){S.runs=S.runs||{};S.runs[S.sub]=S.run;S.run=S.runs[s]||null;S.qa=null}S.sub=s;S.cid=null;S.ct=0;S.cs="";S.qu=0;S.wf=0;S.tf="";S.rs=2;render()}
+function setSub(s){if(s===S.sub)return;snap();if(s!==S.sub){S.runs=S.runs||{};S.runs[S.sub]=S.run;S.run=S.runs[s]||null;S.qa=null}S.sub=s;S.cid=null;S.ct=0;S.cs="";S.qu=0;S.wf=0;S.tf="";S.rs=2;render()}
 function toggleSide(){var c=document.documentElement.classList;if(c.contains("solving")){c.toggle("sbpeek");inkRz();return}c.remove("sbpeek");var on=c.toggle("nosb");try{localStorage.setItem("satam-nosb",on?"1":"0")}catch(e){}inkRz()}
 function inkRz(){setTimeout(function(){try{INK.layers.forEach(inkSize)}catch(e){}},340)}
 try{if(localStorage.getItem("satam-nosb")==="1")document.documentElement.classList.add("nosb")}catch(e){}
 function go(t){if(t==="photo"){S.qmode="ai";S.am="photo";S.pfocus=1;t="quiz"}else if(t!=="quiz")S.pfocus=0;var same=S.tab===t;snap();S.tab=t;S.rs=same?1:2;render()}
+document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest(".view .seg button,.view .qmodes button");if(!b)return;var seg=b.parentElement,segs=[].slice.call(document.querySelectorAll(".view .seg,.view .qmodes")),bs=[].slice.call(seg.children),cur=-1;bs.forEach(function(x,i){if(x.classList.contains("on"))cur=i});var ni=bs.indexOf(b);window.TA={s:segs.indexOf(seg),d:ni>cur?1:-1,same:ni===cur};setTimeout(function(){window.TA=null},0)},true);
 function render(){
   var y=window.scrollY||0,_l=[].map.call(document.querySelectorAll(".split .list"),function(e){return e.scrollTop});
   document.documentElement.setAttribute("data-sub",S.sub);
+  var SI=S.sub==="e"?0:1,SBP=window.SBI==null?SI:window.SBI;
   if(st.theme==="light"||st.theme==="dark")document.documentElement.setAttribute("data-theme",st.theme);else document.documentElement.removeAttribute("data-theme");
   var D=DB[S.sub],fn={home:vHome,learn:vLearn,quiz:vQuiz,ai:vAI,wrong:vWrong,photo:vPhoto,settings:vSettings}[S.tab],w=wrongCount(S.sub);
   var NAV=[["home","홈","home"],["learn","개념","book"],["quiz","퀴즈","quiz"],["wrong","노트","note"],["settings","설정","gear"]];
   function navBtn(t,cls){return '<button class="'+(S.tab===t[0]?'on':'')+'" onclick="go(\''+t[0]+'\')" aria-label="'+t[1]+'"'+(S.tab===t[0]?' aria-current="page"':'')+'>'+ic(t[2])+'<span>'+t[1]+'</span>'+(t[0]==="wrong"&&w.all?'<em class="badge">'+(w.all>99?"99+":w.all)+'</em>':'')+'</button>'}
-  var subSide='<div class="seg" role="group" aria-label="과목">'+["e","s"].map(function(k){return '<button class="'+(S.sub===k?'on':'')+'" onclick="setSub(\''+k+'\')">'+DB[k].name+'</button>'}).join("")+'</div>';
-  var subBar='<div class="seg" role="group" aria-label="과목">'+["e","s"].map(function(k){return '<button class="'+(S.sub===k?'on':'')+'" onclick="setSub(\''+k+'\')">'+DB[k].name+'</button>'}).join("")+'</div>';
+  var subSide='<div class="seg" data-sub role="group" aria-label="과목"><i class="sgi" style="--i:'+SBP+'" aria-hidden="true"></i>'+["e","s"].map(function(k){return '<button class="'+(S.sub===k?'on':'')+'" onclick="setSub(\''+k+'\')">'+DB[k].name+'</button>'}).join("")+'</div>';
+  var subBar='<div class="seg" data-sub role="group" aria-label="과목"><i class="sgi" style="--i:'+SBP+'" aria-hidden="true"></i>'+["e","s"].map(function(k){return '<button class="'+(S.sub===k?'on':'')+'" onclick="setSub(\''+k+'\')">'+DB[k].name+'</button>'}).join("")+'</div>';
   var brand='<div class="brand">사탐정복</div>';
   var dc=st.dc[today()]||0;
   var h='<button class="sbshow" onclick="toggleSide()" aria-label="사이드바 열기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button><aside class="side"><button class="sbtog" onclick="toggleSide()" aria-label="사이드바 숨기기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>'+brand+subSide+'<nav class="nav" aria-label="메뉴">'+NAV.map(navBtn).join("")+'</nav><div class="side-foot"><div class="sf-card"><div class="sf-row"><div><b>'+streak()+'일</b><span>연속 학습</span></div><div><b>'+dc+' / '+goal()+'</b><span>오늘 푼 문제</span></div></div><div class="sf-bar"><i style="width:'+Math.min(100,Math.round(dc/goal()*100))+'%"></i></div></div></div></aside>'
    +'<div class="main"><header class="bar">'+brand+subBar+'</header><main class="view">'+fn(D)+'</main></div>'
    +'<nav class="tabbar" aria-label="메뉴" style="--i:'+(window.TBI==null?TIX(NAV):window.TBI)+'"><i class="tb-ind" aria-hidden="true"></i>'+NAV.map(navBtn).join("")+'</nav>';
   $("app").innerHTML=h;
+  window.SBI=SI;if(SBP!==SI)requestAnimationFrame(function(){requestAnimationFrame(function(){[].forEach.call(document.querySelectorAll(".seg[data-sub] .sgi"),function(e){e.style.setProperty("--i",SI)})})});
   (function(v){var c=document.documentElement.classList;if(c.contains("solving")!==v){void document.body.offsetWidth;c.toggle("solving",v);c.remove("sbpeek");inkRz()}})(!!(S.tab==="quiz"&&S.run&&!S.pfocus));
-  window.scrollTo(0,S.rs===2?(SCR[dk()]||0):S.rs===3?(S.lsy||0):S.rs===4?(S.edY||0):S.rs?0:y);S.rs=0;if(_l.length)[].forEach.call(document.querySelectorAll(".split .list"),function(e,i){if(_l[i])e.scrollTop=_l[i]});restoreDr();tick();inkMount();
+  (function(t){window.TA=null;var v=document.querySelector(".view");if(!t||t.same||!v||v.className.indexOf("vt-")>=0)return;var seg=v.querySelectorAll(".seg,.qmodes")[t.s];if(!seg)return;var c=t.d>0?"vt-tin-r":"vt-tin-l",n=seg;while(n&&n!==v){var x=n.nextElementSibling;while(x){x.classList.add(c);x=x.nextElementSibling}n=n.parentElement}})(window.TA);
+  (function(r){if(!r||r>4)return;var v=document.querySelector(".view");if(!v)return;v.classList.add(r===1?"vt-fwd":r===2?"vt-fade":"vt-back")})(S.rs);
+  window.scrollTo(0,S.rs===2?(SCR[dk()]||0):S.rs===3?(S.lsy||0):S.rs===4?(S.edY||0):S.rs?0:y);S.rs=0;if(_l.length)[].forEach.call(document.querySelectorAll(".split .list"),function(e,i){if(_l[i])e.scrollTop=_l[i]});restoreDr();tick();inkMount();anHydrate();
 }
 
 /* ---------- 홈 ---------- */
@@ -1042,7 +1172,8 @@ function vHome(D){
   /* 단원별 현황 */
   h+='<div class="sec"><h3 class="h3">단원별 정복 현황</h3><div class="panel units">'+D.units.map(function(u,i){var m=mast(D,u),p=pct(m.ok,m.total),rc=i===wk&&m.total&&p<100;return '<button class="unit" onclick="startUnit('+(i+1)+')"><b>'+esc(u)+(rc?'<span class="tag">보강 추천</span>':'')+'</b><span class="pc">'+p+'%</span><span class="meter" role="progressbar" aria-label="'+esc(u)+' 정복률" aria-valuenow="'+p+'" aria-valuemin="0" aria-valuemax="100"><i style="width:'+p+'%"></i></span><small>'+m.ok+' / '+m.total+'문항 정복</small></button>'}).join("")+'</div><p class="sub">마지막에 맞힌 문제를 정복으로 계산해요. 단원을 누르면 바로 퀴즈가 시작돼요.</p></div>';
   return h}
-function doReset(){try{localStorage.removeItem(K)}catch(x){}try{indexedDB.deleteDatabase("satam-pdf");PDB=null}catch(x){}st=load();S.rc=false;S.run=null;S.cid=null;toast("기록을 초기화했어요");render()}
+function inkDrop(){try{Object.keys(INK.tm).forEach(function(k){clearTimeout(INK.tm[k])});INK.tm={};INK.m={}}catch(e){}}
+async function doReset(){inkDrop();try{var db=await pdbOpen();await new Promise(function(ok,no){var tx=db.transaction(["f","ink","img"],"readwrite");["f","ink","img"].forEach(function(s){tx.objectStore(s).clear()});tx.oncomplete=ok;tx.onerror=tx.onabort=function(){no(tx.error)}})}catch(x){}try{localStorage.removeItem(K)}catch(x){}toast("기록을 초기화했어요");setTimeout(function(){location.reload()},500)}
 
 /* ---------- 개념 ---------- */
 function openCard(i){S.tab="learn";S.cid=i;S.ct=0;S.cs="";S.qa=null;S.rs=1;render()}
@@ -1084,18 +1215,36 @@ function vLearn(D){
 /* ---------- 퀴즈 ---------- */
 function startRun(kind,ids,title){if(!ids.length){toast("풀 문제가 없어요");return}S.run={kind:kind,ids:shuffle(ids),i:0,pick:null,log:[],done:false,title:title||"",perm:{}};S.pfocus=0;S.tab="quiz";S.qmode=kind;S.qa=null;S.rs=1;render()}
 function startDaily(){var D=DB[S.sub],sc=D.qs.map(function(q){var h=st.qh[q.id],s=1;if(wrongAct(q.id))s=3;else if(!h)s=2;return{id:q.id,s:s+Math.random()*1.6}});sc.sort(function(a,b){return b.s-a.s});startRun("mc",sc.slice(0,5).map(function(x){return x.id}),"오늘의 5문제")}
-function startUnit(i){var D=DB[S.sub],u=i?D.units[i-1]:"";S.qu=i;startRun("mc",D.qs.filter(function(q){return !u||q.t===u}).map(function(q){return q.id}).slice(0,0).concat(shuffle(D.qs.filter(function(q){return !u||q.t===u}).map(function(q){return q.id})).slice(0,10)),u?u+" 퀴즈":"전체 퀴즈")}
+function startUnit(i){var D=DB[S.sub],u=i?D.units[i-1]:"";S.qu=i;startRun("mc",D.qs.filter(function(q){return !u||q.t===u}).map(function(q){return q.id}).slice(0,0).concat(freshOrder(D.qs.filter(function(q){return !u||q.t===u}).map(function(q){return q.id})).slice(0,10)),u?u+" 퀴즈":"전체 퀴즈");bgMix(D,u,0,3)}
 function startWrongQ(ui){var U=ui?DB[S.sub].units[ui-1]:"";var ids=st.wrong.filter(function(id){var z=byId(id);return z&&!st.und[id]&&DB[S.sub].qs.indexOf(z)>=0&&(!U||z.t===U)});startRun("mc",ids,"틀린 문제 다시 풀기")}
 function startWrongX(){var ids=st.ox.filter(function(id){var z=oxById(id);return z&&!st.und[id]&&oxList(S.sub).indexOf(z)>=0});startRun("ox",ids,"틀린 선지 다시 풀기")}
 function setQ(k,v){S[k]=v;if(k==="qmode")S.pfocus=0;render()}
+function freshOrder(ids){return ids.map(function(id){var h=st.qh[id],sc=h?(1+Math.min(h[0],6)*.5+(h[2]?0:-.8)):0;return{id:id,s:sc+Math.random()*1.2}}).sort(function(a,b){return a.s-b.s}).map(function(x){return x.id})}
+async function bgMix(D,u,lv,n){
+  if(st.gmix===0||!aiOn()||S.mixb||!S.run||S.run.kind!=="mc")return;
+  var run=S.run,sub=S.sub;S.mixb=true;
+  try{
+    var pool=D.qs.filter(function(q){return !u||q.t===u}),smp=shuffle(pool).slice(0,6).map(function(q){return String(q.q).split("\n")[0].slice(0,50)});
+    var p='너는 한국 고등학교 ‘'+D.name+'’ 출제 위원이야. 고등학교 교육과정 범위 안에서 새 문제 '+n+'개를 만들어줘.\n범위: '+(u?'단원 '+u:'전체 단원 ('+D.units.join(", ")+')')+'\n난이도: '+(lv?["","쉬움","보통","어려움"][lv]:"쉬움·보통·어려움을 골고루")+'\n'
+     +'기존 문제와 겹치지 않는 다른 개념·사상가·관점으로 내줘. 기존 문제 예: '+smp.join(" / ")+'\n'
+     +'형식: 4지선다 객관식. 선지는 서로 헷갈릴 만하게, 정답은 한 개만, 정답 위치(a, 0부터)는 골고루 섞어줘. 오직 JSON 배열로만 답해: [{"t":"단원명","lv":1,"q":"문제","o":["선지1","선지2","선지3","선지4"],"a":0,"e":"해설 2~3문장"}] (t는 다음 중 하나: '+D.units.join(", ")+' / lv는 1 쉬움, 2 보통, 3 어려움)\n해설은 ~해요 체로 쓰고 마크다운 기호는 쓰지 마. 확실하지 않은 내용은 넣지 마.';
+    var r=await callAI(p,{cache:false,quick:false}),t=r.text,arr=JSON.parse(t.slice(t.indexOf("["),t.lastIndexOf("]")+1)),b="g"+Date.now().toString(36),add=[];
+    arr.forEach(function(z,x){if(!z||!z.q||!Array.isArray(z.o)||z.o.length<2||!(z.a>=0&&z.a<z.o.length&&z.a%1===0))return;
+      var q={id:b+x,sub:sub,t:D.units.indexOf(z.t)>=0?z.t:(u||D.units[0]),lv:[1,2,3].indexOf(z.lv)>=0?z.lv:(lv||2),q:String(z.q),o:z.o.map(String),a:z.a,e:String(z.e||"").trim(),ai:1};
+      D.qs.push(q);st.gen.push(q);add.push(q.id)});
+    while(st.gen.length>200){var k=st.gen.findIndex(function(z){return st.wrong.indexOf(z.id)<0});if(k<0)break;var o=st.gen.splice(k,1)[0],dq=DB[o.sub].qs;dq.splice(dq.indexOf(o),1)}
+    save();
+    if(add.length&&S.run===run&&!run.done){add.forEach(function(id){var lo=run.i+1,pos=lo+Math.floor(Math.random()*(run.ids.length-lo+1));run.ids.splice(pos,0,id)});toast("AI가 만든 새 문제 "+add.length+"개를 섞었어요");render()}
+  }catch(e){}
+  S.mixb=false}
 function startSetup(){
   var D=DB[S.sub],u=S.qu?D.units[S.qu-1]:"",lv=S.ql;
   var pool=D.qs.filter(function(q){return(!u||q.t===u)&&(!lv||q.lv===lv)});
   if(S.qw)pool=pool.filter(function(q){return wrongAct(q.id)||!st.qh[q.id]});
   var n=S.qn?Math.min(S.qn,pool.length):pool.length;
   var ids=shuffle(pool.map(function(q){return q.id}));
-  if(S.qw)ids.sort(function(a,b){return (wrongAct(b)?1:0)-(wrongAct(a)?1:0)});
-  startRun("mc",ids.slice(0,n),(u||"전체")+" 퀴즈")}
+  if(S.qw)ids.sort(function(a,b){return (wrongAct(b)?1:0)-(wrongAct(a)?1:0)});else ids=freshOrder(ids);
+  startRun("mc",ids.slice(0,n),(u||"전체")+" 퀴즈");if(!S.qw)bgMix(D,u,lv,3)}
 function pickMC(i){var r=S.run;if(!r||r.pick!==null||r.kind!=="mc")return;var q=byId(r.ids[r.i]),ok=i===q.a;r.pick=i;rec(q.id,ok);
   if(ok){if(st.wrong.indexOf(q.id)>=0)st.und[q.id]=1}else{st.pk[q.id]=i;if(st.wrong.indexOf(q.id)<0&&!q.u)st.wrong.push(q.id);delete st.und[q.id]}
   r.log.push({id:q.id,ok:ok,p:i});save();render()}
@@ -1137,7 +1286,7 @@ function vRun(D){
     _ord.forEach(function(oi,pos){var cl="opt"+(_no?" numonly":"");if(r.pick!==null){if(oi===q.a)cl+=" ok";else if(oi===r.pick)cl+=" no"}h+='<button class="'+cl+'" onclick="pickMC('+oi+')"'+(r.pick!==null?' disabled':'')+(_no?' aria-label="'+(pos+1)+'번"':'')+'><span class="n">'+(pos+1)+'</span>'+(_no?'':'<span>'+escR(q.o[oi])+'</span>')+(r.pick!==null&&oi===q.a?'<em class="optlb">정답</em>':r.pick!==null&&oi===r.pick?'<em class="optlb no">내 선택</em>':'')+'</button>'});
     if(_no)h+='</div>';
     if(r.pick!==null)h+='<div class="exp '+(r.pick===q.a?'ok':'no')+'"><span class="v '+(r.pick===q.a?'ok':'no')+'">'+(r.pick===q.a?'정답이에요.':q.u?'AI 추정 정답과 달라요. 정답이 틀렸을 수 있어서 오답노트에는 넣지 않았어요.':'오답이에요. 오답노트에 저장했어요.')+'</span>'+esc(q.e)+'</div>'+(q.u&&r.pick!==q.a?'<div class="after"><button class="btn" onclick="fixAns(\''+q.id+'\')">내 답이 정답이에요</button></div>':'')+quizOptExplainHTML(q)+(aiOn()?qaBox(q.id):'')+'<div class="after">'+pv+qaBtn(q.id)+(aiOn()?'<button class="btn" onclick="explainQuizOpts(\''+q.id+'\')"'+(S.qOptBusy===q.id?' disabled':'')+'>'+(S.qOptBusy===q.id?'선지별 해설 생성 중…':(st.qoe&&st.qoe[q.id]?'선지별 해설 다시 받기':'선지별 해설'))+'</button>':'')+'<button class="btn pri" onclick="nextRun()">'+(r.i>=tot-1?'결과 보기':'다음 문제')+'</button></div>'}
-  if(r.pick===null&&(r.i>0||r.i<tot-1))h+='<div class="after">'+pv+(r.i<tot-1?'<button class="btn" onclick="goRun(1)">건너뛰기</button>':'')+'</div>';
+  if(r.pick===null&&(r.i>0||r.i<tot-1))h+='<div class="after">'+pv+(r.i<tot-1?'<button class="btn skip" onclick="goRun(1)">건너뛰기'+ic("fwd",16)+'</button>':'')+'</div>';
   return h+'</div>'}
 function vResult(D){
   var r=S.run,ok=r.log.filter(function(x){return x.ok}).length,tot=r.ids.length,p=pct(ok,tot),R=2*Math.PI*44,ox=r.kind==="ox";
@@ -1157,7 +1306,9 @@ function retryWrong(){var r=S.run,ox=r.kind==="ox";startRun(r.kind,r.log.filter(
 
 /* ---------- 내 선지 ---------- */
 function addMy(){var t=(S.mn||"").trim();if(!t||(S.ma!==true&&S.ma!==false)){toast("선지 내용을 적고 O 또는 X를 골라 주세요");return}var id="m"+Date.now();st.my.push({id:id,sub:S.sub,s:t,a:S.ma,k:(S.sub==="e"?(S.mk||"").trim():""),e:(S.me||"").trim(),c:(S.mc||"").trim()});st.ox.push(id);S.mn="";S.me="";S.mc="";S.mk="";S.ma=null;S.note="";save();toast("선지 오답노트에 저장했어요");render()}
-function delMy(id){delete st.und[id];st.my=st.my.filter(function(m){return m.id!==id});st.ox=st.ox.filter(function(x){return x!==id});S.qa=null;save();render()}
+function dcAsk(k){S.dc=S.dc===k?null:k;render()}
+function dcPanel(k,what,fn){return S.dc===k?'<div class="panel" style="margin-top:10px"><p><b>'+what+'을 삭제할까요?</b></p><p class="sub" style="margin:4px 0 0">삭제하면 되돌릴 수 없어요.</p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="'+fn+'">삭제</button><button class="btn sm" onclick="dcAsk(null)">취소</button></div></div>':''}
+function delMy(id){S.dc=null;delete st.und[id];st.my=st.my.filter(function(m){return m.id!==id});st.ox=st.ox.filter(function(x){return x!==id});S.qa=null;save();render()}
 function myForm(){
   return '<div class="card setup"><div><h2 class="h2">내 선지 적기</h2><p class="sub" style="margin-top:4px">시험이나 문제집에서 틀린 선지를 그대로 적으세요. 적으면 선지 오답노트에 바로 저장되고 OX 퀴즈에도 들어가요.</p></div>'
   +'<textarea class="ta" id="mn" rows="3" placeholder="선지 내용" oninput="S.mn=this.value" aria-label="선지 내용">'+esc(S.mn)+'</textarea>'
@@ -1167,7 +1318,7 @@ function myForm(){
   +(S.bz==="f"?loadHTML("exp"):'')+(S.note?'<p style="color:var(--no)">'+esc(S.note)+'</p>':'')
   +'<div class="row">'+(aiOn()?'<button class="btn" onclick="explainForm()"'+(S.bz?' disabled':'')+'>'+(S.bz==="f"?'해설 쓰는 중…':'AI 해설 받기')+'</button>':'')+'<button class="btn pri" onclick="addMy()">선지 오답노트에 저장</button></div></div>'}
 function myList(){var l=st.my.filter(function(m){return m.sub===S.sub});if(!l.length)return "";
-  return '<div class="sec"><h3 class="h3">내가 적은 선지 ('+l.length+')</h3><div class="wlist two">'+l.map(function(m){return '<div class="wn">'+(m.k?'<span class="tag">'+esc(m.k)+'</span>':'')+'<p class="q">'+esc(m.s)+'</p><p class="ans">'+(m.a?'O (맞는 설명)':'X (틀린 설명)')+'</p>'+whyHTML(m)+(S.bz===m.id?loadHTML("exp"):'')+'<div class="acts">'+qaBtn(m.id)+(aiOn()?'<button class="btn sm" onclick="explainMy(\''+m.id+'\')"'+(S.bz?' disabled':'')+'>'+(S.bz===m.id?'해설 쓰는 중…':(m.e?'해설 다시 받기':'AI 해설 받기'))+'</button>':'')+'<button class="btn sm danger" onclick="delMy(\''+m.id+'\')">삭제</button></div>'+qaBox(m.id)+'</div>'}).join("")+'</div></div>'}
+  return '<div class="sec"><h3 class="h3">내가 적은 선지 ('+l.length+')</h3><div class="wlist two">'+l.map(function(m){return '<div class="wn">'+(m.k?'<span class="tag">'+esc(m.k)+'</span>':'')+'<p class="q">'+esc(m.s)+'</p><p class="ans">'+(m.a?'O (맞는 설명)':'X (틀린 설명)')+'</p>'+whyHTML(m)+(S.bz===m.id?loadHTML("exp"):'')+'<div class="acts">'+qaBtn(m.id)+(aiOn()?'<button class="btn sm" onclick="explainMy(\''+m.id+'\')"'+(S.bz?' disabled':'')+'>'+(S.bz===m.id?'해설 쓰는 중…':(m.e?'해설 다시 받기':'AI 해설 받기'))+'</button>':'')+'<button class="btn sm danger" onclick="dcAsk(\'my:'+m.id+'\')">'+ic("trash",16)+'삭제</button></div>'+dcPanel("my:"+m.id,"이 선지",'delMy(\''+m.id+'\')')+qaBox(m.id)+'</div>'}).join("")+'</div></div>'}
 
 
 
@@ -1325,7 +1476,7 @@ function inkTb(){
 
 /* ---------- 노트 > 필기 노트 ---------- */
 function nbGet(id){return st.notes.filter(function(n){return n.id===id})[0]}
-function nbNew(){var n={id:"n"+Date.now().toString(36),sub:S.sub,title:"새 필기 노트",t:today(),pg:1,bg:"grid"};st.notes.unshift(n);S.nbfit=1;S.nb={id:n.id,pg:0};INK.on=true;save();render()}
+function nbNew(){var n={id:"n"+Date.now().toString(36),sub:S.sub,title:"새 필기 노트",t:today(),pg:1,bg:"grid"};var _fs=fdSelOf("ink");if(_fs&&_fs!=="_none")n.fd=_fs;st.notes.unshift(n);S.nbfit=1;S.nb={id:n.id,pg:0};INK.on=true;save();render()}
 function nbOpen(id){S.nbfit=1;S.nb={id:id,pg:0};INK.on=true;S.rs=1;render()}
 function nbClose(){S.nb=null;S.nbd=null;S.rs=1;render()}
 function nbPg(d){S.nbfit=1;var n=nbGet(S.nb.id);S.nb.pg=Math.min(n.pg-1,Math.max(0,S.nb.pg+d));INK.cur=null;S.rs=0;render()}
@@ -1343,14 +1494,16 @@ function vNoteInk(D){
   var l=st.notes.filter(function(n){return n.sub===S.sub});
   var h='<p class="sub">'+D.name+' · 손글씨로 자유롭게 필기하는 노트예요. 퀴즈·오답노트·PDF에서도 &quot;필기&quot; 버튼으로 쓸 수 있어요.</p><div class="row" style="margin:12px 0"><button class="btn pri" onclick="nbNew()">'+ic("pen",18)+' 새 필기 노트</button></div>';
   if(!l.length)return h+'<div class="empty"><b>필기 노트가 없어요</b>새 필기 노트를 만들어 손글씨로 정리해 보세요.</div>';
-  return h+'<div class="wlist two">'+l.map(function(n){var c=S.nbd===n.id;return '<div class="wn"><span class="tag">필기</span><p class="q" style="margin-bottom:4px"><b>'+esc(n.title)+'</b></p><p class="sub">'+n.pg+'쪽 · '+esc(n.t)+'</p>'
+  h+=fdBar("ink",l.map(function(n){return "ink:"+n.id}));l=l.filter(function(n){return fdPass("ink","ink:"+n.id)});
+  if(!l.length)return h+'<div class="empty"><b>여기엔 필기 노트가 없어요</b>폴더 안이나 다른 위치를 확인해 보세요.</div>';
+  return h+'<div class="wlist two">'+l.map(function(n){var c=S.nbd===n.id;return '<div class="wn"><span class="tag">필기</span>'+fdTag("ink:"+n.id)+'<p class="q" style="margin-bottom:4px"><b>'+esc(n.title)+'</b></p><p class="sub">'+n.pg+'쪽 · '+esc(n.t)+'</p>'
     +(c?'<div class="panel" style="margin-top:10px"><p><b>이 노트를 삭제할까요?</b></p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="nbDel(\''+n.id+'\')">삭제</button><button class="btn sm" onclick="nbAsk(null)">취소</button></div></div>'
-      :'<div class="acts"><button class="btn sm pri" onclick="nbOpen(\''+n.id+'\')">열기</button><button class="btn sm danger" onclick="nbAsk(\''+n.id+'\')">삭제</button></div>')+'</div>'}).join("")+'</div>'}
+      :'<div class="acts"><button class="btn sm pri" onclick="nbOpen(\''+n.id+'\')">열기</button>'+fdBtns("ink:"+n.id)+'<button class="btn sm danger" onclick="nbAsk(\''+n.id+'\')">'+ic("trash",16)+'삭제</button></div>'+fdPanel("ink:"+n.id,"ink"))+'</div>'}).join("")+'</div>'}
 
 /* ---------- 노트 > PDF (불러온 문제지 보관) ---------- */
 if(!Array.isArray(st.pdfs))st.pdfs=[];
 var PDB=null;
-function pdbOpen(){return new Promise(function(ok,no){if(PDB)return ok(PDB);try{var r=indexedDB.open("satam-pdf",2);r.onupgradeneeded=function(){var d=r.result;if(!d.objectStoreNames.contains("f"))d.createObjectStore("f");if(!d.objectStoreNames.contains("ink"))d.createObjectStore("ink")};r.onsuccess=function(){PDB=r.result;ok(PDB)};r.onerror=function(){no(r.error)}}catch(e){no(e)}})}
+function pdbOpen(){return new Promise(function(ok,no){if(PDB)return ok(PDB);try{var r=indexedDB.open("satam-pdf",3);r.onupgradeneeded=function(){var d=r.result;if(!d.objectStoreNames.contains("f"))d.createObjectStore("f");if(!d.objectStoreNames.contains("ink"))d.createObjectStore("ink");if(!d.objectStoreNames.contains("img"))d.createObjectStore("img")};r.onsuccess=function(){PDB=r.result;ok(PDB)};r.onerror=function(){no(r.error)}}catch(e){no(e)}})}
 function pdbDo(mode,fn,store){return pdbOpen().then(function(db){return new Promise(function(ok,no){var t=db.transaction(store||"f",mode),q=fn(t.objectStore(store||"f"));t.oncomplete=function(){ok(q&&q.result)};t.onerror=t.onabort=function(){no(t.error)}})})}
 function pdfPut(id,b){return pdbDo("readwrite",function(o){return o.put(b,id)})}
 function pdfGet(id){return pdbDo("readonly",function(o){return o.get(id)})}
@@ -1400,59 +1553,168 @@ function pdfAnPanel(f){
   return h+'</div>'}
 function vNotePdf(D){
   if(S.pv)return pdfViewer();
-  if(S.pq)return pqEditor();
+  if(S.pq)return S.pe?pqImgEd():pqEditor();
   var P=PI();
   if(S.pan&&P.items){if(S.ed&&S.ed.sub===S.sub)return piEd();return piReview(D)}
   var l=st.pdfs.filter(function(f){return f.sub===S.sub});
   var h='<p class="sub">'+D.name+' · PDF를 미리 올려 두고, 원하는 PDF에서 분석을 눌러 문제를 읽어와요. 퀴즈에서 가져온 PDF도 자동으로 보관돼요.</p><div style="height:12px"></div>'+pdfUpBox();
   if(!l.length)return h+'<div class="empty"><b>보관된 PDF가 없어요</b>위에서 문제지 PDF를 올려 보세요.</div>';
+  h+=fdBar("pdf",l.map(function(f){return "pdf:"+f.id}));l=l.filter(function(f){return fdPass("pdf","pdf:"+f.id)});
+  if(!l.length)return h+'<div class="empty"><b>여기엔 PDF가 없어요</b>폴더 안이나 다른 위치를 확인해 보세요.</div>';
   return h+'<div class="wlist two">'+l.map(function(f){var c=S.pdc===f.id,qs=pdfQids(f),qn=qs.length,wn=qs.filter(wrongAct).length,op=S.pan===f.id;
     var id=f.id,mo=S.pm===id;
-    var head='<span class="tag">PDF</span><p class="q" style="margin:6px 0 2px;overflow-wrap:anywhere"><b>'+esc(f.exam||f.name)+'</b></p><p class="sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12.5px">'+esc(f.name)+' · '+fsz(f.size)+' · '+esc(f.t)+'</p><p class="sub" style="margin-top:2px">'+(qn?'저장된 문제 '+qn+'개'+(wn?' · <b style="color:var(--no)">틀린 문제 '+wn+'개</b>':''):(f.n?f.n+'문제 읽음 (미저장)':'아직 분석 전'))+'</p>';
+    var head='<span class="tag">PDF</span>'+fdTag("pdf:"+f.id)+'<p class="q" style="margin:6px 0 2px;overflow-wrap:anywhere"><b>'+esc(f.exam||f.name)+'</b></p><p class="sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12.5px">'+esc(f.name)+' · '+fsz(f.size)+' · '+esc(f.t)+'</p><p class="sub" style="margin-top:2px">'+(qn?'저장된 문제 '+qn+'개'+(wn?' · <b style="color:var(--no)">틀린 문제 '+wn+'개</b>':''):(f.n?f.n+'문제 읽음 (미저장)':'아직 분석 전'))+'</p>';
     var body;
     if(S.pdr===id)body='<div class="panel" style="margin-top:10px"><p><b>PDF 이름 바꾸기</b></p><input type="text" class="ta" maxlength="60" value="'+esc(S.pdn||"")+'" oninput="S.pdn=this.value" onkeydown="if(event.key===\'Enter\'){pdfRnSave()}" aria-label="PDF 이름" style="margin-top:8px;width:100%;box-sizing:border-box"><div class="row" style="margin-top:8px"><button class="btn pri sm" onclick="pdfRnSave()">저장</button><button class="btn sm" onclick="S.pdr=null;render()">취소</button></div></div>';
     else if(c)body='<div class="panel" style="margin-top:10px"><p><b>이 PDF를 삭제할까요?</b></p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="pdfDel(\''+id+'\')">삭제</button><button class="btn sm" onclick="S.pdc=null;render()">취소</button></div></div>';
     else{
       var B=function(t,fn,cls){return '<button class="btn sm'+(cls?' '+cls:'')+'" onclick="'+fn+'">'+t+'</button>'};
       var row=(qn?B('문제 풀기 '+qn,"pdfSolve('"+id+"')",'pri')+(wn?B('틀린 문제 '+wn,"pdfSolve('"+id+"',1)"):''):B(op?'분석 닫기':'분석',"pdfAn('"+id+"')",'pri'))+B('보기',"pdfView('"+id+"')")+'<button class="btn sm ghost" onclick="S.pm=S.pm===\''+id+'\'?null:\''+id+'\';render()" aria-label="더보기" aria-expanded="'+mo+'">'+(mo?'접기':'더보기')+'</button>';
-      var menu=mo?'<div class="acts" style="margin-top:6px;padding-top:8px;border-top:1px solid var(--line)">'+(qn?B('문제 편집',"pqOpen('"+id+"')")+B(S.sg&&S.sg.pid===id?'유사 문제 닫기':'유사 문제',"sgOpen('"+id+"')")+B(op?'분석 닫기':'다시 분석',"pdfAn('"+id+"')"):'')+B('이름 바꾸기',"pdfRn('"+id+"')")+B('내보내기',"pdfDl('"+id+"')")+B('삭제',"S.pdc='"+id+"';S.pm=null;render()",'danger')+'</div>':'';
+      var menu=mo?'<div class="acts" style="margin-top:6px;padding-top:8px;border-top:1px solid var(--line)">'+(qn?B('문제 편집',"pqOpen('"+id+"')")+B(S.sg&&S.sg.pid===id?'유사 문제 닫기':'유사 문제',"sgOpen('"+id+"')")+B(op?'분석 닫기':'다시 분석',"pdfAn('"+id+"')"):'')+B('이름 바꾸기',"pdfRn('"+id+"')")+B(fdGet("pdf:"+id)?'폴더 변경':'폴더 이동',"fdMv('pdf:"+id+"')")+B('내보내기',"pdfDl('"+id+"')")+B('삭제',"S.pdc='"+id+"';S.pm=null;render()",'danger')+'</div>':'';
       body='<div class="acts" style="margin-top:10px">'+row+'</div>'+menu}
-    return '<div class="wn">'+head+body+(op?pdfAnPanel(f):'')+(S.sg&&S.sg.pid===id?sgPanel(f):'')+'</div>'}).join("")+'</div>'}
+    return '<div class="wn">'+head+body+fdPanel("pdf:"+id,"pdf")+(op?pdfAnPanel(f):'')+(S.sg&&S.sg.pid===id?sgPanel(f):'')+'</div>'}).join("")+'</div>'}
 
 /* ---------- 노트 > PDF: 저장된 문제 편집 ---------- */
 function pqNo(q){return parseInt(String(q.src||"").split(" · ").pop())||0}
 function pqOpen(fid){var f=st.pdfs.filter(function(x){return x.id===fid})[0];if(!f)return;var d={},ids=pdfQids(f).slice().sort(function(a,b){return pqNo(byId(a))-pqNo(byId(b))});
-  ids.forEach(function(id){var q=byId(id);d[id]={q:String(q.q||""),o:q.o.map(String),a:q.a,e:String(q.e||""),imf:q.imf?1:0}});
+  ids.forEach(function(id){var q=byId(id);d[id]={q:String(q.q||""),o:q.o.map(String),a:q.a,e:String(q.e||""),imf:q.imf?1:0,im:q.im||"",rg:q.gr||null,rf:q.fr||null}});
   S.pq={fid:fid,ids:ids,d:d};S.rs=1;render()}
-function pqAns(id,k){S.pq.d[id].a=k;render()}
+function pqAns(id,k){var z=S.pq.d[id];z.a=k;z.rvAI=0;render()}
 function pqOptDel(id,k){var z=S.pq.d[id];if(z.o.length<=2)return;z.o.splice(k,1);if(z.a===k)z.a=0;else if(z.a>k)z.a--;render()}
 function pqOptAdd(id){var z=S.pq.d[id];if(z.o.length>=6)return;z.o.push("");render()}
 function pqTxt(id){S.pq.d[id].imf=0;render()}
-function pqClose(){S.pq=null;S.rs=1;render()}
+function pqClose(){S.pq=null;S.pe=null;S.rs=1;render()}
 function pqSave(){var P=S.pq;if(!P)return;var n=0;
   P.ids.forEach(function(id){var q=byId(id),z=P.d[id];if(!q||!z)return;
     var o=z.o.map(function(x){return String(x).trim()}).filter(function(x,i){return x||i===z.a});
     var a=z.a;if(o.length<2){return}
-    var chg=z.q.trim()!==String(q.q||"").trim()||z.e.trim()!==String(q.e||"").trim()||a!==q.a||o.join("\u0001")!==q.o.join("\u0001")||(z.imf?1:0)!==(q.imf?1:0);
+    var chg=z.q.trim()!==String(q.q||"").trim()||z.e.trim()!==String(q.e||"").trim()||a!==q.a||o.join("\u0001")!==q.o.join("\u0001")||(z.imf?1:0)!==(q.imf?1:0)||(z.im||"")!==(q.im||"")||(z.rvAI&&!q.u);
     if(!chg)return;
     if(a>=o.length)a=0;
     var optsChanged=o.join("\u0001")!==q.o.join("\u0001"),ansChanged=a!==q.a;
     q.q=z.q.trim();q.o=o;q.a=a;q.e=z.e.trim();q.imf=z.imf?1:0;
+    q.im=z.im||"";if(!q.im)q.imf=0;
+    if(z.rg)q.gr=z.rg;else delete q.gr;
+    if(z.rf)q.fr=z.rf;else delete q.fr;
     if(ansChanged&&q.u)delete q.u;
+    if(z.rvAI)q.u=1;
     if(optsChanged&&st.qoe)delete st.qoe[id];
     n++});
-  save();S.pq=null;S.rs=1;toast(n?n+"문제를 수정했어요":"바뀐 내용이 없어요");render()}
+  save();S.pq=null;S.pe=null;S.rs=1;toast(n?n+"문제를 수정했어요":"바뀐 내용이 없어요");render()}
+/* ---------- 저장된 문제 편집 화면의 밑줄 AI 검수 ---------- */
+async function piUlAsk(cq,oo,no,blob,file,stg,alive){var opt={cache:false,json:true,raw:true,temp:.1,fast:true,timeout:100000},t,r,g,lastE=null,arr;
+  if(blob)opt.images=[blob];else opt.files=[file];
+  for(t=0;t<2;t++){stg("AI 응답 기다리는 중 ("+(t+1)+"/2)");
+    try{r=await piTO(callAI(piUlPrompt(cq,oo,no,!!blob),opt),110000,"AI 응답이 너무 오래 걸려요. 잠시 후 다시 시도해 주세요.");
+      if(!alive())return null;
+      arr=piParse(r.text);g=arr&&arr[0];
+      if(!g){try{var j=JSON.parse(String(r.text||"").replace(/```json|```/g,"").trim());g=Array.isArray(j)?j[0]:j}catch(x){}}
+      if(!g||typeof g!=="object"){var fe=new Error("AI 답을 읽지 못했어요.");fe.code="fmt";throw fe}
+      return g}
+    catch(e){if(!alive())return null;lastE=e;console.warn("밑줄 검수",e);
+      if(e&&(e.code==="gem401"||e.code==="gem403"||e.code==="gem404"||e.code==="gem400"||e.code==="gem-3"))break;
+      if(t<1)await new Promise(function(ok){setTimeout(ok,e&&e.code==="gem429"?15000:(e&&/^gem5/.test(e.code||"")?4000:1200))})}}
+  throw lastE||new Error("empty")}
+function piUlApply(cq,oo,got){var hasQ=typeof got.q==="string",nq=hasQ?piUlMerge(cq,String(got.q).replace(/\\n/g,"\n")):cq,bad=hasQ&&nq==null,
+  no2=oo.slice();
+  if(nq==null)nq=cq;
+  return {nq:nq,no2:no2,ch:nq!==cq||no2.some(function(x,k){return x!==oo[k]}),bad:bad,note:String(got.note||"").slice(0,90)}}
+function pqUlRowIn(id,z){var bz=z.ulBusy||z.ulq,a="'"+id+"'";return '<div class="chips" style="margin:8px 0 0"><button class="chip" onclick="pqUlBtn('+a+')"'+(z.ulq&&!z.ulBusy?' disabled':'')+'>'+(z.ulBusy?'<i class="ulspin"></i>AI가 밑줄 확인 중… (다시 시작)':z.ulq?'검수 대기 중…':'밑줄 AI 검수')+'</button>'+(z.ulBak&&!bz?'<button class="chip" onclick="pqUlUndo('+a+')">AI 수정 취소</button>':'')+'</div>'+(z.ulBusy?'<p class="sub" id="ulst-'+id+'" style="margin:4px 0 0;font-size:12.5px">'+esc((z.ulStage||"검수 중")+" (버튼을 다시 누르면 처음부터 다시 해요)")+'</p><div class="ulbar"><i></i></div>':'')+(z.ulr==="err"&&!bz?'<p class="sub" style="color:var(--no);margin:4px 0 0;font-size:12.5px">실패 이유: '+esc(z.ulErr||"알 수 없는 오류")+'</p>':(z.ulNote&&!bz&&(z.ulr==="fix"||z.ulr==="skip")?'<p class="sub" style="margin:4px 0 0;font-size:12.5px">'+esc(z.ulNote)+'</p>':''))}
+function pqUlRow(id,z){return '<div id="pqrow-'+id+'">'+pqUlRowIn(id,z)+'</div>'}
+function pqUlPaint(id){var z=S.pq&&S.pq.d[id],a,b;if(!z)return;a=document.getElementById("pqs-"+id);b=document.getElementById("pqrow-"+id);if(a)a.innerHTML=piUlTag(z);if(b)b.innerHTML=pqUlRowIn(id,z)}
+async function pqUlOne(id){var P=S.pq,z=P&&P.d[id],q=byId(id),f;if(!z||!q)return;
+  var tok=z.ulTok=(z.ulTok||0)+1;z.ulBusy=1;z.ulq=0;z.ulr="";z.ulErr="";pqUlPaint(id);
+  function alive(){return z.ulTok===tok&&S.pq===P}
+  function stg(t){z.ulStage=t;var el=document.getElementById("ulst-"+id);if(el)el.textContent=t+" (버튼을 다시 누르면 처음부터 다시 해요)"}
+  try{f=st.pdfs.filter(function(x){return x.id===P.fid})[0];stg("PDF 불러오는 중");
+    var b=await pdfGet(P.fid);if(!alive())return;
+    if(!b||!f){var ne=new Error("보관된 PDF를 찾지 못했어요. 이 PDF를 다시 올려 주세요.");ne.userMsg=ne.message;throw ne}
+    var file=new File([b],f.name,{type:"application/pdf"}),blob=null,cq=z.q,oo=z.o.slice(),no=pqNo(q);
+    if(q.fr){stg("시험지 그림 준비 중");try{blob=await piTO(piHiCropG(P,file,q.fr),25000,"그림 준비가 너무 오래 걸려요")}catch(e){blob=null;console.warn("piHiCrop",e)}}
+    if(!alive())return;
+    if(!blob&&!no){var ne2=new Error("문제 번호를 알 수 없어 PDF에서 찾을 수 없어요.");ne2.userMsg=ne2.message;throw ne2}
+    var got=await piUlAsk(cq,oo,no,blob,file,stg,alive);if(!got||!alive())return;
+    if(z.q!==cq||z.o.join("\u0001")!==oo.join("\u0001")){z.ulr="skip";z.ulNote="검수하는 사이 본문을 고쳐서 적용하지 않았어요";return}
+    var R=piUlApply(cq,oo,got);
+    if(R.ch){z.ulBak={q:cq,o:oo};z.q=R.nq;z.o=R.no2}
+    z.ulr=R.ch?"fix":(R.bad?"skip":"ok");z.ulNote=R.bad&&!R.ch?"AI가 글자를 바꿔 보내서 적용하지 않았어요":R.note
+  }catch(e){if(z.ulTok===tok){z.ulr="err";z.ulErr=String(e&&(e.userMsg||e.message)||e).slice(0,160)}}
+  finally{if(z.ulTok===tok){z.ulBusy=0;z.ulStage="";pqUlPaint(id)}}}
+async function pqUlBtn(id){var P=S.pq,z=P&&P.d[id];if(!z)return;if(!aiOn()){toast("설정에서 AI 연결이 필요해요");return}
+  if(z.ulBusy){z.ulTok=(z.ulTok||0)+1;z.ulBusy=0;z.ulStage="";toast("멈춘 검수를 취소하고 다시 시작해요")}
+  await pqUlOne(id);if(S.pq!==P)return;
+  var m=z.ulr==="fix"?"밑줄을 고쳤어요":z.ulr==="ok"?"밑줄이 맞아요":z.ulr==="skip"?(z.ulNote||"적용하지 못했어요"):z.ulr==="err"?("검수 실패: "+(z.ulErr||"알 수 없는 오류")):"";
+  if(m)toast(m);piUlRender()}
+function pqUlUndo(id){var z=S.pq&&S.pq.d[id];if(!z||!z.ulBak)return;z.q=z.ulBak.q;z.o=z.ulBak.o;z.ulBak=null;z.ulr="";render()}
+async function pqUlAll(){var P=S.pq;if(!P||P.ulAll)return;if(!aiOn()){toast("설정에서 AI 연결이 필요해요");return}
+  var ids=P.ids.filter(function(id){return P.d[id]&&byId(id)}),k=0,fixed=0;if(!ids.length)return;
+  P.ulAll={n:ids.length,d:0};ids.forEach(function(id){P.d[id].ulq=1;pqUlPaint(id)});
+  function paint(){var el=document.getElementById("pqprog");if(el)el.innerHTML='<i class="ulspin"></i>밑줄 AI 검수 중… '+P.ulAll.d+' / '+P.ulAll.n}
+  paint();
+  while(k<ids.length&&S.pq===P){var id=ids[k++];await pqUlOne(id);if(P.d[id]&&P.d[id].ulr==="fix")fixed++;P.ulAll.d++;paint()}
+  ids.forEach(function(id){var z=P.d[id];if(z&&z.ulq){z.ulq=0;pqUlPaint(id)}});P.ulAll=null;
+  if(S.pq!==P)return;toast(fixed?("밑줄 "+fixed+"문제를 고쳤어요"):"밑줄을 확인했어요. 고칠 곳이 없어요");piUlRender()}
+/* ---------- 저장된 문제 편집: 이미지 추가·영역 조정 + 해설 검토 ---------- */
+async function pqPages(fid){var b=await pdfGet(fid);if(!b)throw new Error("보관된 PDF를 찾을 수 없어요");await piLib();
+  var d=await pdfjsLib.getDocument({data:await b.arrayBuffer()}).promise,out=[];
+  for(var i=1;i<=Math.min(d.numPages,30);i++){var pg=await d.getPage(i),v=pg.getViewport({scale:1400/pg.getViewport({scale:1}).width}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;out.push(c)}
+  return out}
+function pqImgRow(id,z){var im=z.im,a="'"+id+"'";
+  return '<div class="chips" style="margin:8px 0 0"><button class="chip" onclick="pqImgOpen('+a+')">'+(im?'이미지 영역 조정':'이미지 추가')+'</button>'+(im?'<button class="chip" onclick="pqImgDel('+a+')">이미지 제거</button>':'')+'</div>'+(im?'<img src="'+im+'" alt="" style="max-width:100%;border-radius:10px;margin-top:8px">':'')}
+async function pqImgOpen(id){var P=S.pq,z=P&&P.d[id];if(!z)return;S.edY=window.scrollY||0;
+  if(!P.pgs){toast("PDF 페이지를 불러오는 중이에요");try{P.pgs=await pqPages(P.fid)}catch(e){toast("PDF 페이지를 불러오지 못했어요: "+String(e&&e.message||e).slice(0,60));return}}
+  if(S.pq!==P)return;
+  var k=z.imf?"f":"g",r=z["r"+k];r=r&&P.pgs[r.p-1]?{p:+r.p,x:+r.x,y:+r.y,w:+r.w,h:+r.h}:{p:1,x:.1,y:.1,w:.8,h:.3};
+  S.pe={id:id,k:k,r:r,u:{}};S.rs=1;render()}
+function pqImgDel(id){var z=S.pq.d[id];z.im="";z.imf=0;render()}
+function pqImgEd(){var e=S.pe,P=S.pq,r=e.r,c=P.pgs[r.p-1],u=e.u[r.p]||(e.u[r.p]=piThumb(c)),q=byId(e.id),no=q?pqNo(q):0;
+  return '<p class="sub" style="margin-bottom:8px">'+(no?no+'번 ':'')+'이미지 영역: 쪽 위를 손가락으로 끌어서 영역을 그려 주세요.</p>'
+   +'<div class="chips">'+[["g","그림만"],["f","문제 전체"]].map(function(x){return '<button class="chip'+(e.k===x[0]?' on':'')+'" onclick="pqEdK(\''+x[0]+'\')">'+x[1]+'</button>'}).join("")+'</div>'
+   +'<div class="after" style="margin:8px 0;align-items:center"><button class="btn sm" onclick="pqPg(-1)">이전 쪽</button><span class="sub">'+r.p+' / '+P.pgs.length+'쪽</span><button class="btn sm" onclick="pqPg(1)">다음 쪽</button></div>'
+   +'<div id="edbox" style="width:min(100%,720px);margin:0 auto;overflow:hidden;position:relative;touch-action:none;user-select:none;line-height:0" onpointerdown="edDown(event)" onpointermove="edMove(event)" onpointerup="edUp()" onpointercancel="edUp()"><img src="'+u+'" alt="" draggable="false" style="width:100%;aspect-ratio:'+c.width+'/'+c.height+';display:block"><div id="edrect" style="position:absolute;pointer-events:none;border:2px solid var(--acc);background:rgba(63,79,209,.18);left:'+r.x*100+'%;top:'+r.y*100+'%;width:'+r.w*100+'%;height:'+r.h*100+'%"></div></div>'
+   +'<div class="after" style="margin-top:12px"><button class="btn" onclick="pqEdX()">취소</button><button class="btn pri" onclick="pqEdOk()">적용</button></div>'}
+function pqPg(d){var e=S.pe;e.r.p=Math.min(S.pq.pgs.length,Math.max(1,e.r.p+d));render()}
+function pqEdK(k){var e=S.pe,P=S.pq,r=P.d[e.id]["r"+k];e.k=k;if(r&&P.pgs[r.p-1])e.r={p:+r.p,x:+r.x,y:+r.y,w:+r.w,h:+r.h};render()}
+function pqEdX(){S.pe=null;S.rs=4;render()}
+function pqEdOk(){var e=S.pe,P=S.pq,z=P.d[e.id],u=piCrop(P.pgs,e.r,true);if(!u){toast("영역이 너무 작아요");return}
+  z.im=u;z["r"+e.k]={p:e.r.p,x:e.r.x,y:e.r.y,w:e.r.w,h:e.r.h};z.imf=e.k==="f"?1:0;S.pe=null;S.rs=4;render()}
+function pqRvRowIn(id,z){var a="'"+id+"'";
+  return '<div class="chips" style="margin:8px 0 6px"><button class="chip" onclick="pqRvRun('+a+')"'+(z.rvBusy?' disabled':'')+'>'+(z.rvBusy?'<i class="ulspin"></i>다시 푸는 중…':'해설 검토 (정답·해설 다시 만들기)')+'</button>'+(z.rvBak&&!z.rvBusy?'<button class="chip" onclick="pqRvUndo('+a+')">검토 결과 취소</button>':'')+'</div>'
+   +(z.rvBusy?'<div class="ulbar"><i></i></div>':'')
+   +(z.rvErr&&!z.rvBusy?'<p class="sub" style="color:var(--no);margin:4px 0 6px;font-size:12.5px">실패 이유: '+esc(z.rvErr)+'</p>':(z.rvNote&&!z.rvBusy?'<p class="sub" style="margin:4px 0 6px;font-size:12.5px">'+esc(z.rvNote)+'</p>':''))}
+function pqRvRow(id,z){return '<div id="pqrv-'+id+'">'+pqRvRowIn(id,z)+'</div>'}
+function pqRvPaint(id){var z=S.pq&&S.pq.d[id],b=document.getElementById("pqrv-"+id);if(z&&b)b.innerHTML=pqRvRowIn(id,z)}
+async function pqRvBlob(P,z){var b=null;
+  if(z.im){try{b=await (await fetch(z.im)).blob()}catch(e){b=null}}
+  if(!b&&(z.rf||z.rg)&&P.fid){try{var f=await pdfGet(P.fid);if(f)b=await piTO(piHiCropG(P,f,z.rf||z.rg),25000,"그림 준비가 너무 오래 걸려요")}catch(e){b=null}}
+  return b}
+async function pqRvRun(id){var P=S.pq,z=P&&P.d[id],q=byId(id);if(!z||!q||z.rvBusy)return;
+  if(!aiOn()){toast("설정에서 AI 연결이 필요해요");return}
+  z.rvBusy=1;z.rvErr="";z.rvNote="";pqRvPaint(id);var tok=z.rvTok=(z.rvTok||0)+1;
+  try{var blob=await pqRvBlob(P,z);
+    var res=await rvAI({q:z.q,o:z.o,a:z.a,e:z.e,keyExp:q.keyExp,sub:q.sub},blob);
+    if(z.rvTok!==tok||S.pq!==P)return;
+    var old=z.a;z.rvBak={a:z.a,e:z.e,rvAI:z.rvAI};
+    z.a=res.n-1;z.e=res.e;z.rvAI=1;
+    z.rvNote=rvNote(old,res,blob);
+    toast(old===z.a?"해설을 새로 만들었어요":"정답이 "+res.n+"번으로 바뀌었어요")
+  }catch(e){if(!(e&&e.code==="gem-3")&&z.rvTok===tok)z.rvErr=String(e&&(e.userMsg||e.message)||e).slice(0,160)}
+  finally{if(z.rvTok===tok){z.rvBusy=0;if(S.pq!==P)return;piUlRender()}}}
+function pqRvUndo(id){var z=S.pq&&S.pq.d[id];if(!z||!z.rvBak)return;z.a=z.rvBak.a;z.e=z.rvBak.e;z.rvAI=z.rvBak.rvAI;z.rvBak=null;z.rvNote="";render()}
 function pqEditor(){
   var P=S.pq,f=st.pdfs.filter(function(x){return x.id===P.fid})[0];if(!f){S.pq=null;return ""}
   var h='<p class="sub" style="margin-bottom:10px"><b>'+esc(f.exam||f.name)+'</b> · 저장된 문제 '+P.ids.length+'개. 고친 뒤 맨 아래 "저장"을 눌러야 반영돼요.</p>';
+  h+='<div class="card" style="margin-bottom:12px"><h3 class="h3">밑줄 AI 검수</h3><p class="sub" id="pqprog" style="margin:0 0 8px">'+(P.ulAll?'<i class="ulspin"></i>밑줄 AI 검수 중… '+P.ulAll.d+' / '+P.ulAll.n:'보관된 시험지와 비교해 밑줄을 다시 확인하고 고쳐요. 글자는 바꾸지 않고 밑줄만 바꿔요.')+'</p><button class="btn" onclick="pqUlAll()"'+(P.ulAll?' disabled':'')+'>전체 밑줄 AI 검수</button></div>';
   h+=P.ids.map(function(id){var q=byId(id),z=P.d[id];if(!q)return "";
     var no=pqNo(q);
-    return '<div class="card" style="margin-bottom:12px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b>'+(no?no+'번':'문제')+'</b><span class="tag">'+esc(q.t||"")+'</span>'+(q.u?'<span class="tag">AI 추정 정답</span>':'')+'</div>'
+    return '<div class="card" style="margin-bottom:12px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b>'+(no?no+'번':'문제')+'</b><span class="tag">'+esc(q.t||"")+'</span>'+(q.u?'<span class="tag">AI 추정 정답</span>':'')+'<span id="pqs-'+id+'">'+piUlTag(z)+'</span></div>'+pqUlRow(id,z)
      +(z.imf?'<div class="note" style="margin:8px 0">이 문제는 지금 사진으로 보여요. 글자 내용을 고쳐도 풀 때는 사진이 나와요. <button class="btn sm" style="margin-top:6px" onclick="pqTxt(\''+id+'\')">글자로 보기</button></div>':'')
-     +'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">문제 본문 (배점은 [3점]처럼 적어요)</p><textarea class="ta" rows="'+Math.min(18,Math.max(4,z.q.split("\n").length+2))+'" oninput="S.pq.d[\''+id+'\'].q=this.value" aria-label="문제 본문" style="margin:0 0 8px">'+esc(z.q)+'</textarea>'
+     +pqImgRow(id,z)
+     +'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">문제 본문 (배점은 [3점]처럼 적어요)</p>'+ulTools('ulq-s-'+id)+'<textarea id="ulq-s-'+id+'" class="ta" rows="'+Math.min(18,Math.max(4,z.q.split("\n").length+2))+'" oninput="S.pq.d[\''+id+'\'].q=this.value;ulRef(\'ulq-s-'+id+'\');ulPv(\'ulq-s-'+id+'\')" aria-label="문제 본문" style="margin:0 0 6px">'+esc(z.q)+'</textarea>'+ulPrev('ulq-s-'+id,z.q)+ulSlot('ulq-s-'+id,z.q)
      +'<p class="sub" style="margin:4px 0 6px;font-size:12.5px">번호를 누르면 정답으로 정해져요.</p>'
-     +z.o.map(function(o,k){return '<div style="display:flex;gap:6px;align-items:stretch;margin-bottom:6px"><button class="opt'+(k===z.a?' ok':'')+'" style="flex:none;width:44px;min-width:0;justify-content:center;margin:0" onclick="pqAns(\''+id+'\','+k+')" aria-label="'+(k+1)+'번을 정답으로"><span class="n">'+(k+1)+'</span></button><textarea class="ta" rows="'+Math.min(5,Math.max(1,Math.ceil(String(o).length/22)))+'" style="flex:1;min-width:0;margin:0" oninput="S.pq.d[\''+id+'\'].o['+k+']=this.value" aria-label="'+(k+1)+'번 선지">'+esc(o)+'</textarea>'+(z.o.length>2?'<button class="btn sm" style="flex:none" onclick="pqOptDel(\''+id+'\','+k+')" aria-label="'+(k+1)+'번 선지 삭제">✕</button>':'')+'</div>'}).join("")
+     +z.o.map(function(o,k){return '<div style="display:flex;gap:6px;align-items:stretch;margin-bottom:6px"><button class="opt'+(k===z.a?' ok':'')+'" style="flex:none;width:44px;min-width:0;justify-content:center;margin:0" onclick="pqAns(\''+id+'\','+k+')" aria-label="'+(k+1)+'번을 정답으로"><span class="n">'+(k+1)+'</span></button><textarea class="ta" rows="'+Math.min(5,Math.max(1,Math.ceil(String(o).length/22)))+'" id="ulo-s-'+id+'-'+k+'" style="flex:1;min-width:0;margin:0" oninput="S.pq.d[\''+id+'\'].o['+k+']=this.value" aria-label="'+(k+1)+'번 선지">'+esc(o)+'</textarea>'+(z.o.length>2?'<button class="btn sm" style="flex:none" onclick="pqOptDel(\''+id+'\','+k+')" aria-label="'+(k+1)+'번 선지 삭제">✕</button>':'')+'</div>'}).join("")
      +(z.o.length<6?'<div class="after" style="margin:2px 0 8px"><button class="btn sm" onclick="pqOptAdd(\''+id+'\')">선지 추가</button></div>':'')
+     +pqRvRow(id,z)
      +'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">해설</p><textarea class="ta" rows="'+Math.min(10,Math.max(2,Math.ceil(z.e.length/30)+1))+'" oninput="S.pq.d[\''+id+'\'].e=this.value" aria-label="해설" placeholder="해설이 비어 있어요">'+esc(z.e)+'</textarea></div>'}).join("");
   return h+'<div class="after" style="position:sticky;bottom:0;padding:10px 0;background:var(--bg,transparent)"><button class="btn" onclick="pqClose()">취소</button><button class="btn pri" onclick="pqSave()">저장</button></div>'}
 function pdfRn(id){var f=st.pdfs.filter(function(x){return x.id===id})[0];if(!f)return;S.pdr=id;S.pdc=null;S.pdn=f.exam||f.name;render()}
@@ -1536,7 +1798,7 @@ async function pdfReuse(id){var f=st.pdfs.filter(function(x){return x.id===id})[
 
 /* ---------- 노트 > 유사 문제 ---------- */
 if(!Array.isArray(st.sim))st.sim=[];
-S.sg=null;S.sf=0;S.sp={};S.sd=null;
+S.sg=null;S.sf=0;S.sp={};S.sd=null;S.sv=null;
 var SLV=["","쉬움","보통","어려움"];
 function sgNo(q){return parseInt(String(q.src||"").split(" · ").pop())||0}
 function sgOpen(pid){
@@ -1586,7 +1848,20 @@ function sgSave(){
   var g=S.sg,q=g&&g.qid?byId(g.qid):null;if(!q||!g.items)return;
   var f=st.pdfs.filter(function(x){return x.id===g.pid})[0],ex=f?(f.exam||f.name.replace(/\.pdf$/i,"")):"",b="v"+Date.now().toString(36),fr=String(q.src||"").split(" · ").pop()||"",add=[];
   g.items.forEach(function(z,i){if(g.sel[i])add.push({id:b+i,sub:q.sub,t:z.t,lv:z.lv,q:z.q,o:z.o,a:z.a,e:z.e,oe:z.oe||null,d:today(),ex:ex,from:fr,pid:g.pid,qid:q.id})});
-  if(!add.length)return;st.sim=add.concat(st.sim);save();g.items=null;g.sel={};g.saved=add.length;toast("노트 > 유사 문제에 저장했어요");render()}
+  if(!add.length)return;S.sgPend={add:add,ex:ex,pid:g.pid,sub:q.sub};if(!ex){sgCommit(false);return}sgAskSave()}
+function sgFindFd(pd){fdI();var nz=function(t){return String(t||"").replace(/\s+/g,"").toLowerCase()},l=st.fd.filter(function(f){return f.tab==="sim"&&f.sub===pd.sub});
+  return l.filter(function(f){return f.pid&&f.pid===pd.pid})[0]||l.filter(function(f){return nz(f.name)===nz(pd.ex)})[0]||null}
+function sgAskSave(){var pd=S.sgPend;if(!pd)return;fdI();var has=!!sgFindFd(pd),n=pd.add.length;
+  popup("");var o=$("pop");
+  o.innerHTML='<div class="pop-b" role="dialog" aria-modal="true" aria-label="유사 문제 저장"><p><b>PDF 이름 폴더에 저장할까요?</b></p><p class="sub" style="font-weight:400">유사 문제 '+n+'개를 '+(has?'이미 있는 ':'새로 만드는 ')+'‘'+esc(pd.ex)+'’ 폴더에 담을 수 있어요.</p><div style="display:flex;flex-direction:column;gap:8px"><button class="btn pri" onclick="sgCommit(true)">'+(has?'폴더에 저장':'폴더 만들어서 저장')+'</button><button class="btn" onclick="sgCommit(false)">폴더 없이 저장</button><button class="btn" onclick="S.sgPend=null;popClose()">취소</button></div></div>';
+  var bt=o.querySelector("button");if(bt)bt.focus()}
+function sgCommit(useFd){var pd=S.sgPend;if(!pd)return;popClose();fdI();var add=pd.add,fid="";
+  if(useFd&&pd.ex){var fo=sgFindFd(pd);
+    if(!fo){fo={id:"f"+Date.now().toString(36)+Math.floor(Math.random()*1296).toString(36),name:pd.ex,tab:"sim",sub:pd.sub,pid:pd.pid};st.fd.push(fo)}
+    else if(!fo.pid)fo.pid=pd.pid;
+    fid=fo.id;add.forEach(function(z){z.fd=fid})}
+  st.sim=add.concat(st.sim);S.sgPend=null;var g=S.sg;if(g){g.items=null;g.sel={};g.saved=add.length}
+  save();toast(fid?"‘"+pd.ex+"’ 폴더에 저장했어요":"노트 > 유사 문제에 저장했어요");render()}
 async function explainSimOpts(mode,id){
   if(!aiOn()) {toast("설정에서 AI 연결이 필요해요");return}
   var item;
@@ -1603,43 +1878,190 @@ async function explainSimOpts(mode,id){
   if(mode==="preview"){if(S.sg)S.sg.optBusy=null}else S.soBusy=null;
   render()
 }
-function setSf(i){S.sf=i;S.sd=null;render()}
+function setSf(i){S.sf=i;S.sd=null;S.sv=null;render()}
 function sgAns(id,k){var s=st.sim.filter(function(x){return x.id===id})[0];if(!s||S.sp[id]!=null)return;S.sp[id]=k;s.lr=k===s.a?1:0;save();render()}
 function sgRe(id){delete S.sp[id];render()}
 function sgDelAsk(id){S.sd=S.sd===id?null:id;render()}
-async function sgDel(id){st.sim=st.sim.filter(function(x){return x.id!==id});delete S.sp[id];S.sd=null;try{await inkDelKey("s:"+id)}catch(e){}save();toast("유사 문제를 삭제했어요");render()}
+async function sgDel(id){st.sim=st.sim.filter(function(x){return x.id!==id});delete S.sp[id];S.sd=null;S.sv=null;try{await inkDelKey("s:"+id)}catch(e){}save();toast("유사 문제를 삭제했어요");render()}
 function sgReAll(){var ids=S.sp;st.sim.forEach(function(s){delete ids[s.id]});render()}
-function vNoteSim(D){
-  var all=st.sim.filter(function(s){return s.sub===S.sub}),h='<p class="sub">'+D.name+' · PDF 문제에서 만든 유사 문제를 모아 두고 다시 풀어요. PDF 탭에서 분석한 PDF의 <b>유사 문제</b> 버튼으로 만들 수 있어요.</p><div style="height:12px"></div>';
-  if(!all.length)return h+'<div class="empty"><b>저장된 유사 문제가 없어요</b>PDF 탭에서 문제를 골라 유사 문제를 만들어 저장해 보세요.<button class="btn pri" onclick="setNt(\'pdf\')">PDF 탭으로 가기</button></div>';
-  var ks=[""];all.forEach(function(s){if(s.ex&&ks.indexOf(s.ex)<0)ks.push(s.ex)});
+/* ---------- 노트 폴더 · 이름 바꾸기 (오답노트/PDF/유사 문제/필기 공통) ---------- */
+var FDI={f:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>',
+ p:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+ t:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg>'};
+function fdI(){if(!Array.isArray(st.fd))st.fd=[];if(!st.fm||typeof st.fm!=="object")st.fm={};if(!st.nm||typeof st.nm!=="object")st.nm={};if(!S.fsel)S.fsel={}}
+function fdObj(key){var t=key.split(":")[0],id=key.slice(t.length+1);
+  if(t==="pdf")return st.pdfs.filter(function(f){return f.id===id})[0];
+  if(t==="sim")return st.sim.filter(function(x){return x.id===id})[0];
+  if(t==="ink")return st.notes.filter(function(n){return n.id===id})[0];
+  if(t==="an")return st.an.filter(function(a,i){return (a.id||"i"+i)===id})[0];
+  return null}
+function fdTabOf(key){return {pdf:"pdf",sim:"sim",ink:"ink",an:"wp",q:"wq",x:"wx"}[key.split(":")[0]]}
+function fdGet(key){fdI();var o=fdObj(key);return o?(o.fd||""):(st.fm[key]||"")}
+function fdSet(key,v){fdI();var o=fdObj(key);if(o){if(v)o.fd=v;else delete o.fd}else{if(v)st.fm[key]=v;else delete st.fm[key]}}
+function fdNm(key){fdI();var o=fdObj(key);return o?(o.nm||""):(st.nm[key]||"")}
+function fdList(tab){fdI();return st.fd.filter(function(f){return f.tab===tab&&f.sub===S.sub})}
+function fdById(id){return st.fd.filter(function(x){return x.id===id})[0]}
+/* 중첩 폴더: 각 폴더의 par = 상위 폴더 id (없으면 최상위) */
+function fdParOf(f){var p=f&&f.par;return p&&p!==f.id&&st.fd.some(function(x){return x.id===p&&x.tab===f.tab&&x.sub===f.sub})?p:""}
+function fdKids(tab,pid){return fdList(tab).filter(function(f){return fdParOf(f)===(pid||"")})}
+function fdDesc(id){var o=[],q=[id],g=0;while(q.length&&g++<500){var c=q.shift();st.fd.forEach(function(f){if(fdParOf(f)===c&&o.indexOf(f.id)<0){o.push(f.id);q.push(f.id)}})}return o}
+function fdPathNames(id){var n=[],g=0,f=fdById(id);while(f&&g++<20){n.unshift(f.name);f=fdById(fdParOf(f))}return n}
+function fdTree(tab,pid,d,out){out=out||[];d=d||0;fdKids(tab,pid||"").forEach(function(f){out.push({f:f,d:d});if(d<20)fdTree(tab,f.id,d+1,out)});return out}
+function fdSelOf(tab){fdI();var v=S.fsel[tab]||null;if(v&&!fdList(tab).some(function(f){return f.id===v})){S.fsel[tab]=null;return null}return v}
+function fdPass(tab,key){var s=fdSelOf(tab),m=fdGet(key);return s?m===s:!m}
+function fdTag(key){return ""}
+function fdHead(key){var n=fdNm(key);return n?'<p class="q" style="margin:8px 0 4px;overflow-wrap:anywhere"><b>'+esc(n)+'</b></p>':""}
+function fdIdle(tab){return fdList(tab).length?'<div class="empty"><b>여기엔 표시할 항목이 없어요</b>폴더 안이나 다른 위치를 확인해 보세요.</div>':""}
+function fdLabel(key){var o=fdObj(key),t=key.split(":")[0];if(t==="pdf")return o?(o.exam||o.name):"PDF";if(t==="ink")return o?o.title:"필기 노트";return fdNm(key)||({sim:"유사 문제",an:"사진 분석",q:"문제",x:"선지"})[t]||"항목"}
+/* 목록 위: 폴더 타일(바깥) 또는 폴더 머리글(폴더 안) */
+function fdBar(tab,keys){
+  var sel=fdSelOf(tab),cnt={},h="";keys.forEach(function(k){var m=fdGet(k);if(m)cnt[m]=(cnt[m]||0)+1});
+  function tot(id,g){return (cnt[id]||0)+(g>20?0:fdKids(tab,id).reduce(function(s,c){return s+tot(c.id,(g||0)+1)},0))}
+  if(sel){var f=fdById(sel),n=cnt[sel]||0,pp=fdPathNames(sel).slice(0,-1),par=fdParOf(f);
+    h+='<div class="fdh"><button class="ib" onclick="fdPick(\''+tab+'\',\''+par+'\')" aria-label="'+(par?'상위 폴더로':'전체로 돌아가기')+'">'+ic("back",18)+'</button><div class="t"><small>'+(pp.length?'전체 › '+esc(pp.join(" › ")):'폴더')+'</small><b>'+esc(f.name)+'</b></div><span class="cnt">'+n+'개</span><button class="ib" onclick="fdFMenu(\''+sel+'\')" aria-label="폴더 메뉴">⋯</button></div>'}
+  var fs=fdKids(tab,sel||"");
+  return h+'<div class="fdg">'+fs.map(function(f){var kc=fdKids(tab,f.id).length;return '<button class="fdt" onclick="fdPick(\''+tab+'\',\''+f.id+'\')">'+FDI.f+'<span><b>'+esc(f.name)+'</b><small>'+(kc?'폴더 '+kc+' · ':'')+tot(f.id)+'개</small></span></button>'}).join("")+'<button class="fdt add" onclick="fdNew(\''+tab+'\')">'+FDI.p+'<span><b>'+(sel?'하위 폴더':'새 폴더')+'</b></span></button></div>'}
+function fdPick(tab,id){fdI();S.fsel[tab]=id||null;S.qa=null;S.rs=3;render()}
+function fdBtns(key,noRn){return '<button class="btn sm ghost" onclick="fdOpen(\''+key+'\')" aria-label="이름 바꾸기·폴더 이동" title="이름 바꾸기·폴더 이동">'+ic("pen",16)+'편집</button>'}
+function fdPanel(key,tab){return ""}
+/* 하단 시트 */
+function fdOpen(key){S.fs={m:"item",key:key};fdMount()}
+function fdMv(key){S.fgrp=false;S.fs={m:"move",key:key};fdMount()}
+function fdNew(tab,key){S.fs={m:"new",tab:tab,key:key||""};S.fv="";fdMount()}
+function fdFMenu(id){var f=fdById(id);if(!f)return;S.fs={m:"fmenu",id:id,tab:f.tab};fdMount()}
+function fdShut(){S.fs=null;fdMount()}
+function fdRnOpen(key){var o=fdObj(key),t=key.split(":")[0];S.fs={m:"rename",key:key};S.fv=t==="ink"&&o?o.title:fdNm(key);fdMount()}
+function fdFrn(id){var f=fdById(id);if(!f)return;S.fs={m:"frn",id:id,tab:f.tab};S.fv=f.name;fdMount()}
+function fdFdel(id){S.fs={m:"fdel",id:id};fdMount()}
+function fdDone(msg){S.fs=null;save();if(msg)toast(msg);render();fdMount()}
+function fdSibs(key){var s=key.indexOf("sim:")===0?fdObj(key):null;if(!s||!s.qid)return [];return st.sim.filter(function(x){return x.qid===s.qid&&x.pid===s.pid&&x.sub===s.sub})}
+function fdGrpKeys(key){var l=S.fgrp?fdSibs(key):[];return l.length>1?l.map(function(x){return "sim:"+x.id}):[key]}
+function fdGrpRow(k){var l=fdSibs(k);if(l.length<2)return "";var s=fdObj(k),on=!!S.fgrp,fr=s.from?esc(s.from)+' 문제':'같은 원본 문제';
+  return '<button class="fdgrp'+(on?' on':'')+'" role="switch" aria-checked="'+on+'" onclick="S.fgrp=!S.fgrp;fdMount()"><span class="gi">'+ic("note",20)+'</span><span class="tx"><b>같은 문제의 유사 문제 '+l.length+'개 함께 담기</b><small>'+(on?fr+'에서 나온 유사 문제 '+l.length+'개가 모두 옮겨져요':'지금은 이 문제 1개만 옮겨져요')+'</small></span><i class="sw" aria-hidden="true"></i></button>'}
+function fdAssign(key,id){var ks=fdGrpKeys(key);ks.forEach(function(k){fdSet(k,id)});fdDone(ks.length>1?ks.length+"개를 "+(id?"폴더로 옮겼어요":"폴더에서 뺐어요"):(id?"폴더로 옮겼어요":"폴더에서 뺐어요"))}
+function fdSaveNew(){var e=S.fs;if(!e)return;fdI();var n=String(S.fv||"").replace(/\s+/g," ").trim().slice(0,40);if(!n){toast("폴더 이름을 입력해 주세요");return}
+  var id="f"+Date.now().toString(36)+Math.floor(Math.random()*1296).toString(36);var pr=fdSelOf(e.tab)||"",nf={id:id,name:n,tab:e.tab,sub:S.sub};if(pr)nf.par=pr;st.fd.push(nf);
+  if(e.key){var ks=fdGrpKeys(e.key);ks.forEach(function(k){fdSet(k,id)});fdDone(ks.length>1?"폴더를 만들고 "+ks.length+"개를 옮겼어요":"폴더를 만들고 옮겼어요")}else fdDone("폴더를 만들었어요")}
+function fdSaveFrn(){var e=S.fs,f=e&&fdById(e.id);if(!f)return;var n=String(S.fv||"").replace(/\s+/g," ").trim().slice(0,40);if(!n){toast("폴더 이름을 입력해 주세요");return}f.name=n;fdDone("폴더 이름을 바꿨어요")}
+function fdDoDel(){var e=S.fs;if(!e)return;fdI();var f0=fdById(e.id),tab=f0&&f0.tab,up=f0?fdParOf(f0):"";
+  st.fd.forEach(function(f){if(f.par===e.id){if(up)f.par=up;else delete f.par}});
+  st.fd=st.fd.filter(function(f){return f.id!==e.id});
+  st.pdfs.concat(st.sim,st.notes,st.an).forEach(function(o){if(o.fd===e.id){if(up)o.fd=up;else delete o.fd}});
+  Object.keys(st.fm).forEach(function(k){if(st.fm[k]===e.id){if(up)st.fm[k]=up;else delete st.fm[k]}});
+  if(tab)S.fsel[tab]=up||null;fdDone("폴더를 삭제했어요")}
+function fdFmv(id){var f=fdById(id);if(!f)return;S.fs={m:"fmv",id:id,tab:f.tab};fdMount()}
+function fdFmvTo(id,p){var f=fdById(id);if(!f)return;if(p&&(p===id||fdDesc(id).indexOf(p)>=0)){toast("자기 자신이나 하위 폴더로는 옮길 수 없어요");return}
+  if(p)f.par=p;else delete f.par;fdDone("폴더를 옮겼어요")}
+function fdRnSave(){var e=S.fs;if(!e||!e.key)return;fdI();var key=e.key,o=fdObj(key),t=key.split(":")[0],n=String(S.fv||"").replace(/\s+/g," ").trim().slice(0,60);
+  if(t==="ink"){if(!n){toast("이름을 입력해 주세요");return}if(o)o.title=n}
+  else if(o){if(n)o.nm=n;else delete o.nm}else{if(n)st.nm[key]=n;else delete st.nm[key]}
+  fdDone(n?"이름을 바꿨어요":"원래 이름으로 되돌렸어요")}
+function fdSheetHTML(){
+  var f=S.fs,m=f.m,k=f.key||"",h='<div class="fds" role="dialog" aria-modal="true"><div class="grab"></div>';
+  var row=function(icn,t,sub,fn,cls,ck,ind){return '<button class="fdr'+(cls?' '+cls:'')+'"'+(ind?' style="padding-left:'+(8+ind*22)+'px"':'')+' onclick="'+fn+'">'+icn+'<span class="tx">'+t+(sub?'<small>'+sub+'</small>':'')+'</span>'+(ck?'<span class="ck">'+ic("check",18)+'</span>':'')+'</button>'};
+  var inp=function(ph,save){return '<input type="text" class="ta" maxlength="60" value="'+esc(S.fv||"")+'" placeholder="'+ph+'" oninput="S.fv=this.value" onkeydown="if(event.key===\'Enter\'){'+save+'}" aria-label="'+ph+'" style="margin:12px 0 0;width:100%;box-sizing:border-box"><div class="row" style="margin-top:12px"><button class="btn sm" style="flex:1" onclick="fdShut()">취소</button><button class="btn pri sm" style="flex:1" onclick="'+save+'">저장</button></div>'};
+  if(m==="item"){var t=k.split(":")[0],cur=fdGet(k),cf=cur?fdById(cur):null;
+    h+='<h3>'+esc(fdLabel(k))+'</h3>'+row(ic("pen",22),'이름 바꾸기','',t==="pdf"?"fdShut();pdfRn('"+k.slice(4)+"')":"fdRnOpen('"+k+"')")+row(FDI.f,'폴더로 이동',cf?esc(cf.name):'폴더 없음',"fdMv('"+k+"')")}
+  else if(m==="move"){var cur2=fdGet(k),fs=fdTree(fdTabOf(k));
+    h+='<h3>폴더로 이동</h3><p class="sub" style="margin:0 0 6px">'+esc(fdLabel(k))+'</p>'+fdGrpRow(k)+row(FDI.f,'폴더 없음','바깥(전체)에 두기',"fdAssign('"+k+"','')","",!cur2)
+     +fs.map(function(x){return row(FDI.f,esc(x.f.name),'',"fdAssign('"+k+"','"+x.f.id+"')","",cur2===x.f.id,x.d)}).join("")+row(FDI.p,'새 폴더 만들어서 옮기기','',"fdNew('"+fdTabOf(k)+"','"+k+"')")}
+  else if(m==="rename")h+='<h3>이름 바꾸기</h3>'+(k.split(":")[0]==="ink"?'':'<p class="sub" style="margin:0">비워서 저장하면 원래 이름으로 돌아가요.</p>')+inp('이름',"fdRnSave()");
+  else if(m==="new")h+='<h3>새 폴더</h3>'+fdGrpRow(k)+inp('폴더 이름',"fdSaveNew()");
+  else if(m==="frn")h+='<h3>폴더 이름 바꾸기</h3>'+inp('폴더 이름',"fdSaveFrn()");
+  else if(m==="fmenu"){var ff=fdById(f.id);h+='<h3>'+esc(ff?ff.name:'폴더')+'</h3>'+row(ic("pen",22),'폴더 이름 바꾸기','',"fdFrn('"+f.id+"')")+row(FDI.f,'다른 폴더로 이동','',"fdFmv('"+f.id+"')")+row(FDI.t,'폴더 삭제','안의 폴더와 항목은 지워지지 않아요',"fdFdel('"+f.id+"')","danger")}
+  else if(m==="fmv"){var fm=fdById(f.id),bad=fdDesc(f.id).concat([f.id]),cp=fm?fdParOf(fm):"";
+    h+='<h3>폴더 이동</h3><p class="sub" style="margin:0 0 6px">'+esc(fm?fm.name:'')+'</p>'+row(FDI.f,'최상위(바깥)','',"fdFmvTo('"+f.id+"','')","",!cp)
+     +fdTree(f.tab).filter(function(x){return bad.indexOf(x.f.id)<0}).map(function(x){return row(FDI.f,esc(x.f.name),'',"fdFmvTo('"+f.id+"','"+x.f.id+"')","",cp===x.f.id,x.d)}).join("")}
+  else if(m==="fdel"){var fd=fdById(f.id);h+='<h3>이 폴더를 삭제할까요?</h3><p class="sub" style="margin:4px 0 0">&quot;'+esc(fd?fd.name:'')+'&quot; 폴더만 사라지고, 안에 있던 폴더와 항목은 한 단계 위로 옮겨져요.</p><div class="row" style="margin-top:14px"><button class="btn sm" style="flex:1" onclick="fdShut()">취소</button><button class="btn danger sm" style="flex:1" onclick="fdDoDel()">삭제</button></div>'}
+  return h+'</div>'}
+function fdMount(){var o=document.getElementById("fdsheet"),h=S.fs?fdSheetHTML():"";
+  if(!h){if(o)o.remove();return}
+  if(!o){o=document.createElement("div");o.id="fdsheet";o.addEventListener("click",function(e){if(e.target===o){S.fs=null;fdMount()}});document.body.appendChild(o)}
+  o.innerHTML=h;var i=o.querySelector("input");if(i){try{i.focus();var l=i.value.length;i.setSelectionRange(l,l)}catch(x){}}}
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&S.fs)fdShut()});
+
+function sgFilt(){
+  var all=st.sim.filter(function(s){return s.sub===S.sub}),ks=[""];all.forEach(function(s){if(s.ex&&ks.indexOf(s.ex)<0)ks.push(s.ex)});
   if(S.sf>=ks.length)S.sf=0;
-  var l=S.sf?all.filter(function(s){return s.ex===ks[S.sf]}):all,done=l.filter(function(s){return S.sp[s.id]!=null}).length;
+  return {all:all,ks:ks,l:(S.sf?all.filter(function(s){return s.ex===ks[S.sf]}):all).filter(function(s){return fdPass("sim","sim:"+s.id)})}}
+function sgOpenQ(id){S.sv=id;S.sd=null;S.qa=null;S.rs=1;render()}
+function sgClose(){S.sv=null;S.sd=null;S.qa=null;S.rs=3;render()}
+function sgGo(d){var l=sgFilt().l,i=l.map(function(x){return x.id}).indexOf(S.sv),n=i+d;if(i<0||n<0||n>=l.length)return;S.sv=l[n].id;S.sd=null;S.qa=null;S.rs=1;render()}
+function sgPrev(s){var t=String(s.q||"").replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();return t.length>90?t.slice(0,90)+"…":t}
+function vNoteSimOne(D,F){
+  var l=F.l,idx=l.map(function(x){return x.id}).indexOf(S.sv);
+  if(idx<0){S.sv=null;return vNoteSim(D)}
+  var s=l[idx],tot=l.length,p=S.sp[s.id],sol=p!=null,last=idx>=tot-1;
+  var h='<div class="runwrap"><div class="q-head"><button class="btn sm ghost" onclick="sgClose()" aria-label="목록으로">'+ic("close",16)+'목록</button><div class="qseg" role="progressbar" aria-label="문항 진행" aria-valuenow="'+(idx+1)+'" aria-valuemin="1" aria-valuemax="'+tot+'">'
+   +l.map(function(x,k){var q=S.sp[x.id],c=q!=null?(q===x.a?'ok':'no'):(k===idx?'cur':'');return '<i class="'+c+'"></i>'}).join("")+'</div><small>'+(idx+1)+' / '+tot+'</small></div>';
+  h+='<div class="card" data-ink="s:'+s.id+'" data-inkx="1"><span class="tag">'+esc(s.t)+' · '+SLV[s.lv||2]+(s.ex?' · '+esc(s.ex+(s.from?' · '+s.from:''))+' 유사':'')+'</span>'+fdHead("sim:"+s.id)
+   +(s.lr===1&&!sol?'<span class="tag ok" style="margin-left:6px">지난번 맞힘</span>':s.lr===0&&!sol?'<span class="tag no" style="margin-left:6px">지난번 틀림</span>':'')
+   +'<div class="q-text">'+qfmt(s.q)+'</div>';
+  s.o.forEach(function(o,k){var cl="opt";if(sol){if(k===s.a)cl+=" ok";else if(k===p)cl+=" no"}
+   h+='<button class="'+cl+'" onclick="sgAns(\''+s.id+'\','+k+')"'+(sol?' disabled':'')+'><span class="n">'+(k+1)+'</span><span>'+esc(o)+'</span>'+(sol&&k===s.a?'<em class="optlb">정답</em>':sol&&k===p?'<em class="optlb no">내 선택</em>':'')+'</button>'});
+  if(sol)h+='<div class="exp '+(p===s.a?'ok':'no')+'"><span class="v '+(p===s.a?'ok':'no')+'">'+(p===s.a?'정답이에요.':'오답이에요. 정답은 '+(s.a+1)+'번이에요.')+'</span>'+esc(s.e)+'</div>';
+  if(sol&&s.oe)h+='<div class="exp" style="margin-top:10px"><b>선지별 해설</b>'+s.oe.map(function(t,k){return '<p style="margin:7px 0"><b>'+(k+1)+'번 · '+(k===s.a?'정답':'오답')+'</b> '+esc(t)+'</p>'}).join('')+'</div>';
+  if(sol)h+=qaBox("simid:"+s.id);
+  var pv=idx>0?'<button class="btn" onclick="sgGo(-1)">'+ic("back",16)+'이전</button>':'';
+  if(sol){
+    h+='<div class="after">'+pv+qaBtn("simid:"+s.id)+(aiOn()?'<button class="btn" onclick="explainSimOpts(&quot;saved&quot;,&quot;'+s.id+'&quot;)"'+(S.soBusy===s.id?' disabled':'')+'>'+(S.soBusy===s.id?'선지별 해설 생성 중…':s.oe?'선지별 해설 다시 받기':'선지별 해설')+'</button>':'')
+     +(last?'<button class="btn pri" onclick="sgClose()">목록으로</button>':'<button class="btn pri" onclick="sgGo(1)">다음 문제</button>')+'</div>';
+  }else if(idx>0||!last){
+    h+='<div class="after">'+pv+(!last?'<button class="btn skip" onclick="sgGo(1)">건너뛰기'+ic("fwd",16)+'</button>':'')+'</div>';
+  }
+  h+=(S.sd===s.id?'<div class="panel" style="margin-top:12px"><p><b>이 유사 문제를 삭제할까요?</b></p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="sgDel(\''+s.id+'\')">삭제</button><button class="btn sm" onclick="sgDelAsk(null)">취소</button></div></div>'
+   :fdPanel("sim:"+s.id,"sim")+'<div class="simtools"><div class="simtools-l">'+(sol?'<button class="btn sm" onclick="sgRe(\''+s.id+'\')">'+ic("retry",16)+'다시 풀기</button>':'')+fdBtns("sim:"+s.id)+'</div><button class="btn sm ghost quiet" onclick="sgDelAsk(\''+s.id+'\')" aria-label="이 유사 문제 삭제">'+ic("trash",16)+'삭제</button></div>');
+  return h+'</div></div>'}
+function vNoteSim(D){
+  var h='<p class="sub">'+D.name+' · PDF 문제에서 만든 유사 문제를 모아 두고 다시 풀어요. PDF 탭에서 분석한 PDF의 <b>유사 문제</b> 버튼으로 만들 수 있어요.</p><div style="height:12px"></div>',F=sgFilt(),all=F.all,ks=F.ks;
+  if(!all.length)return h+'<div class="empty"><b>저장된 유사 문제가 없어요</b>PDF 탭에서 문제를 골라 유사 문제를 만들어 저장해 보세요.<button class="btn pri" onclick="setNt(\'pdf\')">PDF 탭으로 가기</button></div>';
+  if(S.sv)return vNoteSimOne(D,F);
+  h+=fdBar("sim",all.map(function(s){return "sim:"+s.id}));
+  var l=F.l,done=l.filter(function(s){return S.sp[s.id]!=null}).length;
+  if(!l.length)return h+'<div class="empty"><b>여기엔 유사 문제가 없어요</b>폴더 안이나 다른 위치를 확인해 보세요.</div>';
   if(ks.length>2)h+='<div style="margin-bottom:12px">'+chips(ks.map(function(k){return k||"전체 "+all.length}),S.sf,"setSf",true)+'</div>';
   h+='<div class="row" style="margin-bottom:12px;align-items:center"><span class="sub">'+l.length+'문제'+(done?' · 푼 문제 '+done+'개':'')+'</span>'+(done?'<button class="btn sm" onclick="sgReAll()">'+ic("retry",16)+'모두 다시 풀기</button>':'')+'</div><div class="wlist two">';
-  l.forEach(function(s){
+  l.forEach(function(s,i){
     var p=S.sp[s.id],sol=p!=null;
-    h+='<div class="wn" data-ink="s:'+s.id+'"><span class="tag">'+esc(s.t)+' · '+SLV[s.lv||2]+'</span>'+(s.ex?'<span class="tag" style="margin-left:6px">'+esc(s.ex+(s.from?' · '+s.from:''))+' 유사</span>':'')+(s.lr===1?'<span class="tag ok" style="margin-left:6px">지난번 맞힘</span>':s.lr===0?'<span class="tag no" style="margin-left:6px">지난번 틀림</span>':'')
-     +'<div class="q">'+qfmt(s.q)+'</div>'
-     +s.o.map(function(o,k){var cl="opt";if(sol){if(k===s.a)cl+=" ok";else if(k===p)cl+=" no"}return '<button class="'+cl+'" onclick="sgAns(\''+s.id+'\','+k+')"'+(sol?' disabled':'')+'><span class="n">'+(k+1)+'</span><span>'+esc(o)+'</span></button>'}).join("")
-     +(sol?'<div class="exp"><span class="v '+(p===s.a?'ok':'no')+'">'+(p===s.a?'정답이에요.':'오답이에요. 정답은 '+(s.a+1)+'번이에요.')+'</span>'+esc(s.e)+'</div>':'')
-     +(s.oe?'<div class="exp" style="margin-top:8px"><b>선지별 해설</b>'+s.oe.map(function(t,k){return '<p style="margin:6px 0"><b>'+(k+1)+'번 · '+(k===s.a?'정답':'오답')+'</b> '+esc(t)+'</p>'}).join('')+'</div>':'')
-     +'<div class="acts"><button class="btn sm" onclick="explainSimOpts(&quot;saved&quot;,&quot;'+s.id+'&quot;)"'+(S.soBusy===s.id?' disabled':'')+'>'+(S.soBusy===s.id?'해설 만드는 중…':s.oe?'선지별 해설 다시 받기':'선지별 해설')+'</button>'+qaBtn("simid:"+s.id)+'</div>'+qaBox("simid:"+s.id)
-     +(S.sd===s.id?'<div class="panel" style="margin-top:10px"><p><b>이 유사 문제를 삭제할까요?</b></p><div class="row" style="margin-top:8px"><button class="btn danger sm" onclick="sgDel(\''+s.id+'\')">삭제</button><button class="btn sm" onclick="sgDelAsk(null)">취소</button></div></div>'
-      :'<div class="acts">'+(sol?'<button class="btn sm pri" onclick="sgRe(\''+s.id+'\')">다시 풀기</button>':'')+'<button class="btn sm danger" onclick="sgDelAsk(\''+s.id+'\')">삭제</button></div>')+'</div>'});
+    var fk="sim:"+s.id,nm=fdNm(fk);
+    h+='<div class="wn"><button style="text-align:left;width:100%;cursor:pointer;display:block;background:none;border:0;padding:0;color:inherit;font:inherit" onclick="sgOpenQ(\''+s.id+'\')"><span class="tag">'+esc(s.t)+' · '+SLV[s.lv||2]+'</span>'+(s.ex?'<span class="tag" style="margin-left:6px">'+esc(s.ex+(s.from?' · '+s.from:''))+' 유사</span>':'')+fdTag(fk)
+     +(sol?'<span class="tag '+(p===s.a?'ok':'no')+'" style="margin-left:6px">'+(p===s.a?'방금 맞힘':'방금 틀림')+'</span>':s.lr===1?'<span class="tag ok" style="margin-left:6px">지난번 맞힘</span>':s.lr===0?'<span class="tag no" style="margin-left:6px">지난번 틀림</span>':'')
+     +(nm?'<p class="q" style="margin:8px 0 0;overflow-wrap:anywhere"><b>'+esc(nm)+'</b></p><p class="sub" style="margin:2px 0 0">'+esc(sgPrev(s))+'</p>':'<p class="q" style="margin:8px 0 0">'+(i+1)+'. '+esc(sgPrev(s))+'</p>')+'</button>'
+     +'<div class="acts" style="margin-top:10px">'+fdBtns(fk)+'</div>'+fdPanel(fk,"sim")+'</div>'});
   return h+'</div>'}
 
 /* ---------- 오답노트 ---------- */
-function setW(k){S.wt=k;S.qa=null;render()}
+function setW(k){S.wt=k;S.qa=null;S.av=null;render()}
 function toggleUnd(id){if(st.und[id])delete st.und[id];else{st.und[id]=1;toast("이해함으로 표시했어요")}save();render()}
 function setWv(i){S.wv=i;S.qa=null;render()}
 function wvChips(n,a,b){return '<div style="margin-bottom:12px">'+chips(["전체 "+n,"복습 중 "+a,"이해함 "+b],S.wv,"setWv")+'</div>'}
 function wvPass(un){return S.wv===1?!un:S.wv===2?un:true}
 function wvEmpty(what){return '<div class="empty"><b>'+(S.wv===2?'이해함으로 표시한 '+what+'이 아직 없어요':'복습할 '+what+'을 모두 이해했어요')+'</b>'+(S.wv?'<button class="btn" onclick="setWv(0)">전체 보기</button>':'')+'</div>'}
 function toggleAn(i){var a=st.an[i];if(!a)return;a.done=!a.done;save();toast(a.done?"이해함으로 표시했어요":"다시 복습 중으로 바꿨어요");render()}
-function delAn(i){S.qa=null;st.an.splice(i,1);save();render()}
+function delAn(i){S.dc=null;S.qa=null;S.av=null;var a=st.an[i];if(a&&a.id){anImgDel(a.id).catch(function(){});if(AN_URL[a.id]){try{URL.revokeObjectURL(AN_URL[a.id])}catch(e){}delete AN_URL[a.id]}}st.an.splice(i,1);save();render()}
 function togOpen(k){S.op[k]=!S.op[k];render()}
-function setNt(k){S.nt=k;S.pv=null;S.pq=null;S.pdr=null;S.pm=null;if(!PI().busy)S.pan=null;S.pdc=null;S.nbd=null;S.sd=null;S.qa=null;render()}
+function setNt(k){S.nt=k;S.av=null;S.sv=null;S.pv=null;S.pq=null;S.pdr=null;S.pm=null;if(!PI().busy)S.pan=null;S.pdc=null;S.nbd=null;S.sd=null;S.qa=null;render()}
+/* ---------- 사진 분석 오답노트: 한 문제씩 보기 ---------- */
+var AVL=[];
+function anOpen(key){S.av=key;S.qa=null;S.lsy=window.scrollY||0;S.rs=1;render()}
+function anClose(){S.av=null;S.qa=null;S.rs=3;render()}
+function anGo(d){var i=AVL.indexOf(S.av),n=i+d;if(i<0||n<0||n>=AVL.length)return;S.av=AVL[n];S.qa=null;S.rs=1;render()}
+function vAnOne(items,idx){
+  var a=items[idx][0],i=items[idx][1],k="a"+i,key=a.id||("i"+i),tot=items.length,last=idx>=tot-1;
+  var h='<div class="runwrap"><div class="q-head"><button class="btn sm ghost" onclick="anClose()" aria-label="목록으로">'+ic("close",16)+'목록</button><div class="qseg" role="progressbar" aria-label="문항 진행" aria-valuenow="'+(idx+1)+'" aria-valuemin="1" aria-valuemax="'+tot+'">'
+   +items.map(function(x,n){return '<i class="'+(n===idx?'cur':(x[0].done?'ok':''))+'"></i>'}).join("")+'</div><small>'+(idx+1)+' / '+tot+'</small></div>';
+  h+='<div class="card" data-ink="a:'+key+'"><div class="an-title"><p style="margin:0"><b>'+esc(a.t)+' 저장</b> '+(a.done?'<span class="tag ok" style="margin:0 0 0 4px">이해함</span>':'<span class="tag no" style="margin:0 0 0 4px">복습 중</span>')+'</p><div class="an-tools"><button class="btn sm ghost ico" onclick="fdOpen(\'an:'+key+'\')" aria-label="편집 (이름 바꾸기·폴더 이동)" title="편집">'+ic("pen",18)+'</button><button class="btn sm ghost ico quiet" onclick="dcAsk(\'an'+i+'\')" aria-label="삭제" title="삭제">'+ic("trash",18)+'</button></div></div>'+fdHead("an:"+key)
+   +(a.m?'<p class="mine">내 메모: '+esc(a.m)+'</p>':'')
+   +(a.img?'<img class="abig"'+(a.o?' data-aid="'+a.id+'"':'')+' src="'+((a.o&&AN_URL[a.id])||a.img)+'" alt="저장한 문제 사진" style="cursor:default">':'')
+   +'<div class="an pres" style="margin-top:10px">'+fmtAnCards(a.text)+'</div>'
+   +qaBox(k)
+   +'<div class="anbar">'+(aiOn()?'<button class="btn" onclick="openQA(\''+k+'\')">'+ic("chat",16)+(S.qa&&S.qa.key===k&&!S.qaClosed?'질문 닫기':'추가 질문')+'</button>':'')
+   +'<button class="btn'+(a.done?'':' pri')+'" onclick="toggleAn('+i+')">'+ic("check",16)+(a.done?'다시 복습':'이해했어요')+'</button>'
+   +'</div>'
+   +'<div class="annav">'+(idx>0?'<button class="btn" onclick="anGo(-1)">'+ic("back",16)+'이전</button>':'')+(last?'<button class="btn pri" onclick="anClose()">목록으로</button>':'<button class="btn pri" onclick="anGo(1)">다음 문제'+ic("chev",16)+'</button>')+'</div>'
+   +dcPanel("an"+i,"이 분석 노트",'delAn('+i+')')+fdPanel("an:"+key,"wp")
+   +'</div></div>';
+  return h}
 function vWrong(D){
   var top='<div class="seg" style="margin:12px 0 16px;max-width:560px">'+[["w","오답노트"],["pdf","PDF"],["sim","유사 문제"],["ink","필기"]].map(function(t){return '<button class="'+(S.nt===t[0]?'on':'')+'" onclick="setNt(\''+t[0]+'\')">'+t[1]+'</button>'}).join("")+'</div>';
   return '<div class="notes"><h1 class="h1">노트</h1>'+top+(S.nt==="pdf"?vNotePdf(D):S.nt==="sim"?vNoteSim(D):S.nt==="ink"?vNoteInk(D):vWrongW(D))+'</div>'}
@@ -1651,32 +2073,35 @@ function vWrongW(D){
     var all=st.wrong.map(byId).filter(function(q){return q&&D.qs.indexOf(q)>=0}),us=["전체"].concat(D.units);
     if(!all.length)return h+'<div class="empty"><b>틀린 문제가 없어요</b>퀴즈에서 틀린 문제가 여기에 모여요.<button class="btn pri" onclick="go(\'quiz\')">퀴즈 풀러 가기</button></div>';
     var inU=S.wf?all.filter(function(q){return q.t===D.units[S.wf-1]}):all,nU=inU.filter(function(q){return st.und[q.id]}).length,nA=inU.length-nU;
-    var f=inU.filter(function(q){return wvPass(!!st.und[q.id])});
-    h+='<div style="margin-bottom:12px">'+chips(us,S.wf,"setWf",true)+'</div>'+wvChips(inU.length,nA,nU)+'<div class="row" style="margin-bottom:12px"><button class="btn pri" onclick="startWrongQ(S.wf)"'+(nA?'':' disabled')+'>'+ic("retry",18)+'복습 중인 문제 다시 풀기 ('+nA+')</button></div>';
-    if(!f.length)return h+wvEmpty("문제");
+    var f=inU.filter(function(q){return wvPass(!!st.und[q.id])&&fdPass("wq","q:"+q.id)});
+    h+=fdBar("wq",all.map(function(q){return "q:"+q.id}))+'<div style="margin-bottom:12px">'+chips(us,S.wf,"setWf",true)+'</div>'+wvChips(inU.length,nA,nU)+'<div class="row" style="margin-bottom:12px"><button class="btn pri" onclick="startWrongQ(S.wf)"'+(nA?'':' disabled')+'>'+ic("retry",18)+'복습 중인 문제 다시 풀기 ('+nA+')</button></div>';
+    if(!f.length)return h+(fdIdle("wq")||wvEmpty("문제"));
     h+='<div class="wlist two">';
-    f.forEach(function(q){var u=!!st.und[q.id];h+='<div class="wn'+(u?' und':'')+'" data-ink="q:'+q.id+'"><span class="tag">'+esc(q.t)+'</span>'+(u?'<span class="tag ok" style="margin-left:6px">이해함</span>':'')+'<div class="q">'+qView(q)+'</div>'+(st.pk[q.id]!=null?'<p class="mine">내가 고른 답: '+escR(q.o[st.pk[q.id]])+'</p>':'')+'<p class="ans">정답: '+escR(q.o[q.a])+'</p><p>'+esc(q.e)+'</p><div class="acts">'+qaBtn(q.id)+'<button class="btn sm'+(u?'':' pri')+'" onclick="toggleUnd(\''+q.id+'\')">'+(u?'다시 복습':'이해했어요')+'</button></div>'+qaBox(q.id)+'</div>'});
+    f.forEach(function(q){var u=!!st.und[q.id];h+='<div class="wn'+(u?' und':'')+'" data-ink="q:'+q.id+'"><span class="tag">'+esc(q.t)+'</span>'+(u?'<span class="tag ok" style="margin-left:6px">이해함</span>':'')+fdHead("q:"+q.id)+'<div class="q">'+qView(q)+'</div>'+(st.pk[q.id]!=null?'<p class="mine">내가 고른 답: '+escR(q.o[st.pk[q.id]])+'</p>':'')+'<p class="ans">정답: '+escR(q.o[q.a])+'</p><p>'+esc(q.e)+'</p><div class="acts">'+qaBtn(q.id)+fdBtns("q:"+q.id)+'<button class="btn sm'+(u?'':' pri')+'" onclick="toggleUnd(\''+q.id+'\')">'+(u?'다시 복습':'이해했어요')+'</button></div>'+fdPanel("q:"+q.id,"wq")+qaBox(q.id)+'</div>'});
     return h+'</div>'}
   if(S.wt==="x"){
     var l=st.ox.map(oxById).filter(function(q){return q&&oxList(S.sub).indexOf(q)>=0});
     if(!l.length)return h+'<div class="empty"><b>틀린 선지가 없어요</b>OX 퀴즈나 내 선지 적기로 채워 보세요.<button class="btn pri" onclick="S.qmode=\'ox\';go(\'quiz\')">선지 풀러 가기</button></div>';
     var ks=[];l.forEach(function(q){if(q.k&&ks.indexOf(q.k)<0)ks.push(q.k)});
     var inT=S.tf&&ks.indexOf(S.tf)>=0?l.filter(function(q){return q.k===S.tf}):l,nU2=inT.filter(function(q){return st.und[q.id]}).length,nA2=inT.length-nU2;
-    var fl=inT.filter(function(q){return wvPass(!!st.und[q.id])});
+    var fl=inT.filter(function(q){return wvPass(!!st.und[q.id])&&fdPass("wx","x:"+q.id)});
+    h+=fdBar("wx",l.map(function(q){return "x:"+q.id}));
     if(ks.length){var THK=[""].concat(ks);window.THK=THK;h+='<div style="margin-bottom:12px"><div class="chips scroll">'+THK.map(function(k,i){return '<button class="chip'+((S.tf||"")===k?' on':'')+'" onclick="S.tf=THK['+i+'];render()">'+esc(k||"전체")+'</button>'}).join("")+'</div></div>'}
     h+=wvChips(inT.length,nA2,nU2)+'<div class="row" style="margin-bottom:12px"><button class="btn pri" onclick="startWrongX()"'+(w.x?'':' disabled')+'>'+ic("retry",18)+'복습 중인 선지 다시 풀기 ('+w.x+')</button></div>';
-    if(!fl.length)return h+wvEmpty("선지");
+    if(!fl.length)return h+(fdIdle("wx")||wvEmpty("선지"));
     h+='<div class="wlist two">';
-    fl.forEach(function(q){var u=!!st.und[q.id];h+='<div class="wn'+(u?' und':'')+'" data-ink="q:'+q.id+'">'+(q.k?'<span class="tag">'+esc(q.k)+'</span>':'')+(u?'<span class="tag ok" style="margin-left:6px">이해함</span>':'')+'<p class="q">'+esc(q.s)+'</p><p class="ans">정답: '+(q.a?'O (맞는 설명)':'X (틀린 설명)')+'</p>'+whyHTML(q)+(S.bz===q.id?loadHTML("exp"):'')+'<div class="acts">'+qaBtn(q.id)+(aiOn()&&q.id.charAt(0)==="m"?'<button class="btn sm" onclick="explainMy(\''+q.id+'\')"'+(S.bz?' disabled':'')+'>'+(S.bz===q.id?'해설 쓰는 중…':(q.e?'해설 다시 받기':'AI 해설 받기'))+'</button>':'')+'<button class="btn sm'+(u?'':' pri')+'" onclick="toggleUnd(\''+q.id+'\')">'+(u?'다시 복습':'이해했어요')+'</button></div>'+qaBox(q.id)+'</div>'});
+    fl.forEach(function(q){var u=!!st.und[q.id];h+='<div class="wn'+(u?' und':'')+'" data-ink="q:'+q.id+'">'+(q.k?'<span class="tag">'+esc(q.k)+'</span>':'')+(u?'<span class="tag ok" style="margin-left:6px">이해함</span>':'')+fdHead("x:"+q.id)+'<p class="q">'+esc(q.s)+'</p><p class="ans">정답: '+(q.a?'O (맞는 설명)':'X (틀린 설명)')+'</p>'+whyHTML(q)+(S.bz===q.id?loadHTML("exp"):'')+'<div class="acts">'+qaBtn(q.id)+(aiOn()&&q.id.charAt(0)==="m"?'<button class="btn sm" onclick="explainMy(\''+q.id+'\')"'+(S.bz?' disabled':'')+'>'+(S.bz===q.id?'해설 쓰는 중…':(q.e?'해설 다시 받기':'AI 해설 받기'))+'</button>':'')+fdBtns("x:"+q.id)+'<button class="btn sm'+(u?'':' pri')+'" onclick="toggleUnd(\''+q.id+'\')">'+(u?'다시 복습':'이해했어요')+'</button></div>'+fdPanel("x:"+q.id,"wx")+qaBox(q.id)+'</div>'});
     return h+'</div>'}
   var mine=[];st.an.forEach(function(a,i){if(a.sub===S.sub)mine.push([a,i])});
   if(!mine.length)return h+'<div class="empty"><b>저장한 사진 분석이 없어요</b>틀린 문제를 찍어 분석하면 이곳에 자동으로 쌓여요.<button class="btn pri" onclick="go(\'photo\')">사진 분석하러 가기</button></div>';
-  var nD=mine.filter(function(x){return x[0].done}).length,items=mine.filter(function(x){return wvPass(!!x[0].done)});
-  h+=wvChips(mine.length,mine.length-nD,nD);
-  if(!items.length)return h+wvEmpty("항목");
+  var nD=mine.filter(function(x){return x[0].done}).length,items=mine.filter(function(x){return wvPass(!!x[0].done)&&fdPass("wp","an:"+(x[0].id||"i"+x[1]))});
+  h+=fdBar("wp",mine.map(function(x){return "an:"+(x[0].id||"i"+x[1])}))+wvChips(mine.length,mine.length-nD,nD);
+  if(!items.length)return h+(fdIdle("wp")||wvEmpty("항목"));
+  AVL=items.map(function(x){return x[0].id||("i"+x[1])});
+  if(S.av){var ai=AVL.indexOf(S.av);if(ai>=0)return vAnOne(items,ai);S.av=null}
   h+='<div class="wlist two">';
-  items.forEach(function(p){var a=p[0],i=p[1],k="a"+i,open=S.op[k];
-    h+='<div class="wn'+(a.done?' und':'')+'" data-ink="a:'+(a.id||("i"+i))+'"><div class="prow">'+(a.img?'<img class="thumb" src="'+a.img+'" alt="저장한 문제 사진">':'')+'<div><p><b>'+esc(a.t)+' 저장</b> '+(a.done?'<span class="tag ok" style="margin:0 0 0 4px">이해함</span>':'<span class="tag no" style="margin:0 0 0 4px">복습 중</span>')+'</p>'+(a.m?'<p class="mine">내 메모: '+esc(a.m)+'</p>':'')+'</div></div><div class="an'+(open?'':' clip')+'" style="margin-top:8px">'+fmtAn(a.text)+'</div><div class="acts"><button class="btn sm" onclick="togOpen(\''+k+'\')">'+(open?'접기':'전체 보기')+'</button>'+qaBtn(k)+'<button class="btn sm'+(a.done?'':' pri')+'" onclick="toggleAn('+i+')">'+(a.done?'다시 복습':'이해했어요')+'</button><button class="btn sm danger" onclick="delAn('+i+')">삭제</button></div>'+qaBox(k)+'</div>'});
+  items.forEach(function(p){var a=p[0],i=p[1],k="a"+i,open=false;
+    h+='<div class="wn'+(a.done?' und':'')+'" data-ink="a:'+(a.id||("i"+i))+'"><div class="prow">'+(a.img&&!(open&&a.o)?'<img class="thumb" src="'+a.img+'" alt="저장한 문제 사진"'+(a.o?' onclick="anOpen(\''+(a.id||("i"+i))+'\')" style="cursor:zoom-in"':'')+'>':'')+'<div><p><b>'+esc(a.t)+' 저장</b> '+(a.done?'<span class="tag ok" style="margin:0 0 0 4px">이해함</span>':'<span class="tag no" style="margin:0 0 0 4px">복습 중</span>')+'</p>'+(a.m?'<p class="mine">내 메모: '+esc(a.m)+'</p>':'')+'</div></div>'+(open&&a.o?'<img class="abig" data-aid="'+a.id+'" src="'+(AN_URL[a.id]||a.img||'')+'" alt="저장한 문제 사진 원본" onclick="togOpen(\''+k+'\')">':'')+fdHead("an:"+(a.id||"i"+i))+'<div class="an pres'+(open?'':' clip')+'" style="margin-top:8px">'+fmtAnCards(a.text)+'</div><div class="acts"><button class="btn sm" onclick="anOpen(\''+(a.id||("i"+i))+'\')">전체 보기</button>'+qaBtn(k)+fdBtns("an:"+(a.id||"i"+i))+'<button class="btn sm'+(a.done?'':' pri')+'" onclick="toggleAn('+i+')">'+(a.done?'다시 복습':'이해했어요')+'</button><button class="btn sm danger" onclick="dcAsk(\'an'+i+'\')">'+ic("trash",16)+'삭제</button></div>'+dcPanel("an"+i,"이 분석 노트",'delAn('+i+')')+fdPanel("an:"+(a.id||"i"+i),"wp")+qaBox(k)+'</div>'});
   return h+'</div>'}
 function setWf(i){S.wf=i;render()}
 
@@ -1703,12 +2128,27 @@ function regenQA(){var qa=S.qa;if(!aiOn()||!qa||qa.busy||!qa.msgs.length)return;
 async function runQA(){var qa=S.qa;if(!qa)return;qa.busy=true;S.t0=Date.now();render();
   var hist=qa.msgs.map(function(m){return (m.r==="u"?"학생: ":"선생님: ")+m.t}).join("\n");
   var p="너는 한국 고등학교 ‘"+DB[S.sub].name+"’ 선생님이야. 아래 자료에 대한 학생의 추가 질문에 답해줘. 쉽게 4문장 이내, 마크다운 기호 없이 쓰고, 필요하면 사상가·이론 비교나 쉬운 예시를 들어줘. 교육과정 밖 내용은 간단히만 말해줘.\n\n[자료]\n"+getCtx(qa.key)+"\n\n[대화]\n"+hist+"\n선생님:";
-  try{var r=await callAI(p,{cache:false});qa.msgs.push({r:"a",t:r.text.trim()})}catch(e){aiFail(e,"답을 받지 못했어요. 잠시 후 다시 시도해 주세요.")}
+  try{var lu=qa.msgs[qa.msgs.length-1],r=await callAI(p,{cache:false,quick:!!(lu&&lu.r==="u"&&simpleQ(lu.t))});qa.msgs.push({r:"a",t:r.text.trim()})}catch(e){aiFail(e,"답을 받지 못했어요. 잠시 후 다시 시도해 주세요.")}
   qa.busy=false;render()}
 
+/* ---------- 사진 분석 원본 이미지 (IndexedDB) ---------- */
+function anImgPut(id,b){return pdbDo("readwrite",function(o){return o.put(b,id)},"img")}
+function anImgGet(id){return pdbDo("readonly",function(o){return o.get(id)},"img")}
+function anImgDel(id){return pdbDo("readwrite",function(o){return o.delete(id)},"img")}
+function anHydrate(){
+  var els=document.querySelectorAll("img.abig[data-aid]");if(!els.length)return;
+  var ids={};[].forEach.call(els,function(e){ids[e.getAttribute("data-aid")]=1});
+  Object.keys(ids).forEach(function(id){
+    if(AN_URL[id]||AN_PEND[id])return;
+    AN_PEND[id]=1;
+    anImgGet(id).then(function(b){
+      delete AN_PEND[id];if(!b)return
+      var u=URL.createObjectURL(b);AN_URL[id]=u;
+      [].forEach.call(document.querySelectorAll('img.abig[data-aid="'+id+'"]'),function(e){e.src=u})
+    }).catch(function(){delete AN_PEND[id]})})}
 /* ---------- 사진 분석 ---------- */
 function fmtAn(t){var o="";String(t||"").split("\n").forEach(function(l){l=l.trim();if(!l)return;var m=l.match(/^(\d)[.)]\s*(.+)$/),u=l.match(/^단원\s*[:：]\s*(.+)$/),g=l.match(/^과목\s*[:：]\s*(.+)$/);if(g)o+='<span class="tag ok">'+esc(g[1])+'</span>';else if(u)o+='<span class="tag">'+esc(u[1])+'</span>';else if(m&&m[2].length<=22)o+='<h4 class="ah"><span>'+m[1]+'</span>'+esc(m[2])+'</h4>';else o+='<p>'+esc(l)+'</p>'});return o}
-function pickImg(inp){var f=inp.files&&inp.files[0];if(!f)return;inp.value="";var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);IMGURL=c.toDataURL("image/jpeg",.85);var k2=Math.min(1,480/Math.max(c.width,c.height)),c2=document.createElement("canvas");c2.width=Math.round(c.width*k2);c2.height=Math.round(c.height*k2);c2.getContext("2d").drawImage(c,0,0,c2.width,c2.height);THUMB=c2.toDataURL("image/jpeg",.6);c.toBlob(function(b){IMG=b;S.res="";S.sid=null;S.qa=null;render()},"image/jpeg",.85)};im.onerror=function(){toast("사진을 열 수 없어요. 다른 사진을 골라 주세요")};im.src=r.result};r.readAsDataURL(f)}
+function pickImg(inp){var f=inp.files&&inp.files[0];if(!f)return;inp.value="";var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);IMGURL=c.toDataURL("image/jpeg",.85);var k2=Math.min(1,480/Math.max(c.width,c.height)),c2=document.createElement("canvas");c2.width=Math.round(c.width*k2);c2.height=Math.round(c.height*k2);c2.getContext("2d").drawImage(c,0,0,c2.width,c2.height);THUMB=c2.toDataURL("image/jpeg",.6);c.toBlob(function(b){IMG=b;ORIG=f;S.res="";S.sid=null;S.qa=null;render()},"image/jpeg",.85)};im.onerror=function(){toast("사진을 열 수 없어요. 다른 사진을 골라 주세요")};im.src=r.result};r.readAsDataURL(f)}
 function fmtAnCards(t){
   var tags="",secs=[],cur=null,pre="";
   String(t||"").split("\n").forEach(function(l){l=l.trim();if(!l)return;
@@ -1721,8 +2161,8 @@ function fmtAnCards(t){
     if(cur)cur.b.push(h);else pre+=h});
   return (tags?'<div class="ptags">'+tags+'</div>':'')+pre+secs.map(function(x){return '<details class="psec" open><summary><span class="pn">'+x.n+'</span>'+esc(x.t)+'</summary><div class="pbody">'+x.b.join("")+'</div></details>'}).join("")}
 function paintRes(){var e=$("res");if(e){e.hidden=false;e.innerHTML=fmtAnCards(S.res)}}
-function saveAn(auto){if(!S.res||S.sid)return;var id="p"+Date.now();st.an.unshift({id:id,sub:S.ds||S.sub,t:today(),text:S.res,m:S.memo||"",img:THUMB,done:false});S.sid=id;save();toast((auto?"분석을 오답노트에 자동 저장했어요":"오답노트에 저장했어요")+(S.ds&&S.ds!==S.sub?" ("+DB[S.ds].name+")":""));render()}
-function resetPhoto(){S.res="";S.sid=null;IMG=null;IMGURL="";THUMB="";S.memo="";S.qa=null;S.rs=1;render()}
+function saveAn(auto){if(!S.res||S.sid)return;var id="p"+Date.now(),og=ORIG;st.an.unshift({id:id,sub:S.ds||S.sub,t:today(),text:S.res,m:S.memo||"",img:THUMB,o:og?1:0,done:false});S.sid=id;save();if(og)anImgPut(id,og).catch(function(){var a=st.an.filter(function(x){return x.id===id})[0];if(a){a.o=0;save()}toast("원본 사진은 저장하지 못해 축소본만 저장했어요")});toast((auto?"분석을 오답노트에 자동 저장했어요":"오답노트에 저장했어요")+(S.ds&&S.ds!==S.sub?" ("+DB[S.ds].name+")":""));render()}
+function resetPhoto(){S.res="";S.sid=null;IMG=null;ORIG=null;IMGURL="";THUMB="";S.memo="";S.qa=null;S.rs=1;render()}
 function setAuto(v){st.auto=v;save();render()}
 async function analyze(){if(!aiOn()||!IMG||S.busy)return;var prevRes=S.res,prevSid=S.sid,prevDs=S.ds;S.ds=null;S.busy=true;S.t0=Date.now();S.res="";S.sid=null;S.qa=null;render();
   var D=DB[S.sub],ok=false;
@@ -1759,6 +2199,7 @@ function gemErr(c,m){
    :c===-1?"응답이 비어 있어요. 안전 필터에 걸렸을 수 있어요. 질문을 바꿔 다시 시도해 주세요."
    :c===-2?"응답이 너무 오래 걸려 중단했어요. 잠시 후 다시 시도해 주세요."
    :c===-3?"AI 생성을 중단했어요."
+   :c===-9?"3.8 Flash 응답이 느려요."
    :c===400?(/api key/i.test(m||"")?"API 키가 올바르지 않아요. 설정에서 키를 다시 확인해 주세요.":"요청이 거절됐어요. "+String(m||"").slice(0,80))
    :(c===401||c===403)?"API 키 권한 오류예요. 키가 유효한지, Gemini API가 허용된 키인지 확인해 주세요."
    :c===404?"모델 이름을 찾을 수 없어요. 설정에서 모델명을 확인해 주세요."
@@ -1775,10 +2216,10 @@ async function gemCall(p,o,key,model){
   var gc={temperature:o.temp!=null?o.temp:.4};if(o.json){gc.responseMimeType="application/json";gc.maxOutputTokens=65536}
   if(o.fast)gc.thinkingConfig={thinkingLevel:"minimal"};
   var body=JSON.stringify({contents:[{role:"user",parts:parts}],generationConfig:gc});
-  var stream=!!(o.onText&&window.ReadableStream),ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},o.timeout||150000);
+  var stream=!!(o.onText&&window.ReadableStream),ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},o.timeout||150000),sl=(o.slow&&ctl)?setTimeout(function(){ctl._s=true;ctl.abort()},o.slow):0;
   if(ctl)AIX.c.push(ctl);
-  function fin(){clearTimeout(tm);var x=AIX.c.indexOf(ctl);if(x>=0)AIX.c.splice(x,1)}
-  function ae(e){return gemErr(e&&e.name==="AbortError"?(ctl&&ctl._u?-3:-2):0)}
+  function fin(){clearTimeout(tm);clearTimeout(sl);var x=AIX.c.indexOf(ctl);if(x>=0)AIX.c.splice(x,1)}
+  function ae(e){return gemErr(e&&e.name==="AbortError"?(ctl&&ctl._s?-9:(ctl&&ctl._u?-3:-2)):0)}
   var url="https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(model)+(stream?":streamGenerateContent?alt=sse":":generateContent"),res;
   try{res=await fetch(url,{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":key},body:body,signal:ctl?ctl.signal:undefined})}
   catch(e){fin();throw ae(e)}
@@ -1787,15 +2228,15 @@ async function gemCall(p,o,key,model){
     throw gemErr(res.status,m)}
   var txt="";
   try{
-    if(!stream){var j=await res.json();txt=gemText(j)}
+    if(!stream){var j=await res.json();clearTimeout(sl);txt=gemText(j)}
     else{var rd=res.body.getReader(),dec=new TextDecoder(),buf="";
       while(true){var r=await rd.read();if(r.done)break;buf+=dec.decode(r.value,{stream:true});var ls=buf.split("\n");buf=ls.pop();
-        for(var k=0;k<ls.length;k++){var l=ls[k].trim();if(l.indexOf("data:")!==0)continue;var sx=l.slice(5).trim();if(!sx)continue;try{txt+=gemText(JSON.parse(sx));o.onText({text:cleanTxt(txt)})}catch(x){}}}}
+        for(var k=0;k<ls.length;k++){var l=ls[k].trim();if(l.indexOf("data:")!==0)continue;var sx=l.slice(5).trim();if(!sx)continue;try{txt+=gemText(JSON.parse(sx));if(txt){clearTimeout(sl)}o.onText({text:cleanTxt(txt)})}catch(x){}}}}
   }catch(e){fin();throw ae(e)}
   fin();txt=o.raw?txt:cleanTxt(txt);if(!txt.trim())throw gemErr(-1);return {text:txt}}
 var AIX={c:[],rej:[],n:0};
 function stopAI(){AIX.n++;AIX.c.slice().forEach(function(c){c._u=true;try{c.abort()}catch(x){}});var r=AIX.rej.slice();AIX.rej=[];r.forEach(function(f){f(gemErr(-3))});toast("AI 생성을 중단했어요")}
-function gkSwitch(e){return !!(e&&/^gem/.test(e.code||"")&&e.code!=="gem-3")}
+function gkSwitch(e){return !!(e&&/^gem/.test(e.code||"")&&e.code!=="gem-3"&&e.code!=="gem-9")}
 function gkCool(e){var c=e.code;return c==="gem429"?(/day|daily|PerDay/i.test(e.raw||"")?6*36e5:9e4):(c==="gem401"||c==="gem403"||(c==="gem400"&&/api key/i.test(e.raw||"")))?864e5:15e3}
 function rotKey(){var n=gkeys().length;if(n>1){st.gact=(st.gact+1)%n;save();toast("다음 API 키로 바꿨어요 ("+(st.gact+1)+"번)")}}
 async function gemMulti(p,o,model){
@@ -1808,8 +2249,28 @@ async function gemMulti(p,o,model){
     catch(e){last=e;if(!gkSwitch(e))throw e;ks[i].until=Date.now()+gkCool(e);save()}}
   if(n>1&&last){var m=last.code==="gem429"?"등록된 API 키 "+n+"개의 한도가 모두 끝났어요. 잠시 후 다시 시도하거나 새 키를 추가해 주세요.":last.userMsg+" (등록된 키 "+n+"개를 모두 시도했어요)";last.userMsg=m;last.message=m;st.gact=(st.gact+1)%n;save()}
   throw last}
+var G38="gemini-3.8-flash",G35="gemini-3.5-flash",G35L="gemini-3.5-flash-lite";
+function simpleQ(t){t=String(t||"").trim();if(!t||t.length>25||/[.!]\s*\S/.test(t)||(t.match(/\?/g)||[]).length>1)return false;
+  if(/왜|어떻게|이유|관계|특징|설명|장단점|사례|차이|비교|정리|분석|자세|표로|모두|전부|요약|예시|구분|헷갈|해설|문제|선지|적용|입장|주장|비판/.test(t))return false;
+  return /(뭐|뭐예요|뭐에요|뭐죠|뭔가요?|무엇|무엇인가요|누구|누구예요|언제|어디|몇|뜻|의미|맞아|맞나요?|인가요?|이야|야)$/.test(t.replace(/[?\s]+$/,""))}
+function slowOn(){return st.gauto!==false&&(st.gmodel||G38)===G38}
+async function gemAuto(p,o){
+  var m=st.gmodel||G38;
+  if(o&&o.quick&&st.gquick!==0){
+    try{return await gemMulti(p,Object.assign({},o,{fast:true}),G35L)}
+    catch(e){if(!e||e.code==="gem-3"||!(e.code==="gem404"||e.code==="gem400"||e.code==="gem-1"))throw e}
+  }
+  if(!slowOn()||(o&&o.noSlow))return gemMulti(p,o,m);
+  if(st.gslow&&st.gslow>Date.now())return gemMulti(p,o,G35);
+  try{return await gemMulti(p,Object.assign({},o,{slow:(o&&o.onText)?15000:((o&&o.json)?60000:35000)}),m)}
+  catch(e){
+    if(e&&e.code==="gem-9"){st.gslow=Date.now()+10*60000;save();toast("3.8이 느려서 3.5 Flash로 바꿔 진행해요 (10분간)");return gemMulti(p,o,G35)}
+    throw e}}
+function setSlowAuto(v){st.gauto=!!v;if(!v)st.gslow=0;save();render()}
+function setMix(v){st.gmix=v?1:0;save();render()}
+function setQuick(v){st.gquick=v?1:0;save();render()}
 async function callAI(p,o){
-  if(useGem())return gemMulti(p,o,st.gmodel||"gemini-3.8-flash");
+  if(useGem())return gemAuto(p,o);
   if(CL)return new Promise(function(ok,no){function rm(){var x=AIX.rej.indexOf(no);if(x>=0)AIX.rej.splice(x,1)}AIX.rej.push(no);CL(p,o).then(function(r){rm();ok(r)},function(e){rm();no(e)})});
   var e=new Error("AI 연결이 없어요.");e.userMsg="AI 연결이 없어요. 설정에서 Gemini API 키를 입력해 주세요.";throw e}
 function setCfg(k,v){st[k]=v;save();render()}
@@ -1885,17 +2346,62 @@ async function saveFile(blob,nm){
   if(CP&&CP.Filesystem&&CP.Share){var r=await CP.Filesystem.writeFile({path:nm,data:await blobB64(blob),directory:"CACHE",recursive:true});await CP.Share.share({title:nm,url:r.uri,dialogTitle:nm});return}
   try{var f=new File([blob],nm,{type:blob.type||"application/octet-stream"});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:nm});return}}catch(e){if(e&&e.name==="AbortError")return}
   var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=nm;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1500)}
-function exportData(){
-  var d=JSON.parse(JSON.stringify(st));delete d.gkey;delete d.gen;delete d.pdfs;delete d.notes;
-  if(S.expKey&&gkeys().length)d.gkeys=gkeys().map(function(x){return {k:x.k,until:0}});else{delete d.gkeys;delete d.gact}
-  saveFile(new Blob([JSON.stringify(d)],{type:"application/json"}),"사탐정복-학습기록-"+today()+".json").then(function(){toast("백업 파일을 만들었어요")}).catch(function(e){if(!/cancel/i.test(String(e&&e.message||e)))popup("백업 파일을 저장하지 못했어요. ("+String(e&&e.message||e).slice(0,60)+")")})}
+function idbDump(store){return pdbOpen().then(function(db){return new Promise(function(ok,no){var out=[],tx=db.transaction(store,"readonly"),r=tx.objectStore(store).openCursor();r.onsuccess=function(){var c=r.result;if(c){out.push([c.key,c.value]);c.continue()}};tx.oncomplete=function(){ok(out)};tx.onerror=tx.onabort=function(){no(tx.error)}})})}
+function b64Blob(b,type){var s=atob(b),n=s.length,u=new Uint8Array(n);for(var i=0;i<n;i++)u[i]=s.charCodeAt(i);return new Blob([u],{type:type||"application/octet-stream"})}
+function fdClean(s){var ids={};(s.fd||[]).forEach(function(f){ids[f.id]=1});(s.fd||[]).forEach(function(f){if(f.par&&(!ids[f.par]||f.par===f.id))delete f.par});[s.pdfs,s.sim,s.notes,s.an].forEach(function(a){(a||[]).forEach(function(o){if(o&&o.fd&&!ids[o.fd])delete o.fd})});if(s.fm&&typeof s.fm==="object")Object.keys(s.fm).forEach(function(k){if(!ids[s.fm[k]])delete s.fm[k]})}
+async function exportData(){
+  if(S.bkBusy)return;S.bkBusy=1;toast("전체 백업 파일을 만드는 중이에요…");
+  try{
+    try{inkFlush()}catch(e){}
+    var d=JSON.parse(JSON.stringify(st));delete d.gkey;
+    if(S.expKey&&gkeys().length)d.gkeys=gkeys().map(function(x){return {k:x.k,until:0}});else{delete d.gkeys;delete d.gact}
+    var ink=await idbDump("ink"),fl=await idbDump("f"),im=await idbDump("img");
+    var P=['{"app":"satam","v":2,"t":'+JSON.stringify(new Date().toISOString())+',"st":'+JSON.stringify(d)+',"ink":'+JSON.stringify(ink)];
+    [["f",fl],["img",im]].forEach(function(g){P.push(',"'+g[0]+'":[');var c=0;g[1].forEach(function(a){var b=a[1];if(!b||b.size==null)return;P.push((c++?',':'')+'['+JSON.stringify(a[0])+','+JSON.stringify(b.type||"")+',"');P.push(b);P.push('"]')});P.push(']')});
+    P.push('}');
+    /* Blob은 base64 문자열이 필요하므로 변환해서 다시 조립 */
+    var parts=[];
+    for(var i=0;i<P.length;i++){var p=P[i];parts.push(typeof p==="string"?p:await blobB64(p))}
+    await saveFile(new Blob(parts,{type:"application/json"}),"사탐정복-전체백업-"+today()+".json");
+    toast("전체 백업 파일을 만들었어요")
+  }catch(e){if(!/cancel|abort/i.test(String(e&&e.message||e)))popup("백업 파일을 저장하지 못했어요. ("+String(e&&e.message||e).slice(0,60)+")")}
+  S.bkBusy=0}
 function importData(inp){
   var f=inp.files&&inp.files[0];if(!f)return;var r=new FileReader();
-  r.onload=function(){try{var d=JSON.parse(r.result);if(!d||!Array.isArray(d.days))throw 0;
-    var imp=Array.isArray(d.gkeys)?d.gkeys:[],keep={gkeys:st.gkeys,gact:st.gact,gmodel:st.gmodel,prov:st.prov,pdfs:st.pdfs,notes:st.notes,ik:st.ik};localStorage.setItem(K,JSON.stringify(d));st=load();for(var k in keep)st[k]=keep[k];
-    var addK=0;imp.forEach(function(x){if(x&&x.k&&!st.gkeys.some(function(y){return y.k===x.k})){st.gkeys.push({k:x.k,until:0});addK++}});
-    save();toast("기록을 불러왔어요"+(addK?" (API 키 "+addK+"개 추가)":""))}
-    catch(e){toast("올바른 백업 파일이 아니에요")}inp.value="";S.rs=1;render()};
+  r.onload=async function(){
+    var d,go=false;
+    try{d=JSON.parse(r.result);if(!d||(!Array.isArray(d.days)&&!(d.v===2&&d.st&&Array.isArray(d.st.days))))throw 0}catch(e){toast("올바른 백업 파일이 아니에요");inp.value="";return}
+    try{
+      if(d.v===2){
+        var okc=true;try{okc=confirm("이 백업으로 현재 기록을 모두 바꿀까요?\n학습 기록, PDF, 필기, 사진 분석이 백업 내용으로 대체돼요.")}catch(e){}
+        if(!okc){inp.value="";return}
+        var ns=d.st;
+        if(!Array.isArray(ns.gkeys)||!ns.gkeys.length){ns.gkeys=st.gkeys||[];ns.gact=st.gact||0}
+        delete ns.gkey;fdClean(ns);
+        var fl=(d.f||[]).map(function(a){return [a[0],b64Blob(a[2],a[1])]}),im=(d.img||[]).map(function(a){return [a[0],b64Blob(a[2],a[1])]}),ik=d.ink||[];
+        var oldS=null;try{oldS=localStorage.getItem(K)}catch(e){}
+        localStorage.setItem(K,JSON.stringify(ns));
+        try{
+          inkDrop();var db=await pdbOpen();
+          await new Promise(function(ok,no){var tx=db.transaction(["f","ink","img"],"readwrite");["f","ink","img"].forEach(function(s){tx.objectStore(s).clear()});
+            fl.forEach(function(a){tx.objectStore("f").put(a[1],a[0])});ik.forEach(function(a){tx.objectStore("ink").put(a[1],a[0])});im.forEach(function(a){tx.objectStore("img").put(a[1],a[0])});
+            tx.oncomplete=ok;tx.onerror=tx.onabort=function(){no(tx.error)}})
+        }catch(e2){try{if(oldS!=null)localStorage.setItem(K,oldS)}catch(e3){}throw e2}
+        go=true;toast("전체 백업을 불러왔어요")
+      }else{
+        /* 이전 형식(학습 기록만) 백업: 현재 기기의 PDF·노트·AI 문제는 그대로 보존 */
+        var imp=Array.isArray(d.gkeys)?d.gkeys:[],keep={gkeys:st.gkeys,gact:st.gact,gmodel:st.gmodel,prov:st.prov,pdfs:st.pdfs,notes:st.notes,gen:st.gen,ik:st.ik},cur=st;
+        localStorage.setItem(K,JSON.stringify(d));st=load();for(var k in keep)st[k]=keep[k];
+        var fdm={};(d.fd||[]).concat(cur.fd||[]).forEach(function(x){if(x&&x.id)fdm[x.id]=x});st.fd=Object.keys(fdm).map(function(i){return fdm[i]});
+        st.fm=Object.assign({},d.fm||{},cur.fm||{});st.nm=Object.assign({},d.nm||{},cur.nm||{});
+        fdClean(st);var addK=0;
+        imp.forEach(function(x){if(x&&x.k&&!st.gkeys.some(function(y){return y.k===x.k})){st.gkeys.push({k:x.k,until:0});addK++}});
+        save();go=true;toast("기록을 불러왔어요"+(addK?" (API 키 "+addK+"개 추가)":""))
+      }
+    }catch(e){toast("백업을 불러오지 못했어요")}
+    inp.value="";
+    if(go){inkDrop();setTimeout(function(){location.reload()},700)}else{S.rs=1;render()}
+  };
   r.readAsText(f)}
 function vSettings(D){
   var ks=gkeys(),now=Date.now();
@@ -1904,6 +2410,9 @@ function vSettings(D){
   h+='<div class="card setup"><div><h2 class="h2">Gemini API 연결</h2><p class="sub" style="margin-top:4px">키를 여러 개 등록하면 한 키의 한도가 끝났을 때 다음 키로 자동 전환돼요. 키는 <a class="lnk" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>에서 무료로 만들 수 있어요.</p></div>'
    +'<div class="note">현재 AI: <b>'+cur+'</b></div>'
    +'<div class="fld"><label>모델</label><div class="chips">'+GEM_MODELS.map(function(m){return '<button class="chip'+(st.gmodel===m[0]?' on':'')+'" onclick="setModel(\''+m[0]+'\')" aria-pressed="'+(st.gmodel===m[0])+'">'+m[1]+'</button>'}).join("")+'</div></div>'
+   +'<div class="fld"><label>AI 튜터 간단한 질문</label><div class="chips"><button class="chip'+(st.gquick!==0?' on':'')+'" onclick="setQuick(1)" aria-pressed="'+(st.gquick!==0)+'">빠른 모델로 답하기</button><button class="chip'+(st.gquick===0?' on':'')+'" onclick="setQuick(0)" aria-pressed="'+(st.gquick===0)+'">선택한 모델로 답하기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gquick===0?'모든 튜터 질문에 위에서 고른 모델을 써요.':'짧은 뜻·사실 확인 질문(예: “공리주의가 뭐야?”)은 3.5 Flash-Lite로 더 빨리 답해요. 설명이 필요한 질문은 고른 모델을 써요.')+'</p></div>'
+   +'<div class="fld"><label>객관식 퀴즈에 AI 새 문제 섞기</label><div class="chips"><button class="chip'+(st.gmix!==0?' on':'')+'" onclick="setMix(1)" aria-pressed="'+(st.gmix!==0)+'">켜기</button><button class="chip'+(st.gmix===0?' on':'')+'" onclick="setMix(0)" aria-pressed="'+(st.gmix===0)+'">끄기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gmix===0?'기존 문제만 출제해요.':'퀴즈를 시작할 때 AI가 새 문제 3개를 만들어 풀이 중간에 섞어 넣어요. API 요청이 조금 늘어요.')+'</p></div>'
+   +(st.gmodel===G38?'<div class="fld"><label>3.8 Flash가 느릴 때</label><div class="chips"><button class="chip'+(st.gauto!==false?' on':'')+'" onclick="setSlowAuto(1)" aria-pressed="'+(st.gauto!==false)+'">3.5로 자동 전환</button><button class="chip'+(st.gauto===false?' on':'')+'" onclick="setSlowAuto(0)" aria-pressed="'+(st.gauto===false)+'">그대로 기다리기</button></div><p class="sub" style="margin:6px 0 0">'+(st.gauto===false?'3.8 Flash로 끝까지 기다려요.':'응답이 늦으면 3.5 Flash로 바꿔서 다시 시도하고, 10분 뒤 3.8로 돌아와요.')+(st.gslow&&st.gslow>Date.now()&&st.gauto!==false?' (지금은 3.5로 쓰는 중)':'')+'</p></div>':'')
    +'<div class="fld"><label>등록된 API 키 ('+ks.length+')</label>'+kfChips(ks,now)+(ks.length?ks.map(function(x,i){var cool=x.until>now,act=i===st.gact;if(!kfPass(x,now))return "";
       return '<div class="panel" style="margin-top:8px"><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><b>'+(i+1)+'번</b><code>'+esc(S.gshow?x.k:maskKey(x.k))+'</code>'+(act?'<span class="tag ok" style="margin:0">사용 중</span>':'')+(cool?'<span class="tag no" style="margin:0">한도 초과·대기</span>':'')+'</div>'+keyRes(x.k)+'<div class="row" style="margin-top:8px">'+(act?'':'<button class="btn sm" onclick="useKey('+i+')">이 키 사용</button>')+'<button class="btn sm" onclick="testGem('+i+')"'+(S.gb?' disabled':'')+'>테스트</button><button class="btn sm danger" onclick="delKey('+i+')">삭제</button></div></div>'}).join(""):'<p class="sub" style="margin-top:6px">아직 등록된 키가 없어요.</p>')+'</div>'
    +'<div class="fld"><label for="gk">새 API 키 추가</label><div class="qrow"><input class="inp" id="gk" type="'+(S.gshow?'text':'password')+'" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="AIza..." value="'+esc(S.gk||"")+'" oninput="S.gk=this.value"><button class="btn" onclick="S.gshow=!S.gshow;render()">'+(S.gshow?'숨기기':'보기')+'</button></div></div>'
@@ -1916,7 +2425,7 @@ function vSettings(D){
    +'<div class="card setup"><h2 class="h2">학습 설정</h2><div class="field"><h3 class="h3">하루 목표 문제 수</h3><div class="chips">'+[5,10,15,20].map(function(n){return '<button class="chip'+(goal()===n?' on':'')+'" onclick="setCfg(\'goal\','+n+')">'+n+'문제</button>'}).join("")+'</div></div>'
    +'<div class="field"><h3 class="h3">화면 모드</h3><div class="chips">'+[["auto","기기 설정"],["light","라이트"],["dark","다크"]].map(function(x){return '<button class="chip'+((st.theme||"auto")===x[0]?' on':'')+'" onclick="setCfg(\'theme\',\''+x[0]+'\')">'+x[1]+'</button>'}).join("")+'</div></div>'
    +'<p class="sub">퀴즈 중에는 키보드로도 풀 수 있어요. 숫자 1~4는 보기 선택, O·X는 선지 선택, Enter는 다음 문제예요.</p></div>'
-   +'<div class="card setup"><h2 class="h2">학습 기록 백업</h2><p class="sub">기기를 바꾸거나 브라우저 데이터를 지우기 전에 백업해 두세요.</p><label class="ptog"><span><b>API 키도 함께 내보내기</b><small>켜면 백업 파일에 키가 그대로 들어가요. 파일을 남에게 공유하지 마세요</small></span><input type="checkbox" role="switch"'+(S.expKey?' checked':'')+' onchange="S.expKey=this.checked;render()"></label><div class="row"><button class="btn pri" onclick="exportData()">백업 내려받기</button><label class="btn" for="imp" style="cursor:pointer">백업 불러오기</label></div><input class="sr" type="file" id="imp" accept="application/json,.json" onchange="importData(this)">'
+   +'<div class="card setup"><h2 class="h2">학습 기록 백업</h2><p class="sub">학습 기록, 오답노트, 폴더, PDF 파일, 필기, 사진 분석 원본까지 모두 한 파일에 담겨요. 기기를 바꾸거나 앱·브라우저 데이터를 지우기 전에 백업해 두세요. 불러오면 현재 내용이 백업 내용으로 대체돼요.</p><label class="ptog"><span><b>API 키도 함께 내보내기</b><small>켜면 백업 파일에 키가 그대로 들어가요. 파일을 남에게 공유하지 마세요</small></span><input type="checkbox" role="switch"'+(S.expKey?' checked':'')+' onchange="S.expKey=this.checked;render()"></label><div class="row"><button class="btn pri" onclick="exportData()">백업 내려받기</button><label class="btn" for="imp" style="cursor:pointer">백업 불러오기</label></div><input class="sr" type="file" id="imp" accept="application/json,.json" onchange="importData(this)">'
    +(S.rc?'<div class="panel"><p><b>학습 기록을 모두 지울까요?</b></p><p class="sub">푼 기록, 오답노트, 사진 분석, 내 선지, 저장한 API 키가 모두 삭제돼요.</p><div class="row" style="margin-top:10px"><button class="btn danger" onclick="doReset()">모두 지우기</button><button class="btn" onclick="S.rc=false;render()">취소</button></div></div>':'<div><button class="btn ghost sm" onclick="S.rc=true;render()">학습 기록 초기화</button></div>')
    +'</div></div></div>';
   return h}
@@ -2003,7 +2512,7 @@ function regenAT(){var a=AT();if(!aiOn()||a.busy||!a.msgs.length)return;if(a.msg
 async function runAT(){var a=AT();a.busy=true;S.t0=Date.now();render();
   var hist=a.msgs.slice(-8).map(function(m){return (m.r==="u"?"학생: ":"선생님: ")+m.t}).join("\n");
   var p="너는 한국 고등학교 ‘"+DB[S.sub].name+"’ 선생님이야. 학생의 개념 질문에 교육과정 기준으로 답해줘. 이 과목의 단원은 "+DB[S.sub].units.join(", ")+"이야. 이 과목 범위로만 답하고, 다른 과목 내용이면 그 과목 질문이라고 알려줘. 핵심부터 말하고, 필요하면 사상가·이론 비교나 쉬운 예시를 들어줘. 6문장 이내, ~해요 체, 마크다운 기호 없이 써줘. 교육과정 밖이거나 확실하지 않은 내용은 솔직히 말해줘.\n\n[대화]\n"+hist+"\n선생님:";
-  try{var r=await callAI(p,{cache:false});a.msgs.push({r:"a",t:r.text.trim()})}catch(e){aiFail(e,"답을 받지 못했어요. 잠시 후 다시 시도해 주세요.")}
+  try{var lu=a.msgs[a.msgs.length-1],r=await callAI(p,{cache:false,quick:!!(lu&&lu.r==="u"&&simpleQ(lu.t))});a.msgs.push({r:"a",t:r.text.trim()})}catch(e){aiFail(e,"답을 받지 못했어요. 잠시 후 다시 시도해 주세요.")}
   a.busy=false;render();if(S.tab==='quiz'&&S.qmode==='ai')atScroll()}
 
 /* ---------- PDF 문제 가져오기 ---------- */
@@ -2036,7 +2545,7 @@ function piParse(t){t=String(t||"");var i=t.indexOf("["),j=t.lastIndexOf("]");
     if(c==="{"){if(dep===0)b0=k;dep++}else if(c==="}"){dep--;if(dep===0&&b0>=0){try{out.push(JSON.parse(t.slice(b0,k+1)))}catch(e){}b0=-1}}}
   return out}
 function piPrompt(nums,hasA){
-  return '너는 한국 고등학교 사회탐구(생활과 윤리, 사회·문화) 시험지를 한 글자도 빠뜨리지 않고 옮겨 적는 조교야. 첫 번째 파일은 문제지'+(hasA?', 이어지는 파일은 정답·해설지(PDF 또는 사진)야.':'야.')+'\n이번에 옮길 문제 번호: '+nums.join(", ")+'번. 이 번호만, 번호마다 객체 하나씩 만들어.\n[옮기기 규칙]\n1. 시험지는 2단 구성일 수 있어. 왼쪽 단을 위에서 아래로, 그다음 오른쪽 단을 위에서 아래로 읽으며 문제 번호를 찾아.\n2. q에는 문제 번호를 뺀 문제 본문 텍스트를 글자 그대로 넣어. 요약·생략·말바꿈 금지. 단, 선지(①②③④⑤와 그 내용)는 q에 절대 쓰지 말고 o 배열에만 넣어. q의 마지막 줄은 발문·자료·〈보기〉로 끝나야 해. 발문, 대화·지문·사례·(가)(나) 자료, 〈보기〉를 모두 포함하고 [3점] 표시도 유지해.\n2-1. 시험지에서 밑줄이 그어진 글자("밑줄 친 ㉠" 같은 표시 포함)는 q와 선지 o 안에서 <u>와 </u>로 정확히 그 글자만 감싸서 밑줄을 그대로 옮겨. 2-2. 본문보다 눈에 띄게 작은 글씨(각주, 출처, 주석, ※ 안내문, 자료 아래 작은 설명 등)는 <small>과 </small>로 감싸. 이 두 태그 말고 다른 HTML은 쓰지 마.\n3. q의 줄 구성: 첫 줄은 발문(질문 문장). 이어서 자료(지문, 대화, (가) (나) 등)를 덩어리마다 한 줄씩. 〈보기〉가 있으면 "〈보기〉"만 적은 줄 다음에 ㄱ. ㄴ. ㄷ. ㄹ. 항목을 한 줄씩. 줄바꿈은 \\n으로 표시해.\n4. 선지는 ①②③④⑤ 기호를 빼고 내용 전체를 o 배열에 순서대로 넣어. "ㄱ, ㄷ" 같은 조합 선지도 그대로 적어.\n5. 그림·그래프·복잡한 표가 있는 문제는 fig를 true로 하고 보이는 글자만 적은 뒤, q 안에서 그 그림이 놓인 바로 그 자리(원본에서 앞뒤로 어떤 줄 사이에 있는지)에 "[그림]"만 적은 줄을 넣어줘(예: 발문 다음 줄, 〈보기〉 앞 등). 그림 속 글자를 q에 중복해서 적지 마. 또 그림 영역은 문제지의 쪽 번호 p(1부터)와 그 쪽 안의 비율 좌표 x,y,w,h(0~1, 왼쪽 위가 원점)로 알려줘. g는 그림·표만 감싸는 영역, f는 문제 번호·본문·보기·선지 전체를 감싸는 영역이야.\n5-1. 단순한 표(글자만 있고 병합 셀이 없는 표)는 그림으로 처리하지 말고 q 안에 원본 위치 그대로 표 줄로 옮겨. 한 행을 한 줄로, 열은 |로 구분해 "| 구분 | (가) | (나) |" 형태로 쓰고 첫 줄은 제목 행이야. 표 줄 사이에 다른 줄을 끼우지 마. 병합 셀이 있거나 복잡하면 fig를 true로 하고 [그림] 줄을 써.\n6. 읽기 어려운 글자는 추측하지 말고 해당 문제의 fig를 true로 해.\n정답 a는 0부터 시작하는 선지 위치야. '+(hasA?'정답은 정답·해설지에서 같은 번호의 것을 읽어 src를 "key"로 해. 정답지에서 그 번호를 찾지 못하면 네가 직접 풀어 src를 "ai"로 해.':'정답지가 없으니 네가 직접 풀어 src를 "ai"로 해.')+' src가 "ai"면 conf에 확신도(high, mid, low)를 적어.\n해설 e는 '+(hasA?'반드시 해당 문제 번호의 정답·해설지에 적힌 해설을 최우선으로 삼아, 핵심 근거와 논리를 보존해 2~3문장으로 정리해. 해설지에 없는 근거를 지어내거나 다른 문제의 해설을 섞지 마. 원문 해설을 확인할 수 있으면 keyExp에 그 문제의 해설 문구를 가능한 한 충실하게 기록하고, 찾지 못하면 빈 문자열로 둬. ':'2~3문장으로 써. keyExp는 빈 문자열로 둬.')+' s는 문제 내용을 보고 직접 판단한 과목으로 "e"(생활과 윤리: 윤리 사상가·도덕 판단·생명·환경 윤리 등) 또는 "s"(사회·문화: 사회 이론·연구 방법·문화·일탈·계층 등)야. 시험지에 과목명이 적혀 있으면 그것을 우선해. t는 그 과목의 단원 중 하나야. 생활과 윤리: '+DB.e.units.join(", ")+' / 사회·문화: '+DB.s.units.join(", ")+'.\n오직 JSON 배열로만 답해: [{"no":1,"s":"e","t":"단원","q":"문제 본문 전체","o":["선지1","선지2","선지3","선지4","선지5"],"a":0,"src":"key","conf":"","fig":false,"g":null,"f":null,"keyExp":"정답·해설지의 해당 문제 해설 원문 또는 빈 문자열","e":"해설"}]'}
+  return '너는 한국 고등학교 사회탐구(생활과 윤리, 사회·문화) 시험지를 한 글자도 빠뜨리지 않고 옮겨 적는 조교야. 첫 번째 파일은 문제지'+(hasA?', 이어지는 파일은 정답·해설지(PDF 또는 사진)야.':'야.')+'\n이번에 옮길 문제 번호: '+nums.join(", ")+'번. 이 번호만, 번호마다 객체 하나씩 만들어.\n[옮기기 규칙]\n1. 시험지는 2단 구성일 수 있어. 왼쪽 단을 위에서 아래로, 그다음 오른쪽 단을 위에서 아래로 읽으며 문제 번호를 찾아.\n2. q에는 문제 번호를 뺀 문제 본문 텍스트를 글자 그대로 넣어. 요약·생략·말바꿈 금지. 단, 선지(①②③④⑤와 그 내용)는 q에 절대 쓰지 말고 o 배열에만 넣어. q의 마지막 줄은 발문·자료·〈보기〉로 끝나야 해. 발문, 대화·지문·사례·(가)(나) 자료, 〈보기〉를 모두 포함하고 [3점] 표시도 유지해.\n2-1. 밑줄은 시험지에서 글자 바로 아래에 선이 실제로 그어진 부분만 q와 선지 o 안에서 <u>와 </u>로 감싸서 옮겨. 선이 시작하는 글자부터 끝나는 글자까지 정확히 그 범위만 감싸고, 앞뒤로 넓히거나 줄이지 마. 굵은 글씨, 글자 색, 따옴표, ㉠㉡ 같은 기호가 있다는 이유만으로 밑줄로 보지 마(기호 아래에도 선이 있을 때만 기호를 포함해). 발문에 ‘밑줄 친 ㉠’처럼 나오면 지문에서 그 기호가 붙은 곳을 찾아 선이 그어진 부분만 감싸. 밑줄이 여러 군데면 군데마다 따로 감싸고, 시험지에서 밑줄이 줄 끝에서 다음 줄로 이어져도 줄바꿈 문자를 넣지 말고 하나의 <u>…</u>로 이어서 감싸. 밑줄 안의 글자는 시험지 글자와 한 글자도 다르면 안 돼. 선이 보이지 않거나 확신이 없으면 밑줄을 넣지 마(추측 금지). 2-2. 본문보다 눈에 띄게 작은 글씨(각주, 출처, 주석, ※ 안내문, 자료 아래 작은 설명 등)는 <small>과 </small>로 감싸. 이 두 태그 말고 다른 HTML은 쓰지 마.\n3. q의 줄 구성: 첫 줄은 발문(질문 문장). 이어서 자료(지문, 대화, (가) (나) 등)를 문단(덩어리)마다 한 줄씩. 한 문단은 시험지에서 여러 줄로 나뉘어 인쇄돼 있어도 반드시 한 줄로 이어 써. 〈보기〉가 있으면 "〈보기〉"만 적은 줄 다음에 ㄱ. ㄴ. ㄷ. ㄹ. 항목을 한 줄씩. 줄바꿈은 \\n으로 표시해.\n3-1. 시험지는 칸 너비 때문에 한 문단이 여러 줄로 꺾여 인쇄돼 있어. 이 ‘화면상 줄바꿈’은 옮기지 마. 같은 문단의 줄들은 줄바꿈 없이 이어 붙여. 줄이 바뀌는 곳이 단어 중간이면 공백 없이, 단어와 단어 사이면 공백 한 칸으로 이어. \\n은 시험지에서 문단·자료 덩어리가 실제로 구분될 때(발문, 지문 문단, (가)/(나), 대화의 말 하나, 〈보기〉, ㄱ.ㄴ.ㄷ. 항목, 표의 행, [그림])에만 써. 같은 문단 안에서는 \\n을 절대 넣지 마.\n4. 선지는 ①②③④⑤ 기호를 빼고 내용 전체를 o 배열에 순서대로 넣어. "ㄱ, ㄷ" 같은 조합 선지도 그대로 적어.\n5. 그림·그래프·복잡한 표가 있는 문제는 fig를 true로 하고 보이는 글자만 적은 뒤, q 안에서 그 그림이 놓인 바로 그 자리(원본에서 앞뒤로 어떤 줄 사이에 있는지)에 "[그림]"만 적은 줄을 넣어줘(예: 발문 다음 줄, 〈보기〉 앞 등). 그림 속 글자를 q에 중복해서 적지 마. 또 그림 영역은 문제지의 쪽 번호 p(1부터)와 그 쪽 안의 비율 좌표 x,y,w,h(0~1, 왼쪽 위가 원점)로 알려줘. g는 그림·표만 감싸는 영역, f는 문제 번호·본문·보기·선지 전체를 감싸는 영역이야.\n5-0. 표로 옮기는 것은 시험지에 실제 칸 선(행과 열의 격자)이 그려진 표뿐이야. 말풍선 대화, 만화·삽화, 메모 카드·쪽지·상자가 여러 개 나란히 놓인 자료, 라벨(10대·20대, 갑·을 등)이 붙은 글 상자는 표가 아니야. 말풍선이나 만화·삽화 속 대사가 있는 문제는 fig를 true로 하고 [그림] 줄을 써(대사를 표로 바꾸거나 (가)(나) 같은 열 이름을 지어내지 마). 라벨이 붙은 상자·카드는 상자마다 한 줄씩 \"라벨: 내용\" 형태로 q에 옮겨(예: \"10대: 어릴 시절 …\"). 시험지에 없는 제목 행, 머리글, 빈 열은 절대 만들지 마.\n5-1. 단순한 표(글자만 있고 병합 셀이 없는 표)는 그림으로 처리하지 말고 q 안에 원본 위치 그대로 표 줄로 옮겨. 한 행을 한 줄로, 열은 |로 구분해 "| 구분 | (가) | (나) |" 형태로 쓰고 첫 줄은 제목 행이야. 표 줄 사이에 다른 줄을 끼우지 마. 병합 셀이 있거나 복잡하면 fig를 true로 하고 [그림] 줄을 써.\n6. 읽기 어려운 글자는 추측하지 말고 해당 문제의 fig를 true로 해.\n정답 a는 0부터 시작하는 선지 위치야. '+(hasA?'정답은 정답·해설지에서 같은 번호의 것을 읽어 src를 "key"로 해. 정답지에서 그 번호를 찾지 못하면 네가 직접 풀어 src를 "ai"로 해.':'정답지가 없으니 네가 직접 풀어 src를 "ai"로 해.')+' src가 "ai"면 conf에 확신도(high, mid, low)를 적어.\n해설 e는 '+(hasA?'반드시 해당 문제 번호의 정답·해설지에 적힌 해설을 최우선으로 삼아, 핵심 근거와 논리를 보존해 2~3문장으로 정리해. 해설지에 없는 근거를 지어내거나 다른 문제의 해설을 섞지 마. 원문 해설을 확인할 수 있으면 keyExp에 그 문제의 해설 문구를 가능한 한 충실하게 기록하고, 찾지 못하면 빈 문자열로 둬. ':'2~3문장으로 써. keyExp는 빈 문자열로 둬.')+' s는 문제 내용을 보고 직접 판단한 과목으로 "e"(생활과 윤리: 윤리 사상가·도덕 판단·생명·환경 윤리 등) 또는 "s"(사회·문화: 사회 이론·연구 방법·문화·일탈·계층 등)야. 시험지에 과목명이 적혀 있으면 그것을 우선해. t는 그 과목의 단원 중 하나야. 생활과 윤리: '+DB.e.units.join(", ")+' / 사회·문화: '+DB.s.units.join(", ")+'.\n오직 JSON 배열로만 답해: [{"no":1,"s":"e","t":"단원","q":"문제 본문 전체","o":["선지1","선지2","선지3","선지4","선지5"],"a":0,"src":"key","conf":"","fig":false,"g":null,"f":null,"keyExp":"정답·해설지의 해당 문제 해설 원문 또는 빈 문자열","e":"해설"}]'}
 async function piRun(){
   var P=PI(),D=DB[S.sub];if(P.busy||!P.q)return;P.busy=true;P.err="";P.ie="";P.warn="";P.prog="";P.stopped=false;S.t0=Date.now();render();
   var n0=AIX.n,hasA=P.a.length>0;P.ph=P.a.some(function(f){return /^image/.test(f.type)});
@@ -2072,14 +2581,15 @@ async function piRun(){
   try{
     if(!arr.length)throw lastErr||new Error("empty");
     var seen={};arr=arr.filter(function(z){var k=String(z.no);if(seen[k])return false;seen[k]=1;return true}).sort(function(a,b){return (+a.no||0)-(+b.no||0)});
-    var pgs=[];if(arr.some(function(z){return z&&z.fig}))pgs=await pgsP;
+    var pgs=await pgsP;
     P.pgs=pgs.length?pgs:null;
     P.items=arr.slice(0,20).map(function(z){var sb=(z.s==="s"||z.s==="e")?z.s:S.sub,U=DB[sb].units,a=z.a%1===0&&z.a>=0&&z.a<z.o.length?z.a:0,ig=piCrop(pgs,z.g),iF=piCrop(pgs,z.f),m=z.fig?(ig?"g":(iF?"f":"n")):"n";
-      return {no:z.no,sub:sb,t:U.indexOf(z.t)>=0?z.t:U[0],q:String(z.q).replace(/\\n/g,"\n"),o:z.o.map(String),a:a,e:String(z.e||""),src:z.src==="key"?(P.ph?"read":"key"):"ai",conf:z.conf||"",on:!z.fig||m!=="n",fig:!!z.fig,g:ig,f:iF,gr:z.g,fr:z.f,m:m}});
+      return {no:z.no,sub:sb,t:U.indexOf(z.t)>=0?z.t:U[0],q:piUnwrap(String(z.q).replace(/\\n/g,"\n")),o:z.o.map(String),a:a,e:String(z.e||""),src:z.src==="key"?(P.ph?"read":"key"):"ai",conf:z.conf||"",on:!z.fig||m!=="n",fig:!!z.fig,g:ig,f:iF,gr:z.g,fr:z.f,m:m}});
+    if(pgs.ul&&pgs.ul.length)piUlFix(P.items,pgs.ul);
     if(!P.items.length)throw new Error("empty");
     if(P.stopped)P.warn="중단해서 일부만 읽었어요. 읽지 못한 번호: "+failed.join(", ");
     else if(failed.length)P.warn=failed.join(", ")+"번은 읽지 못했어요."+(lastErr&&lastErr.userMsg?" ("+lastErr.userMsg+")":"")+" 해당 번호만 따로 지정해 다시 가져와 보세요.";
-    P.busy=false;P.prog="";P.key="";pdfKeep(P.q,(P.exam||"").trim(),P.items.length).then(function(id){P.fid=id});render()
+    P.busy=false;P.prog="";P.key="";pdfKeep(P.q,(P.exam||"").trim(),P.items.length).then(function(id){P.fid=id});render();if(!P.stopped)setTimeout(function(){piUlAll(true)},400)
   }catch(e){P.busy=false;P.prog="";aiFail(e,"문제를 읽지 못했어요. 파일을 확인하고 다시 시도해 주세요.");render()}}
 function piOn(i){var z=PI().items[i];z.on=!z.on;render()}
 function piOptDel(i,k){var z=PI().items[i];if(z.o.length<=2)return;z.o.splice(k,1);if(z.a===k){z.a=0;z.src="man"}else if(z.a>k)z.a--;render()}
@@ -2087,6 +2597,22 @@ function piOptAdd(i){var z=PI().items[i];if(z.o.length>=6)return;z.o.push("");re
 function piAns(i,a){var z=PI().items[i];z.a=a;z.src="man";render()}
 function piKey(){var d=(PI().key.match(/[1-9]/g)||[]);PI().items.forEach(function(z,i){if(d[i]&&+d[i]<=z.o.length){z.a=+d[i]-1;z.src="man"}});render()}
 function piBack(){PI().items=null;S.pan=null;render()}
+function piUnwrap(t){
+  var L=String(t||"").split("\n"),out=[],i,a,b,pl,sa,sb;
+  function plain(s){return String(s).replace(/<\/?(u|small)>/gi,"").trim()}
+  function isBlock(s){var p=plain(s);return !p||/^(〈보기〉|<보기>|\[(그림|표|이미지|자료)\]|[ㄱ-ㅎ][.．]|\([가-하]\)|[가-하][.．]\s|[①-⑩]|※|\[\d+점\])/.test(p)||/^[가-힣A-Za-z0-9]{1,4}\s*[:：]\s*\S/.test(p)||p.indexOf("|")>=0}
+  function ends(s){return /[.?!。…:：”"'’)\]〉」』]$/.test(plain(s))}
+  for(i=0;i<L.length;i++){
+    if(!out.length){out.push(L[i]);continue}
+    a=out[out.length-1];b=L[i];
+    var ulWrap=/<\/u>\s*$/i.test(a)&&/^\s*<u>/i.test(b)&&!isBlock(b);
+    if(ulWrap||(out.length>1&&!isBlock(a)&&!isBlock(b)&&!ends(a))){
+      sa=a.replace(/\s+$/,"");sb=b.replace(/^\s+/,"");
+      if(/<\/u>$/i.test(sa)&&/^<u>/i.test(sb)){sa=sa.replace(/<\/u>$/i,"");sb=sb.replace(/^<u>/i,"");out[out.length-1]=sa+" "+sb}
+      else out[out.length-1]=sa+" "+sb
+    }else out.push(b)
+  }
+  return out.join("\n")}
 function piCleanQuestion(z){
   var CM=/[①②③④⑤⑥⑦⑧⑨⑩]/g,LEAD=/^\s*(?:[①②③④⑤⑥⑦⑧⑨⑩]|\d+[.)．、]?)\s*/;
   function nm(t){return String(t||"").replace(LEAD,"").replace(/\s+/g," ").trim().toLowerCase()}
@@ -2102,29 +2628,376 @@ function piCleanQuestion(z){
   /* 3) 번호표 없이 선지 내용만 그대로 한 줄씩 적힌 경우 제거 */
   return lines.filter(function(line){var t=line.trim();if(!t)return true;return opts.indexOf(nm(t))<0}).join("\n").trim();
 }
+/* ---------- 밑줄 편집: 글자를 드래그해 고른 뒤 버튼으로 넣거나 빼요 ---------- */
+function ulParse(t){var pl="",mk=[],on=false,re=/<(\/?)u>/gi,last=0,m,i,g;
+  function add(sg){for(g=0;g<sg.length;g++){pl+=sg.charAt(g);mk.push(on)}}
+  while((m=re.exec(t))){add(t.slice(last,m.index));on=!m[1];last=re.lastIndex}
+  add(t.slice(last));return {p:pl,m:mk}}
+function ulPlain(t,raw){return t.slice(0,raw).replace(/<\/?u>/gi,"").length}
+function ulSer(pl,mk){var o="",on=false,i,c,w;for(i=0;i<pl.length;i++){c=pl.charAt(i);w=mk[i]&&c!=="\n";if(w&&!on){o+="<u>";on=true}else if(!w&&on){o+="</u>";on=false}o+=c}if(on)o+="</u>";return o}
+function ulRaw(t,p){var n=0,i=0,mt;while(i<t.length){mt=/^<\/?u>/i.exec(t.slice(i,i+4));if(mt){i+=mt[0].length;continue}if(n===p)return i;n++;i++}return t.length}
+function ulIsU(tid){return tid.indexOf("ulq-")===0&&!(S.ulm&&S.ulm[tid])}
+function ulPv(tid){var el=document.getElementById(tid),pv=document.getElementById("pv-"+tid);if(!el||!pv)return;var v=el.value,has=/<(u|small)>/i.test(v)&&!ulIsU(tid);pv.style.display=has?"":"none";if(has)pv.innerHTML=escR(v).replace(/\n/g,"<br>")}
+function ulApply(tid,mode){var el=document.getElementById(tid);if(!el)return;var t=el.value,a=el.selectionStart,b=el.selectionEnd,P=ulParse(t),ps=0,pe=0,i;
+  if(mode===2){if(!/<\/?u>/i.test(t)){toast("지울 밑줄이 없어요");return}P.m=P.m.map(function(){return false})}
+  else{if(a==null||a===b){toast("밑줄을 바꿀 글자를 먼저 드래그해서 골라 주세요");return}
+    ps=ulPlain(t,a);pe=ulPlain(t,b);for(i=ps;i<pe;i++)P.m[i]=(mode===1)}
+  var out=ulSer(P.p,P.m);el.value=out;
+  if(mode!==2){try{el.setSelectionRange(ulRaw(out,ps),pe>ps?ulRaw(out,pe-1)+1:ulRaw(out,ps))}catch(x){}}
+  el.dispatchEvent(new Event("input",{bubbles:true}));ulPv(tid)}
+function ulTools(tid){var b='<button class="btn sm" onmousedown="event.preventDefault()" onclick="ulApply(\''+tid+'\',';
+  return '<div class="row" style="gap:6px;margin:8px 0 4px;flex-wrap:wrap;align-items:center"><button class="btn sm pri" onclick="ulOpen(\''+tid+'\')">탭·드래그로 밑줄 편집</button>'+b+'1)"><u>밑줄</u> 넣기</button>'+b+'0)">밑줄 빼기</button>'+b+'2)">밑줄 모두 지우기</button></div><p class="sub" style="margin:0 0 6px;font-size:12.5px">밑줄을 바꿀 글자를 드래그해서 고른 뒤 버튼을 눌러요. 아래 미리보기에서 바로 확인할 수 있어요.</p>'}
+function ulPrev(tid,text){var has=/<(u|small)>/i.test(text||"")&&!ulIsU(tid);return '<div id="pv-'+tid+'" style="display:'+(has?'':'none')+';border:1px dashed var(--line);border-radius:10px;padding:8px 10px;margin:0 0 8px;font-size:14px;line-height:1.7;word-break:keep-all">'+(has?escR(text).replace(/\n/g,"<br>"):'')+'</div>'}
+/* ---------- 밑줄 탭·드래그 편집 (tid = 글자 입력칸 id) ---------- */
+var ULX={};
+var ULS={},ULR={};
+function ulMk(P,n){return !!P.m[n]&&P.p.charAt(n)!=="\n"}
+function ulCount(P){var c=0,i,on=false,w;for(i=0;i<P.p.length;i++){w=ulMk(P,i);if(w&&!on)c++;on=w}return c}
+function ulRunAt(P,n){if(!ulMk(P,n))return null;var lo=n,hi=n;while(lo>0&&ulMk(P,lo-1))lo--;while(hi<P.p.length-1&&ulMk(P,hi+1))hi++;return [lo,hi]}
+function ulBox(tid,t){var P=ulParse(t||""),md=S.ulmd||"auto",un=S.ulun||"w",rs=(md==="adj"&&ULS.tid===tid)?ULS:null,c,ch,cl,n=ulCount(P),h='';
+  var MD=[["auto","자동"],["on","칠하기"],["off","지우기"],["adj","끝 조절"]],UN=[["c","글자"],["w","단어"],["s","문장"]];
+  var HT={auto:"탭하면 켜지고 한 번 더 탭하면 꺼져요. 드래그하면 범위 전체가 바뀌어요.",on:"탭하거나 드래그한 곳에 밑줄을 칠해요.",off:"탭하거나 드래그한 곳의 밑줄을 지워요.",adj:rs?"버튼으로 파란 덩어리의 시작·끝을 한 글자씩 옮겨요. 다른 덩어리를 탭하면 바꿔 골라요.":"밑줄 친 글자를 탭해 덩어리를 고른 뒤, 아래 버튼으로 시작·끝을 한 글자씩 옮겨요."};
+  h+='<div class="seg ulmd" style="margin:0 0 6px" role="group" aria-label="밑줄 편집 방식">'+MD.map(function(m){return '<button class="'+(md===m[0]?'on':'')+'" onclick="ulSet(\'ulmd\',\''+m[0]+'\')">'+m[1]+'</button>'}).join("")+'</div>';
+  if(md!=="adj")h+='<div class="chips" style="margin:0 0 6px;align-items:center"><span class="sub" style="margin:0 4px 0 0;font-size:12.5px">탭 단위</span>'+UN.map(function(u){return '<button class="chip'+(un===u[0]?' on':'')+'" onclick="ulSet(\'ulun\',\''+u[0]+'\')">'+u[1]+'</button>'}).join("")+'</div>';
+  else h+='<div class="row" style="gap:6px;margin:0 0 6px;flex-wrap:wrap">'+[["sl","◀ 시작 넓히기"],["sr","시작 줄이기 ▶"],["el","◀ 끝 줄이기"],["er","끝 넓히기 ▶"]].map(function(b){return '<button class="btn sm" style="flex:1 1 44%;min-height:40px" onclick="ulAdj(\''+b[0]+'\')"'+(rs?'':' disabled')+'>'+b[1]+'</button>'}).join("")+'</div>';
+  h+='<p class="sub" style="margin:0 0 4px;font-size:12.5px">'+HT[md]+(md==="auto"||md==="on"||md==="off"?" 손가락은 잠깐 누른 채 끌어야 하고, 바로 끌면 화면이 스크롤돼요.":"")+'</p><div class="ulx" data-t="'+tid+'">';
+  for(c=0;c<P.p.length;c++){ch=P.p.charAt(c);if(ch==="\n"){h+="<br>";continue}cl="c"+(P.m[c]?" on":"");if(rs&&c>=rs.lo&&c<=rs.hi){cl+=" run";if(c===rs.lo)cl+=" rs";if(c===rs.hi)cl+=" re"}h+='<span class="'+cl+'" data-n="'+c+'">'+escR(ch)+"</span>"}
+  return h+'</div><div class="row" style="gap:6px;margin:0 0 8px;flex-wrap:wrap;align-items:center"><button class="btn sm" onclick="ulUndo(\''+tid+'\')">되돌리기</button><button class="btn sm" onclick="ulRedo(\''+tid+'\')">다시 적용</button><button class="btn sm" onclick="ulClear(\''+tid+'\')">모두 지우기</button>'+(ulIsU(tid)?'':'<button class="btn sm" onclick="ulClose(\''+tid+'\')">닫기</button>')+'<span class="sub" style="margin-left:auto;font-size:12.5px">밑줄 '+n+'곳</span></div>'}
+function ulSlot(tid,t){return '<div id="ulp-'+tid+'">'+(S.ule===tid||ulIsU(tid)?ulBox(tid,t):"")+"</div>"}
+function ulSegIn(tid){var u=ulIsU(tid);return '<button class="'+(u?'on':'')+'" onclick="ulMode(\''+tid+'\',1)">밑줄 칠하기</button><button class="'+(u?'':'on')+'" onclick="ulMode(\''+tid+'\',0)">글 고치기</button>'}
+function ulSeg(tid){return '<div class="seg ulseg" id="ulseg-'+tid+'">'+ulSegIn(tid)+'</div>'}
+function ulMode(tid,u){S.ulm=S.ulm||{};S.ulm[tid]=!u;var ta=document.getElementById(tid),c=document.getElementById("ulp-"+tid),sg=document.getElementById("ulseg-"+tid);if(!ta)return;ta.style.display=u?"none":"";if(c)c.innerHTML=u?ulBox(tid,ta.value):"";if(sg)sg.innerHTML=ulSegIn(tid);ulPv(tid)}
+var ULH={};function ulUndo(tid){var h=ULH[tid],el=document.getElementById(tid);if(!h||!h.length||!el){toast("되돌릴 내용이 없어요");return}(ULR[tid]=ULR[tid]||[]).push(el.value);ulWrite(tid,h.pop(),1)}
+function ulRedo(tid){var r=ULR[tid],el=document.getElementById(tid);if(!r||!r.length||!el){toast("다시 적용할 내용이 없어요");return}(ULH[tid]=ULH[tid]||[]).push(el.value);ulWrite(tid,r.pop(),1)}
+function ulSet(k,v){S[k]=v;if(k==="ulmd")ULS={};[].forEach.call(document.querySelectorAll(".ulx"),function(b){ulRef(b.getAttribute("data-t"))})}
+function ulAdj(op){var tid=ULS.tid,el=tid&&document.getElementById(tid);if(!el){toast("먼저 밑줄 친 글자를 탭해 주세요");return}
+  var P=ulParse(el.value),lo=ULS.lo,hi=ULS.hi,len=P.p.length,k,j,ws=function(n){var c=P.p.charAt(n);return c!=="\n"&&/\s/.test(c)},nl=function(n){return P.p.charAt(n)==="\n"};
+  if(op==="sl"){k=lo-1;while(k>=0&&ws(k))k--;if(k<0||nl(k)){toast("더 넓힐 글자가 없어요");return}for(j=k;j<lo;j++)P.m[j]=true;lo=k}
+  else if(op==="er"){k=hi+1;while(k<len&&ws(k))k++;if(k>=len||nl(k)){toast("더 넓힐 글자가 없어요");return}for(j=hi+1;j<=k;j++)P.m[j]=true;hi=k}
+  else if(op==="sr"){if(lo>=hi){toast("더 줄일 수 없어요");return}P.m[lo]=false;k=lo+1;while(k<hi&&ws(k)){P.m[k]=false;k++}lo=k}
+  else if(op==="el"){if(hi<=lo){toast("더 줄일 수 없어요");return}P.m[hi]=false;k=hi-1;while(k>lo&&ws(k)){P.m[k]=false;k--}hi=k}
+  ULS={tid:tid,lo:lo,hi:hi};ulWrite(tid,ulSer(P.p,P.m))}
+function ulUBtn(tid,lb){return '<button class="btn sm'+(S.ule===tid?' ulon':'')+'" style="flex:none" onclick="ulOpen(\''+tid+'\')" aria-label="'+lb+' 밑줄 편집"><u>밑줄</u></button>'}
+function ulOpen(tid){var el=document.getElementById(tid),c;if(!el)return;if(S.ule===tid){ulClose(tid);render();return}if(S.ule&&S.ule!==tid){c=document.getElementById("ulp-"+S.ule);if(c)c.innerHTML=""}
+  S.ule=tid;c=document.getElementById("ulp-"+tid);if(c){c.innerHTML=ulBox(tid,el.value);try{c.scrollIntoView({block:"nearest"})}catch(x){}}}
+function ulClose(tid){S.ule=null;var c=document.getElementById("ulp-"+tid);if(c)c.innerHTML=""}
+function ulRebuild(tid,v){var c=document.getElementById("ulp-"+tid),o,st=0,nb;if(!c)return;o=c.querySelector(".ulx");if(o)st=o.scrollTop;c.innerHTML=ulBox(tid,v);nb=c.querySelector(".ulx");if(nb)nb.scrollTop=st}
+function ulRef(tid){var el;if(S.ule===tid||ulIsU(tid)){el=document.getElementById(tid);if(el)ulRebuild(tid,el.value)}}
+function ulWrite(tid,v,nh){var el=document.getElementById(tid),h;if(!el||el.value===v)return;if(!nh){h=ULH[tid]=ULH[tid]||[];h.push(el.value);if(h.length>40)h.shift();ULR[tid]=[]}el.value=v;el.dispatchEvent(new Event("input",{bubbles:true}));ulRebuild(tid,v)}
+function ulClear(tid){var el=document.getElementById(tid);if(el)ulWrite(tid,el.value.replace(/<\/?u>/gi,""))}
+function ulHi(){var X=ULX,lo=Math.min(X.a,X.b),hi=Math.max(X.a,X.b);[].forEach.call(X.box.querySelectorAll(".c"),function(s){var n=+s.getAttribute("data-n");s.classList.toggle("sel",n>=lo&&n<=hi)})}
+function ulCommit(X){var tid=X.box.getAttribute("data-t"),el=document.getElementById(tid);if(!el)return;
+  var md=S.ulmd||"auto",un=S.ulun||"w",P=ulParse(el.value),lo=Math.min(X.a,X.b),hi=Math.max(X.a,X.b),len=P.p.length,j,run,all=true,ws=function(n){return /\s/.test(P.p.charAt(n))},isE=function(n){return /[.?!。…]/.test(P.p.charAt(n))};
+  if(md==="adj"){run=ulRunAt(P,X.a);ULS=run?{tid:tid,lo:run[0],hi:run[1]}:{};if(!run)toast("밑줄 친 글자를 탭해 주세요");ulRebuild(tid,el.value);return}
+  if(lo===hi){
+    if(un==="w"){while(lo>0&&!ws(lo-1))lo--;while(hi<len-1&&!ws(hi+1))hi++}
+    else if(un==="s"){while(lo>0&&P.p.charAt(lo-1)!=="\n"&&!isE(lo-1))lo--;while(hi<len-1&&P.p.charAt(hi)!=="\n"&&!isE(hi))hi++}}
+  while(lo<hi&&ws(lo))lo++;while(hi>lo&&ws(hi))hi--;
+  if(md==="on")all=false;else if(md==="off")all=true;else for(j=lo;j<=hi;j++)if(!ws(j)&&!P.m[j])all=false;
+  for(j=lo;j<=hi;j++)P.m[j]=!all;
+  ulWrite(tid,ulSer(P.p,P.m))}
+document.addEventListener("pointerdown",function(e){var b=e.target.closest&&e.target.closest(".ulx"),n=b&&e.target.getAttribute("data-n"),t;if(!b||n==null)return;t=e.pointerType==="touch";clearTimeout(ULX.tm);ULX={box:b,a:+n,b:+n,touch:t,act:!t,x:e.clientX,y:e.clientY};
+  if(!t){e.preventDefault();ulHi()}else{ULX.tm=setTimeout(function(){if(ULX.box===b){ULX.act=true;try{navigator.vibrate&&navigator.vibrate(8)}catch(x){}ulHi()}},230)}});
+document.addEventListener("pointermove",function(e){if(!ULX.box)return;if(ULX.touch&&!ULX.act){if(Math.hypot(e.clientX-ULX.x,e.clientY-ULX.y)>10){clearTimeout(ULX.tm);ULX={}}return}if((S.ulmd||"auto")==="adj")return;var el=document.elementFromPoint(e.clientX,e.clientY),n=el&&el.getAttribute&&el.getAttribute("data-n");if(n!=null&&el.closest(".ulx")===ULX.box&&+n!==ULX.b){ULX.b=+n;ulHi()}});
+document.addEventListener("touchmove",function(e){if(ULX.box&&ULX.act&&e.cancelable)e.preventDefault()},{passive:false});
+document.addEventListener("contextmenu",function(e){if(e.target.closest&&e.target.closest(".ulx"))e.preventDefault()});
+document.addEventListener("pointerup",function(){var X=ULX;clearTimeout(X.tm);ULX={};if(X.box)ulCommit(X)});
+document.addEventListener("pointercancel",function(){var X=ULX;clearTimeout(X.tm);ULX={};if(X.box)[].forEach.call(X.box.querySelectorAll(".sel"),function(s){s.classList.remove("sel")})});
+/* ---------- 밑줄 자동 검출: PDF 글자 위치 + 페이지 그림에서 글자 바로 아래 가로선을 찾아요 ---------- */
+var ULWC={},ULWX=null;
+function ulMeasure(c){
+  try{if(!ULWX){ULWX=document.createElement("canvas").getContext("2d");ULWX.font="100px sans-serif"}
+    var b=ULWX.measureText("가").width,w=ULWX.measureText(c).width;if(b>20&&w>0){w/=b;if(w>=.12&&w<=1.3)return w}}catch(e){}
+  return 0}
+function ulW(c){
+  if(/[가-힣ㄱ-ㅎㅏ-ㅣ㉠-㉿①-⑩]/.test(c))return 1;
+  if(/\s/.test(c))return .3;
+  if(ULWC[c]==null)ULWC[c]=ulMeasure(c);if(ULWC[c])return ULWC[c];
+  if(/[A-Z]/.test(c))return .66;
+  if(/[a-z0-9]/.test(c))return .55;
+  if(/[.,:;'`!|]/.test(c))return .3;
+  if(/[()\[\]]/.test(c))return .38;
+  if(/[‘’“”"ㆍ·‧]/.test(c))return .4;
+  return .5}
+async function piUlScan(pg,v,cv,pn){
+  var tc=await pg.getTextContent(),W=cv.width,H=cv.height,it=[],x,y,s;
+  tc.items.forEach(function(t){if(!t.str||!/\S/.test(t.str))return;var m=pdfjsLib.Util.transform(v.transform,t.transform),h=Math.hypot(m[2],m[3]),w=t.width*v.scale;if(h>=7&&w>=h*.5)it.push({s:t.str,x:m[4],y:m[5],h:h,w:w})});
+  if(!it.length)return [];
+  var d=cv.getContext("2d").getImageData(0,0,W,H).data;
+  function dk(x,y){if(x<0||y<0||x>=W||y>=H)return false;var q=(y*W+x)*4;return d[q]+d[q+1]+d[q+2]<600}
+  function dl(x,y){if(x<0||y<0||x>=W||y>=H)return false;var q=(y*W+x)*4;return d[q]+d[q+1]+d[q+2]<690}
+  /* 1) 가로선 찾기: 안티앨리어싱으로 끊긴 틈(2px 이하)은 이어서 한 줄로 본다 */
+  var mn=Math.max(10,Math.round(W/120)),BR=2,open=[],lines=[];
+  for(y=0;y<H;y++){var rr=[],nx=[],gp=0,la=-1;s=-1;
+    for(x=0;x<=W;x++){var on=x<W&&dk(x,y);
+      if(on){if(s<0)s=x;la=x;gp=0}
+      else if(s>=0){gp++;if(gp>BR||x===W){if(la-s+1>=mn)rr.push({x0:s,x1:la});s=-1;gp=0}}}
+    rr.forEach(function(r){var f=null,q,L;for(q=0;q<open.length;q++){L=open[q];if(Math.abs(L.x0-r.x0)<=3&&Math.abs(L.x1-r.x1)<=3){f=L;break}}
+      if(f){f.y1=y;nx.push(f)}else{L={x0:r.x0,x1:r.x1,y0:y,y1:y};lines.push(L);nx.push(L)}});
+    open=nx}
+  function vt(xc,ya,yb){for(var dx=-1;dx<=1;dx++){var c=0,n=0,xx=Math.min(W-1,Math.max(0,xc+dx)),yy;for(yy=Math.max(0,Math.round(ya));yy<yb&&yy<H;yy++){n++;if(dk(xx,yy))c++}if(n>3&&c/n>.85)return true}return false}
+  /* 2) 글자 한 줄(item)의 단어 위치를 실제 잉크로 잰다: 띄어쓰기 틈으로 단어를 나눠 글자별 x좌표를 구한다 */
+  function inkWords(t,gm){var h=t.h,ya=Math.round(t.y-h*.85),yb=Math.round(t.y+h*.03),xa=Math.max(0,Math.floor(t.x)),xb=Math.min(W-1,Math.ceil(t.x+t.w)),cl=[],cur=null,gap=0,xx,yy,ink;
+    lines.forEach(function(L){if(L.y1-L.y0<=4&&L.y0>=t.y-h*.15&&L.y0-1<yb&&L.x1>t.x&&L.x0<t.x+t.w)yb=Math.max(ya+1,L.y0-1)});
+    for(xx=xa;xx<=xb;xx++){ink=false;for(yy=ya;yy<=yb;yy++)if(dl(xx,yy)){ink=true;break}
+      if(ink){if(!cur||gap>=gm){cur={a:xx,b:xx};cl.push(cur)}else cur.b=xx;gap=0}else gap++}
+    return cl}
+  function charPos(t){if(t.P)return t.P;var cs=t.s.split(""),wt=cs.map(ulW),n=cs.length,x0=[],x1=[],tk=[],k,j,cur=null,ok=false;
+    for(k=0;k<n;k++){if(/\s/.test(cs[k])){cur=null}else{if(!cur){cur={a:k,b:k};tk.push(cur)}else cur.b=k}}
+    /* 띄어쓰기 틈 기준을 여러 단계로 바꿔 보며 어절 수와 잉크 덩어리 수가 맞는 값을 찾는다(글꼴마다 띄어쓰기 폭이 달라서) */
+    var cl=[],gms=[.1,.13,.17,.21,.27,.34],gi,c2,best=1e9,tot=0,ac=0,e0=[],e1=[];
+    if(tk.length){for(gi=0;gi<gms.length;gi++){c2=inkWords(t,Math.max(2,Math.round(t.h*gms[gi])));
+      if(Math.abs(c2.length-tk.length)<best){best=Math.abs(c2.length-tk.length);cl=c2}if(best===0)break}}
+    wt.forEach(function(q){tot+=q});
+    /* 먼저 PDF가 알려 준 글줄 전체 폭을 글자 폭 비율로 나눠 기대 위치를 잡는다 */
+    for(k=0;k<n;k++){e0[k]=t.x+ac/tot*t.w;ac+=wt[k];e1[k]=t.x+ac/tot*t.w}
+    function spread(q,A,B){var tt=0,aa=0;for(j=q.a;j<=q.b;j++)tt+=wt[j];for(j=q.a;j<=q.b;j++){x0[j]=A+aa/tt*(B-A);aa+=wt[j];x1[j]=A+aa/tt*(B-A)}}
+    if(tk.length&&cl.length===tk.length){ok=true;
+      tk.forEach(function(q,qi){spread(q,cl[qi].a,cl[qi].b+1)})}
+    else if(tk.length&&cl.length){
+      /* 잉크 덩어리 수와 어절 수가 다르면(기호·영문·좁은 띄어쓰기) 어절마다 가까운 잉크 덩어리에 시작·끝을 맞춰 어긋남이 쌓이지 않게 한다 */
+      var tol=t.h*.8,jm=0,all=true;
+      tk.forEach(function(q){var es=e0[q.a],ee=e1[q.b],bj=-1,bd=1e9,be=-1,bd2=1e9,c,d;
+        for(c=jm;c<cl.length;c++){d=Math.abs(cl[c].a-es);if(d<bd){bd=d;bj=c}if(cl[c].a>es+tol)break}
+        q.sa=null;q.sb=null;
+        if(bj>=0&&bd<=tol){q.sa=cl[bj].a;
+          for(c=bj;c<cl.length;c++){d=Math.abs(cl[c].b+1-ee);if(d<bd2){bd2=d;be=c}if(cl[c].b>ee+tol)break}
+          if(be>=0&&bd2<=tol){q.sb=cl[be].b+1;jm=be+1}else jm=bj+1}});
+      tk.forEach(function(q){var A=e0[q.a],B=e1[q.b];
+        if(q.sa!=null&&q.sb!=null){A=q.sa;B=q.sb}
+        else if(q.sa!=null){B+=q.sa-A;A=q.sa;all=false}
+        else if(q.sb!=null){A+=q.sb-B;B=q.sb;all=false}
+        else all=false;
+        if(B<=A+1){A=e0[q.a];B=e1[q.b];all=false}
+        spread(q,A,B)});
+      ok=all}
+    else{for(k=0;k<n;k++){x0[k]=e0[k];x1[k]=e1[k]}}
+    if(tk.length&&x0.length){for(k=0;k<n;k++)if(x0[k]==null){var pv=k>0?x1[k-1]:t.x;x0[k]=pv;x1[k]=pv}}
+    return t.P={x0:x0,x1:x1,ok:ok}}
+  /* 3) 글자 바로 아래 가로선 → 밑줄 글자 범위 */
+  var res=[],recs=[];
+  lines.forEach(function(L){if(L.y1-L.y0>4)return;
+    var ts=it.filter(function(t){var g=L.y0-t.y;return g>=-t.h*.03&&g<=t.h*.42&&L.x1-L.x0+1>=t.h*.85&&L.x1>t.x&&L.x0<t.x+t.w});if(!ts.length)return;
+    ts.sort(function(a,b){return a.x-b.x});
+    var h=ts[0].h,lo=Math.min.apply(null,ts.map(function(t){return t.x})),hi=Math.max.apply(null,ts.map(function(t){return t.x+t.w}));
+    if(L.x0<lo-h*.7||L.x1>hi+h*.7)return;
+    if(vt(L.x0+1,L.y0-h*2.5,L.y0-1)||vt(L.x1-1,L.y0-h*2.5,L.y0-1))return;
+    var bl=null,q;for(q=0;q<it.length;q++){var u=it[q];if(u.y>L.y0&&u.y<L.y0+h*2.2&&u.x<L.x1&&u.x+u.w>L.x0&&(!bl||u.y<bl.y))bl=u}
+    recs.push({L:L,ts:ts,h:h,g:(L.y0-ts[0].y)/ts[0].h,wide:L.x1-L.x0+1>=3*h,bd:bl?(bl.y-L.y0)/h:null})});
+  /* 글자 획(ㄹ·ㅁ 바닥 등)과 진짜 밑줄을 가르기: 글자 획일 수 없는 긴 선들이 보이는 글자-밑줄 간격과 비슷한 짧은 선만 밑줄로 본다.
+     긴 선이 하나도 없으면 간격 0.12~0.32인 선만 믿는다 */
+  var gw=recs.filter(function(r){return r.wide&&r.g>=-.03&&r.g<=.32}).map(function(r){return r.g});
+  recs=recs.filter(function(r){if(r.wide)return r.g>=-.03&&r.g<=.32;
+    if(gw.length){return gw.some(function(g){return Math.abs(g-r.g)<=.04})}
+    return r.g>=.12&&r.g<=.32});
+  /* 분수선: 선 바로 아래 글자가 보통 줄 간격보다 가까우면(분모) 밑줄이 아니다 */
+  var bw=recs.filter(function(r){return r.bd!=null&&r.bd>.8&&r.bd<1.7}).map(function(r){return r.bd}).sort(function(a,b){return a-b}),BM=bw.length>=3?bw[bw.length>>1]:null;
+  if(BM!=null)recs=recs.filter(function(r){return r.bd==null||r.bd>=BM*.95||r.bd>=1});
+  recs.forEach(function(r){var L=r.L,ts=r.ts,h=r.h;
+    var parts=[],first=null,last=null;
+    ts.forEach(function(t){var P=charPos(t),sl=P.ok?t.h*.08:t.h*.15,a=-1,b=-1,k;
+      for(k=0;k<t.s.length;k++){if(/\s/.test(t.s.charAt(k)))continue;var cw=P.x1[k]-P.x0[k],ov=Math.min(P.x1[k],L.x1+sl)-Math.max(P.x0[k],L.x0-sl);if(cw>0?ov>=cw*(ulW(t.s.charAt(k))<.5?.8:.5):(P.x0[k]>=L.x0-sl&&P.x0[k]<=L.x1+sl)){if(a<0)a=k;b=k}}
+      if(a<0)return;var seg=t.s.slice(a,b+1);if(!/\S/.test(seg))return;
+      parts.push(seg);if(!first)first={t:t,a:a};last={t:t,b:b}});
+    if(!parts.length)return;
+    /* 앞뒤 글(최대 8자)은 같은 줄의 이웃 글자 덩어리까지 이어서 가져온다 */
+    var i1=it.indexOf(first.t),i2=it.indexOf(last.t),pv=it[i1-1],nt=it[i2+1];
+    if(pv&&!(Math.abs(pv.y-first.t.y)<first.t.h*.4&&pv.x<first.t.x))pv=null;
+    if(nt&&!(Math.abs(nt.y-last.t.y)<last.t.h*.4&&nt.x>last.t.x))nt=null;
+    res.push({i1:i1,a1:first.a,i2:i2,b2:last.b,p:pn,seg:parts.join(" "),pre:((pv?pv.s:"")+first.t.s.slice(0,first.a)).slice(-8),post:(last.t.s.slice(last.b+1)+(nt?nt.s:"")).slice(0,8),
+      col:first.t.x<W*.5?0:1,y:Math.round(first.t.y/3),x:first.t.x})});
+  /* 읽는 순서(왼쪽 단 → 오른쪽 단, 위 → 아래)로 정렬 */
+  /* 같은 밑줄이 안티앨리어싱으로 위아래 두 줄로 잡히면(시작 글자가 같으면) 더 짧은 쪽만 남긴다 */
+  res=res.filter(function(r,i){return !res.some(function(o,j){return j!==i&&o.i1===r.i1&&o.a1===r.a1&&(o.i2<r.i2||(o.i2===r.i2&&o.b2<r.b2)||(o.i2===r.i2&&o.b2===r.b2&&j<i))})});
+  res.sort(function(A,B){return A.col-B.col||A.y-B.y||A.x-B.x});
+  return res}
+/* 검출한 밑줄을 문제·선지 글자에 맞춰 넣어요. 검출된 문제는 AI가 넣은 밑줄을 버리고 이걸로 대체하고, 검출 못 한 문제는 AI 밑줄을 그대로 둬요 */
+function piUlFix(items,ul){
+  var SK=/<\/?small>/gi;
+  function norm(c){return String(c).normalize("NFKC").replace(/[\s\u200b-\u200d\ufeff|]/g,"").replace(/[‘’′`´]/g,"'").replace(/[“”″]/g,'"').replace(/[‧•ㆍ]/g,"·").replace(/[–—−‐]/g,"-").toLowerCase()}
+  function nzs(t){var o="",i;t=String(t);for(i=0;i<t.length;i++)o+=norm(t.charAt(i));return o}
+  var F=[];
+  items.forEach(function(z,ix){F.push({z:z,k:-1,ix:ix});z.o.forEach(function(o,k){F.push({z:z,k:k,ix:ix})})});
+  F.forEach(function(f){var t=f.k<0?f.z.q:f.z.o[f.k],P=ulParse(t),skip={},m,i,c,n,j;f.P=P;f.nn="";f.mp=[];
+    SK.lastIndex=0;while((m=SK.exec(P.p))){for(j=m.index;j<m.index+m[0].length;j++)skip[j]=1}
+    for(i=0;i<P.p.length;i++){if(skip[i])continue;n=norm(P.p.charAt(i));for(j=0;j<n.length;j++){f.nn+=n.charAt(j);f.mp.push(i)}}
+    f.m=P.m.map(function(){return false})});
+  function put(f,a,n){var s=f.mp[a],e=f.mp[Math.min(a+n,f.mp.length)-1],j;if(s==null||e==null)return false;
+    for(j=s;j<=e;j++)if(f.P.p.charAt(j)!=="\n")f.m[j]=true;f.z.ul="det";f.hit=1;return true}
+  function occ(needle){var r=[];if(!needle)return r;F.forEach(function(f){var p=f.nn.indexOf(needle);while(p>=0){r.push({f:f,p:p});p=f.nn.indexOf(needle,p+1)}});return r}
+  /* AI가 글자를 한두 글자 잘못 옮겼어도 찾도록: 편집거리 허용 + 앞뒤 글 일치로 확인 */
+  function lev(a,b,k){var n=a.length,m=b.length,i,j,pr=[],cu,mn,t;if(Math.abs(n-m)>k)return k+1;for(j=0;j<=m;j++)pr[j]=j;
+    for(i=1;i<=n;i++){cu=[i];mn=i;for(j=1;j<=m;j++){t=Math.min(pr[j]+1,cu[j-1]+1,pr[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));cu[j]=t;if(t<mn)mn=t}if(mn>k)return k+1;pr=cu}return pr[m]}
+  function fuzzy(s,pr,po){var kk=s.length>=10?2:1,L0=s.length,cand=[];
+    F.forEach(function(f){var n=f.nn,wl,p,w,dd,cx;
+      for(wl=L0-1;wl<=L0+1;wl++){if(wl<3)continue;
+        for(p=0;p+wl<=n.length;p++){w=n.substr(p,wl);
+          if(L0>=6&&w.slice(0,2)!==s.slice(0,2)&&w.slice(-2)!==s.slice(-2))continue;
+          dd=lev(w,s,kk);if(dd>kk)continue;
+          var st=f.mp[p];if(st==null||f.m[st])continue;
+          cx=(pr&&p>0&&n.substr(Math.max(0,p-2),Math.min(2,p))===pr.slice(-2)?1:0)+(po&&n.substr(p+wl,2)===po.slice(0,2)?1:0);
+          cand.push({f:f,p:p,wl:wl,d:dd,cx:cx})}}});
+    if(!cand.length)return false;
+    cand.sort(function(A,B){return B.cx-A.cx||A.d-B.d||A.f.ix-B.f.ix||A.f.k-B.f.k||A.p-B.p});
+    var b=cand[0];if(b.cx<1&&cand.length>1)return false;
+    if(cand.length>1&&cand[1].cx===b.cx&&cand[1].d===b.d&&cand[1].f.ix>=cur&&b.f.ix<cur){var q;for(q=1;q<cand.length;q++)if(cand[q].cx===b.cx&&cand[q].d===b.d&&cand[q].f.ix>=cur){b=cand[q];break}}
+    put(b.f,b.p,b.wl);cur=b.f.ix;return true}
+  var cur=0,miss=0;
+  ul.forEach(function(d){var s=nzs(d.seg),pr=nzs(d.pre),po=nzs(d.post);if(!s)return;
+    /* 앞뒤 글을 넉넉히 붙여 찾고, 안 맞으면 점점 줄여 가며 찾는다 */
+    var tiers=[[pr,po],[pr.slice(-4),po.slice(0,4)],[pr.slice(-2),po.slice(0,2)],[pr.slice(-3),""],["",po.slice(0,3)],["",""]],ti,a,b,r,seen={},done=false;
+    for(ti=0;ti<tiers.length&&!done;ti++){a=tiers[ti][0];b=tiers[ti][1];var key=a+"|"+b;if(seen[key])continue;seen[key]=1;
+      r=occ(a+s+b);
+      if(r.length===1){put(r[0].f,r[0].p+a.length,s.length);cur=r[0].f.ix;done=true}
+      else if(r.length>1){
+        /* 같은 글이 여러 군데 있으면: 이미 쓴 자리는 빼고, 지금까지 읽은 문제 번호 순서를 따르는 첫 후보를 고른다. 한두 글자짜리는 위험해서 건너뜀 */
+        if(s.length<2)break;
+        var rest=r.filter(function(c){var st=c.f.mp[c.p+a.length];return st!=null&&!c.f.m[st]});
+        rest.sort(function(A,B){return A.f.ix-B.f.ix||A.f.k-B.f.k||A.p-B.p});
+        var pick=null,q;for(q=0;q<rest.length;q++)if(rest[q].f.ix>=cur){pick=rest[q];break}
+        if(pick){put(pick.f,pick.p+a.length,s.length);cur=pick.f.ix}
+        done=true}}
+    if(!done&&s.length>=4)done=fuzzy(s,pr,po);
+    if(!done)miss++});
+  /* 검출한 밑줄 중 자리를 못 찾은 게 있으면, 검출이 닿지 않은 칸은 AI가 넣은 밑줄을 그대로 둔다 */
+  F.forEach(function(f){if(f.z.ul!=="det")return;if(!f.hit&&miss>0)return;var o=ulSer(f.P.p,f.m);if(f.k<0)f.z.q=o;else f.z.o[f.k]=o})}
+/* ---------- AI 밑줄 검수: 시험지 이미지와 비교해 밑줄만 바로잡아요 ---------- */
+function piUlMerge(orig,nw){var A=ulParse(orig),B=ulParse(nw);
+  function sk(P){var o=[],m,re=/<\/?small>/gi,hid={},j,i;while((m=re.exec(P.p))){for(j=m.index;j<m.index+m[0].length;j++)hid[j]=1}for(i=0;i<P.p.length;i++){if(!hid[i]&&!/\s/.test(P.p.charAt(i)))o.push(i)}return o}
+  var ia=sk(A),ib=sk(B),mk=A.m.map(function(){return false}),i,k,last=-1;
+  if(ia.length!==ib.length)return null;
+  for(i=0;i<ia.length;i++){if(A.p.charAt(ia[i]).normalize("NFKC")!==B.p.charAt(ib[i]).normalize("NFKC"))return null;mk[ia[i]]=!!B.m[ib[i]]}
+  for(i=0;i<ia.length;i++){if(mk[ia[i]]&&last>=0&&mk[ia[last]]){for(k=ia[last]+1;k<ia[i];k++)if(A.p.charAt(k)!=="\n"&&/\s/.test(A.p.charAt(k)))mk[k]=true}last=i}
+  return ulSer(A.p,mk)}
+async function piHiCrop(P,z){return piHiCropG(P,P.q,z.fr)}
+async function piHiCropG(P,file,r){if(!r||!file)return null;await piLib();
+  if(!P._doc)P._doc=pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+  var d=await P._doc,pn=+r.p;if(!(pn>=1&&pn<=d.numPages))return null;
+  P._hi=P._hi||{};var c=P._hi[pn],ks;
+  if(!c){var pg=await d.getPage(pn),v=pg.getViewport({scale:1900/pg.getViewport({scale:1}).width});c=document.createElement("canvas");c.width=Math.round(v.width);c.height=Math.round(v.height);await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;ks=Object.keys(P._hi);if(ks.length>=2)delete P._hi[ks[0]];P._hi[pn]=c}
+  var pd=.012,x0=Math.max(0,+r.x-pd),y0=Math.max(0,+r.y-pd),w=Math.min(1-x0,+r.w+2*pd)*c.width,h=Math.min(1-y0,+r.h+2*pd)*c.height;
+  if(!(w>=40&&h>=40))return null;
+  var o=document.createElement("canvas");o.width=Math.round(w);o.height=Math.round(h);o.getContext("2d").drawImage(c,x0*c.width,y0*c.height,w,h,0,0,o.width,o.height);
+  return new Promise(function(ok){o.toBlob(function(b){ok(b)},"image/jpeg",.9)})}
+function piUlPrompt(q,o,no,img){return '너는 한국 고등학교 시험지의 밑줄을 검수하는 조교야. '+(img?'첨부 이미지는 시험지에서 문제 하나를 잘라낸 거야.':'첨부 PDF에서 '+no+'번 문제를 찾아.')+' 아래는 이 문제를 옮겨 적은 텍스트인데, 밑줄이 <u>와 </u>로 표시돼 있어. 시험지와 비교해 밑줄만 바로잡아.\n[규칙]\n1. 글자 바로 아래에 선이 실제로 그어진 부분만 <u>…</u>로 감싸. 선이 시작하는 글자부터 끝나는 글자까지 정확히 그 범위만 감싸고 앞뒤로 넓히거나 줄이지 마. 굵은 글씨, 글자 색, 따옴표, ㉠㉡ 같은 기호는 그 아래에 선이 있을 때만 밑줄로 봐.\n2. 선이 없는 곳의 <u>는 지우고, 빠진 밑줄은 추가해. 밑줄이 줄 끝에서 다음 줄로 이어져도 \\n 없이 하나의 <u>…</u>로 이어 써. 발문에 ‘밑줄 친 ㉠’처럼 나오면 그 기호가 붙은 곳의 선을 다시 확인해.\n3. 밑줄 말고는 아무것도 바꾸지 마. 글자, 띄어쓰기, 줄바꿈(\\n), <small> 태그를 한 글자도 바꾸지 마. 글자가 잘못 옮겨진 것 같아도 고치지 마.\n4. 확신이 없으면 지금 표시를 그대로 둬(추측 금지).\n선지는 참고용이니 밑줄을 넣지 말고 그대로 돌려줘. 오직 JSON 배열 하나로만 답해. 줄바꿈은 \\n으로 표시해: [{"q":"검수한 문제 본문","o":["선지1","선지2"],"changed":true,"note":"무엇을 고쳤는지 한 줄"}] (o는 아래 선지와 같은 개수·순서)\n[문제 본문]\n'+q+'\n[선지]\n'+o.map(function(x,i){return (i+1)+'. '+x}).join('\n')}
+function piTO(pr,ms,msg){return new Promise(function(ok,no){var t=setTimeout(function(){var e=new Error(msg);e.userMsg=msg;e.code="to";no(e)},ms);pr.then(function(v){clearTimeout(t);ok(v)},function(e){clearTimeout(t);no(e)})})}
+async function piUlOne(i,force){var P=PI(),z=P.items&&P.items[i];if(!z||z.ulBusy)return;
+  var tok=z.ulTok=(z.ulTok||0)+1;z.ulBusy=1;z.ulq=0;z.ulr="";z.ulErr="";piUlPaint(i);
+  function stg(t){z.ulStage=t;var el=document.getElementById("ulst-"+i);if(el)el.textContent=t+" (버튼을 다시 누르면 처음부터 다시 해요)"}
+  try{var cq=piCleanQuestion(z),oo=z.o.slice(),blob=null,got=null,lastE=null,t,opt,r;
+    stg("시험지 그림 준비 중");
+    try{blob=await piTO(piHiCrop(P,z),25000,"그림 준비가 너무 오래 걸려요")}catch(e){blob=null;console.warn("piHiCrop",e)}
+    if(z.ulTok!==tok)return;
+    if(!blob&&!P.q){var ne=new Error("시험지 PDF를 찾지 못했어요. PDF를 다시 불러와 주세요.");ne.userMsg=ne.message;throw ne}
+    opt={cache:false,json:true,raw:true,temp:.1,fast:true,timeout:100000};if(blob)opt.images=[blob];else opt.files=[P.q];
+    for(t=0;t<2&&!got;t++){
+      stg("AI 응답 기다리는 중 ("+(t+1)+"/2)");
+      try{r=await piTO(callAI(piUlPrompt(cq,oo,z.no,!!blob),opt),110000,"AI 응답이 너무 오래 걸려요. 잠시 후 다시 시도해 주세요.");
+        if(z.ulTok!==tok)return;
+        var arr=piParse(r.text),g=arr&&arr[0];
+        if(!g){try{var j=JSON.parse(String(r.text||"").replace(/```json|```/g,"").trim());g=Array.isArray(j)?j[0]:j}catch(x){}}
+        if(!g||typeof g!=="object"){var fe=new Error("AI 답을 읽지 못했어요.");fe.code="fmt";throw fe}
+        got=g}
+      catch(e){if(z.ulTok!==tok)return;lastE=e;console.warn("밑줄 검수",e);
+        if(e&&(e.code==="gem401"||e.code==="gem403"||e.code==="gem404"||e.code==="gem400"||e.code==="gem-3")){P.ulHalt=1;break}
+        if(t<1)await new Promise(function(ok){setTimeout(ok,e&&e.code==="gem429"?15000:(e&&/^gem5/.test(e.code||"")?4000:1200))})}}
+    if(z.ulTok!==tok)return;
+    if(!got)throw lastE||new Error("empty");
+    if(piCleanQuestion(z)!==cq||z.o.join("\u0001")!==oo.join("\u0001")){z.ulr="skip";z.ulNote="검수하는 사이 본문을 고쳐서 적용하지 않았어요";return}
+    var hasQ=typeof got.q==="string",nq=hasQ?piUlMerge(cq,String(got.q).replace(/\\n/g,"\n")):cq,bad=hasQ&&nq==null,
+      no2=oo.slice();
+    if(nq==null)nq=cq;
+    var ch=nq!==cq||no2.some(function(x,k){return x!==oo[k]});
+    if(ch){z.ulBak={q:z.q,o:oo};z.q=nq;z.o=no2;z.ul="ai"}
+    z.ulr=ch?"fix":(bad?"skip":"ok");z.ulNote=bad&&!ch?"AI가 글자를 바꿔 보내서 적용하지 않았어요":String(got.note||"").slice(0,90)
+  }catch(e){if(z.ulTok===tok){z.ulr="err";z.ulErr=String(e&&(e.userMsg||e.message)||e).slice(0,160)}}
+  finally{if(z.ulTok===tok){z.ulBusy=0;z.ulStage="";piUlPaint(i)}}}
+function piUlRender(){var a=document.activeElement;if(a&&/^(TEXTAREA|INPUT)$/.test(a.tagName)){setTimeout(piUlRender,1500);return}render()}
+async function piUlAll(auto){var P=PI();if(!P.items||P.ulAll)return;if(!aiOn()){if(!auto)toast("설정에서 AI 연결이 필요해요");return}
+  var idx=[],i;P.items.forEach(function(z,k){if(z.on===false&&auto)return;if(auto&&z.ul==="det")return;idx.push(k)});
+  if(!idx.length){if(!auto)toast("검수할 문제가 없어요");return}
+  P.ulAll={n:idx.length,d:0};var q=0,fixed=0;idx.forEach(function(k){P.items[k].ulq=1;piUlPaint(k)});
+  function paint(){var el=document.getElementById("ulrprog");if(el)el.innerHTML='<i class="ulspin"></i>밑줄 AI 검수 중… '+P.ulAll.d+' / '+P.ulAll.n}
+  paint();
+  async function w(){while(q<idx.length&&!P.ulHalt){var k=idx[q++];await piUlOne(k);if(P.items&&P.items[k]&&P.items[k].ulr==="fix")fixed++;P.ulAll.d++;paint()}}
+  P.ulHalt=0;await w();
+  idx.forEach(function(k){var zz=P.items&&P.items[k];if(zz&&zz.ulq){zz.ulq=0;piUlPaint(k)}});P.ulAll=null;if(P.ulHalt){toast("AI 연결 오류로 검수를 멈췄어요. 카드의 실패 이유를 확인해 주세요")}else if(!auto||fixed)toast(fixed?("밑줄 "+fixed+"문제를 고쳤어요"):"밑줄을 확인했어요. 고칠 곳이 없어요");piUlRender()}
+async function piUlOneBtn(i){var P=PI(),z0=P.items&&P.items[i];if(!z0)return;if(!aiOn()){toast("설정에서 AI 연결이 필요해요");return}
+  if(z0.ulBusy){z0.ulTok=(z0.ulTok||0)+1;z0.ulBusy=0;z0.ulStage="";toast("멈춘 검수를 취소하고 다시 시작해요")}
+  var pr=piUlOne(i,true);render();await pr;var z=P.items&&P.items[i];
+  if(z)toast(z.ulr==="fix"?"밑줄을 고쳤어요":z.ulr==="ok"?"밑줄이 맞아요":z.ulr==="skip"?(z.ulNote||"적용하지 못했어요"):z.ulr==="err"?("검수 실패: "+(z.ulErr||"알 수 없는 오류")):"검수를 시작하지 못했어요. 화면을 새로 열고 다시 눌러 주세요");
+  piUlRender()}
+function piUlUndo(i){var z=PI().items[i];if(!z||!z.ulBak)return;z.q=z.ulBak.q;z.o=z.ulBak.o;z.ulBak=null;z.ulr="";render()}
+function piUlTag(z){if(z.ulBusy)return '<span class="tag"><i class="ulspin"></i>밑줄 검수 중…</span>';if(z.ulq)return '<span class="tag">밑줄 검수 대기</span>';if(z.ulr==="fix")return '<span class="tag ok">밑줄 AI 수정됨</span>';if(z.ulr==="ok")return '<span class="tag ok">밑줄 AI 확인됨</span>';if(z.ulr==="err")return '<span class="tag no">밑줄 검수 실패</span>';if(z.ulr==="skip")return '<span class="tag">밑줄 검수 건너뜀</span>';return ''}
+function piUlRowIn(i,z){return '<div class="chips" style="margin:8px 0 0"><button class="chip" onclick="piUlOneBtn('+i+')"'+(z.ulq&&!z.ulBusy?' disabled':'')+'>'+(z.ulBusy?'<i class="ulspin"></i>AI가 밑줄 확인 중… (다시 시작)':z.ulq?'검수 대기 중…':'밑줄 AI 검수')+'</button>'+(z.ulBak&&!z.ulBusy?'<button class="chip" onclick="piUlUndo('+i+')">AI 수정 취소</button>':'')+'</div>'+(z.ulBusy?'<p class="sub" id="ulst-'+i+'" style="margin:4px 0 0;font-size:12.5px">'+esc((z.ulStage||"검수 중")+" (버튼을 다시 누르면 처음부터 다시 해요)")+'</p><div class="ulbar"><i></i></div>':'')+(z.ulr==="err"&&!z.ulBusy?'<p class="sub" style="color:var(--no);margin:4px 0 0;font-size:12.5px">실패 이유: '+esc(z.ulErr||"알 수 없는 오류")+'</p>':(z.ulNote&&!z.ulBusy&&(z.ulr==="fix"||z.ulr==="skip")?'<p class="sub" style="margin:4px 0 0;font-size:12.5px">'+esc(z.ulNote)+'</p>':''))}
+function piUlRow(i,z){return '<div id="ulrow-'+i+'">'+piUlRowIn(i,z)+'</div>'}
+/* ---------- 해설 검토: 문제 이미지를 바탕으로 정답과 해설을 다시 만들어요 ---------- */
+async function piRvBlob(P,z){
+  var r=z.m==="g"?z.gr:z.m==="f"?z.fr:null,im=z.m==="g"?z.g:z.m==="f"?z.f:"",b=null;
+  if(r&&P.q){try{b=await piTO(piHiCropG(P,P.q,r),25000,"그림 준비가 너무 오래 걸려요")}catch(e){b=null}}
+  if(!b&&im){try{b=await (await fetch(im)).blob()}catch(e){b=null}}
+  if(!b&&P.q&&(z.fr||z.gr)){try{b=await piTO(piHiCropG(P,P.q,z.fr||z.gr),25000,"그림 준비가 너무 오래 걸려요")}catch(e){b=null}}
+  return b}
+function piRvPrompt(z,hasImg){
+  var q=piCleanQuestion(z);
+  return '너는 한국 고등학교 ‘'+DB[z.sub||S.sub].name+'’ 선생님이야. '+(hasImg?'첨부 이미지는 이 문제의 시험지 그림(자료·표·보기)이야. 이미지를 가장 우선해서 꼼꼼히 보고, ':'이번에는 이미지 없이 글만 있어. 그림·표가 글로 옮겨지지 않았을 수 있으니 자료가 부족해 보이면 conf를 low로 하고, ')+'아래 문제를 처음부터 직접 풀어서 정답과 해설을 다시 만들어줘. 기존 정답·해설은 틀렸을 수 있으니 참고만 하고 그대로 따르지 마. 텍스트와 이미지가 다르면 이미지를 믿어.\n[규칙]\n1. a는 정답 선지 번호야(1부터 시작, 선지는 ①→1, ②→2 …).\n2. e는 해설이야. 정답 근거(이미지 자료에서 읽은 내용 포함)와 핵심 개념을 2~4문장, ~해요 체로 쓰고 마크다운 기호는 쓰지 마. 틀린 선지가 왜 틀렸는지도 한두 개 짚어줘.\n3. conf는 확신도(high, mid, low)야. 글자·그림이 안 보이거나 확신이 없으면 low로 해.\n오직 JSON 배열 하나로만 답해: [{"a":3,"conf":"high","e":"해설"}]\n[문제]\n'+q+'\n[선지]\n'+z.o.map(function(x,i){return (i+1)+'. '+String(x).replace(/<\/?(u|small)>/gi,"")}).join('\n')+'\n[기존 정답] '+(z.a+1)+'번\n[기존 해설] '+(z.e||"없음")+(z.keyExp?'\n[정답·해설지의 해설 원문] '+z.keyExp:'')}
+function piRvRowIn(i,z){
+  return '<div class="chips" style="margin:8px 0 6px"><button class="chip" onclick="piRvRun('+i+')"'+(z.rvBusy?' disabled':'')+'>'+(z.rvBusy?'<i class="ulspin"></i>다시 푸는 중…':'해설 검토 (정답·해설 다시 만들기)')+'</button>'+(z.rvBak&&!z.rvBusy?'<button class="chip" onclick="piRvUndo('+i+')">검토 결과 취소</button>':'')+'</div>'
+   +(z.rvBusy?'<div class="ulbar"><i></i></div>':'')
+   +(z.rvErr&&!z.rvBusy?'<p class="sub" style="color:var(--no);margin:4px 0 6px;font-size:12.5px">실패 이유: '+esc(z.rvErr)+'</p>':(z.rvNote&&!z.rvBusy?'<p class="sub" style="margin:4px 0 6px;font-size:12.5px">'+esc(z.rvNote)+'</p>':''))}
+function piRvRow(i,z){return '<div id="rvrow-'+i+'">'+piRvRowIn(i,z)+'</div>'}
+function piRvPaint(i){var z=PI().items&&PI().items[i],b=document.getElementById("rvrow-"+i);if(z&&b)b.innerHTML=piRvRowIn(i,z)}
+async function rvAI(o,blob){
+  var opt={cache:false,json:true,raw:true,temp:.1,timeout:100000};if(blob)opt.images=[blob];
+  S.t0=Date.now();
+  var r=await piTO(callAI(piRvPrompt(o,!!blob),opt),110000,"AI 응답이 너무 오래 걸려요. 잠시 후 다시 시도해 주세요.");
+  var arr=piParse(r.text),g=arr&&arr[0];
+  if(!g){try{var j=JSON.parse(String(r.text||"").replace(/```json|```/g,"").trim());g=Array.isArray(j)?j[0]:j}catch(x){}}
+  var n=g?Math.round(+g.a):0,e=g?String(g.e||"").trim():"";
+  if(!(n>=1&&n<=o.o.length)||!e){var fe=new Error("AI 답을 읽지 못했어요. 다시 시도해 주세요.");fe.userMsg=fe.message;throw fe}
+  return {n:n,e:e,conf:({high:1,mid:1,low:1}[g.conf]?g.conf:"mid")}}
+function rvNote(old,res,blob){return (old===res.n-1?"정답은 그대로 "+res.n+"번이에요.":"정답을 "+(old+1)+"번에서 "+res.n+"번으로 바꿨어요.")+" 해설을 새로 만들었어요."+(blob?"":" 이미지 없이 글만 보고 풀었어요.")+" 틀렸다면 ‘검토 결과 취소’로 되돌릴 수 있어요."+(res.conf==="low"?" (AI 확신도 낮음)":"")}
+async function piRvRun(i){var P=PI(),z=P.items&&P.items[i];if(!z||z.rvBusy)return;
+  if(!aiOn()){toast("설정에서 AI 연결이 필요해요");return}
+  z.rvBusy=1;z.rvErr="";z.rvNote="";piRvPaint(i);var tok=z.rvTok=(z.rvTok||0)+1;
+  try{var blob=await piRvBlob(P,z);
+    var res=await rvAI(z,blob);
+    if(z.rvTok!==tok)return;
+    var old=z.a;z.rvBak={a:z.a,e:z.e,src:z.src,conf:z.conf};
+    z.a=res.n-1;z.e=res.e;z.src="ai";z.conf=res.conf;
+    z.rvNote=rvNote(old,res,blob);
+    toast(old===z.a?"해설을 새로 만들었어요":"정답이 "+res.n+"번으로 바뀌었어요")
+  }catch(e){if(!(e&&e.code==="gem-3")&&z.rvTok===tok)z.rvErr=String(e&&(e.userMsg||e.message)||e).slice(0,160)}
+  finally{if(z.rvTok===tok){z.rvBusy=0;if(P.items===null)return;piUlRender()}}}
+function piRvUndo(i){var z=PI().items[i];if(!z||!z.rvBak)return;z.a=z.rvBak.a;z.e=z.rvBak.e;z.src=z.rvBak.src;z.conf=z.rvBak.conf;z.rvBak=null;z.rvNote="";render()}
+function piUlPaint(i){var P=PI(),z=P.items&&P.items[i],a,b;if(!z)return;a=document.getElementById("ults-"+i);b=document.getElementById("ulrow-"+i);if(a)a.innerHTML=piUlTag(z);if(b)b.innerHTML=piUlRowIn(i,z)}
 function piReview(D){
   var P=PI(),L={key:"정답지",read:"사진에서 읽음",man:"직접 입력",ai:"AI 추정"},un=P.items.filter(function(z){return z.src==="ai"}).length;
   var h='<p class="sub" style="margin-bottom:10px">'+esc(D.name)+' · '+P.items.length+'문제를 읽었어요. 정답과 내용을 확인하고 저장하세요.'+(P.a.length&&un?' 정답지에서 못 찾은 번호가 '+un+'개 있어요.':'')+'</p>';
   if(P.warn)h+='<p class="sub" style="color:var(--no);margin-bottom:10px">'+esc(P.warn)+'</p>';
   if(P.ie)h+='<p class="sub" style="color:var(--no);margin-bottom:10px">그림을 이미지로 만들지 못했어요: '+esc(P.ie)+'</p>';
+  h+='<div class="card" style="margin-bottom:12px"><h3 class="h3">밑줄 AI 검수</h3><p class="sub" id="ulrprog" style="margin:0 0 8px">'+(P.ulAll?'<i class="ulspin"></i>밑줄 AI 검수 중… '+P.ulAll.d+' / '+P.ulAll.n:'시험지 그림과 비교해 밑줄을 다시 확인하고 고쳐요. 글자는 바꾸지 않고 밑줄만 바꿔요.')+'</p><button class="btn" onclick="piUlAll(false)"'+(P.ulAll?' disabled':'')+'>전체 밑줄 AI 검수</button></div>';
   if(un)h+='<div class="card" style="margin-bottom:12px"><h3 class="h3">정답표 붙여넣기</h3><textarea class="ta" rows="2" placeholder="예: 3 1 4 2 5 ... (아래 순서대로 적용돼요)" oninput="PI().key=this.value" aria-label="정답표">'+esc(P.key)+'</textarea><div class="after" style="margin-top:8px"><button class="btn" onclick="piKey()">적용</button></div></div>';
   var ord=P.items.map(function(z,i){return i}).sort(function(a,b){var x=P.items[a],y=P.items[b];return (y.src==="ai"&&y.conf==="low"?1:0)-(x.src==="ai"&&x.conf==="low"?1:0)});
-  h+=ord.map(function(i){var z=P.items[i];return '<div class="card" style="margin-bottom:12px"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox"'+(z.on?' checked':'')+' onchange="piOn('+i+')"><b>'+esc(z.no)+'번</b><span class="tag">'+L[z.src]+(z.src==="ai"&&z.conf?' · 확신 '+({high:"높음",mid:"보통",low:"낮음"}[z.conf]||""):'')+'</span>'+(z.fig?'<span class="tag">그림 포함</span>':'')+'</label><div class="chips" style="margin-top:8px">'+["e","s"].map(function(b){return '<button class="chip'+((z.sub||S.sub)===b?' on':'')+'" onclick="piSub('+i+',\''+b+'\')">'+DB[b].name+'</button>'}).join("")+'</div><div class="chips scroll" style="margin-top:8px">'+DB[z.sub||S.sub].units.map(function(u){return '<button class="chip'+(z.t===u?' on':'')+'" onclick="piUnit('+i+',\''+u+'\')">'+esc(u)+'</button>'}).join("")+'</div>'
-    +piImg(i,z)+'<textarea class="ta" rows="'+Math.min(18,Math.max(4,piCleanQuestion(z).split("\n").length+2))+'" oninput="PI().items['+i+'].q=this.value" aria-label="문제 본문" style="margin:8px 0">'+esc(piCleanQuestion(z))+'</textarea>'
-    +'<p class="sub" style="margin:4px 0 6px;font-size:12.5px">번호를 누르면 정답으로 정해지고, 글자를 눌러 선지를 고칠 수 있어요.</p>'+z.o.map(function(o,k){return '<div style="display:flex;gap:6px;align-items:stretch;margin-bottom:6px"><button class="opt'+(k===z.a?' ok':'')+'" style="flex:none;width:44px;min-width:0;justify-content:center;margin:0" onclick="piAns('+i+','+k+')" aria-label="'+(k+1)+'번을 정답으로"><span class="n">'+(k+1)+'</span></button><textarea class="ta" rows="'+Math.min(5,Math.max(1,Math.ceil(String(o).length/22)))+'" style="flex:1;min-width:0;margin:0" oninput="PI().items['+i+'].o['+k+']=this.value" aria-label="'+(k+1)+'번 선지">'+esc(o)+'</textarea>'+(z.o.length>2?'<button class="btn sm" style="flex:none" onclick="piOptDel('+i+','+k+')" aria-label="'+(k+1)+'번 선지 삭제">✕</button>':'')+'</div>'}).join("")+(z.o.length<6?'<div class="after" style="margin:2px 0 8px"><button class="btn sm" onclick="piOptAdd('+i+')">선지 추가</button></div>':'')+'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">해설</p><textarea class="ta" rows="'+Math.min(10,Math.max(2,Math.ceil(String(z.e||"").length/30)+1))+'" oninput="PI().items['+i+'].e=this.value" aria-label="해설" placeholder="해설이 비어 있어요. 직접 적을 수 있어요">'+esc(z.e||"")+'</textarea></div>'}).join("");
+  h+=ord.map(function(i){var z=P.items[i];return '<div class="card" style="margin-bottom:12px"><label style="display:flex;gap:8px;align-items:center"><input type="checkbox"'+(z.on?' checked':'')+' onchange="piOn('+i+')"><b>'+esc(z.no)+'번</b><span class="tag">'+L[z.src]+(z.src==="ai"&&z.conf?' · 확신 '+({high:"높음",mid:"보통",low:"낮음"}[z.conf]||""):'')+'</span>'+(z.fig?'<span class="tag">그림 포함</span>':'')+(z.ul==="det"?'<span class="tag">밑줄 자동 검출</span>':'')+'<span id="ults-'+i+'">'+piUlTag(z)+'</span></label><div class="chips" style="margin-top:8px">'+["e","s"].map(function(b){return '<button class="chip'+((z.sub||S.sub)===b?' on':'')+'" onclick="piSub('+i+',\''+b+'\')">'+DB[b].name+'</button>'}).join("")+'</div><div class="chips scroll" style="margin-top:8px">'+DB[z.sub||S.sub].units.map(function(u){return '<button class="chip'+(z.t===u?' on':'')+'" onclick="piUnit('+i+',\''+u+'\')">'+esc(u)+'</button>'}).join("")+'</div>'
+    +piImg(i,z)+piUlRow(i,z)+ulSeg('ulq-'+i)+ulSlot('ulq-'+i,piCleanQuestion(z))+'<textarea id="ulq-'+i+'" class="ta" rows="'+Math.min(18,Math.max(4,piCleanQuestion(z).split("\n").length+2))+'" oninput="PI().items['+i+'].q=this.value;ulRef(\'ulq-'+i+'\');ulPv(\'ulq-'+i+'\')" aria-label="문제 본문" style="margin:0 0 6px'+(ulIsU('ulq-'+i)?';display:none':'')+'">'+esc(piCleanQuestion(z))+'</textarea>'+ulPrev('ulq-'+i,piCleanQuestion(z))
+    +'<p class="sub" style="margin:4px 0 6px;font-size:12.5px">번호를 누르면 정답으로 정해지고, 글자를 눌러 선지를 고칠 수 있어요.</p>'+z.o.map(function(o,k){return '<div style="display:flex;gap:6px;align-items:stretch;margin-bottom:6px"><button class="opt'+(k===z.a?' ok':'')+'" style="flex:none;width:44px;min-width:0;justify-content:center;margin:0" onclick="piAns('+i+','+k+')" aria-label="'+(k+1)+'번을 정답으로"><span class="n">'+(k+1)+'</span></button><textarea class="ta" rows="'+Math.min(5,Math.max(1,Math.ceil(String(o).length/22)))+'" id="ulo-'+i+'-'+k+'" style="flex:1;min-width:0;margin:0" oninput="PI().items['+i+'].o['+k+']=this.value" aria-label="'+(k+1)+'번 선지">'+esc(o)+'</textarea>'+(z.o.length>2?'<button class="btn sm" style="flex:none" onclick="piOptDel('+i+','+k+')" aria-label="'+(k+1)+'번 선지 삭제">✕</button>':'')+'</div>'}).join("")+(z.o.length<6?'<div class="after" style="margin:2px 0 8px"><button class="btn sm" onclick="piOptAdd('+i+')">선지 추가</button></div>':'')+''+piRvRow(i,z)+'<p class="sub" style="margin:8px 0 4px;font-size:12.5px">해설</p><textarea class="ta" rows="'+Math.min(10,Math.max(2,Math.ceil(String(z.e||"").length/30)+1))+'" oninput="PI().items['+i+'].e=this.value" aria-label="해설" placeholder="해설이 비어 있어요. 직접 적을 수 있어요">'+esc(z.e||"")+'</textarea></div>'}).join("");
   var n=P.items.filter(function(z){return z.on}).length;
   return h+'<div class="after"><button class="btn" onclick="piBack()">다시 올리기</button><button class="btn" onclick="piSave(true)"'+(n?'':' disabled')+'>저장만 ('+n+')</button><button class="btn pri" onclick="piSave(false)"'+(n?'':' disabled')+'>저장하고 풀기 ('+n+')</button></div>'}
 function piSave(only){
   var P=PI(),D=DB[S.sub],b="p"+Date.now().toString(36),ids=[],ex=(P.exam||"").trim();
   P.items.forEach(function(z,i){if(!z.on)return;var q={id:b+i,sub:z.sub||S.sub,t:z.t,lv:2,q:piCleanQuestion(z).replace(/[ \t]+\n/g,"\n").replace(/\n{2,}/g,"\n").trim(),o:z.o,a:z.a,e:z.e,keyExp:String(z.keyExp||""),ai:1,src:(ex?ex+" · ":"")+z.no+"번",im:z.m==="f"?z.f:z.m==="g"?z.g:"",imf:z.m==="f"?1:0};
-    if(z.src==="ai")q.u=1;DB[q.sub].qs.push(q);st.gen.push(q);ids.push(q.id)});
+    if(z.fr&&isFinite(+z.fr.p)&&isFinite(+z.fr.x)&&isFinite(+z.fr.y)&&isFinite(+z.fr.w)&&isFinite(+z.fr.h))q.fr={p:+z.fr.p,x:+z.fr.x,y:+z.fr.y,w:+z.fr.w,h:+z.fr.h};if(z.src==="ai")q.u=1;DB[q.sub].qs.push(q);st.gen.push(q);ids.push(q.id)});
   while(st.gen.length>200||JSON.stringify(st.gen).length>3e6){var k=st.gen.findIndex(function(z){return st.wrong.indexOf(z.id)<0});if(k<0)break;var o=st.gen.splice(k,1)[0],dq=DB[o.sub].qs;dq.splice(dq.indexOf(o),1)}
   var pf=st.pdfs.filter(function(f){return f.id===P.fid})[0];if(pf){pf.qids=(pf.qids||[]).filter(function(x){return ids.indexOf(x)<0}).concat(ids);if(ex)pf.exam=ex}
   save();P.items=null;P.q=null;P.a=[];P.fid=null;S.pan=null;if(only){toast("문제 "+ids.length+"개를 저장했어요. 노트에서 언제든 풀 수 있어요.");render();return}startRun("mc",ids,(ex||"PDF")+" 문제");if(S.run){S.run.ids=ids.slice();render()}}
 function qView(z){return z.imf?imgH(z):qfmt(z.q,z.im)}
 function qTable(rows){
   var R=rows.filter(function(r){return !/^\|[\s:\-|]+\|$/.test(r)}).map(function(r){return r.replace(/^\|/,"").replace(/\|$/,"").split("|").map(function(c){return c.trim()})});
-  if(!R.length)return "";var n=Math.max.apply(null,R.map(function(r){return r.length}));
+  if(!R.length)return "";
+  var R2=R.map(function(r){r=r.slice();while(r.length&&r[r.length-1]==="")r.pop();return r});
+  if(R2.every(function(r){return r.length===2&&/^(\d{1,2}대|[갑을병정무]|\([가-라]\))$/.test(r[0])}))return '<div class="qf-pass">'+R2.map(function(r){return '<p class="qf-sp"><b>'+escR(r[0])+'</b><span>'+escR(r[1])+'</span></p>'}).join("")+'</div>';
+  var n=Math.max.apply(null,R.map(function(r){return r.length}));
   return '<div class="qf-tw"><table class="qf-t"><thead><tr>'+R[0].concat(Array(n-R[0].length).fill("")).map(function(c){return '<th>'+escR(c)+'</th>'}).join("")+'</tr></thead><tbody>'+R.slice(1).map(function(r){return '<tr>'+r.concat(Array(n-r.length).fill("")).map(function(c){return '<td>'+escR(c)+'</td>'}).join("")+'</tr>'}).join("")+'</tbody></table></div>'}
 var QMARK=/^\[(그림|표|이미지|자료)\]$/;
 function qfmt(t,im){
@@ -2137,7 +3010,7 @@ function qfmt(t,im){
   if(!stem&&L.length>1&&/[?？]\s*(\[\s*\d+\s*점\s*\])?$/.test(L[L.length-1])&&!/^(\||〈|[ㄱ-ㅁ][.．])/.test(L[L.length-1]))stem=L.pop();
   if(im&&!L.some(function(l){return QMARK.test(l)}))L.splice(stem?0:Math.min(1,L.length),0,"[그림]");
   h=(grp?'<p class="qf-grp">'+escR(grp)+'</p>':'')+(stem?'<p class="qf-stem">'+escR(stem)+'</p>':'');
-  function fp(){if(!ps.length)return;h+='<div class="qf-pass">'+ps.map(function(l){var m=/^([가-힣A-Za-z]{1,4})\s*[:：]\s*(\S[\s\S]*)$/.exec(l);return m?'<p class="qf-sp"><b>'+escR(m[1])+'</b><span>'+escR(m[2])+'</span></p>':'<p class="qf-s">'+escR(l)+'</p>'}).join("")+'</div>';ps=[]}
+  function fp(){if(!ps.length)return;h+='<div class="qf-pass">'+ps.map(function(l){var m=/^([가-힣A-Za-z0-9]{1,4})\s*[:：]\s*(\S[\s\S]*)$/.exec(l);return m?'<p class="qf-sp"><b>'+escR(m[1])+'</b><span>'+escR(m[2])+'</span></p>':'<p class="qf-s">'+escR(l)+'</p>'}).join("")+'</div>';ps=[]}
   function flush(){if(tb.length){h+=qTable(tb);tb=[]}}
   function flowHTML(rows){
     var start="",branches=[];
@@ -2196,7 +3069,7 @@ function piLib(){return new Promise(function(ok,no){if(window.pdfjsLib)return ok
   ld("pdf.min.js",function(){pdfjsLib.GlobalWorkerOptions.workerSrc="pdf.worker.min.js";ok()},cdn)})}
 function piThumb(c){var k=Math.min(1,1000/c.width),o=document.createElement("canvas");o.width=Math.round(c.width*k);o.height=Math.round(c.height*k);o.getContext("2d").drawImage(c,0,0,o.width,o.height);return o.toDataURL("image/jpeg",.7)}
 async function piPages(file){await piLib();var d=await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise,out=[];
-  for(var i=1;i<=Math.min(d.numPages,30);i++){var pg=await d.getPage(i),v=pg.getViewport({scale:1400/pg.getViewport({scale:1}).width}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;out.push(c)}
+  for(var i=1;i<=Math.min(d.numPages,30);i++){var pg=await d.getPage(i),v=pg.getViewport({scale:1400/pg.getViewport({scale:1}).width}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;await pg.render({canvasContext:c.getContext("2d"),viewport:v}).promise;try{out.ul=(out.ul||[]).concat(await piUlScan(pg,v,c,i))}catch(e){}out.push(c)}
   return out}
 function piCrop(pgs,r,exact){if(!r||!pgs[r.p-1])return "";var c=pgs[r.p-1],pd=exact?0:.01,x0=Math.max(0,+r.x-pd),y0=Math.max(0,+r.y-pd),w=Math.min(1-x0,+r.w+(exact?0:.02))*c.width,h=Math.min(1-y0,+r.h+(exact?0:.02))*c.height;
   if(!(w>=20&&h>=20))return "";var k=Math.min(1,900/w),o=document.createElement("canvas");o.width=Math.round(w*k);o.height=Math.round(h*k);o.getContext("2d").drawImage(c,x0*c.width,y0*c.height,w,h,0,0,o.width,o.height);return o.toDataURL("image/jpeg",.6)}
@@ -2206,7 +3079,7 @@ function piMode(i,m){var z=PI().items[i];if((m==="g"&&!z.g)||(m==="f"&&!z.f)){to
 
 /* ---------- 이미지 영역 직접 조정 ---------- */
 var EDS=null;
-async function piEdit(i){var edReturnY=window.scrollY||0;S.edY=edReturnY;var P=PI(),z=P.items[i],k=z.m==="f"?"f":"g";
+async function piEdit(i){S.pe=null;var edReturnY=window.scrollY||0;S.edY=edReturnY;var P=PI(),z=P.items[i],k=z.m==="f"?"f":"g";
   if(!P.pgs){toast("PDF 페이지를 불러오는 중이에요");try{P.pgs=await piPages(P.q)}catch(e){toast("PDF 페이지를 불러오지 못했어요: "+String(e&&e.message||e).slice(0,60));return}}
   var r=z[k+"r"];r=r&&P.pgs[r.p-1]?{p:+r.p,x:+r.x,y:+r.y,w:+r.w,h:+r.h}:{p:1,x:.1,y:.1,w:.8,h:.3};
   S.ed={i:i,k:k,no:z.no,r:r,u:{},sub:S.sub};render()}
@@ -2218,7 +3091,7 @@ function piEd(){var e=S.ed,P=PI(),r=e.r,c=P.pgs[r.p-1],u=e.u[r.p]||(e.u[r.p]=piT
    +'<div class="after" style="margin-top:12px"><button class="btn" onclick="piEdX()">취소</button><button class="btn pri" onclick="piEdOk()">적용</button></div>'}
 function edPt(ev){var b=$("edbox").getBoundingClientRect();return {x:Math.min(1,Math.max(0,(ev.clientX-b.left)/b.width)),y:Math.min(1,Math.max(0,(ev.clientY-b.top)/b.height))}}
 function edDown(ev){ev.preventDefault();$("edbox").setPointerCapture(ev.pointerId);EDS=edPt(ev)}
-function edMove(ev){if(!EDS)return;var q=edPt(ev),r=S.ed.r,d=$("edrect").style;r.x=Math.min(EDS.x,q.x);r.y=Math.min(EDS.y,q.y);r.w=Math.abs(q.x-EDS.x);r.h=Math.abs(q.y-EDS.y);d.left=r.x*100+"%";d.top=r.y*100+"%";d.width=r.w*100+"%";d.height=r.h*100+"%"}
+function edMove(ev){if(!EDS)return;var q=edPt(ev),r=(S.pe||S.ed).r,d=$("edrect").style;r.x=Math.min(EDS.x,q.x);r.y=Math.min(EDS.y,q.y);r.w=Math.abs(q.x-EDS.x);r.h=Math.abs(q.y-EDS.y);d.left=r.x*100+"%";d.top=r.y*100+"%";d.width=r.w*100+"%";d.height=r.h*100+"%"}
 function edUp(){EDS=null}
 function piPg(d){var e=S.ed;e.r.p=Math.min(PI().pgs.length,Math.max(1,e.r.p+d));render()}
 function piEdK(k){var e=S.ed,P=PI(),r=P.items[e.i][k+"r"];e.k=k;if(r&&P.pgs[r.p-1])e.r={p:+r.p,x:+r.x,y:+r.y,w:+r.w,h:+r.h};render()}
@@ -2255,11 +3128,12 @@ function pinchSync(){var on=!!((S.tab==="quiz"&&S.run&&!S.pfocus)||S.tab==="wron
  var T=null,LT=null;
  document.addEventListener("touchstart",function(e){
   if(e.touches.length!==1){T=null;LT=null;return}
-  var t=e.touches[0];T={x:t.clientX,y:t.clientY,t:Date.now(),mv:false,tg:e.target}},{passive:true});
+  var t=e.touches[0];T={x:t.clientX,y:t.clientY,t:Date.now(),mv:false,tg:e.target,pen:t.touchType==="stylus"}},{passive:true});
  document.addEventListener("touchmove",function(e){if(T&&e.touches[0]&&Math.hypot(e.touches[0].clientX-T.x,e.touches[0].clientY-T.y)>10)T.mv=true},{passive:true});
  document.addEventListener("touchend",function(e){
   var d=T;T=null;if(!window.PZ||!d||d.mv||G||e.touches.length||Date.now()-d.t>300)return;
   if(d.tg&&d.tg.closest&&d.tg.closest("button,a,input,textarea,label,summary,select,#inktb"))return;
+  if(INK.on&&(d.pen||INK.penDown||Date.now()-INK.lastPen<1500)){LT=null;return}
   if(INK.on&&!penOnly())return;
   var now=Date.now();
   if(LT&&now-LT.t<320&&Math.hypot(LT.x-d.x,LT.y-d.y)<40){LT=null;
@@ -2276,8 +3150,58 @@ function nbFit(snap){var root=document.documentElement,pg=document.querySelector
   root.style.setProperty("--ink-avail",Math.max(300,window.innerHeight-topPad-rs)+"px");
   if(snap&&(S.pz||1)===1)window.scrollTo(0,Math.max(0,y-topPad))}
 var nbRz=null;["resize","orientationchange"].forEach(function(n){window.addEventListener(n,function(){clearTimeout(nbRz);nbRz=setTimeout(function(){nbFit(false)},180)})});
-(function(){var r=render;render=function(){r.apply(this,arguments);tbAnim();pinchSync();var sn=S.nbfit;S.nbfit=0;nbFit(!!sn)}})();
+/* 폴더·파일을 열 때: 누른 카드 위치에서 화면 전체로 펼쳐지는 애니메이션 */
+var ZM=null,ZBK="",ZB=null,VTP=null,VTN=false;
+document.addEventListener("click",function(e){var el=e.target&&e.target.closest&&e.target.closest("[onclick]"),a=el&&el.getAttribute("onclick")||"";
+  if(!el||el.classList.contains("ib")||!/^(fdPick|anOpen|sgOpenQ|nbOpen|nbNew|pdfView|pqOpen|pdfSolve|openCard|pickCard)\(/.test(a)){return}
+  var c=el.closest(".fdt,.wn,.li,.act,.unit")||el,r=c.getBoundingClientRect();ZM={l:r.left,t0:r.top,w:r.width,h:r.height,t:Date.now()};ZBK=a;VTP={k:'o',el:c,t:Date.now()}},true);
+function zoomOpen(){var z=ZM;ZM=null;if(!z||Date.now()-z.t>1500)return;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  var v=document.querySelector(".view");if(!v||!document.body.animate)return;
+  /* 기본 슬라이드 전환은 끄고, 카드가 펼쳐진 뒤 내용이 부드럽게 나타나게 */
+  v.classList.remove("vt-fwd","vt-back","vt-fade");
+  var vr=v.getBoundingClientRect(),tp=Math.max(0,vr.top),tl=Math.max(0,vr.left),tw=Math.max(60,Math.min(window.innerWidth-tl,vr.width)),th=Math.max(60,window.innerHeight-tp);
+  var g=document.createElement("div");g.setAttribute("aria-hidden","true");
+  g.style.cssText="position:fixed;z-index:35;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;transform-origin:0 0;will-change:transform,opacity;left:"+tl+"px;top:"+tp+"px;width:"+tw+"px;height:"+th+"px";
+  document.body.appendChild(g);
+  var sx=Math.max(.02,z.w/tw),sy=Math.max(.02,z.h/th),E="cubic-bezier(.32,.72,0,1)";
+  var an=g.animate([{transform:"translate("+(z.l-tl)+"px,"+(z.t0-tp)+"px) scale("+sx+","+sy+")",opacity:1},{offset:.72,transform:"translate(0,0) scale(1,1)",opacity:1},{transform:"translate(0,0) scale(1,1)",opacity:0}],{duration:420,easing:E,fill:"forwards"});
+  var fin=function(){if(g.parentNode)g.parentNode.removeChild(g)};an.onfinish=fin;an.oncancel=fin;setTimeout(fin,900);
+  v.animate([{opacity:0},{offset:.45,opacity:0},{opacity:1}],{duration:420,easing:"ease-out"})}
+/* 뒤로 갈 때: 화면이 열었던 카드 자리로 줄어들며 돌아가는 애니메이션 */
+document.addEventListener("click",function(e){var el=e.target&&e.target.closest&&e.target.closest("[onclick]"),a=el&&el.getAttribute("onclick")||"",m,tg="";
+  if(!el)return;
+  if(el.classList.contains("ib")&&(m=/^fdPick\('(\w+)'/.exec(a))){var cur=S.fsel&&S.fsel[m[1]];if(cur)tg="fdPick('"+m[1]+"','"+cur+"')"}
+  else if(/^(anClose|sgClose|nbClose|pqClose)\(/.test(a)||/^S\.(pv|cid|pq)=null/.test(a))tg=ZBK;
+  if(tg){ZB={a:tg,t:Date.now()};VTP={k:'b',a:tg,t:Date.now()}}},true);
+function zoomBack(){var b=ZB;ZB=null;if(!b||Date.now()-b.t>1500)return;
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+  var v=document.querySelector(".view");if(!v||!document.body.animate)return;
+  var el=[].filter.call(document.querySelectorAll("[onclick]"),function(x){return x.getAttribute("onclick")===b.a})[0];if(!el)return;
+  var c=el.closest(".fdt,.wn,.li,.act,.unit")||el,r=c.getBoundingClientRect();if(!r.width||!r.height||r.bottom<0||r.top>window.innerHeight)return;
+  v.classList.remove("vt-fwd","vt-back","vt-fade");
+  var vr=v.getBoundingClientRect(),tp=Math.max(0,vr.top),tl=Math.max(0,vr.left),tw=Math.max(60,Math.min(window.innerWidth-tl,vr.width)),th=Math.max(60,window.innerHeight-tp);
+  var g=document.createElement("div");g.setAttribute("aria-hidden","true");
+  g.style.cssText="position:fixed;z-index:35;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;transform-origin:0 0;will-change:transform,opacity;left:"+tl+"px;top:"+tp+"px;width:"+tw+"px;height:"+th+"px";
+  document.body.appendChild(g);
+  var sx=Math.max(.02,r.width/tw),sy=Math.max(.02,r.height/th);
+  var an=g.animate([{transform:"translate(0,0) scale(1,1)",opacity:1},{offset:.35,opacity:.95},{transform:"translate("+(r.left-tl)+"px,"+(r.top-tp)+"px) scale("+sx+","+sy+")",opacity:0}],{duration:380,easing:"cubic-bezier(.32,.72,0,1)",fill:"forwards"});
+  var fin=function(){if(g.parentNode)g.parentNode.removeChild(g)};an.onfinish=fin;an.oncancel=fin;setTimeout(fin,900)}
+(function(){var r=render;render=function(){r.apply(this,arguments);zoomOpen();zoomBack();tbAnim();pinchSync();var sn=S.nbfit;S.nbfit=0;nbFit(!!sn)}})();
 tbAnim();pinchSync();
+/* 공유 요소 전환(View Transition): 누른 카드가 실제 내용과 함께 화면으로 펼쳐지고, 뒤로 가면 다시 그 카드로 접혀요 */
+function zcTarget(){var v=document.querySelector(".view");if(!v)return null;var q=[".fdh",".runwrap > .card","article.detail",".inkpg","[data-ink^='p:']",".card"],i,e;for(i=0;i<q.length;i++){e=v.querySelector(q[i]);if(e)return e}return v.firstElementChild}
+(function(){var r2=render;render=function(){
+  var p=VTP;VTP=null;var me=this,ar=arguments;
+  if(!p||Date.now()-p.t>700||VTN||!document.startViewTransition||(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches))return r2.apply(me,ar);
+  var oldEl=p.k==="o"?p.el:zcTarget();if(!oldEl||!oldEl.isConnected)return r2.apply(me,ar);
+  oldEl.style.viewTransitionName="zc";VTN=true;ZM=null;ZB=null;
+  var t;try{t=document.startViewTransition(function(){
+    try{r2.apply(me,ar);ZM=null;ZB=null;var v=document.querySelector(".view");if(v)v.classList.remove("vt-fwd","vt-back","vt-fade");
+      var ne=null;if(p.k==="o")ne=zcTarget();else{var el=[].filter.call(document.querySelectorAll("[onclick]"),function(x){return x.getAttribute("onclick")===p.a})[0];ne=el?(el.closest(".fdt,.wn,.li,.act,.unit")||el):null}
+      if(ne&&ne!==oldEl)ne.style.viewTransitionName="zc"}catch(e){VTN=false;throw e}})}catch(e){VTN=false;oldEl.style.viewTransitionName="";return r2.apply(me,ar)}
+  var done=function(){VTN=false;[].forEach.call(document.querySelectorAll("[style*='view-transition-name']"),function(x){x.style.viewTransitionName=""})};
+  t.finished.then(done,done)}})();
 </script>
 
 </body></html>
